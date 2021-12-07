@@ -62,34 +62,6 @@ export default function Configurator(props) {
                 <Text paddingBottom="2rem" fontSize="md" fontWeight="600">
                   Customize this page
                 </Text>
-                <Flex>
-                  <Button
-                    w="50%"
-                    p="8px 32px"
-                    me="8px"
-                    colorScheme="orange"
-                    borderColor="orange.300"
-                    color="orange.300"
-                    variant="outline"
-                    fontSize="xs"
-                    onClick={props.onTransparent}
-                  >
-                    Transparent
-                  </Button>
-                  <Button
-                    type="submit"
-                    bg="orange.300"
-                    w="50%"
-                    p="8px 32px"
-                    mb={5}
-                    _hover="orange.300"
-                    color="white"
-                    fontSize="xs"
-                    onClick={props.onOpaque}
-                  >
-                    Opaque
-                  </Button>
-                </Flex>
               </Box>
               <Box
                 display={fixedDisplay}
