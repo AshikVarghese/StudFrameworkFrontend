@@ -59,6 +59,7 @@ var server_URL = "http://localhost:5000/";
 
 function Profile() {
   function validation() {
+    document.getElementById("pass-success").style.display = "none";
     var oldpass = document.getElementById("old-pass").value;
     var newpass = document.getElementById("new-pass").value;
     var repass = document.getElementById("re-pass").value;
@@ -130,6 +131,14 @@ function Profile() {
         document.getElementById("pass-equal").style.display = "block";
       }
     } else {
+      document.getElementById("pass-same").style.display = "none";
+      document.getElementById("pass-len").style.display = "none";
+      document.getElementById("pass-num").style.display = "none";
+      document.getElementById("pass-lower").style.display = "none";
+      document.getElementById("pass-upper").style.display = "none";
+      document.getElementById("pass-symbol").style.display = "none";
+      document.getElementById("pass-valid").style.display = "none";
+      document.getElementById("pass-equal").style.display = "none";
       change_pass();
     }
   }
