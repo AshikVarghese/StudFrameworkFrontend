@@ -152,6 +152,17 @@ function Academic() {
               colorScheme="orange"
               variant="solid"
             >
+              Download Template
+            </Button>
+          </Box>
+          <Box alignSelf="flex-end">
+            <Button
+              me="1em"
+              minWidth="fit-content"
+              onClick={onToggle}
+              colorScheme="orange"
+              variant="solid"
+            >
               Bulk Upload
             </Button>
           </Box>
