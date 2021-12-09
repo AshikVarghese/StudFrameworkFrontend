@@ -1,3 +1,5 @@
+/** @format */
+
 //HoD Academic - StudentList
 
 import React, { useState, useEffect } from "react";
@@ -39,7 +41,7 @@ function StudentListAcademic(props) {
       id={roll}
       _hover={{
         Radius: "20px",
-        background: "#3b4e6b",
+        background: "#bbbbbb",
         color: "white",
       }}
     >
