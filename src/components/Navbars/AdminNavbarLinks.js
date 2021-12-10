@@ -14,8 +14,15 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
   Text,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 // Assets
 import avatar1 from "assets/img/avatars/avatar1.png";
@@ -54,6 +61,7 @@ export default function HeaderLinks(props) {
     mainText = "white";
   }
   const settingsRef = React.useRef();
+  const { isOpen, onClose } = useDisclosure();
   return (
     <Flex w={{ sm: "100%", md: "auto" }} alignItems="center">
       <NavLink to="/auth/signin">
@@ -69,6 +77,39 @@ export default function HeaderLinks(props) {
         >
           <Text display={{ sm: "none", md: "flex" }}>Log Out</Text>
         </Button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => {
+            onClose();
+          }}
+        >
+          <ModalContent>
+            <ModalHeader>Confirmation</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>Are you sure ?</ModalBody>
+            <ModalFooter>
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={() => {
+                  onClose();
+                  fundelete();
+                }}
+              >
+                Log out
+              </Button>
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={() => {
+                  onClose();
+                }}
+              >
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </NavLink>
       <SidebarResponsive
         logoText={props.logoText}

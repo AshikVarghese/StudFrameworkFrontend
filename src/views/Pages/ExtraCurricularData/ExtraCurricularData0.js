@@ -127,10 +127,10 @@ function ExtraCurricularData() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [drop1, setDrop1] = useState(false);
-  const [drop2, setDrop2] = useState(false);
-  const [drop3, setDrop3] = useState(false);
-  const [drop4, setDrop4] = useState(false);
+  var [drop1, setDrop1] = useState(false);
+  var [drop2, setDrop2] = useState(false);
+  var [drop3, setDrop3] = useState(false);
+  var [drop4, setDrop4] = useState(false);
 
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -172,21 +172,38 @@ function ExtraCurricularData() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
-        <Button
-          ms="auto"
-          me="1em"
-          bg="orange.400"
-          width="fit-content"
-          height="2em"
-          onClick={() => {
-            setDrop1(!drop1),
-              setDrop2(!drop2),
-              setDrop3(!drop3),
-              setDrop4(!drop4);
-          }}
-        >
-          {drop1 || drop2 || drop3 || drop4 ? "Hide All" : "Show All"}
-        </Button>
+        <Flex direction="column" align="flex-end">
+          <box>
+            <Button
+              ms="auto"
+              me="1em"
+              bg="orange.400"
+              width="6em"
+              height="2em"
+              onClick={() => {
+                setDrop1(true), setDrop2(true), setDrop3(true), setDrop4(true);
+              }}
+            >
+              Show All
+            </Button>
+
+            <Button
+              ms="auto"
+              me="1em"
+              bg="orange.400"
+              width="6em"
+              height="2em"
+              onClick={() => {
+                setDrop1(false),
+                  setDrop2(false),
+                  setDrop3(false),
+                  setDrop4(false);
+              }}
+            >
+              Hide All
+            </Button>
+          </box>
+        </Flex>
 
         <Card>
           <CardHeader>
