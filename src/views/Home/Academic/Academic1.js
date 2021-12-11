@@ -148,21 +148,8 @@ function Academic() {
           <Box alignSelf="flex-end">
           <a href={MyPDF} download="academic_details.xlsx">
             <Button
-              me="1em"
-              minWidth="fit-content"
-        <Flex
-          alignSelf={{ sm: "center", md: "flex-end" }}
-          marginLeft={{ md: "5em", xl: "45%" }}
-        >
-          <SimpleGrid
-            alignSelf={{ sm: "center", md: "flex-end" }}
-            columns={{ sm: 1, md: 3, xl: 3 }}
-            gap={5}
-          >
-            <Button
               minWidth={{ sm: "75vw", md: "fit-content" }}
               onClick={onToggle}
-
               colorScheme="orange"
               variant="solid"
             >
