@@ -1,3 +1,5 @@
+/** @format */
+
 // Class Advisor routes
 
 import Dashboard from "views/Home/DashBoard/Dashboard1.js";
@@ -18,7 +20,6 @@ import {
   RocketIcon,
   CreditIcon,
 } from "components/Icons/Icons";
-
 
 var dashRoutes = [
   // {

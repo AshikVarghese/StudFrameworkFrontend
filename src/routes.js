@@ -25,6 +25,7 @@ import GeneralInformationDataEdit from "views/Pages/Edit/GeneralInformationDataE
 import GeneralInformationdata from "views/Pages/Edit/GeneralInformationdata";
 
 import Error404 from "views/Pages/Error404.js";
+import ServerError from "views/Pages/ServerError";
 
 var dashRoutes = [
   {
@@ -114,6 +115,11 @@ var dashRoutes = [
   {
     path: "/Error404",
     component: Error404,
+    layout: "/auth",
+  },
+  {
+    path: "/ServerError",
+    component: ServerError,
     layout: "/auth",
   },
 ];
