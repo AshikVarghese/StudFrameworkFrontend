@@ -150,6 +150,19 @@ function Academic() {
             <Button
               me="1em"
               minWidth="fit-content"
+        <Flex
+          alignSelf={{ sm: "center", md: "flex-end" }}
+          marginLeft={{ md: "5em", xl: "45%" }}
+        >
+          <SimpleGrid
+            alignSelf={{ sm: "center", md: "flex-end" }}
+            columns={{ sm: 1, md: 3, xl: 3 }}
+            gap={5}
+          >
+            <Button
+              minWidth={{ sm: "75vw", md: "fit-content" }}
+              onClick={onToggle}
+
               colorScheme="orange"
               variant="solid"
             >
@@ -158,21 +171,19 @@ function Academic() {
             </a>
           </Box>
           <Box alignSelf="flex-end">
+
             <Button
-              me="1em"
-              minWidth="fit-content"
+              minWidth={{ sm: "75vw", md: "fit-content" }}
               onClick={onToggle}
               colorScheme="orange"
               variant="solid"
             >
               Bulk Upload
             </Button>
-          </Box>
-          <Box alignSelf="flex-end">
+
             <CSVLink data={data2}>
               <Button
-                minWidth="fit-content"
-                mt="2"
+                minWidth={{ sm: "75vw", md: "fit-content" }}
                 onClick="m"
                 colorScheme="orange"
                 variant="solid"
@@ -180,7 +191,7 @@ function Academic() {
                 Download Report
               </Button>
             </CSVLink>
-          </Box>
+          </SimpleGrid>
         </Flex>
       </Card>
       <Collapse in={isOpen} animateOpacity>

@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor - StudentList GeneralInformation
 
 import React from "react";
@@ -30,7 +32,7 @@ function StudentListGeneral(props) {
       id={roll}
       _hover={{
         Radius: "20px",
-        background: "#3b4e6b",
+        background: "#bbbbbb",
         color: "white",
       }}
     >

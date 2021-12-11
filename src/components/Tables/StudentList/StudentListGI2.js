@@ -1,3 +1,5 @@
+/** @format */
+
 //HoD - StudentList GeneralInformation
 
 import {
@@ -37,7 +39,7 @@ function GeneralParticularstablerow(props) {
       id={roll}
       _hover={{
         Radius: "20px",
-        background: "#3b4e6b",
+        background: "#bbbbbb",
         color: "white",
       }}
     >
