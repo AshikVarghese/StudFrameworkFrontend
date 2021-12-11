@@ -1,3 +1,5 @@
+/** @format */
+
 // Class Advisor routes
 
 import Dashboard from "views/Home/DashBoard/Dashboard1.js";
@@ -18,7 +20,6 @@ import {
   RocketIcon,
   CreditIcon,
 } from "components/Icons/Icons";
-
 
 var dashRoutes = [
   // {
@@ -60,24 +61,24 @@ var dashRoutes = [
     component: Extracurricular,
     layout: "/admin1",
   },
-  // {
-  //   path: "/ProfessionalDevelopment",
-  //   name: (
-  //     <p
-  //       style={{
-  //         textAlign: "left",
-  //         lineHeight: "1.2rem",
-  //         whiteSpace: "normal",
-  //         wordWrap: "break-word",
-  //       }}
-  //     >
-  //       Professional Development
-  //     </p>
-  //   ),
-  //   icon: <CreditIcon color="inherit" />,
-  //   component: ProfessionalDevelopment,
-  //   layout: "/admin1",
-  // },
+  {
+    path: "/ProfessionalDevelopment",
+    name: (
+      <p
+        style={{
+          textAlign: "left",
+          lineHeight: "1.2rem",
+          whiteSpace: "normal",
+          wordWrap: "break-word",
+        }}
+      >
+        Professional Development
+      </p>
+    ),
+    icon: <CreditIcon color="inherit" />,
+    component: ProfessionalDevelopment,
+    layout: "/admin1",
+  },
   {
     path: "/Academics",
     name: "Academics",

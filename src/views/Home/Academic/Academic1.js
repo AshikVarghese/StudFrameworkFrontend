@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import MyPDF from "../../../components/Template/academic_details.xlsx";
 // Chakra imports
 import {
   Flex,
@@ -143,6 +144,12 @@ function Academic() {
             value={searchTerm}
           />
         </InputGroup>
+        <Flex alignSelf="flex-end" marginLeft="75%">
+          <Box alignSelf="flex-end">
+          <a href={MyPDF} download="academic_details.xlsx">
+            <Button
+              me="1em"
+              minWidth="fit-content"
         <Flex
           alignSelf={{ sm: "center", md: "flex-end" }}
           marginLeft={{ md: "5em", xl: "45%" }}
@@ -155,11 +162,15 @@ function Academic() {
             <Button
               minWidth={{ sm: "75vw", md: "fit-content" }}
               onClick={onToggle}
+
               colorScheme="orange"
               variant="solid"
             >
               Download Template
             </Button>
+            </a>
+          </Box>
+          <Box alignSelf="flex-end">
 
             <Button
               minWidth={{ sm: "75vw", md: "fit-content" }}

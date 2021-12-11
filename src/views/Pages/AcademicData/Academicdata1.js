@@ -148,22 +148,6 @@ function Academicdata() {
           </Card>
         </SimpleGrid>
       </SimpleGrid>
-      <SimpleGrid pt="1.5rem" columns={{ sm: 1, md: 2, xl: 2 }} gap={5}>
-        <Card>
-          <CardBody>
-            <Button colorScheme="orange" variant="solid" width="100%">
-              Edit
-            </Button>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardBody>
-            <Button colorScheme="orange" variant="solid" width="100%">
-              Delete
-            </Button>
-          </CardBody>
-        </Card>
-      </SimpleGrid>
     </Flex>
   );
 }

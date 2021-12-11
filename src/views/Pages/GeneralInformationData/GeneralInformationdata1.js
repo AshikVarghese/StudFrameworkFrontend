@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor GeneralInformationData
 
 import React, { useState } from "react";
@@ -53,9 +55,9 @@ function GeneralInformationdata({ location }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   var GData = TableRow2;
   return (
-    <Flex direction="column" pt={{ base: "500px", md: "75px" }}>
+    <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
-        <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
+        <Card overflowX={{ sm: "scroll" }}>
           <CardHeader p="6px 0px 22px 0px">
             <Text fontSize="xl" color={textColor} fontWeight="bold">
               General Particulars
@@ -195,7 +197,7 @@ function GeneralInformationdata({ location }) {
           </CardBody>
         </Card>
         <SimpleGrid columns={{ sm: 1, md: 2, xl: 2 }} gap={4}>
-          <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
+          <Card overflowX={{ sm: "scroll" }}>
             <CardHeader p="6px 0px 22px 0px">
               <Text fontSize="xl" color={textColor} fontWeight="bold">
                 Higher Secondary Details
