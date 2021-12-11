@@ -245,7 +245,7 @@ function ProfessionalDevelopmentData0() {
       }
     });
   }
-  /* let params = new URLSearchParams();
+  let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
   useEffect(async () => {
     axios
@@ -297,7 +297,7 @@ function ProfessionalDevelopmentData0() {
           }
         )
       );
-  }, []); */
+  }, []);
 
   const textColor = useColorModeValue("gray.700", "white");
 
@@ -359,8 +359,6 @@ function ProfessionalDevelopmentData0() {
   const [p12data, setp12data] = useState([]);
   const [p13data, setp13data] = useState([]);
 
-
-  
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>

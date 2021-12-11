@@ -24,7 +24,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import ProfessionalDevelopmentTableRow1 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDIndustrialVisitTR1";
 
-function ProfessionalDevelopmentData() {
+function ProfessionalDevelopmentData1() {
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
@@ -198,4 +198,4 @@ function ProfessionalDevelopmentData() {
   );
 }
 
-export default ProfessionalDevelopmentData;
+export default ProfessionalDevelopmentData1;
