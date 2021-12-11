@@ -145,8 +145,13 @@ function Academic() {
           />
         </InputGroup>
         <Flex alignSelf="flex-end" marginLeft="75%">
+        <SimpleGrid
+            alignSelf={{ sm: "center", md: "flex-end" }}
+            columns={{ sm: 1, md: 3, xl: 3 }}
+            gap={5}
+          >
           <Box alignSelf="flex-end">
-          <a href={MyPDF} download="academic_details.xlsx">
+            <a href={MyPDF} download="academic_details.xlsx">
             <Button
               minWidth={{ sm: "75vw", md: "fit-content" }}
               onClick={onToggle}
@@ -178,6 +183,7 @@ function Academic() {
                 Download Report
               </Button>
             </CSVLink>
+          </Box>
           </SimpleGrid>
         </Flex>
       </Card>
