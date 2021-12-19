@@ -6,7 +6,7 @@ import React from "react";
 
 import { Flex, Td, Text, Tr, useColorModeValue } from "@chakra-ui/react";
 
-var URL = "http://localhost:3000/";
+var URL = "http://192.168.1.145:44297/";
 
 function StudentListInternational(props) {
   const { name, email, reg, roll, batch, dept } = props;

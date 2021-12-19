@@ -26,7 +26,7 @@ import CardBody from "components/Card/CardBody.js";
 import { Tooltip } from "@chakra-ui/react";
 
 var server_URL = "http://localhost:5000/",
-  URL = "http://localhost:3000/";
+  URL = "http://192.168.1.145:44297/";
 
 function GeneralInformationdata() {
   function logout() {
