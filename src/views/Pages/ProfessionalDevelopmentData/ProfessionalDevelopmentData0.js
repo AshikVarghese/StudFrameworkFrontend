@@ -45,6 +45,66 @@ var server_URL = "http://192.168.1.145:8080/";
 var resul;
 
 function ProfessionalDevelopmentData0() {
+  const textColor = useColorModeValue("gray.700", "white");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [drop1, setDrop1] = useState(false);
+  const [drop2, setDrop2] = useState(false);
+  const [drop3, setDrop3] = useState(false);
+  const [drop4, setDrop4] = useState(false);
+  const [drop5, setDrop5] = useState(false);
+  const [drop6, setDrop6] = useState(false);
+  const [drop7, setDrop7] = useState(false);
+  const [drop8, setDrop8] = useState(false);
+  const [drop9, setDrop9] = useState(false);
+  const [drop10, setDrop10] = useState(false);
+  const [drop11, setDrop11] = useState(false);
+  const [drop12, setDrop12] = useState(false);
+  const [drop13, setDrop13] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
+  const [show4, setShow4] = useState(false);
+  const [show5, setShow5] = useState(false);
+  const [show6, setShow6] = useState(false);
+  const [show7, setShow7] = useState(false);
+  const [show8, setShow8] = useState(false);
+  const [show9, setShow9] = useState(false);
+  const [show10, setShow10] = useState(false);
+  const [show11, setShow11] = useState(false);
+  const [show12, setShow12] = useState(false);
+  const [show13, setShow13] = useState(false);
+
+  const handleToggle = () => setShow(!show);
+  const handleToggle2 = () => setShow2(!show2);
+  const handleToggle3 = () => setShow3(!show3);
+  const handleToggle4 = () => setShow4(!show4);
+  const handleToggle5 = () => setShow5(!show5);
+  const handleToggle6 = () => setShow6(!show6);
+  const handleToggle7 = () => setShow7(!show7);
+  const handleToggle8 = () => setShow8(!show8);
+  const handleToggle9 = () => setShow9(!show9);
+  const handleToggle10 = () => setShow10(!show10);
+  const handleToggle11 = () => setShow11(!show11);
+  const handleToggle12 = () => setShow12(!show12);
+  const handleToggle13 = () => setShow13(!show13);
+
+  const [p1data, setp1data] = useState([]);
+  const [p2data, setp2data] = useState([]);
+  const [p3data, setp3data] = useState([]);
+  const [p4data, setp4data] = useState([]);
+  const [p5data, setp5data] = useState([]);
+  const [p6data, setp6data] = useState([]);
+  const [p7data, setp7data] = useState([]);
+  const [p8data, setp8data] = useState([]);
+  const [p9data, setp9data] = useState([]);
+  const [p10data, setp10data] = useState([]);
+  const [p11data, setp11data] = useState([]);
+  const [p12data, setp12data] = useState([]);
+  const [p13data, setp13data] = useState([]);
+
   function insertindustry() {
     let params = new URLSearchParams();
     params.append("StudentDetails", localStorage.getItem("StudentRoll"));
@@ -218,6 +278,7 @@ function ProfessionalDevelopmentData0() {
     params.append("Soft", document.getElementById("Soft10").value);
     params.append("Reasoning", document.getElementById("Reasoning10").value);
     params.append("Technical", document.getElementById("Technical10").value);
+    params.append("status", "Pending");
     axios.post(server_URL + "placement_insert", params).then((items) => {
       if (items.data == "Inserted") {
         resul = "Sucessfully Added!!";
@@ -235,6 +296,7 @@ function ProfessionalDevelopmentData0() {
     params.append("Title", document.getElementById("Title11").value);
     params.append("Objective", document.getElementById("Objective11").value);
     params.append("Outcome", document.getElementById("O11").value);
+    params.append("status", "Pending");
     axios.post(server_URL + "PdMini_Stud_insert", params).then((items) => {
       if (items.data == "Inserted") {
         resul = "Sucessfully Added!!";
@@ -245,24 +307,62 @@ function ProfessionalDevelopmentData0() {
       }
     });
   }
-  /* let params = new URLSearchParams();
+  
+  function finalproject() {
+    let params = new URLSearchParams();
+    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+    params.append("Title", document.getElementById("TID12").value);
+    params.append("Objective", document.getElementById("OBID12").value);
+    params.append("Outcome", document.getElementById("OID12").value);
+    params.append("status", "Pending");
+    axios.post(server_URL + "final_stud_insert", params).then((items) => {
+      if (items.data == "Inserted") {
+        resul = "Sucessfully Added!!";
+        onOpen(resul);
+      } else if (items.data == "NotInserted") {
+        resul = "Error Occured!!";
+        onOpen(resul);
+      }
+    });
+  }
+
+  function publications() {
+    let params = new URLSearchParams();
+    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+    params.append("Conference", document.getElementById("CONID13").value);
+    params.append("Name", document.getElementById("NAMEID13").value);
+    params.append("Title", document.getElementById("TID13").value);
+    params.append("Impact", document.getElementById("IMPID13").value);
+    params.append("Index", document.getElementById("INID13").value);
+    params.append("status", "Pending");
+    axios.post(server_URL + "publication_insert", params).then((items) => {
+      if (items.data == "Inserted") {
+        resul = "Sucessfully Added!!";
+        onOpen(resul);
+      } else if (items.data == "NotInserted") {
+        resul = "Error Occured!!";
+        onOpen(resul);
+      }
+    });
+  }
+  let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
   useEffect(async () => {
     axios
       .all([
-        axios.post(server_URL + "comp_stud_display", params),
-        axios.post(server_URL + "cour_Stud_display", params),
-        axios.post(server_URL + "finpro_Stud_display", params),
-        axios.post(server_URL + "guest_stud_display", params),
         axios.post(server_URL + "Industrialv_display", params),
         axios.post(server_URL + "Inplant_display", params),
-        axios.post(server_URL + "intern_stud_display", params),
-        axios.post(server_URL + "Miniproj_display", params),
+        axios.post(server_URL + "guest_stud_display", params),
         axios.post(server_URL + "Motivational_display", params),
-        axios.post(server_URL + "placement_display", params),
-        axios.post(server_URL + "publication_display", params),
-        axios.post(server_URL + "webinar_display", params),
+        axios.post(server_URL + "intern_stud_display", params),
+        axios.post(server_URL + "cour_Stud_display", params),
         axios.post(server_URL + "workshop_studisplay", params),
+        axios.post(server_URL + "webinar_display", params),
+        axios.post(server_URL + "comp_stud_display", params),
+        axios.post(server_URL + "placement_display", params),
+        axios.post(server_URL + "Miniproj_display", params),
+        axios.post(server_URL + "finpro_Stud_display", params),
+        axios.post(server_URL + "publication_display", params),
       ])
       .then(
         axios.spread(
@@ -297,67 +397,7 @@ function ProfessionalDevelopmentData0() {
           }
         )
       );
-  }, []); */
-
-  const textColor = useColorModeValue("gray.700", "white");
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const [drop1, setDrop1] = useState(false);
-  const [drop2, setDrop2] = useState(false);
-  const [drop3, setDrop3] = useState(false);
-  const [drop4, setDrop4] = useState(false);
-  const [drop5, setDrop5] = useState(false);
-  const [drop6, setDrop6] = useState(false);
-  const [drop7, setDrop7] = useState(false);
-  const [drop8, setDrop8] = useState(false);
-  const [drop9, setDrop9] = useState(false);
-  const [drop10, setDrop10] = useState(false);
-  const [drop11, setDrop11] = useState(false);
-  const [drop12, setDrop12] = useState(false);
-  const [drop13, setDrop13] = useState(false);
-
-  const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
-  const [show4, setShow4] = useState(false);
-  const [show5, setShow5] = useState(false);
-  const [show6, setShow6] = useState(false);
-  const [show7, setShow7] = useState(false);
-  const [show8, setShow8] = useState(false);
-  const [show9, setShow9] = useState(false);
-  const [show10, setShow10] = useState(false);
-  const [show11, setShow11] = useState(false);
-  const [show12, setShow12] = useState(false);
-  const [show13, setShow13] = useState(false);
-
-  const handleToggle = () => setShow(!show);
-  const handleToggle2 = () => setShow2(!show2);
-  const handleToggle3 = () => setShow3(!show3);
-  const handleToggle4 = () => setShow4(!show4);
-  const handleToggle5 = () => setShow5(!show5);
-  const handleToggle6 = () => setShow6(!show6);
-  const handleToggle7 = () => setShow7(!show7);
-  const handleToggle8 = () => setShow8(!show8);
-  const handleToggle9 = () => setShow9(!show9);
-  const handleToggle10 = () => setShow10(!show10);
-  const handleToggle11 = () => setShow11(!show11);
-  const handleToggle12 = () => setShow12(!show12);
-  const handleToggle13 = () => setShow13(!show13);
-
-  const [p1data, setp1data] = useState([]);
-  const [p2data, setp2data] = useState([]);
-  const [p3data, setp3data] = useState([]);
-  const [p4data, setp4data] = useState([]);
-  const [p5data, setp5data] = useState([]);
-  const [p6data, setp6data] = useState([]);
-  const [p7data, setp7data] = useState([]);
-  const [p8data, setp8data] = useState([]);
-  const [p9data, setp9data] = useState([]);
-  const [p10data, setp10data] = useState([]);
-  const [p11data, setp11data] = useState([]);
-  const [p12data, setp12data] = useState([]);
-  const [p13data, setp13data] = useState([]);
+  }, []); 
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -432,9 +472,9 @@ function ProfessionalDevelopmentData0() {
                   {p1data.map((item1) => {
                     return (
                       <TableRow5
-                        row1={item1.IndustryID}
-                        row2={item1.Date_and_year}
-                        row3={item1.OutcomeID}
+                        row1={item1.industry_name}
+                        row2={item1.date}
+                        row3={item1.outcome}
                         row4={item1.credits}
                         row5={item1.verified}
                       />
@@ -613,9 +653,9 @@ function ProfessionalDevelopmentData0() {
                   {p2data.map((item2) => {
                     return (
                       <TableRow5
-                        row1={item2.IndustryID}
-                        row2={item2.Date_and_year}
-                        row3={item2.OutcomeID}
+                        row1={item2.industry}
+                        row2={item2.date}
+                        row3={item2.outcome}
                         row4={item2.credits}
                         row5={item2.verified}
                       />
@@ -779,7 +819,6 @@ function ProfessionalDevelopmentData0() {
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
                     <Th color="gray.400">Topic</Th>
-                    <Th color="gray.400">Date and Year</Th>
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
@@ -789,13 +828,12 @@ function ProfessionalDevelopmentData0() {
                 <Tbody>
                   {p3data.map((item3) => {
                     return (
-                      <TableRow6
-                        row1={item3.Topic}
-                        row2={item3.Date_and_year3}
-                        row3={item3.Resorce_person}
-                        row4={item3.OutcomeID3}
-                        row5={item3.credits}
-                        row6={item3.verified}
+                      <TableRow5
+                        row1={item3.topic}
+                        row2={item3.resorce_person}
+                        row3={item3.outcome}
+                        row4={item3.credits}
+                        row5={item3.verified}
                       />
                     );
                   })}
@@ -981,10 +1019,10 @@ function ProfessionalDevelopmentData0() {
                   {p4data.map((item4) => {
                     return (
                       <TableRow6
-                        row1={item4.Topic}
-                        row2={item4.Date_and_year3}
-                        row3={item4.Resorce_person}
-                        row4={item4.OutcomeID3}
+                        row1={item4.topic}
+                        row2={item4.date}
+                        row3={item4.resorce_person}
+                        row4={item4.outcome}
                         row5={item4.credits}
                         row6={item4.verified}
                       />
@@ -1173,10 +1211,10 @@ function ProfessionalDevelopmentData0() {
                   {p5data.map((item5) => {
                     return (
                       <TableRow6
-                        row1={item5.Company}
-                        row2={item5.Date}
-                        row3={item5.Duration}
-                        row4={item5.Reference}
+                        row1={item5.company_name}
+                        row2={item5.date}
+                        row3={item5.duration}
+                        row4={item5.reference}
                         row5={item5.credits}
                         row6={item5.verified}
                       />
@@ -1363,13 +1401,12 @@ function ProfessionalDevelopmentData0() {
                 <Tbody>
                   {p6data.map((item6) => {
                     return (
-                      <TableRow6
-                        row1={item6.Course_name}
-                        row2={item6.Date_and_year5}
-                        row3={item6.Platform}
-                        row4={item6.Outcome5}
-                        row5={item6.credits}
-                        row6={item6.verified}
+                      <TableRow5
+                        row1={item6.course_name}
+                        row2={item6.date}
+                        row3={item6.outcome}
+                        row4={item6.credits}
+                        row5={item6.verified}
                       />
                     );
                   })}
@@ -1540,10 +1577,10 @@ function ProfessionalDevelopmentData0() {
                   {p7data.map((item7) => {
                     return (
                       <TableRow6
-                        row1={item7.Topic}
-                        row2={item7.Date_and_year3}
-                        row3={item7.Resorce_person}
-                        row4={item7.OutcomeID3}
+                        row1={item7.topic}
+                        row2={item7.date}
+                        row3={item7.resorce_person}
+                        row4={item7.outcome}
                         row5={item7.credits}
                         row6={item7.verified}
                       />
@@ -1732,10 +1769,10 @@ function ProfessionalDevelopmentData0() {
                   {p8data.map((item8) => {
                     return (
                       <TableRow6
-                        row1={item8.Topic}
-                        row2={item8.Date_and_year3}
-                        row3={item8.Resorce_person}
-                        row4={item8.OutcomeID3}
+                        row1={item8.topic}
+                        row2={item8.date}
+                        row3={item8.resorce_person}
+                        row4={item8.outcome}
                         row5={item8.credits}
                         row6={item8.verified}
                       />
@@ -1925,10 +1962,10 @@ function ProfessionalDevelopmentData0() {
                   {p9data.map((item9) => {
                     return (
                       <TableRow6
-                        row1={item9.Name}
-                        row2={item9.Type}
-                        row3={item9.Date_and_year8}
-                        row4={item9.Position}
+                        row1={item9.comp_name}
+                        row2={item9.comp_type}
+                        row3={item9.date}
+                        row4={item9.position_secured}
                         row5={item9.credits}
                         row6={item9.verified}
                       />
@@ -2119,10 +2156,10 @@ function ProfessionalDevelopmentData0() {
                   {p10data.map((item10) => {
                     return (
                       <TableRow6
-                        row1={item10.Aptitude}
-                        row2={item10.Soft_skill}
-                        row3={item10.Reasoning}
-                        row4={item10.Tech_skill}
+                        row1={item10.aptitude}
+                        row2={item10.soft_skills}
+                        row3={item10.reasoning}
+                        row4={item10.technical_training}
                         row5={item10.credits}
                         row6={item10.verified}
                       />
@@ -2309,13 +2346,12 @@ function ProfessionalDevelopmentData0() {
                 <Tbody>
                   {p11data.map((item11) => {
                     return (
-                      <TableRow6
-                        row1={item11.Title}
-                        row2={item11.Objective}
-                        row3={item11.Duration2}
-                        row4={item11.OutcomeID8}
-                        row5={item11.credits}
-                        row6={item11.verified}
+                      <TableRow5
+                        row1={item11.project_title}
+                        row2={item11.objective}
+                        row3={item11.outcome}
+                        row4={item11.credits}
+                        row5={item11.verified}
                       />
                     );
                   })}
@@ -2475,7 +2511,6 @@ function ProfessionalDevelopmentData0() {
                   <Tr my=".8rem" pl="0px" color="gray.400">
                     <Th color="gray.400">Title</Th>
                     <Th color="gray.400">Objective</Th>
-                    <Th color="gray.400">Duration</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
                     <Th color="gray.400">Verify Status</Th>
@@ -2484,13 +2519,12 @@ function ProfessionalDevelopmentData0() {
                 <Tbody>
                   {p12data.map((item12) => {
                     return (
-                      <TableRow6
-                        row1={item12.Title}
-                        row2={item12.Objective}
-                        row3={item12.Duration2}
-                        row4={item12.OutcomeID8}
-                        row5={item12.credits}
-                        row6={item12.verified}
+                      <TableRow5
+                        row1={item12.title}
+                        row2={item12.objective}
+                        row3={item12.outcome}
+                        row4={item12.credits}
+                        row5={item12.verified}
                       />
                     );
                   })}
@@ -2508,7 +2542,6 @@ function ProfessionalDevelopmentData0() {
                   <Tr>
                     <Th color="gray.400">Title</Th>
                     <Th color="gray.400">Objective</Th>
-                    <Th color="gray.400">Duration</Th>
                     <Th color="gray.400">Outcome</Th>
                   </Tr>
                 </Thead>
@@ -2526,7 +2559,7 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Title"
-                          id="Aptitude"
+                          id="TID12"
                         />
                       </Flex>
                     </Td>
@@ -2542,27 +2575,11 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Objective"
-                          id="Soft Skill"
+                          id="OBID12"
                         />
                       </Flex>
                     </Td>
 
-                    <Td minWidth={{ sm: "14em" }}>
-                      <Flex
-                        align="center"
-                        py=".8rem"
-                        minWidth="100%"
-                        flexWrap="nowrap"
-                      >
-                        <Input
-                          borderRadius="5px"
-                          fontSize="sm"
-                          type="text"
-                          placeholder="Duration"
-                          id="Reasoning"
-                        />
-                      </Flex>
-                    </Td>
                     <Td minWidth={{ sm: "14em" }}>
                       <Flex
                         align="center"
@@ -2575,14 +2592,14 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Outcome"
-                          id="Technical Skill"
+                          id="OID12"
                         />
                       </Flex>
                     </Td>
 
                     <Td>
                       <SlideFade in={show12}>
-                        <Button bg="orange.300" width="fit-content">
+                        <Button onClick={finalproject} bg="orange.300" width="fit-content">
                           Submit
                         </Button>
                       </SlideFade>
@@ -2674,11 +2691,11 @@ function ProfessionalDevelopmentData0() {
                   {p13data.map((item13) => {
                     return (
                       <TableRow7
-                        row1={item13.Conference}
-                        row2={item13.Name2}
-                        row3={item13.Title2}
-                        row4={item13.Impact}
-                        row5={item13.Indexed}
+                        row1={item13.conf_or_journal}
+                        row2={item13.name}
+                        row3={item13.title}
+                        row4={item13.impact_factor}
+                        row5={item13.indexed_in}
                         row6={item13.credits}
                         row7={item13.verified}
                       />
@@ -2717,7 +2734,7 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Conference / Journal"
-                          id="Aptitude"
+                          id="CONID13"
                         />
                       </Flex>
                     </Td>
@@ -2733,7 +2750,7 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Name of Conference / Journal"
-                          id="Soft Skill"
+                          id="NAMEID13"
                         />
                       </Flex>
                     </Td>
@@ -2750,7 +2767,7 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Title Of The Article"
-                          id="Reasoning"
+                          id="TID13"
                         />
                       </Flex>
                     </Td>
@@ -2766,7 +2783,7 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Impact Factor"
-                          id="Technical Skill"
+                          id="IMPID13"
                         />
                       </Flex>
                     </Td>
@@ -2782,14 +2799,14 @@ function ProfessionalDevelopmentData0() {
                           fontSize="sm"
                           type="text"
                           placeholder="Indexed In"
-                          id="Technical Skill"
+                          id="INID13"
                         />
                       </Flex>
                     </Td>
 
                     <Td>
                       <SlideFade in={show13}>
-                        <Button bg="orange.300" width="fit-content">
+                        <Button onClick={publications} bg="orange.300" width="fit-content">
                           Submit
                         </Button>
                       </SlideFade>
