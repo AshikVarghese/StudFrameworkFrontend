@@ -46,7 +46,7 @@ function ExtraCurricularData() {
   const [Sdata, setSdata] = useState([]);
   const [CUdata, setCudata] = useState([]);
 
-  var server_URL = "http://localhost:5000/";
+  var server_URL = "http://192.168.1.145:8080/";
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));

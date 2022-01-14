@@ -35,7 +35,7 @@ import BarChartPlacement from "components/Charts/BarChart1";
 
 var data2 = [];
 
-var server_URL = "http://localhost:5000/";
+var server_URL = "http://192.168.1.145:8080/";
 import { CSVLink } from "react-csv";
 
 function Academic() {
@@ -150,19 +150,7 @@ function Academic() {
             columns={{ sm: 1, md: 3, xl: 3 }}
             gap={5}
           >
-          <Box alignSelf="flex-end">
-            <a href={MyPDF} download="academic_details.xlsx">
-            <Button
-              minWidth={{ sm: "75vw", md: "fit-content" }}
-              onClick={onToggle}
-              colorScheme="orange"
-              variant="solid"
-            >
-              Download Template
-            </Button>
-            </a>
-          </Box>
-          <Box alignSelf="flex-end">
+          <Box>
 
             <Button
               minWidth={{ sm: "75vw", md: "fit-content" }}

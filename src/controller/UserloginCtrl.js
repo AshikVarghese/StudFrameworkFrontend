@@ -8,8 +8,8 @@ export default function handleLogin() {
   document.getElementById("email-fail").style.display = "none";
   document.getElementById("server-fail").style.display = "none";
 
-  let URL = "http://192.168.1.145:44297",
-    server_URL = "http://localhost:5000";
+  let URL = "http://192.168.1.145",
+    server_URL = "http://192.168.1.145:8080";
 
   let params = new URLSearchParams();
   params.append("email", document.getElementById("emailId").value);
@@ -47,6 +47,7 @@ export default function handleLogin() {
         window.location.href = URL + "/LICET#/admin3/GeneralInformation";
       } else if (check.user_type == 0) {
         if (check.roll_no == null) {
+          console.log(check.roll_no);
           window.location.href = URL + "/Student#/auth/GeneralInformationdata";
         } else {
           localStorage.setItem("StudentRoll", check.roll_no);

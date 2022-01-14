@@ -32,7 +32,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import GeneralParticularstablerow from "components/Tables/StudentList/StudentListGI2";
 
-var server_URL = "http://localhost:5000/";
+var server_URL = "http://192.168.1.145:8080/";
 
 function GeneralInformationHOD() {
   const [data, setData] = useState([]);

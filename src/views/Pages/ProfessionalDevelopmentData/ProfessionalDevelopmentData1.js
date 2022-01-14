@@ -55,7 +55,7 @@ function ProfessionalDevelopmentData() {
   const [p13data, setp13data] = useState([]);
 
   const textColor = useColorModeValue("gray.700", "white");
-  var server_URL = "http://localhost:5000/";
+  var server_URL = "http://192.168.1.145:8080/";
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));

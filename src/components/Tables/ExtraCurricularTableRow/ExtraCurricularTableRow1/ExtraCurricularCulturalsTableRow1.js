@@ -20,7 +20,7 @@ import {
 import axios from "axios";
 import React from "react";
 
-var server_URL = "http://localhost:5000/";
+var server_URL = "http://192.168.1.145:8080/";
 
 function ExtraCurricularTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();

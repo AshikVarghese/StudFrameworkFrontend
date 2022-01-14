@@ -28,7 +28,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment2";
 
-var server_URL = "http://localhost:5000/";
+var server_URL = "http://192.168.1.145:8080/";
 var data2 = [];
 
 import { CSVLink } from "react-csv";

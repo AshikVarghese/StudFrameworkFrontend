@@ -29,8 +29,8 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-var server_URL = "http://localhost:5000/",
-  URL = "http://192.168.1.145:44297/";
+var server_URL = "http://192.168.1.145:8080/",
+  URL = "http://192.168.1.145/";
 
 function GeneralInformationDataEdit(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -30,7 +30,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import axios from "axios";
-var server_URL = "http://localhost:5000/";
+var server_URL = "http://192.168.1.145:8080/";
 
 function Academicdata() {
   const textColor = useColorModeValue("gray.700", "white");
@@ -50,6 +50,8 @@ function Academicdata() {
             (header) =>
               header.COLUMN_NAME != "id" && header.COLUMN_NAME != "roll_no"
           );
+          filtered_data.reverse();
+
           console.log(data2);
           let student_data = [];
           for (var i = 0; i < data2.data.length; i++) {

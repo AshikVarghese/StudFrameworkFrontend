@@ -27,8 +27,8 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import TableRow2 from "components/Tables/TableRow/TableRow2";
 
-var URL = "http://192.168.1.145:44297/",
-  server_URL = "http://localhost:5000/";
+var URL = "http://192.168.1.145/",
+  server_URL = "http://192.168.1.145:8080/";
 
 function GeneralInformationdata({ location }) {
   function fundelete() {
