@@ -66,11 +66,7 @@ function ProfessionalDevelopmentTableRow(props) {
           </Flex>
         </Flex>
       </Td>
-<<<<<<< HEAD
       <Td minWidth={{ sm: "10em" }}>
-=======
-      <Td minWidth={{ sm: "8em" }}>
->>>>>>> dev
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">{row2}</Flex>
         </Flex>
@@ -80,11 +76,7 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row3}</Flex>
         </Flex>
       </Td>
-<<<<<<< HEAD
       <Td minWidth={{ sm: "10em" }}>
-=======
-      <Td minWidth={{ sm: "5em" }}>
->>>>>>> dev
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">{row4}</Flex>
         </Flex>
