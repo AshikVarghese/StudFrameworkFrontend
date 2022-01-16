@@ -85,7 +85,7 @@ function GeneralInformationHOD() {
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-        <Loader color="#FBD38D" height={20} width={20} visible={is_loading} />
+        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
         <Card mb="1rem">
           <CardBody>
             <Flex

@@ -34,6 +34,8 @@ import StudentListAcademic from "components/Tables/StudentList/StudentListAcadem
 import { server_URL } from "controller/urls_config";
 
 var data2 = [];
+var is_loading = true;
+var Loader = require("react-loader");
 
 import { CSVLink } from "react-csv";
 
@@ -47,6 +49,7 @@ function Academic() {
   useEffect(async () => {
     axios.post(server_URL + "Academic", params).then((items) => {
       setData(items.data);
+      is_loading = false;
     });
   });
 
@@ -88,6 +91,7 @@ function Academic() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

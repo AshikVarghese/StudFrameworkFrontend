@@ -31,6 +31,8 @@ import StudentListProfessionalDevelopment from "components/Tables/StudentList/St
 import { server_URL } from "controller/urls_config";
 
 var data2 = [];
+var is_loading = true;
+var Loader = require("react-loader");
 
 import { CSVLink } from "react-csv";
 
@@ -79,6 +81,7 @@ function ProfessionalDevelopment() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card mb="1rem">
+        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">
             <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
