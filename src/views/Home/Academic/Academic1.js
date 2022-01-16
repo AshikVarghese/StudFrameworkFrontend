@@ -31,11 +31,10 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListAcademic from "components/Tables/StudentList/StudentListAcademic1";
-import BarChartPlacement from "components/Charts/BarChart1";
+import { server_URL } from "controller/urls_config";
 
 var data2 = [];
 
-var server_URL = "http://localhost:5000/";
 import { CSVLink } from "react-csv";
 
 function Academic() {
@@ -145,42 +144,33 @@ function Academic() {
           />
         </InputGroup>
         <Flex alignSelf="flex-end" marginLeft="75%">
-          <Box alignSelf="flex-end">
-            <a href={MyPDF} download="academic_details.xlsx">
+          <SimpleGrid
+            alignSelf={{ sm: "center", md: "flex-end" }}
+            columns={{ sm: 1, md: 3, xl: 3 }}
+            gap={5}
+          >
+            <Box>
               <Button
-                me="1em"
-                minWidth="fit-content"
+                minWidth={{ sm: "75vw", md: "fit-content" }}
+                onClick={onToggle}
                 colorScheme="orange"
                 variant="solid"
               >
-                Download Template
+                Bulk Upload
               </Button>
-            </a>
-          </Box>
-          <Box alignSelf="flex-end">
-            <Button
-              me="1em"
-              minWidth="fit-content"
-              onClick={onToggle}
-              colorScheme="orange"
-              variant="solid"
-            >
-              Bulk Upload
-            </Button>
-          </Box>
-          <Box alignSelf="flex-end">
-            <CSVLink data={data2}>
-              <Button
-                minWidth="fit-content"
-                mt="2"
-                onClick="m"
-                colorScheme="orange"
-                variant="solid"
-              >
-                Download Report
-              </Button>
-            </CSVLink>
-          </Box>
+
+              <CSVLink data={data2}>
+                <Button
+                  minWidth={{ sm: "75vw", md: "fit-content" }}
+                  onClick="m"
+                  colorScheme="orange"
+                  variant="solid"
+                >
+                  Download Report
+                </Button>
+              </CSVLink>
+            </Box>
+          </SimpleGrid>
         </Flex>
       </Card>
       <Collapse in={isOpen} animateOpacity>
@@ -255,6 +245,7 @@ function Academic() {
         </CardBody>
       </Card>
     </Flex>
+    //test
   );
 }
 

@@ -24,37 +24,18 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import ProfessionalDevelopmentTableRow1 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDIndustrialVisitTR1";
 
+import ExtraCurricualarTableRow1 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularClubTableRow2";
+import ExtraCurricualarTableRow2 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularOutreachTableRow2";
+import ExtraCurricualarTableRow3 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularSportsTableRow2";
+import ExtraCurricualarTableRow4 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularCulturalsTableRow2";
+import { URL, server_URL } from "controller/urls_config";
+
 function ProfessionalDevelopmentData2() {
-  const [drop1, setDrop1] = useState(false);
-  const [drop2, setDrop2] = useState(false);
-  const [drop3, setDrop3] = useState(false);
-  const [drop4, setDrop4] = useState(false);
-  const [drop5, setDrop5] = useState(false);
-  const [drop6, setDrop6] = useState(false);
-  const [drop7, setDrop7] = useState(false);
-  const [drop8, setDrop8] = useState(false);
-  const [drop9, setDrop9] = useState(false);
-  const [drop10, setDrop10] = useState(false);
-  const [drop11, setDrop11] = useState(false);
-  const [drop12, setDrop12] = useState(false);
-  const [drop13, setDrop13] = useState(false);
-
-  const [p1data, setp1data] = useState([]);
-  const [p2data, setp2data] = useState([]);
-  const [p3data, setp3data] = useState([]);
-  const [p4data, setp4data] = useState([]);
-  const [p5data, setp5data] = useState([]);
-  const [p6data, setp6data] = useState([]);
-  const [p7data, setp7data] = useState([]);
-  const [p8data, setp8data] = useState([]);
-  const [p9data, setp9data] = useState([]);
-  const [p10data, setp10data] = useState([]);
-  const [p11data, setp11data] = useState([]);
-  const [p12data, setp12data] = useState([]);
-  const [p13data, setp13data] = useState([]);
-
   const textColor = useColorModeValue("gray.700", "white");
-  var server_URL = "http://localhost:5000/";
+  const [Cdata, setCdata] = useState([]);
+  const [Odata, setOdata] = useState([]);
+  const [Sdata, setSdata] = useState([]);
+  const [CUdata, setCudata] = useState([]);
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));

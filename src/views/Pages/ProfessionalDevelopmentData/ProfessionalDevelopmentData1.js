@@ -23,6 +23,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import ProfessionalDevelopmentTableRow1 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDIndustrialVisitTR1";
+import { URL, server_URL } from "controller/urls_config";
 
 function ProfessionalDevelopmentData1() {
   const [drop1, setDrop1] = useState(false);
@@ -54,7 +55,6 @@ function ProfessionalDevelopmentData1() {
   const [p13data, setp13data] = useState([]);
 
   const textColor = useColorModeValue("gray.700", "white");
-  var server_URL = "http://localhost:5000/";
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));

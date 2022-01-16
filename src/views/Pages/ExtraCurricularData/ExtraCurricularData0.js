@@ -41,8 +41,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import TableRow6 from "components/Tables/TableRow/TableRow6";
 import TableRow5 from "components/Tables/TableRow/TableRow5";
-
-var server_URL = "http://localhost:5000/";
+import { server_URL } from "controller/urls_config";
 
 var resul;
 

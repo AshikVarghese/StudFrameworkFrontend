@@ -29,8 +29,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-var server_URL = "http://localhost:5000/",
-  URL = "http://localhost:3000/";
+import { server_URL, URL } from "controller/urls_config";
 
 function GeneralInformationDataEdit(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();

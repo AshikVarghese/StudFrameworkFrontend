@@ -21,7 +21,11 @@ import {
 import axios from "axios";
 import React from "react";
 
+<<<<<<< HEAD
+import { server_URL } from "controller/urls_config";
+=======
 var server_URL = "http://localhost:5000/";
+>>>>>>> dev
 
 function ProfessionalDevelopmentTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -66,7 +70,11 @@ function ProfessionalDevelopmentTableRow(props) {
           </Flex>
         </Flex>
       </Td>
+<<<<<<< HEAD
+      <Td minWidth={{ sm: "10em" }}>
+=======
       <Td minWidth={{ sm: "8em" }}>
+>>>>>>> dev
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">{row2}</Flex>
         </Flex>
@@ -76,7 +84,11 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row3}</Flex>
         </Flex>
       </Td>
+<<<<<<< HEAD
+      <Td minWidth={{ sm: "10em" }}>
+=======
       <Td minWidth={{ sm: "5em" }}>
+>>>>>>> dev
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">{row4}</Flex>
         </Flex>

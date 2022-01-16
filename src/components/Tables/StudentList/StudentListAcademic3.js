@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-var URL = "http://localhost:3000/";
+import { URL } from "controller/urls_config";
 
 function StudentListAcademic(props) {
   const { name, email, reg, roll, dept, batch } = props;

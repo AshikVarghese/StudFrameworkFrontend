@@ -29,7 +29,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListInternational from "components/Tables/StudentList/StudentListInternational3";
 
-var server_URL = "http://localhost:5000/";
+import { server_URL } from "controller/urls_config";
 
 function InternationalExposure() {
   const [data, setData] = useState([]);

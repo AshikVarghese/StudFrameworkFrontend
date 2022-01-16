@@ -38,9 +38,9 @@ import Academicsummarytablerow from "components/Tables/AcademicTableRow/Academic
 import { AcademicSummary } from "variables/general";
 import { Academicinfo } from "variables/general";
 import axios from "axios";
+import { server_URL } from "controller/urls_config";
 
 function Academicdata() {
-  var server_URL = "http://localhost:5000/";
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   const [data, setdata] = useState([]);
@@ -59,6 +59,8 @@ function Academicdata() {
               header.COLUMN_NAME != "id" && header.COLUMN_NAME != "roll_no"
           );
           console.log(data2);
+          filtered_data.reverse();
+
           let student_data = [];
           for (var i = 0; i < data2.data.length; i++) {
             let student = Object.values(data2.data[i]);

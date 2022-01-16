@@ -24,8 +24,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
 import InternationalTableRow from "components/Tables/InternationalTableRow/InternationalTableRow2";
-
-var server_URL = "http://localhost:5000/";
+import { server_URL } from "controller/urls_config";
 
 function InternationalData() {
   const textColor = useColorModeValue("gray.700", "white");

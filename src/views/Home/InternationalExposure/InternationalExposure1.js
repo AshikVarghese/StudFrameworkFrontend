@@ -30,7 +30,7 @@ import StudentListInternational from "components/Tables/StudentList/StudentListI
 
 var data2 = [];
 
-var server_URL = "http://localhost:5000/";
+import { server_URL } from "controller/urls_config";
 import { CSVLink } from "react-csv";
 
 function InternationalExposure() {

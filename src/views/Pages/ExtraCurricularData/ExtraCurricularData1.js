@@ -26,6 +26,7 @@ import ExtraCurricualarTableRow1 from "components/Tables/ExtraCurricularTableRow
 import ExtraCurricualarTableRow2 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow1/ExtraCurricularOutreachTableRow1";
 import ExtraCurricualarTableRow3 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow1/ExtraCurricularSportsTableRow1";
 import ExtraCurricualarTableRow4 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow1/ExtraCurricularCulturalsTableRow1";
+import { server_URL } from "controller/urls_config";
 
 function ExtraCurricularData() {
   var [drop1, setDrop1] = useState(false);
@@ -40,8 +41,6 @@ function ExtraCurricularData() {
 
   const textColor = useColorModeValue("gray.700", "white");
   var button = "orange.400";
-
-  var server_URL = "http://localhost:5000/";
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));

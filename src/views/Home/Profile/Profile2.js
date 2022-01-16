@@ -21,24 +21,8 @@ import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 // Assets
-import avatar2 from "assets/img/avatars/avatar2.png";
-import avatar3 from "assets/img/avatars/avatar3.png";
-import avatar4 from "assets/img/avatars/avatar4.png";
-import avatar5 from "assets/img/avatars/avatar5.png";
 import avatar8 from "assets/img/avatars/avatar8.jpg";
-import ImageArchitect1 from "assets/img/ImageArchitect1.png";
-import ImageArchitect2 from "assets/img/ImageArchitect2.png";
-import ImageArchitect3 from "assets/img/ImageArchitect3.png";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
-import {
-  FaCube,
-  FaFacebook,
-  FaInstagram,
-  FaPenFancy,
-  FaPlus,
-  FaTwitter,
-} from "react-icons/fa";
-import { IoDocumentsSharp } from "react-icons/io5";
 
 function Profile() {
   // Chakra color mode

@@ -27,6 +27,8 @@ import ExtraCurricualarTableRow2 from "components/Tables/ExtraCurricularTableRow
 import ExtraCurricualarTableRow3 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow3/ExtraCurricularSportsTableRow3";
 import ExtraCurricualarTableRow4 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow3/ExtraCurricularCulturalsTableRow3";
 
+import { server_URL } from "controller/urls_config";
+
 function ExtraCurricularData() {
   var [drop1, setDrop1] = useState(false);
   var [drop2, setDrop2] = useState(false);
@@ -39,8 +41,6 @@ function ExtraCurricularData() {
   const [Odata, setOdata] = useState([]);
   const [Sdata, setSdata] = useState([]);
   const [CUdata, setCudata] = useState([]);
-
-  var server_URL = "http://localhost:5000/";
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));

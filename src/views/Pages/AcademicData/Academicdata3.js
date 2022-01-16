@@ -29,8 +29,6 @@ import {
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import BarChart from "components/Charts/BarChart";
-import LineChart from "components/Charts/LineChart";
 
 import Academictablerow from "components/Tables/AcademicTableRow/Academictablerow3";
 import Academicsummarytablerow from "components/Tables/AcademicTableRow/AcademicSummaryTableRow/Academicsummarytablerow3";
@@ -38,8 +36,10 @@ import Academicsummarytablerow from "components/Tables/AcademicTableRow/Academic
 import { AcademicSummary } from "variables/general";
 import { Academicinfo } from "variables/general";
 import axios from "axios";
+
+import { server_URL } from "controller/urls_config";
+
 function Academicdata() {
-  var server_URL = "http://localhost:5000/";
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   const [data, setdata] = useState([]);
@@ -57,6 +57,8 @@ function Academicdata() {
             (header) =>
               header.COLUMN_NAME != "id" && header.COLUMN_NAME != "roll_no"
           );
+          filtered_data.reverse();
+
           console.log(data2);
           let student_data = [];
           for (var i = 0; i < data2.data.length; i++) {
