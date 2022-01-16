@@ -21,11 +21,7 @@ import {
 import axios from "axios";
 import React from "react";
 
-<<<<<<< HEAD
 import { server_URL } from "controller/urls_config";
-=======
-var server_URL = "http://localhost:5000/";
->>>>>>> dev
 
 function ProfessionalDevelopmentTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
