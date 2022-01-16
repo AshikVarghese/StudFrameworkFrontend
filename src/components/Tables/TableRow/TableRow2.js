@@ -11,7 +11,7 @@ function TableRow2(props) {
 
   return (
     <Tr>
-      <Td minWidth={{ sm: "44vw", md: "30vw", xl: "18vw" }}>
+      <Td minWidth={{ sm: "44vw", md: "30vw", lg: "10em", xl: "13vw" }}>
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">
             <Text
@@ -26,7 +26,7 @@ function TableRow2(props) {
           </Flex>
         </Flex>
       </Td>
-      <Td>
+      <Td minWidth={{ sm: "1vw", md: "1vw", lg: "1vw", xl: "1vw" }}>
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">
             <Text
@@ -40,7 +40,7 @@ function TableRow2(props) {
           </Flex>
         </Flex>
       </Td>
-      <Td minWidth={{ sm: "70vw", md: "52vw", xl: "25vw" }}>
+      <Td minWidth={{ sm: "70vw", md: "52vw", lg: "12em", xl: "18vw" }}>
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">
             <Text
