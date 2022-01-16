@@ -14,23 +14,38 @@ export default function handleLogin() {
   params.append("password", document.getElementById("password").value);
 
   axios.post(server_URL + "userlogin", params).then((result) => {
-    if (result.data === "user-fail") {
+    // Check 1: email belongs to licet domain and user not present
+    if (
+      result.data == "user-fail" &&
+      document.getElementById("emailId").value.includes("@licet.ac.in")
+    ) {
+      window.location.href = URL + "Student#/auth/GeneralInformationdata";
+    }
+
+    // Check 2: invalid user
+    else if (result.data === "user-fail") {
       document.getElementById("email-fail").style.display = "block";
       localStorage.setItem("auth_token", -1);
       loginButton.disabled = false;
       loginButton.innerHTML = `Login`;
+
+      // Check 3: invalid password
     } else if (result.data === "pass-fail") {
       console.log("Incorrect password");
       document.getElementById("pass-fail").style.display = "block";
       localStorage.setItem("auth_token", -1);
       loginButton.disabled = false;
       loginButton.innerHTML = `Login`;
+
+      // Server Issue
     } else if (result.data === "server-down") {
       localStorage.setItem("auth_token", -1);
       document.getElementById("server-fail").style.display = "block";
       loginButton.disabled = false;
       loginButton.innerHTML = `Login`;
-    } else {
+    }
+    // Logged In
+    else {
       console.log("Logged In");
       var check = result.data[0];
       console.log(check);
