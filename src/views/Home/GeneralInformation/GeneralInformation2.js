@@ -1,10 +1,15 @@
 //HoD Dashboard/General
 
 import React, { useState, useEffect } from "react";
+
 import axios from "axios";
 import { CSVLink } from "react-csv";
+
+var Loader = require("react-loader");
 var data2 = [];
+
 import SignIn from "../../Pages/SignIn";
+var is_loading = true;
 
 // Chakra imports
 import {
@@ -26,6 +31,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+
 // Custom components
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
@@ -33,6 +39,8 @@ import CardBody from "components/Card/CardBody.js";
 import GeneralParticularstablerow from "components/Tables/StudentList/StudentListGI2";
 
 import { server_URL } from "controller/urls_config";
+
+let isloading = true;
 
 function GeneralInformationHOD() {
   const [data, setData] = useState([]);
@@ -46,6 +54,7 @@ function GeneralInformationHOD() {
   useEffect(async () => {
     axios.post(server_URL + "GeneralHOD", params).then((items) => {
       setData(items.data);
+      isloading = false;
     });
   });
   data2 = data.filter((item) => {
@@ -76,6 +85,7 @@ function GeneralInformationHOD() {
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+        <Loader color="#FBD38D" height={20} width={20} visible={is_loading} />
         <Card mb="1rem">
           <CardBody>
             <Flex

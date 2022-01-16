@@ -4,6 +4,8 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import SignIn from "views/Pages/SignIn";
+
 // Chakra imports
 import {
   Flex,
@@ -21,7 +23,9 @@ import {
   InputLeftElement,
   Box,
 } from "@chakra-ui/react";
+
 import { SearchIcon } from "@chakra-ui/icons";
+
 // Custom components
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
@@ -29,6 +33,8 @@ import CardBody from "components/Card/CardBody.js";
 import StudentListExtraCurricular from "components/Tables/StudentList/StudentListExtraCurricular1";
 
 var data2 = [];
+var is_loading = true;
+var Loader = require("react-loader");
 
 import { CSVLink } from "react-csv";
 import { server_URL } from "controller/urls_config";
@@ -43,7 +49,7 @@ function Extracurricular() {
   useEffect(async () => {
     axios.post(server_URL + "ExtracurricularCA", params).then((items) => {
       setData(items.data);
-      console.log(items.data);
+      is_loading = false;
     });
   }, []);
 
@@ -67,6 +73,7 @@ function Extracurricular() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

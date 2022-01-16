@@ -29,6 +29,8 @@ import StudentListExtraCurricular from "components/Tables/StudentList/StudentLis
 import { server_URL } from "controller/urls_config";
 
 var data2 = [];
+var Loader = require("react-loader");
+var is_loading = true;
 
 import { CSVLink } from "react-csv";
 
@@ -44,7 +46,7 @@ function Extracurricular() {
   useEffect(async () => {
     axios.post(server_URL + "ExtracurricularCA", params).then((items) => {
       setData(items.data);
-      console.log(items.data);
+      is_loading = false;
     });
   }, []);
   const textColor = useColorModeValue("gray.700", "white");
@@ -74,6 +76,7 @@ function Extracurricular() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

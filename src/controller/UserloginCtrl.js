@@ -11,7 +11,7 @@ function other_users_check(email_id) {
 export default function handleLogin() {
   const loginButton = document.getElementById("login_btn");
   loginButton.disabled = true;
-  loginButton.innerHTML = `<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>`;
+  loginButton.innerHTML = `<div class="spinner1"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>`;
   document.getElementById("pass-fail").style.display = "none";
   document.getElementById("email-fail").style.display = "none";
   document.getElementById("server-fail").style.display = "none";

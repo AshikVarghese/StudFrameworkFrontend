@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { CSVLink } from "react-csv";
+
 var data2 = [];
+var Loader = require("react-loader");
 import SignIn from "../../Pages/SignIn";
 
 // Chakra imports
@@ -21,10 +23,10 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  useDisclosure,
   SimpleGrid,
   Box,
 } from "@chakra-ui/react";
+
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
 import Card from "components/Card/Card.js";
@@ -33,6 +35,9 @@ import CardBody from "components/Card/CardBody.js";
 import GeneralParticularstablerow from "components/Tables/StudentList/StudentListGI3";
 
 import { server_URL } from "controller/urls_config";
+
+// Loading var
+var is_loading = true;
 
 function GeneralInformation3() {
   const [data, setData] = useState([]);
@@ -47,6 +52,7 @@ function GeneralInformation3() {
   useEffect(async () => {
     axios.post(server_URL + "GeneralOfficial", params).then((items) => {
       setData(items.data);
+      is_loading = false;
     });
   });
   data2 = data.filter((item) => {
@@ -91,6 +97,7 @@ function GeneralInformation3() {
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
         <Card mb="1rem">
           <CardBody>
             <Flex

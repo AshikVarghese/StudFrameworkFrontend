@@ -31,6 +31,9 @@ import StudentListInternational from "components/Tables/StudentList/StudentListI
 
 import { server_URL } from "controller/urls_config";
 
+var is_loading = true;
+var Loader = require("react-loader");
+
 function InternationalExposure() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,7 +45,7 @@ function InternationalExposure() {
   useEffect(async () => {
     axios.post(server_URL + "InternationalExpoHOD", params).then((items) => {
       setData(items.data);
-      console.log(items.data);
+      is_loading = false;
     });
   }, []);
 
@@ -74,6 +77,7 @@ function InternationalExposure() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">
