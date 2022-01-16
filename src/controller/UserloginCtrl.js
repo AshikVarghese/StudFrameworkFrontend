@@ -1,6 +1,13 @@
 import axios from "axios";
 import { URL, server_URL } from "./urls_config";
 
+function other_users_check(email_id) {
+  // Add official keywords
+  let keywords = ["hod", "advisor", "iqac", "dean", "principal"];
+  const result = keywords.filter((word) => email_id.includes(word));
+  return result.length != 0 ? true : false;
+}
+
 export default function handleLogin() {
   const loginButton = document.getElementById("login_btn");
   loginButton.disabled = true;
@@ -13,11 +20,14 @@ export default function handleLogin() {
   params.append("email", document.getElementById("emailId").value);
   params.append("password", document.getElementById("password").value);
 
+  let email = document.getElementById("emailId").value;
+
   axios.post(server_URL + "userlogin", params).then((result) => {
     // Check 1: email belongs to licet domain and user not present
     if (
       result.data == "user-fail" &&
-      document.getElementById("emailId").value.includes("@licet.ac.in")
+      email.includes("@licet.ac.in") &&
+      !other_users_check(email)
     ) {
       window.location.href = URL + "Student#/auth/GeneralInformationdata";
     }

@@ -136,7 +136,7 @@ function GeneralInformationdata() {
     params.append("promemno", document.getElementById("PMNA").value);
     params.append("promemdur", document.getElementById("DUR").value);
 
-    axios.post(server_URL + "insertroll", params);
+    axios.post(server_URL + "logininsert", params);
     axios.post(server_URL + "studentinsert", params);
     window.location.href = URL + "Student#/auth/signin";
   }
