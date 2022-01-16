@@ -40,8 +40,8 @@ import CardBody from "components/Card/CardBody.js";
 import TableRow5 from "components/Tables/TableRow/TableRow5";
 import TableRow6 from "components/Tables/TableRow/TableRow6";
 import TableRow7 from "components/Tables/TableRow/TableRow7";
+import { URL, server_URL } from "controller/urls_config";
 
-var server_URL = "http://192.168.1.145:8080/";
 var resul;
 
 function ProfessionalDevelopmentData0() {
@@ -307,7 +307,7 @@ function ProfessionalDevelopmentData0() {
       }
     });
   }
-  
+
   function finalproject() {
     let params = new URLSearchParams();
     params.append("StudentDetails", localStorage.getItem("StudentRoll"));
@@ -397,7 +397,7 @@ function ProfessionalDevelopmentData0() {
           }
         )
       );
-  }, []); 
+  }, []);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -2599,7 +2599,11 @@ function ProfessionalDevelopmentData0() {
 
                     <Td>
                       <SlideFade in={show12}>
-                        <Button onClick={finalproject} bg="orange.300" width="fit-content">
+                        <Button
+                          onClick={finalproject}
+                          bg="orange.300"
+                          width="fit-content"
+                        >
                           Submit
                         </Button>
                       </SlideFade>
@@ -2806,7 +2810,11 @@ function ProfessionalDevelopmentData0() {
 
                     <Td>
                       <SlideFade in={show13}>
-                        <Button onClick={publications} bg="orange.300" width="fit-content">
+                        <Button
+                          onClick={publications}
+                          bg="orange.300"
+                          width="fit-content"
+                        >
                           Submit
                         </Button>
                       </SlideFade>

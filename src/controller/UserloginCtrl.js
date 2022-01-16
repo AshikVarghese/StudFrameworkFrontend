@@ -1,4 +1,5 @@
 import axios from "axios";
+import { URL, server_URL } from "./urls_config";
 
 export default function handleLogin() {
   const loginButton = document.getElementById("login_btn");
@@ -8,14 +9,11 @@ export default function handleLogin() {
   document.getElementById("email-fail").style.display = "none";
   document.getElementById("server-fail").style.display = "none";
 
-  let URL = "http://192.168.1.145",
-    server_URL = "http://192.168.1.145:8080";
-
   let params = new URLSearchParams();
   params.append("email", document.getElementById("emailId").value);
   params.append("password", document.getElementById("password").value);
 
-  axios.post(server_URL + "/userlogin", params).then((result) => {
+  axios.post(server_URL + "userlogin", params).then((result) => {
     if (result.data === "user-fail") {
       document.getElementById("email-fail").style.display = "block";
       localStorage.setItem("auth_token", -1);
@@ -38,20 +36,20 @@ export default function handleLogin() {
       console.log(check);
       if (check.user_type == 2) {
         localStorage.setItem("dept", check.dept);
-        window.location.href = URL + "/HoD#/admin2/GeneralInformation";
+        window.location.href = URL + "HoD#/admin2/GeneralInformation";
       } else if (check.user_type == 1) {
         localStorage.setItem("batch", check.batch);
         localStorage.setItem("dept", check.dept);
-        window.location.href = URL + "/Class-Advisor#/admin1/GeneralInformation";
+        window.location.href = URL + "Class-Advisor#/admin1/GeneralInformation";
       } else if (check.user_type == 3) {
-        window.location.href = URL + "/LICET#/admin3/GeneralInformation";
+        window.location.href = URL + "LICET#/admin3/GeneralInformation";
       } else if (check.user_type == 0) {
         if (check.roll_no == null) {
           console.log(check.roll_no);
-          window.location.href = URL + "/Student#/auth/GeneralInformationdata";
+          window.location.href = URL + "Student#/auth/GeneralInformationdata";
         } else {
           localStorage.setItem("StudentRoll", check.roll_no);
-          window.location.href = URL + "/Student#/admin0/GeneralInformation";
+          window.location.href = URL + "Student#/admin0/GeneralInformation";
         }
       }
       localStorage.setItem("useremail", result.data[0].email);

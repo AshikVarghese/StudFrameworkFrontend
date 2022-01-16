@@ -38,10 +38,9 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
 import TableRow7 from "components/Tables/TableRow/TableRow7";
+import { server_URL } from "controller/urls_config";
 
 var resul;
-
-var server_URL = "http://192.168.1.145:8080/";
 
 function InternationalData() {
   function substudinter() {

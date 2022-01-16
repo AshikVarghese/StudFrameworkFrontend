@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
-var server_URL = "http://192.168.1.145:8080/";
+import { server_URL } from "controller/urls_config";
 
 function InternationalTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,7 +29,7 @@ function InternationalTableRow(props) {
     let cd = { row2 };
     let cp = { row3 };
     let co = { row4 };
-    let cpd = { row5};
+    let cpd = { row5 };
     let cf = { row6 };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);

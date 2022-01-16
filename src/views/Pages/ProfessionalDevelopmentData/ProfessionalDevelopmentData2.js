@@ -26,7 +26,7 @@ import ExtraCurricualarTableRow1 from "components/Tables/ExtraCurricularTableRow
 import ExtraCurricualarTableRow2 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularOutreachTableRow2";
 import ExtraCurricualarTableRow3 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularSportsTableRow2";
 import ExtraCurricualarTableRow4 from "components/Tables/ExtraCurricularTableRow/ExtraCurricularTableRow2/ExtraCurricularCulturalsTableRow2";
-
+import { URL, server_URL } from "controller/urls_config";
 
 function ProfessionalDevelopmentData() {
   const textColor = useColorModeValue("gray.700", "white");
@@ -34,8 +34,6 @@ function ProfessionalDevelopmentData() {
   const [Odata, setOdata] = useState([]);
   const [Sdata, setSdata] = useState([]);
   const [CUdata, setCudata] = useState([]);
-
-  var server_URL = "http://192.168.1.145:8080/";
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
@@ -101,8 +99,6 @@ function ProfessionalDevelopmentData() {
             </CardBody>
           </Card>
         </GridItem>
-       
-       
       </Grid>
     </Flex>
   );

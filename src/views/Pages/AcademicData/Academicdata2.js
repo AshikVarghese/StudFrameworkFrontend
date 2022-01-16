@@ -38,9 +38,9 @@ import Academicsummarytablerow from "components/Tables/AcademicTableRow/Academic
 import { AcademicSummary } from "variables/general";
 import { Academicinfo } from "variables/general";
 import axios from "axios";
+import { server_URL } from "controller/urls_config";
 
 function Academicdata() {
-  var server_URL = "http://192.168.1.145:8080/";
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   const [data, setdata] = useState([]);

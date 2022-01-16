@@ -55,7 +55,7 @@ import CardHeader from "components/Card/CardHeader";
 // Assets
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 
-var server_URL = "http://192.168.1.145:8080/";
+import { server_URL } from "controller/urls_config";
 
 function Profile() {
   function validation() {

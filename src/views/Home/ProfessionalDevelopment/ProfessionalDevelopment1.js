@@ -28,7 +28,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment1";
 
-var server_URL = "http://192.168.1.145:8080/";
+import { server_URL } from "controller/urls_config";
 
 function ProfessionalDevelopment() {
   const [data, setData] = useState([]);
@@ -38,10 +38,12 @@ function ProfessionalDevelopment() {
   params.append("dept", localStorage.getItem("dept"));
 
   useEffect(async () => {
-    axios.post(server_URL + "ProfessionalDevelopmentCA", params).then((items) => {
-      setData(items.data);
-      console.log(items.data);
-    });
+    axios
+      .post(server_URL + "ProfessionalDevelopmentCA", params)
+      .then((items) => {
+        setData(items.data);
+        console.log(items.data);
+      });
   }, []);
 
   data2 = data.filter((item) => {
@@ -129,7 +131,7 @@ function ProfessionalDevelopment() {
             >
               Download Report
             </Button>
-        </CSVLink>
+          </CSVLink>
         </Box>
       </Card>
       <Card overflowX={{ sm: "scroll", xl: "hidden" }}>

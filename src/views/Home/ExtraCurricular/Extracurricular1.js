@@ -30,8 +30,8 @@ import StudentListExtraCurricular from "components/Tables/StudentList/StudentLis
 
 var data2 = [];
 
-var server_URL = "http://192.168.1.145:8080/";
 import { CSVLink } from "react-csv";
+import { server_URL } from "controller/urls_config";
 
 function Extracurricular() {
   const [data, setData] = useState([]);

@@ -19,9 +19,9 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import TableRow2 from "components/Tables/TableRow/TableRow2";
+import { server_URL } from "controller/urls_config";
 
-var server_URL = "http://192.168.1.145:8080/",
-  GData = TableRow2;
+var GData = TableRow2;
 
 function GeneralInformationdata({ location }) {
   const [data, setData] = useState([]);

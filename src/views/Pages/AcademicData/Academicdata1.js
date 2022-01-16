@@ -29,7 +29,7 @@ import Academictablerow from "components/Tables/AcademicTableRow/Academictablero
 import Academicsummarytablerow from "components/Tables/AcademicTableRow/AcademicSummaryTableRow/Academicsummarytablerow1";
 
 import axios from "axios";
-var server_URL = "http://192.168.1.145:8080/";
+import { server_URL } from "controller/urls_config";
 
 function Academicdata() {
   const textColor = useColorModeValue("gray.700", "white");
@@ -55,7 +55,7 @@ function Academicdata() {
           filtered_data.reverse();
           console.log("JJ");
           console.log(filtered_data);
-        
+
           console.log(data2);
           let student_data = [];
           for (var i = 0; i < data2.data.length; i++) {

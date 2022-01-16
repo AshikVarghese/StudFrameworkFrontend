@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-var URL = "http://192.168.1.145/";
+import { URL } from "controller/urls_config";
 
 function GeneralParticularstablerow(props) {
   const { roll, name, reg, batch, email } = props;

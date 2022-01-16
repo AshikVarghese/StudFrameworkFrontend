@@ -31,11 +31,10 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListAcademic from "components/Tables/StudentList/StudentListAcademic1";
-import BarChartPlacement from "components/Charts/BarChart1";
+import { server_URL } from "controller/urls_config";
 
 var data2 = [];
 
-var server_URL = "http://192.168.1.145:8080/";
 import { CSVLink } from "react-csv";
 
 function Academic() {
@@ -145,33 +144,32 @@ function Academic() {
           />
         </InputGroup>
         <Flex alignSelf="flex-end" marginLeft="75%">
-        <SimpleGrid
+          <SimpleGrid
             alignSelf={{ sm: "center", md: "flex-end" }}
             columns={{ sm: 1, md: 3, xl: 3 }}
             gap={5}
           >
-          <Box>
-
-            <Button
-              minWidth={{ sm: "75vw", md: "fit-content" }}
-              onClick={onToggle}
-              colorScheme="orange"
-              variant="solid"
-            >
-              Bulk Upload
-            </Button>
-
-            <CSVLink data={data2}>
+            <Box>
               <Button
                 minWidth={{ sm: "75vw", md: "fit-content" }}
-                onClick="m"
+                onClick={onToggle}
                 colorScheme="orange"
                 variant="solid"
               >
-                Download Report
+                Bulk Upload
               </Button>
-            </CSVLink>
-          </Box>
+
+              <CSVLink data={data2}>
+                <Button
+                  minWidth={{ sm: "75vw", md: "fit-content" }}
+                  onClick="m"
+                  colorScheme="orange"
+                  variant="solid"
+                >
+                  Download Report
+                </Button>
+              </CSVLink>
+            </Box>
           </SimpleGrid>
         </Flex>
       </Card>
