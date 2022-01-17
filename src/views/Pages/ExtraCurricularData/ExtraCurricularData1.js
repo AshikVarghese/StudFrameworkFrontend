@@ -34,33 +34,16 @@ function ExtraCurricularData() {
   var [drop3, setDrop3] = useState(false);
   var [drop4, setDrop4] = useState(false);
 
-  const [Cdata, setCdata] = useState([]);
-  const [Odata, setOdata] = useState([]);
-  const [Sdata, setSdata] = useState([]);
-  const [CUdata, setCudata] = useState([]);
+  const [data,setdata] = useState([[],[],[],[]]);
 
   const textColor = useColorModeValue("gray.700", "white");
-  var button = "orange.400";
-
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
-  useState(async () => {
-    axios
-      .all([
-        axios.post(server_URL + "ExtraClubCADisplay", params),
-        axios.post(server_URL + "ExtraOutreachCADisplay", params),
-        axios.post(server_URL + "ExtraSportsCADisplay", params),
-        axios.post(server_URL + "ExtraCulturalCADisplay", params),
-      ])
-      .then(
-        axios.spread((data1, data2, data3, data4) => {
-          setCdata(data1.data);
-          setOdata(data2.data);
-          setSdata(data3.data);
-          setCudata(data4.data);
-        })
-      );
-  }, []);
+  useEffect(async () => {
+    axios.post(server_URL + "temp", params).then((items) => {
+      setdata(items.data)
+    });
+  });
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -129,7 +112,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {Cdata.map((item) => {
+                  {data[0].map((item) => {
                     return (
                       <ExtraCurricualarTableRow1
                         id={item.s_no}
@@ -179,7 +162,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {Odata.map((item) => {
+                  {data[1].map((item) => {
                     return (
                       <ExtraCurricualarTableRow2
                         id={item.s_no}
@@ -229,7 +212,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {Sdata.map((row) => {
+                  {data[2].map((row) => {
                     return (
                       <ExtraCurricualarTableRow3
                         id={row.s_no}
@@ -279,7 +262,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {CUdata.map((row) => {
+                  {data[3].map((row) => {
                     return (
                       <ExtraCurricualarTableRow4
                         id={row.s_no}
