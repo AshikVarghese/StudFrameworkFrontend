@@ -20,8 +20,10 @@ import {
   InputGroup,
   InputLeftElement,
   SimpleGrid,
+  useToast,
   Box,
 } from "@chakra-ui/react";
+
 // Custom components
 import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
