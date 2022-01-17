@@ -227,128 +227,140 @@ function GeneralInformationDataEdit(props) {
     params.append("RollNumber", localStorage.getItem("generalStudent"));
 
     // Name
-    params.append("name", document.getElementById("NID").value.length !== 0)
-      ? document.getElementById("NID").value
-      : sname;
+    params.append(
+      "name",
+      document.getElementById("NID").value.length !== 0
+        ? document.getElementById("NID").value
+        : sname
+    );
 
     // Register Number
     params.append(
       "registerno",
       document.getElementById("REID").value.length !== 0
-    )
-      ? document.getElementById("REID").value
-      : reg_no;
+        ? document.getElementById("REID").value
+        : reg_no
+    );
 
     // sex
-    params.append("sex", document.getElementById("SID").value.length !== 0)
-      ? document.getElementById("SID").value
-      : reg_no;
+    params.append(
+      "sex",
+      document.getElementById("SID").value.length !== 0
+        ? document.getElementById("SID").value
+        : reg_no
+    );
 
     // Date of Birth
     params.append(
       "dateofbirth",
       document.getElementById("DOBID").value.length !== 0
-    )
-      ? document.getElementById("DOBID").value
-      : dob;
+        ? document.getElementById("DOBID").value
+        : dob
+    );
 
     // Department
-    params.append("dep", document.getElementById("DEPT").value.length !== 0)
-      ? document.getElementById("DEPT").value
-      : dept;
+    params.append(
+      "dep",
+      document.getElementById("DEPT").value.length !== 0
+        ? document.getElementById("DEPT").value
+        : dept
+    );
 
     // Batch
-    params.append("batt", document.getElementById("BATCH").value.length !== 0)
-      ? document.getElementById("BATCH").value
-      : batch;
+    params.append(
+      "batt",
+      document.getElementById("BATCH").value.length !== 0
+        ? document.getElementById("BATCH").value
+        : batch
+    );
 
     // Nationality
     params.append(
       "nationality",
       document.getElementById("NATIONID").value.length !== 0
-    )
-      ? document.getElementById("NATIONID").value
-      : nationality;
+        ? document.getElementById("NATIONID").value
+        : nationality
+    );
 
     // Religion
     params.append(
       "religion",
       document.getElementById("RELIGIONID").value.length !== 0
-    )
-      ? document.getElementById("RELIGIONID").value
-      : religion;
+        ? document.getElementById("RELIGIONID").value
+        : religion
+    );
 
     // Parish
     params.append(
       "parish",
       document.getElementById("PARISHID").value.length !== 0
-    )
-      ? document.getElementById("PARISHID").value
-      : if_catholic_parish;
+        ? document.getElementById("PARISHID").value
+        : if_catholic_parish
+    );
 
     // Dalit
     params.append(
       "dalit",
       document.getElementById("DALITID").value.length !== 0
-    )
-      ? document.getElementById("DALITID").value
-      : dalit_catholic_yn;
+        ? document.getElementById("DALITID").value
+        : dalit_catholic_yn
+    );
 
     // Community
     params.append(
       "community",
       document.getElementById("COMMUNITYID").value.length !== 0
-    )
-      ? document.getElementById("COMMUNITYID").value
-      : community;
+        ? document.getElementById("COMMUNITYID").value
+        : community
+    );
 
     // BloodID
     params.append(
       "bloodgroup",
       document.getElementById("BLOODID").value.length !== 0
-    )
-      ? document.getElementById("BLOODID").value
-      : blood_group;
+        ? document.getElementById("BLOODID").value
+        : blood_group
+    );
 
     // Aadhar
     params.append(
       "aadhar",
       document.getElementById("AADHARID").value.length !== 0
-    )
-      ? document.getElementById("AADHARID").value
-      : aadhar_no;
+        ? document.getElementById("AADHARID").value
+        : aadhar_no
+    );
 
     // Mother Tongue
     params.append(
       "mothertongue",
       document.getElementById("MOTHERID").value.length !== 0
-    )
-      ? document.getElementById("MOTHERID").value
-      : mother_tongue;
+        ? document.getElementById("MOTHERID").value
+        : mother_tongue
+    );
 
     // Contact
     params.append(
       "contact",
       document.getElementById("CONTACTID").value.length !== 0
-    )
-      ? document.getElementById("CONTACTID").value
-      : contact_no;
+        ? document.getElementById("CONTACTID").value
+        : contact_no
+    );
 
     // PEREMAIL
     params.append(
       "peremail",
       document.getElementById("PEREMID").value.length !== 0
-    )
-      ? document.getElementById("PEREMID").value
-      : email;
+        ? document.getElementById("PEREMID").value
+        : email
+    );
 
     // PREADDRID
     params.append(
       "peraddr",
-      document.getElementById("PEREADDRID").value.length !== 0
-    )
-      ? document.getElementById("PEREADDRID").value
-      : permanent_address;
+      document.getElementById("PREADDRID").value.length !== 0
+        ? document.getElementById("PREADDRID").value
+        : permanent_address
+    );
 
     if (document.getElementById("LANKNOW").value.length !== 0) {
       params.append("langknow", document.getElementById("LANKNOW").value);
