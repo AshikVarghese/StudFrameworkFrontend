@@ -36,6 +36,7 @@ function Extracurricular() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
+  const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
@@ -54,7 +55,7 @@ function Extracurricular() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+      <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

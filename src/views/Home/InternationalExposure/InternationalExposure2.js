@@ -22,6 +22,7 @@ import {
   SimpleGrid,
   Box,
 } from "@chakra-ui/react";
+
 // Custom components
 import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
@@ -31,13 +32,13 @@ import StudentListInternational from "components/Tables/StudentList/StudentListI
 
 import { server_URL } from "controller/urls_config";
 
-var is_loading = true;
 var Loader = require("react-loader");
 
 function InternationalExposure() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
+  const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
   params.append("dept", localStorage.getItem("dept"));
@@ -45,7 +46,7 @@ function InternationalExposure() {
   useEffect(async () => {
     axios.post(server_URL + "InternationalExpoHOD", params).then((items) => {
       setData(items.data);
-      is_loading = false;
+      setLoading(true);
     });
   }, []);
 
@@ -68,7 +69,6 @@ function InternationalExposure() {
       }
     }
   });
-  console.log(data2);
 
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
@@ -77,7 +77,7 @@ function InternationalExposure() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+      <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

@@ -29,12 +29,14 @@ import CardBody from "components/Card/CardBody.js";
 import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment1";
 
 import { server_URL } from "controller/urls_config";
-var is_loading = true;
+
 var Loader = require("react-loader");
 
 function ProfessionalDevelopment() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [Loaded, setLoading] = useState(false);
+
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -44,7 +46,7 @@ function ProfessionalDevelopment() {
       .post(server_URL + "ProfessionalDevelopmentCA", params)
       .then((items) => {
         setData(items.data);
-        console.log(items.data);
+        setLoading(true);
       });
   }, []);
 
@@ -67,7 +69,7 @@ function ProfessionalDevelopment() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+      <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

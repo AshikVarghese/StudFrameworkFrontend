@@ -41,20 +41,23 @@ var is_loading = true;
 
 function GeneralInformation3() {
   const [data, setData] = useState([]);
+  const [Loaded, setLoading] = useState(false);
+
   let params = new URLSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
 
   params.append("department", localStorage.getItem("dept"));
-  // console.log("AUTH TOKEN", localStorage.getItem("auth_token"));
   let auth_token = localStorage.getItem("auth_token");
+
   useEffect(async () => {
     axios.post(server_URL + "GeneralOfficial", params).then((items) => {
       setData(items.data);
       is_loading = false;
     });
   });
+
   data2 = data.filter((item) => {
     if (searchTerm2 == "" && searchTerm == "" && searchTerm1 == "") {
       return item;
@@ -97,7 +100,7 @@ function GeneralInformation3() {
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+        <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
         <Card mb="1rem">
           <CardBody>
             <Flex

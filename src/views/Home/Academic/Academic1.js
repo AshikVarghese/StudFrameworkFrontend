@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MyPDF from "../../../components/Template/academic_details.xlsx";
+
 // Chakra imports
 import {
   Flex,
@@ -34,7 +35,6 @@ import StudentListAcademic from "components/Tables/StudentList/StudentListAcadem
 import { server_URL } from "controller/urls_config";
 
 var data2 = [];
-var is_loading = true;
 var Loader = require("react-loader");
 
 import { CSVLink } from "react-csv";
@@ -42,6 +42,8 @@ import { CSVLink } from "react-csv";
 function Academic() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [Loaded, setLoading] = useState(false);
+
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -49,7 +51,7 @@ function Academic() {
   useEffect(async () => {
     axios.post(server_URL + "Academic", params).then((items) => {
       setData(items.data);
-      is_loading = false;
+      setLoading(true);
     });
   });
 
@@ -91,7 +93,6 @@ function Academic() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">
@@ -166,7 +167,6 @@ function Academic() {
               <CSVLink data={data2}>
                 <Button
                   minWidth={{ sm: "75vw", md: "fit-content" }}
-                  onClick="m"
                   colorScheme="orange"
                   variant="solid"
                 >

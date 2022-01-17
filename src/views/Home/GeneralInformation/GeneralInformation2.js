@@ -9,7 +9,6 @@ var Loader = require("react-loader");
 var data2 = [];
 
 import SignIn from "../../Pages/SignIn";
-var is_loading = true;
 
 // Chakra imports
 import {
@@ -26,7 +25,6 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  useDisclosure,
   SimpleGrid,
   Box,
 } from "@chakra-ui/react";
@@ -40,21 +38,21 @@ import GeneralParticularstablerow from "components/Tables/StudentList/StudentLis
 
 import { server_URL } from "controller/urls_config";
 
-let isloading = true;
-
 function GeneralInformationHOD() {
+  const [Loaded, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
+
   let params = new URLSearchParams();
   params.append("department", localStorage.getItem("dept"));
 
-  // console.log("AUTH TOKEN", localStorage.getItem("auth_token"));
   let auth_token = localStorage.getItem("auth_token");
+
   useEffect(async () => {
     axios.post(server_URL + "GeneralHOD", params).then((items) => {
       setData(items.data);
-      isloading = false;
+      setLoading(true);
     });
   });
   data2 = data.filter((item) => {
@@ -76,7 +74,7 @@ function GeneralInformationHOD() {
       }
     }
   });
-  console.log(data2);
+
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
   const mainorange = useColorModeValue("orange.300", "orange.300");
@@ -85,7 +83,7 @@ function GeneralInformationHOD() {
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+        <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
         <Card mb="1rem">
           <CardBody>
             <Flex

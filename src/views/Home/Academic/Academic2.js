@@ -29,7 +29,6 @@ import StudentListAcademic from "components/Tables/StudentList/StudentListAcadem
 import { server_URL } from "controller/urls_config";
 
 var data2 = [];
-var is_loading = true;
 var Loader = require("react-loader");
 import { CSVLink } from "react-csv";
 
@@ -38,13 +37,15 @@ function Academic() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
+  const [Loaded, setLoading] = useState(false);
+
   let params = new URLSearchParams();
   params.append("department", localStorage.getItem("dept"));
 
   useEffect(async () => {
     axios.post(server_URL + "AcademicsDataHOD", params).then((items) => {
       setData(items.data);
-      is_loading = false;
+      setLoading(false);
     });
   });
 
@@ -89,7 +90,6 @@ function Academic() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-      <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
       <Card mb="1rem">
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">

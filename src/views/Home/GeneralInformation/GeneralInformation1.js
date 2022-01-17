@@ -38,12 +38,11 @@ import StudentListGeneral from "components/Tables/StudentList/StudentListGI1";
 
 import { server_URL } from "controller/urls_config";
 
-// Loading var
-var is_loading = true;
-
 function GeneralInformation() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [Loaded, setLoading] = useState(false);
+
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -53,7 +52,7 @@ function GeneralInformation() {
   useEffect(async () => {
     axios.post(server_URL + "General", params).then((items) => {
       setData(items.data);
-      is_loading = false;
+      setLoading(true);
     });
   }, []);
 
@@ -77,7 +76,7 @@ function GeneralInformation() {
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+        <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
         <Card mb="1rem">
           <CardBody>
             <Flex

@@ -26,11 +26,9 @@ import SignIn from "../../Pages/SignIn";
 var Loader = require("react-loader");
 var GData = TableRow2;
 
-// Loading var
-var is_loading = true;
-
 function GeneralInformationdata({ location }) {
   const [data, setData] = useState([]);
+  const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("StudentRoll"));
@@ -38,14 +36,14 @@ function GeneralInformationdata({ location }) {
 
   axios.post(server_URL + "GeneralData", params).then((items) => {
     setData(items.data);
-    is_loading = false;
+    setLoading(true);
   });
 
   const textColor = useColorModeValue("gray.700", "white");
   if (auth_token != -1) {
     return (
       <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
-        <Loader color="#FBD38D" height={10} width={10} visible={is_loading} />
+        <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
         <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
           <Card>
             <CardHeader p="6px 0px 22px 0px">
