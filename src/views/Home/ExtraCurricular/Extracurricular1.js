@@ -39,6 +39,7 @@ import { server_URL } from "controller/urls_config";
 function Extracurricular() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
@@ -47,6 +48,7 @@ function Extracurricular() {
   useEffect(async () => {
     axios.post(server_URL + "ExtracurricularCA", params).then((items) => {
       setData(items.data);
+      setLoading(true);
     });
   }, []);
 
