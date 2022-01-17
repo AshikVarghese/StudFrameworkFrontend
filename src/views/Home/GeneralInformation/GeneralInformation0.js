@@ -13,6 +13,7 @@ import {
   Tr,
   useColorModeValue,
   SimpleGrid,
+  useToast,
 } from "@chakra-ui/react";
 
 // Custom components
@@ -29,6 +30,9 @@ var GData = TableRow2;
 function GeneralInformationdata({ location }) {
   const [data, setData] = useState([]);
   const [Loaded, setLoading] = useState(false);
+
+  // Toast var
+  const toast = useToast();
 
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("StudentRoll"));

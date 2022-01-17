@@ -43,6 +43,9 @@ function InternationalExposure() {
   let params = new URLSearchParams();
   params.append("dept", localStorage.getItem("dept"));
 
+  // Toast var
+  const toast = useToast();
+
   useEffect(async () => {
     axios.post(server_URL + "InternationalExpoHOD", params).then((items) => {
       setData(items.data);
@@ -197,6 +200,17 @@ function InternationalExposure() {
               colorScheme="orange"
               alignSelf="flex-end"
               variant="solid"
+              onClick={() =>
+                toast({
+                  title: "Report Downloaded",
+                  description:
+                    "International Exposure Report Downloaded Successfully",
+                  status: "success",
+                  duration: 9000,
+                  position: "top",
+                  isClosable: true,
+                })
+              }
             >
               Download Report
             </Button>

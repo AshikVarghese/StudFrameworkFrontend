@@ -40,6 +40,9 @@ function InternationalExposure() {
   const [searchTerm2, setSearchTerm2] = useState("");
   const [Loaded, setLoading] = useState(false);
 
+  // Toast var
+  const toast = useToast();
+
   let params = new URLSearchParams();
   params.append("dept", localStorage.getItem("dept"));
 
@@ -263,6 +266,17 @@ function InternationalExposure() {
               colorScheme="orange"
               alignSelf="flex-end"
               variant="solid"
+              onClick={() =>
+                toast({
+                  title: "Report Downloaded",
+                  description:
+                    "International Exposure Report Downloaded Successfully",
+                  status: "success",
+                  duration: 9000,
+                  position: "top",
+                  isClosable: true,
+                })
+              }
             >
               Download Report
             </Button>

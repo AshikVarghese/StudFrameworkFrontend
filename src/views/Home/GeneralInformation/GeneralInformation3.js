@@ -25,6 +25,7 @@ import {
   InputLeftElement,
   SimpleGrid,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 
 import { SearchIcon } from "@chakra-ui/icons";
@@ -48,13 +49,16 @@ function GeneralInformation3() {
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
 
+  // Toast var
+  const toast = useToast();
+
   params.append("department", localStorage.getItem("dept"));
   let auth_token = localStorage.getItem("auth_token");
 
   useEffect(async () => {
     axios.post(server_URL + "GeneralOfficial", params).then((items) => {
       setData(items.data);
-      is_loading = false;
+      setLoading(true);
     });
   });
 
@@ -276,6 +280,17 @@ function GeneralInformation3() {
                 colorScheme="orange"
                 alignSelf="flex-end"
                 variant="solid"
+                onClick={() =>
+                  toast({
+                    title: "Report Downloaded",
+                    description:
+                      "General Information Report Downloaded Successfully",
+                    status: "success",
+                    duration: 9000,
+                    position: "top",
+                    isClosable: true,
+                  })
+                }
               >
                 Download Report
               </Button>
