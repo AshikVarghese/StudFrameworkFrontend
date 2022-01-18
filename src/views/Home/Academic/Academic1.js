@@ -148,34 +148,34 @@ function Academic() {
             value={searchTerm}
           />
         </InputGroup>
-        <Flex alignSelf="flex-end" marginLeft="75%">
-          <SimpleGrid
-            alignSelf={{ sm: "center", md: "flex-end" }}
-            columns={{ sm: 1, md: 3, xl: 3 }}
-            gap={5}
-          >
-            <Box>
+
+        <SimpleGrid
+          alignSelf={{ sm: "center", md: "flex-end" }}
+          columns={{ sm: 1, md: 2, xl: 2 }}
+        >
+          <Box>
+            <Button
+              minWidth={{ sm: "75vw", md: "fit-content" }}
+              onClick={onToggle}
+              colorScheme="orange"
+              variant="solid"
+              mb={{ sm: "1em", md: "0em" }}
+            >
+              Bulk Upload
+            </Button>
+          </Box>
+          <Box>
+            <CSVLink data={data2}>
               <Button
                 minWidth={{ sm: "75vw", md: "fit-content" }}
-                onClick={onToggle}
                 colorScheme="orange"
                 variant="solid"
               >
-                Bulk Upload
+                Download Report
               </Button>
-
-              <CSVLink data={data2}>
-                <Button
-                  minWidth={{ sm: "75vw", md: "fit-content" }}
-                  colorScheme="orange"
-                  variant="solid"
-                >
-                  Download Report
-                </Button>
-              </CSVLink>
-            </Box>
-          </SimpleGrid>
-        </Flex>
+            </CSVLink>
+          </Box>
+        </SimpleGrid>
       </Card>
       <Collapse in={isOpen} animateOpacity>
         <Card color="white" mb="4" bg="orange.300" rounded="md" shadow="md">
