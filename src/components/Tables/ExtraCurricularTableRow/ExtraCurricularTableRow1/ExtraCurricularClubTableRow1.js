@@ -38,7 +38,14 @@ function ExtraCurricularTableRow(props) {
     params.append("date", document.getElementById("EPID").value);
     params.append("outcome", document.getElementById("EOID").value);
     params.append("credits", document.getElementById("EPDID").value);
-    axios.post(server_URL + "ExtraClubEdit", params);
+    axios.post(server_URL + "ExtraClubEdit", params).then((results)=>{
+      if(!results){
+        console.log("error");
+      }
+      else{
+        localStorage.setItem("proceed","success");
+      }
+    });
   }
 
   function fundelete() {
