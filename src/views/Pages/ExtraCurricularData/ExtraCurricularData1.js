@@ -17,6 +17,7 @@ import {
   SimpleGrid,
   Button,
   Collapse,
+  Hide,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
@@ -33,17 +34,25 @@ function ExtraCurricularData() {
   var [drop2, setDrop2] = useState(false);
   var [drop3, setDrop3] = useState(false);
   var [drop4, setDrop4] = useState(false);
-
+  const myTimeout = setTimeout (5000);
   const [data,setdata] = useState([[],[],[],[]]);
 
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
+  localStorage.setItem("firsttime","yes")
   useEffect(async () => {
+      if(localStorage.getItem("proceed")=="success"){
+        axios.post(server_URL + "temp", params).then((items) => {
+          setdata(items.data)
+          localStorage.removeItem("proceed")
+        }); 
+      }  
+    });
+    
     axios.post(server_URL + "temp", params).then((items) => {
       setdata(items.data)
     });
-  });
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -112,19 +121,19 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[0].map((item) => {
+                  {data[0].map((items) => {
                     return (
                       <ExtraCurricualarTableRow1
-                        id={item.s_no}
-                        row1={item.club_name}
-                        row2={item.activity_name}
-                        row3={item.date}
-                        row4={item.outcome}
-                        row5={item.credits}
-                        row6={item.verified}
+                        id={items.s_no}
+                        row1={items.club_name}
+                        row2={items.activity_name}
+                        row3={items.date}
+                        row4={items.outcome}
+                        row5={items.credits}
+                        row6={items.verified}
                       />
-                    );
-                  })}
+                    )
+                  }) }
                 </Tbody>
               </Table>
             </CardBody>
