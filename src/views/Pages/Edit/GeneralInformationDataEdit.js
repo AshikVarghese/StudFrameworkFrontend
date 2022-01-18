@@ -362,11 +362,14 @@ function GeneralInformationDataEdit(props) {
         : permanent_address
     );
 
-    if (document.getElementById("LANKNOW").value.length !== 0) {
-      params.append("langknow", document.getElementById("LANKNOW").value);
-    } else {
-      params.append("langknow", lang_know);
-    }
+    // Languages Known
+    params.append(
+      "langknow",
+      document.getElementById("LANKNOW").value.length !== 0
+        ? document.getElementById("LANKNOW").value
+        : permanent_address
+    );
+
     if (document.getElementById("PAN").value.length !== 0) {
       params.append("pano", document.getElementById("PAN").value);
     } else {
