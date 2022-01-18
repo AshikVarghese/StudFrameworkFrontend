@@ -34,7 +34,7 @@ function ExtraCurricularData() {
   var [drop2, setDrop2] = useState(false);
   var [drop3, setDrop3] = useState(false);
   var [drop4, setDrop4] = useState(false);
-
+  const myTimeout = setTimeout (5000);
   const [data,setdata] = useState([[],[],[],[]]);
 
   const textColor = useColorModeValue("gray.700", "white");
@@ -121,7 +121,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[0]!=undefined ? data[0].map((items) => {
+                  {data[0].map((items) => {
                     return (
                       <ExtraCurricualarTableRow1
                         id={items.s_no}
@@ -133,7 +133,7 @@ function ExtraCurricularData() {
                         row6={items.verified}
                       />
                     )
-                  }) :"HELLO"}
+                  }) }
                 </Tbody>
               </Table>
             </CardBody>
@@ -171,7 +171,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[1]!=undefined ? data[1].map((item) => {
+                  {data[1].map((item) => {
                     return (
                       <ExtraCurricualarTableRow2
                         id={item.s_no}
@@ -182,7 +182,7 @@ function ExtraCurricularData() {
                         row5={item.outreach_verified}
                       />
                     );
-                  }) : "HELLO"}
+                  })}
                 </Tbody>
               </Table>
             </CardBody>
@@ -221,7 +221,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[2]!=undefined ? data[2].map((row) => {
+                  {data[2].map((row) => {
                     return (
                       <ExtraCurricualarTableRow3
                         id={row.s_no}
@@ -233,7 +233,7 @@ function ExtraCurricularData() {
                         row6={row.verified}
                       />
                     );
-                  }): "HELLO"}
+                  })}
                 </Tbody>
               </Table>
             </CardBody>
@@ -271,7 +271,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[3]!=undefined ? data[3].map((row) => {
+                  {data[3].map((row) => {
                     return (
                       <ExtraCurricualarTableRow4
                         id={row.s_no}
@@ -282,7 +282,7 @@ function ExtraCurricularData() {
                         row5={row.verified}
                       />
                     );
-                  }) : "HELLO"}
+                  })}
                 </Tbody>
               </Table>
             </CardBody>
