@@ -34,26 +34,22 @@ function ExtraCurricularData() {
   var [drop2, setDrop2] = useState(false);
   var [drop3, setDrop3] = useState(false);
   var [drop4, setDrop4] = useState(false);
-  const myTimeout = setTimeout (5000);
   const [data,setdata] = useState([[],[],[],[]]);
+  const [data1,setdata1] = useState([]);
+  const [data2,setdata2] = useState([]);
+  const [data3,setdata3] = useState([]);
+  const [data4,setdata4] = useState([]);
+
 
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
   localStorage.setItem("firsttime","yes")
-  useEffect(async () => {
-      if(localStorage.getItem("proceed")=="success"){
-        axios.post(server_URL + "temp", params).then((items) => {
-          setdata(items.data)
-          localStorage.removeItem("proceed")
-        }); 
-      }  
-    });
     
     axios.post(server_URL + "temp", params).then((items) => {
       setdata(items.data)
     });
-
+    
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
@@ -121,7 +117,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[0].map((items) => {
+                  {data[0]!=undefined ? data[0].map((items) => {
                     return (
                       <ExtraCurricualarTableRow1
                         id={items.s_no}
@@ -133,7 +129,7 @@ function ExtraCurricularData() {
                         row6={items.verified}
                       />
                     )
-                  }) }
+                  }) : <ExtraCurricualarTableRow3 />}
                 </Tbody>
               </Table>
             </CardBody>
@@ -171,7 +167,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[1].map((item) => {
+                  {data[1]!= undefined ? data[1].map((item) => {
                     return (
                       <ExtraCurricualarTableRow2
                         id={item.s_no}
@@ -182,7 +178,7 @@ function ExtraCurricularData() {
                         row5={item.outreach_verified}
                       />
                     );
-                  })}
+                  }) : <ExtraCurricualarTableRow3 />}
                 </Tbody>
               </Table>
             </CardBody>
@@ -221,7 +217,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[2].map((row) => {
+                  {data[2]!= undefined ? data[2].map((row) => {
                     return (
                       <ExtraCurricualarTableRow3
                         id={row.s_no}
@@ -233,7 +229,7 @@ function ExtraCurricularData() {
                         row6={row.verified}
                       />
                     );
-                  })}
+                  }) : <ExtraCurricualarTableRow3 />}
                 </Tbody>
               </Table>
             </CardBody>
@@ -271,7 +267,7 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[3].map((row) => {
+                  {data[3]!=undefined ? data[3].map((row) => {
                     return (
                       <ExtraCurricualarTableRow4
                         id={row.s_no}
@@ -282,7 +278,7 @@ function ExtraCurricularData() {
                         row5={row.verified}
                       />
                     );
-                  })}
+                  }) : <ExtraCurricualarTableRow4/>}
                 </Tbody>
               </Table>
             </CardBody>
