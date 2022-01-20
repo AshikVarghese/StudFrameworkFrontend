@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor PD Competitions TableRow
 import {
   Button,
@@ -132,7 +134,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row1}
+                    defaultValue={row2}
                     id="compID"
                   />
                 </Td>
@@ -149,7 +151,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row2}
+                    defaultValue={row3}
                     id="dateID"
                   />
                 </Td>
@@ -164,7 +166,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row3}
+                    defaultValue={row4}
                     id="psID"
                   />
                 </Td>
@@ -179,7 +181,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row4}
+                    defaultValue={row5}
                     id="creditsID"
                   />
                 </Td>

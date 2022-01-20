@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor PF Internship TableRow
 import {
   Button,
@@ -124,6 +126,21 @@ function ProfessionalDevelopmentTableRow(props) {
 
               <Tr>
                 <Td>
+                  <Text m="1em">Date</Text>
+                </Td>
+                <Td>
+                  <Input
+                    minWidth="20em"
+                    borderRadius="5px"
+                    fontSize="sm"
+                    type="text"
+                    defaultValue={row2}
+                    id="DATE"
+                  />
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>
                   <Text m="1em">Duration</Text>
                 </Td>
 
@@ -133,23 +150,8 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row2}
-                    id="DUR"
-                  />
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>
-                  <Text m="1em">Date</Text>
-                </Td>
-                <Td>
-                  <Input
-                    minWidth="20em"
-                    borderRadius="5px"
-                    fontSize="sm"
-                    type="text"
                     defaultValue={row3}
-                    id="DATE"
+                    id="DUR"
                   />
                 </Td>
               </Tr>

@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor PF Motivational Talk TableRow
 import {
   Button,
@@ -115,10 +117,9 @@ function ProfessionalDevelopmentTableRow(props) {
                   />
                 </Td>
               </Tr>
-
               <Tr>
                 <Td>
-                  <Text m="1em">Resource Person</Text>
+                  <Text m="1em">Date</Text>
                 </Td>
 
                 <Td>
@@ -134,6 +135,22 @@ function ProfessionalDevelopmentTableRow(props) {
               </Tr>
               <Tr>
                 <Td>
+                  <Text m="1em">Resource Person</Text>
+                </Td>
+
+                <Td>
+                  <Input
+                    minWidth="20em"
+                    borderRadius="5px"
+                    fontSize="sm"
+                    type="text"
+                    defaultValue={row3}
+                    id="RESPER"
+                  />
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>
                   <Text m="1em">Outcome</Text>
                 </Td>
                 <Td>
@@ -142,7 +159,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row3}
+                    defaultValue={row4}
                     id="OutcomeID3"
                   />
                 </Td>
@@ -157,7 +174,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row4}
+                    defaultValue={row5}
                     id="CRED3"
                   />
                 </Td>

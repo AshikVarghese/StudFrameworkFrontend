@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor PD Competitions TableRow
 import {
   Button,
@@ -121,23 +123,6 @@ function ProfessionalDevelopmentTableRow(props) {
                   />
                 </Td>
               </Tr>
-
-              <Tr>
-                <Td>
-                  <Text m="1em">Resource Person</Text>
-                </Td>
-                <Td>
-                  <Input
-                    minWidth="20em"
-                    borderRadius="5px"
-                    fontSize="sm"
-                    type="text"
-                    defaultValue={row1}
-                    id="RsprID"
-                  />
-                </Td>
-              </Tr>
-
               <Tr>
                 <Td>
                   <Text m="1em">Date</Text>
@@ -156,7 +141,7 @@ function ProfessionalDevelopmentTableRow(props) {
               </Tr>
               <Tr>
                 <Td>
-                  <Text m="1em">Outcome</Text>
+                  <Text m="1em">Resource Person</Text>
                 </Td>
                 <Td>
                   <Input
@@ -165,6 +150,22 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row3}
+                    id="RsprID"
+                  />
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Text m="1em">Outcome</Text>
+                </Td>
+                <Td>
+                  <Input
+                    minWidth="20em"
+                    borderRadius="5px"
+                    fontSize="sm"
+                    type="text"
+                    defaultValue={row4}
                     id="outID"
                   />
                 </Td>
@@ -179,7 +180,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row4}
+                    defaultValue={row5}
                     id="creditsID"
                   />
                 </Td>

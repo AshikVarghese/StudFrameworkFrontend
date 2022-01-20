@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor  Placement TableRow
 import {
   Button,
@@ -155,7 +157,7 @@ function ProfessionalDevelopmentTableRow(props) {
               </Tr>
               <Tr>
                 <Td>
-                  <Text m="1em">Technical Training</Text>
+                  <Text m="1em">Technical Skill</Text>
                 </Td>
                 <Td>
                   <Input
