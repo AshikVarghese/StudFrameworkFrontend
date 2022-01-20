@@ -374,6 +374,454 @@ function ProfessionalDevelopmentData1() {
             </CardBody>
           </Collapse>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Internships
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop5(!drop5)}
+            >
+              {drop5 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop5}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Company</Th>
+                    <Th color="gray.400">Date and Year</Th>
+                    <Th color="gray.400">Duration in months</Th>
+                    <Th color="gray.400">Reference</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p5data.map((item5) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow5
+                        row1={item5.company_name}
+                        row2={item5.date}
+                        row3={item5.duration}
+                        row4={item5.reference}
+                        row5={item5.credits}
+                        row6={item5.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Value Added Course
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop6(!drop6)}
+            >
+              {drop6 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop6}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Course Name</Th>
+                    <Th color="gray.400">Date and Year</Th>
+                    <Th color="gray.400">Outcome</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p6data.map((item6) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow6
+                        row1={item6.course_name}
+                        row2={item6.date}
+                        row3={item6.outcome}
+                        row4={item6.credits}
+                        row5={item6.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Workshop
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop7(!drop7)}
+            >
+              {drop7 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop7}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Topic</Th>
+                    <Th color="gray.400">Date and Year</Th>
+                    <Th color="gray.400">Resource Person</Th>
+                    <Th color="gray.400">Outcome</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p7data.map((item7) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow7
+                        row1={item7.topic}
+                        row2={item7.date}
+                        row3={item7.Resource}
+                        row4={item7.outcome}
+                        row5={item7.credits}
+                        row6={item7.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Webinar
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop8(!drop8)}
+            >
+              {drop8 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop8}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Topic</Th>
+                    <Th color="gray.400">Date and Year</Th>
+                    <Th color="gray.400">Resource Person</Th>
+                    <Th color="gray.400">Outcome</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p8data.map((item8) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow8
+                        row1={item8.topic}
+                        row2={item8.date}
+                        row3={item8.resorce_person}
+                        row4={item8.outcome}
+                        row5={item8.credits}
+                        row6={item8.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Competition
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop9(!drop9)}
+            >
+              {drop9 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop9}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Name</Th>
+                    <Th color="gray.400">
+                      Type of Competion (Coding / Project)
+                    </Th>
+                    <Th color="gray.400">Date and year</Th>
+                    <Th color="gray.400">Position Secured</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p9data.map((item9) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow9
+                        row1={item9.comp_name}
+                        row2={item9.comp_type}
+                        row3={item9.date}
+                        row4={item9.position_secured}
+                        row5={item9.credits}
+                        row6={item9.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Placement Training
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop10(!drop10)}
+            >
+              {drop10 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop10}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Aptitude</Th>
+                    <Th color="gray.400">Soft Skill</Th>
+                    <Th color="gray.400">Reasoning</Th>
+                    <Th color="gray.400">Technical Skill</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p10data.map((item10) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow10
+                        row1={item10.aptitude}
+                        row2={item10.soft_skills}
+                        row3={item10.reasoning}
+                        row4={item10.technical_training}
+                        row5={item10.credits}
+                        row6={item10.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Mini Project
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop11(!drop11)}
+            >
+              {drop11 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop11}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Title</Th>
+                    <Th color="gray.400">Objective</Th>
+                    <Th color="gray.400">Outcome</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p11data.map((item11) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow11
+                        row1={item11.project_title}
+                        row2={item11.objective}
+                        row3={item11.outcome}
+                        row4={item11.credits}
+                        row5={item11.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Final Project
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop12(!drop12)}
+            >
+              {drop12 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop12}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Title</Th>
+                    <Th color="gray.400">Objective</Th>
+                    <Th color="gray.400">Outcome</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p12data.map((item12) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow12
+                        row1={item12.title}
+                        row2={item12.objective}
+                        row3={item12.outcome}
+                        row4={item12.credits}
+                        row5={item12.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Publications
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop13(!drop13)}
+            >
+              {drop13 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop13}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Conference / Journal</Th>
+                    <Th color="gray.400">Name of Conference / Journal</Th>
+                    <Th color="gray.400">Title Of the Article</Th>
+                    <Th color="gray.400">Impact Factor</Th>
+                    <Th color="gray.400">Indexed In</Th>
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p13data.map((item13) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow13
+                        row1={item13.conf_or_journal}
+                        row2={item13.name}
+                        row3={item13.title}
+                        row4={item13.impact_factor}
+                        row5={item13.indexed_in}
+                        row6={item13.credits}
+                        row7={item13.verified}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
       </SimpleGrid>
     </Flex>
   );
