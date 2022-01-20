@@ -17,6 +17,7 @@ import {
   SimpleGrid,
   Button,
   Collapse,
+  Hide,
 } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
@@ -39,10 +40,10 @@ function ExtraCurricularData() {
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
-  useEffect(async () => {
-    axios.post(server_URL + "temp", params).then((items) => {
-      setdata(items.data);
-    });
+  localStorage.setItem("firsttime", "yes");
+
+  axios.post(server_URL + "temp", params).then((items) => {
+    setdata(items.data);
   });
 
   return (
@@ -112,19 +113,23 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[0].map((item) => {
-                    return (
-                      <ExtraCurricualarTableRow1
-                        id={item.s_no}
-                        row1={item.club_name}
-                        row2={item.activity_name}
-                        row3={item.date}
-                        row4={item.outcome}
-                        row5={item.credits}
-                        row6={item.verified}
-                      />
-                    );
-                  })}
+                  {data[0] != undefined ? (
+                    data[0].map((items) => {
+                      return (
+                        <ExtraCurricualarTableRow1
+                          id={items.s_no}
+                          row1={items.club_name}
+                          row2={items.activity_name}
+                          row3={items.date}
+                          row4={items.outcome}
+                          row5={items.credits}
+                          row6={items.verified}
+                        />
+                      );
+                    })
+                  ) : (
+                    <ExtraCurricualarTableRow3 />
+                  )}
                 </Tbody>
               </Table>
             </CardBody>
@@ -162,18 +167,22 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[1].map((item) => {
-                    return (
-                      <ExtraCurricualarTableRow2
-                        id={item.s_no}
-                        row1={item.outreach_activity_name}
-                        row2={item.outreach_date}
-                        row3={item.outreach_outcome}
-                        row4={item.credits}
-                        row5={item.outreach_verified}
-                      />
-                    );
-                  })}
+                  {data[1] != undefined ? (
+                    data[1].map((item) => {
+                      return (
+                        <ExtraCurricualarTableRow2
+                          id={item.s_no}
+                          row1={item.outreach_activity_name}
+                          row2={item.outreach_date}
+                          row3={item.outreach_outcome}
+                          row4={item.credits}
+                          row5={item.outreach_verified}
+                        />
+                      );
+                    })
+                  ) : (
+                    <ExtraCurricualarTableRow3 />
+                  )}
                 </Tbody>
               </Table>
             </CardBody>
@@ -212,19 +221,23 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[2].map((row) => {
-                    return (
-                      <ExtraCurricualarTableRow3
-                        id={row.s_no}
-                        row1={row.sport_name}
-                        row2={row.representation}
-                        row3={row.position_secures}
-                        row4={row.date}
-                        row5={row.credits}
-                        row6={row.verified}
-                      />
-                    );
-                  })}
+                  {data[2] != undefined ? (
+                    data[2].map((row) => {
+                      return (
+                        <ExtraCurricualarTableRow3
+                          id={row.s_no}
+                          row1={row.sport_name}
+                          row2={row.representation}
+                          row3={row.position_secures}
+                          row4={row.date}
+                          row5={row.credits}
+                          row6={row.verified}
+                        />
+                      );
+                    })
+                  ) : (
+                    <ExtraCurricualarTableRow3 />
+                  )}
                 </Tbody>
               </Table>
             </CardBody>
@@ -262,18 +275,22 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[3].map((row) => {
-                    return (
-                      <ExtraCurricualarTableRow4
-                        id={row.s_no}
-                        row1={row.event_name}
-                        row2={row.date}
-                        row3={row.position_secures}
-                        row4={row.credits}
-                        row5={row.verified}
-                      />
-                    );
-                  })}
+                  {data[3] != undefined ? (
+                    data[3].map((row) => {
+                      return (
+                        <ExtraCurricualarTableRow4
+                          id={row.s_no}
+                          row1={row.event_name}
+                          row2={row.date}
+                          row3={row.position_secures}
+                          row4={row.credits}
+                          row5={row.verified}
+                        />
+                      );
+                    })
+                  ) : (
+                    <ExtraCurricualarTableRow4 />
+                  )}
                 </Tbody>
               </Table>
             </CardBody>
