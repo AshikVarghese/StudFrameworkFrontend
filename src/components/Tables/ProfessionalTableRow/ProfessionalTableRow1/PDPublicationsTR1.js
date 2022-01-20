@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor PF Publications TableRow
 import {
   Button,

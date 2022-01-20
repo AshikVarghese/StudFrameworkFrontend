@@ -402,44 +402,60 @@ function ProfessionalDevelopmentData0() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
-        <Button
-          ms="auto"
-          me="1em"
-          bg="orange.400"
-          width="fit-content"
-          height="2em"
-          onClick={() => {
-            setDrop1(!drop1),
-              setDrop2(!drop2),
-              setDrop3(!drop3),
-              setDrop4(!drop4),
-              setDrop5(!drop5),
-              setDrop6(!drop6),
-              setDrop7(!drop7),
-              setDrop8(!drop8),
-              setDrop9(!drop9),
-              setDrop10(!drop10),
-              setDrop11(!drop11),
-              setDrop12(!drop12),
-              setDrop13(!drop13);
-          }}
-        >
-          {drop1 ||
-          drop2 ||
-          drop3 ||
-          drop4 ||
-          drop5 ||
-          drop6 ||
-          drop7 ||
-          drop8 ||
-          drop9 ||
-          drop10 ||
-          drop11 ||
-          drop12 ||
-          drop13
-            ? "Hide All"
-            : "Show All"}
-        </Button>
+        <Flex direction="column" align="flex-end">
+          <box>
+            <Button
+              ms="auto"
+              me="1em"
+              bg="orange.400"
+              width="6em"
+              height="2em"
+              onClick={() => {
+                setDrop1(true),
+                  setDrop2(true),
+                  setDrop3(true),
+                  setDrop4(true),
+                  setDrop5(true),
+                  setDrop6(true),
+                  setDrop7(true),
+                  setDrop8(true),
+                  setDrop9(true),
+                  setDrop10(true),
+                  setDrop11(true),
+                  setDrop12(true),
+                  setDrop13(true);
+              }}
+            >
+              Show All
+            </Button>
+
+            <Button
+              ms="auto"
+              me="1em"
+              bg="orange.400"
+              width="6em"
+              height="2em"
+              onClick={() => {
+                setDrop1(false),
+                  setDrop2(false),
+                  setDrop3(false),
+                  setDrop4(false),
+                  setDrop5(false),
+                  setDrop6(false),
+                  setDrop7(false),
+                  setDrop8(false),
+                  setDrop9(false),
+                  setDrop10(false),
+                  setDrop11(false),
+                  setDrop12(false),
+                  setDrop13(false);
+              }}
+            >
+              Hide All
+            </Button>
+          </box>
+        </Flex>
+
         <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
