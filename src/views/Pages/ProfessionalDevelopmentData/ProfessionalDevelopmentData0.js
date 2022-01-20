@@ -143,7 +143,7 @@ function ProfessionalDevelopmentData0() {
     let params = new URLSearchParams();
     params.append("StudentDetails", localStorage.getItem("StudentRoll"));
     params.append("Topic", document.getElementById("Topic").value);
-    params.append("DateYear", document.getElementById("DY3").value);
+
     params.append("Resource", document.getElementById("Resource").value);
     params.append("Outcome", document.getElementById("O3").value);
     params.append("status", "Pending");
@@ -830,7 +830,7 @@ function ProfessionalDevelopmentData0() {
                     return (
                       <TableRow5
                         row1={item3.topic}
-                        row2={item3.resorce_person}
+                        row2={item3.resource_person}
                         row3={item3.outcome}
                         row4={item3.credits}
                         row5={item3.verified}
@@ -850,7 +850,7 @@ function ProfessionalDevelopmentData0() {
                 <Thead>
                   <Tr>
                     <Th color="gray.400">Topic</Th>
-                    <Th color="gray.400">Date and Year</Th>
+
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                   </Tr>
@@ -873,22 +873,7 @@ function ProfessionalDevelopmentData0() {
                         />
                       </Flex>
                     </Td>
-                    <Td minWidth={{ sm: "14em" }}>
-                      <Flex
-                        align="center"
-                        py=".8rem"
-                        minWidth="100%"
-                        flexWrap="nowrap"
-                      >
-                        <Input
-                          borderRadius="5px"
-                          fontSize="sm"
-                          type="date"
-                          placeholder="Enter Date and Year"
-                          id="DY3"
-                        />
-                      </Flex>
-                    </Td>
+
                     <Td minWidth={{ sm: "14em" }}>
                       <Flex
                         align="center"
@@ -1021,7 +1006,7 @@ function ProfessionalDevelopmentData0() {
                       <TableRow6
                         row1={item4.topic}
                         row2={item4.date}
-                        row3={item4.resorce_person}
+                        row3={item4.resource_person}
                         row4={item4.outcome}
                         row5={item4.credits}
                         row6={item4.verified}
@@ -1579,7 +1564,7 @@ function ProfessionalDevelopmentData0() {
                       <TableRow6
                         row1={item7.topic}
                         row2={item7.date}
-                        row3={item7.resorce_person}
+                        row3={item7.Resource}
                         row4={item7.outcome}
                         row5={item7.credits}
                         row6={item7.verified}

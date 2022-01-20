@@ -25,6 +25,7 @@ import {
   useDisclosure,
   Collapse,
   Box,
+  useToast,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -43,6 +44,9 @@ function Academic() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
+
+  // Toast var
+  const toast = useToast();
 
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
@@ -170,6 +174,17 @@ function Academic() {
                 minWidth={{ sm: "75vw", md: "fit-content" }}
                 colorScheme="orange"
                 variant="solid"
+                onClick={() =>
+                  toast({
+                    title: "Report Downloaded",
+                    description:
+                      "General Information Report Downloaded Successfully",
+                    status: "success",
+                    duration: 9000,
+                    position: "top",
+                    isClosable: true,
+                  })
+                }
               >
                 Download Report
               </Button>

@@ -34,14 +34,14 @@ function ExtraCurricularData() {
   var [drop3, setDrop3] = useState(false);
   var [drop4, setDrop4] = useState(false);
 
-  const [data,setdata] = useState([[],[],[],[]]);
+  const [data, setdata] = useState([[], [], [], []]);
 
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
   useEffect(async () => {
     axios.post(server_URL + "temp", params).then((items) => {
-      setdata(items.data)
+      setdata(items.data);
     });
   });
 
