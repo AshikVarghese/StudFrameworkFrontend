@@ -35,7 +35,7 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("columnid", cid.id);
     params.append("industry_name", document.getElementById("IndustryID").value);
     params.append("date", document.getElementById("Date_and_year").value);
-    params.append("utcome", document.getElementById("OutcomeID").value);
+    params.append("outcome", document.getElementById("OutcomeID").value);
     params.append("credits", document.getElementById("credits").value);
     axios.post(server_URL + "Industrialv_edit", params);
   }
