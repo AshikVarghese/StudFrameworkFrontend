@@ -1,3 +1,5 @@
+/** @format */
+
 //HoD Academic
 
 import React, { useState, useEffect } from "react";
@@ -99,7 +101,7 @@ function Academic() {
           </Flex>
         </CardBody>
 
-        <SimpleGrid columns={{ sm: 1, md: 3, xl: 3 }} gap={5}>
+        <SimpleGrid columns={{ sm: 1, md: 2, xl: 2 }} gap={5}>
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
