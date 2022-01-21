@@ -35,14 +35,14 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("date", document.getElementById("DateID").value);
     params.append("outcome", document.getElementById("OutcomeID").value);
     params.append("credits", document.getElementById("CreditsID").value);
-    axios.post(server_URL + "PdCour_edit", params);
+    axios.post(server_URL + "cour_edit", params);
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "PdCour_delete", params);
+    axios.post(server_URL + "cour_delete", params);
   }
 
   function funverify() {
@@ -50,7 +50,7 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "PdCour_verify", params);
+    axios.post(server_URL + "cour_verify", params);
   }
 
   return (

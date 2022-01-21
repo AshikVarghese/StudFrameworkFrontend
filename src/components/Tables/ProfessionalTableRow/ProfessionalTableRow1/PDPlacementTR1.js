@@ -87,12 +87,6 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row5}</Flex>
         </Flex>
       </Td>
-      <Td minWidth={{ sm: "5em" }}>
-        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-          <Flex direction="column">{row6}</Flex>
-        </Flex>
-      </Td>
-
       <Td>
         <Button
           onClick={onOpen}
@@ -180,7 +174,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row4}
+                    defaultValue={row5}
                     id="CRED4"
                   />
                 </Td>

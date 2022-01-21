@@ -119,7 +119,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row1}
-                    id="COM"
+                    id="COMP"
                   />
                 </Td>
               </Tr>

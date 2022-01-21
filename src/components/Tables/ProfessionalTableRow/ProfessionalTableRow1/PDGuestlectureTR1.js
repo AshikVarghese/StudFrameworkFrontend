@@ -35,14 +35,14 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("resource_person", document.getElementById("RsprID").value);
     params.append("outcome", document.getElementById("OutcomeID").value);
     params.append("credits", document.getElementById("CreditsID").value);
-    axios.post(server_URL + "PdGuest_edit", params);
+    axios.post(server_URL + "guest_edit", params);
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "PdGuest_delete", params);
+    axios.post(server_URL + "guest_delete", params);
   }
 
   function funverify() {
@@ -50,7 +50,7 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "PdGuest_verify", params);
+    axios.post(server_URL + "guest_verify", params);
   }
 
   return (
@@ -128,7 +128,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row2}
-                    id="DateID"
+                    id="RsprID"
                   />
                 </Td>
               </Tr>
@@ -143,7 +143,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row3}
-                    id="RsprID"
+                    id="OutcomeID"
                   />
                 </Td>
               </Tr>

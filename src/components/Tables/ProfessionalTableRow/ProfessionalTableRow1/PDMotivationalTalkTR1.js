@@ -34,6 +34,7 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("topic", document.getElementById("TOPIC").value);
+    params.append("date", document.getElementById("date").value);
     params.append("resource_person", document.getElementById("RESPER").value);
     params.append("outcome", document.getElementById("OutcomeID3").value);
     params.append("credits", document.getElementById("CRED3").value);
@@ -134,7 +135,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row2}
-                    id="RESPER"
+                    id="date"
                   />
                 </Td>
               </Tr>
