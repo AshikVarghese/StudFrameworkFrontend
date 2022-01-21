@@ -26,7 +26,7 @@ import { server_URL } from "controller/urls_config";
 function ProfessionalDevelopmentTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { id, row1, row2, row3, row4, row5 } = props;
+  const { id, row1, row2, row3, row4, row5, row6 } = props;
   const textColor = useColorModeValue("gray.700", "white");
 
   function funedit() {
@@ -84,6 +84,11 @@ function ProfessionalDevelopmentTableRow(props) {
       <Td minWidth={{ sm: "5em" }}>
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <Flex direction="column">{row5}</Flex>
+        </Flex>
+      </Td>
+      <Td minWidth={{ sm: "5em" }}>
+        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
+          <Flex direction="column">{row6}</Flex>
         </Flex>
       </Td>
 

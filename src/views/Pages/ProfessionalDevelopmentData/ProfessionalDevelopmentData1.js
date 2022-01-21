@@ -215,11 +215,11 @@ function ProfessionalDevelopmentData1() {
                     return (
                       <ProfessionalDevelopmentTableRow1
                         id={item1.s_no}
-                        row1={item1.industry_name}
-                        row2={item1.date}
-                        row3={item1.outcome}
-                        row4={item1.credits}
-                        row5={item1.verified}
+                        row1={item1.industry_name || "NULL"}
+                        row2={item1.date || "NULL"}
+                        row3={item1.outcome || "NULL"}
+                        row4={item1.credits || "NULL"}
+                        row5={item1.verified || "NULL"}
                       />
                     );
                   })}
@@ -263,11 +263,11 @@ function ProfessionalDevelopmentData1() {
                   {p2data.map((item2) => {
                     return (
                       <ProfessionalDevelopmentTableRow2
-                        row1={item2.industry}
-                        row2={item2.date}
-                        row3={item2.outcome}
-                        row4={item2.credits}
-                        row5={item2.verified}
+                        row1={item2.industry || "NULL"}
+                        row2={item2.date || "NULL"}
+                        row3={item2.outcome || "NULL"}
+                        row4={item2.credits || "NULL"}
+                        row5={item2.verified || "NULL"}
                       />
                     );
                   })}
@@ -311,11 +311,11 @@ function ProfessionalDevelopmentData1() {
                   {p3data.map((item3) => {
                     return (
                       <ProfessionalDevelopmentTableRow3
-                        row1={item3.topic}
-                        row2={item3.resource_person}
-                        row3={item3.outcome}
-                        row4={item3.credits}
-                        row5={item3.verified}
+                        row1={item3.topic || "NULL"}
+                        row2={item3.resource_person || "NULL"}
+                        row3={item3.outcome || "NULL"}
+                        row4={item3.credits || "NULL"}
+                        row5={item3.verified || "NULL"}
                       />
                     );
                   })}
@@ -360,12 +360,12 @@ function ProfessionalDevelopmentData1() {
                   {p4data.map((item4) => {
                     return (
                       <ProfessionalDevelopmentTableRow4
-                        row1={item4.topic}
-                        row2={item4.date}
-                        row3={item4.resource_person}
-                        row4={item4.outcome}
-                        row5={item4.credits}
-                        row6={item4.verified}
+                        row1={item4.topic || "NULL"}
+                        row2={item4.date || "NULL"}
+                        row3={item4.resource_person || "NULL"}
+                        row4={item4.outcome || "NULL"}
+                        row5={item4.credits || "NULL"}
+                        row6={item4.verified || "NULL"}
                       />
                     );
                   })}
@@ -410,12 +410,12 @@ function ProfessionalDevelopmentData1() {
                   {p5data.map((item5) => {
                     return (
                       <ProfessionalDevelopmentTableRow5
-                        row1={item5.company_name}
-                        row2={item5.date}
-                        row3={item5.duration}
-                        row4={item5.reference}
-                        row5={item5.credits}
-                        row6={item5.verified}
+                        row1={item5.company_name || "NULL"}
+                        row2={item5.date || "NULL"}
+                        row3={item5.duration || "NULL"}
+                        row4={item5.reference || "NULL"}
+                        row5={item5.credits || "NULL"}
+                        row6={item5.verified || "NULL"}
                       />
                     );
                   })}
@@ -459,11 +459,11 @@ function ProfessionalDevelopmentData1() {
                   {p6data.map((item6) => {
                     return (
                       <ProfessionalDevelopmentTableRow6
-                        row1={item6.course_name}
-                        row2={item6.date}
-                        row3={item6.outcome}
-                        row4={item6.credits}
-                        row5={item6.verified}
+                        row1={item6.course_name || "NULL"}
+                        row2={item6.date || "NULL"}
+                        row3={item6.outcome || "NULL"}
+                        row4={item6.credits || "NULL"}
+                        row5={item6.verified || "NULL"}
                       />
                     );
                   })}
@@ -508,12 +508,12 @@ function ProfessionalDevelopmentData1() {
                   {p7data.map((item7) => {
                     return (
                       <ProfessionalDevelopmentTableRow7
-                        row1={item7.topic}
-                        row2={item7.date}
-                        row3={item7.Resource}
-                        row4={item7.outcome}
-                        row5={item7.credits}
-                        row6={item7.verified}
+                        row1={item7.topic || "NULL"}
+                        row2={item7.date || "NULL"}
+                        row3={item7.Resource || "NULL"}
+                        row4={item7.outcome || "NULL"}
+                        row5={item7.credits || "NULL"}
+                        row6={item7.verified || "NULL"}
                       />
                     );
                   })}
@@ -558,12 +558,12 @@ function ProfessionalDevelopmentData1() {
                   {p8data.map((item8) => {
                     return (
                       <ProfessionalDevelopmentTableRow8
-                        row1={item8.topic}
-                        row2={item8.date}
-                        row3={item8.resorce_person}
-                        row4={item8.outcome}
-                        row5={item8.credits}
-                        row6={item8.verified}
+                        row1={item8.topic || "NULL"}
+                        row2={item8.date || "NULL"}
+                        row3={item8.resorce_person || "NULL"}
+                        row4={item8.outcome || "NULL"}
+                        row5={item8.credits || "NULL"}
+                        row6={item8.verified || "NULL"}
                       />
                     );
                   })}
@@ -610,12 +610,12 @@ function ProfessionalDevelopmentData1() {
                   {p9data.map((item9) => {
                     return (
                       <ProfessionalDevelopmentTableRow9
-                        row1={item9.comp_name}
-                        row2={item9.comp_type}
-                        row3={item9.date}
-                        row4={item9.position_secured}
-                        row5={item9.credits}
-                        row6={item9.verified}
+                        row1={item9.comp_name || "NULL"}
+                        row2={item9.comp_type || "NULL"}
+                        row3={item9.date || "NULL"}
+                        row4={item9.position_secured || "NULL"}
+                        row5={item9.credits || "NULL"}
+                        row6={item9.verified || "NULL"}
                       />
                     );
                   })}
@@ -660,12 +660,12 @@ function ProfessionalDevelopmentData1() {
                   {p10data.map((item10) => {
                     return (
                       <ProfessionalDevelopmentTableRow10
-                        row1={item10.aptitude}
-                        row2={item10.soft_skills}
-                        row3={item10.reasoning}
-                        row4={item10.technical_training}
-                        row5={item10.credits}
-                        row6={item10.verified}
+                        row1={item10.aptitude || "NULL"}
+                        row2={item10.soft_skills || "NULL"}
+                        row3={item10.reasoning || "NULL"}
+                        row4={item10.technical_training || "NULL"}
+                        row5={item10.credits || "NULL"}
+                        row6={item10.verified || "NULL"}
                       />
                     );
                   })}
@@ -709,11 +709,11 @@ function ProfessionalDevelopmentData1() {
                   {p11data.map((item11) => {
                     return (
                       <ProfessionalDevelopmentTableRow11
-                        row1={item11.project_title}
-                        row2={item11.objective}
-                        row3={item11.outcome}
-                        row4={item11.credits}
-                        row5={item11.verified}
+                        row1={item11.project_title || "NULL"}
+                        row2={item11.objective || "NULL"}
+                        row3={item11.outcome || "NULL"}
+                        row4={item11.credits || "NULL"}
+                        row5={item11.verified || "NULL"}
                       />
                     );
                   })}
@@ -757,11 +757,11 @@ function ProfessionalDevelopmentData1() {
                   {p12data.map((item12) => {
                     return (
                       <ProfessionalDevelopmentTableRow12
-                        row1={item12.title}
-                        row2={item12.objective}
-                        row3={item12.outcome}
-                        row4={item12.credits}
-                        row5={item12.verified}
+                        row1={item12.title || "NULL"}
+                        row2={item12.objective || "NULL"}
+                        row3={item12.outcome || "NULL"}
+                        row4={item12.credits || "NULL"}
+                        row5={item12.verified || "NULL"}
                       />
                     );
                   })}
@@ -807,13 +807,13 @@ function ProfessionalDevelopmentData1() {
                   {p13data.map((item13) => {
                     return (
                       <ProfessionalDevelopmentTableRow13
-                        row1={item13.conf_or_journal}
-                        row2={item13.name}
-                        row3={item13.title}
-                        row4={item13.impact_factor}
-                        row5={item13.indexed_in}
-                        row6={item13.credits}
-                        row7={item13.verified}
+                        row1={item13.conf_or_journal || "NULL"}
+                        row2={item13.name || "NULL"}
+                        row3={item13.title || "NULL"}
+                        row4={item13.impact_factor || "NULL"}
+                        row5={item13.indexed_in || "NULL"}
+                        row6={item13.credits || "NULL"}
+                        row7={item13.verified || "NULL"}
                       />
                     );
                   })}
