@@ -27,7 +27,7 @@ import TableRow6 from "components/Tables/TableRow/TableRow6";
 import TableRow7 from "components/Tables/TableRow/TableRow7";
 import { URL, server_URL } from "controller/urls_config";
 
-function ProfessionalDevelopmentData2() {
+function ProfessionalDevelopmentData3() {
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
@@ -778,4 +778,4 @@ function ProfessionalDevelopmentData2() {
   );
 }
 
-export default ProfessionalDevelopmentData2;
+export default ProfessionalDevelopmentData3;
