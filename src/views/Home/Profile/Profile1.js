@@ -47,12 +47,7 @@ import {
 import { SettingsIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
 
 import axios from "axios";
-// Custom components
-import Card from "components/Card/Card";
-import CardBody from "components/Card/CardBody";
-import CardHeader from "components/Card/CardHeader";
-// Assets
-import avatar8 from "assets/img/avatars/avatar8.jpg";
+
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import { server_URL } from "controller/urls_config";
 
@@ -228,13 +223,6 @@ function Profile() {
               w={{ sm: "100%" }}
               textAlign={{ sm: "center", md: "start" }}
             >
-              <Avatar
-                me={{ md: "22px" }}
-                src={avatar8}
-                w="80px"
-                h="80px"
-                borderRadius="15px"
-              />
               <Flex direction="column" maxWidth="100%" my={{ sm: "14px" }}>
                 <Text
                   fontSize={{ sm: "lg", lg: "xl" }}
@@ -242,14 +230,14 @@ function Profile() {
                   fontWeight="bold"
                   ms={{ sm: "8px", md: "0px" }}
                 >
-                  Auskin Immanuel J
+                  Class Advisor : CSE 2020-2024
                 </Text>
                 <Text
                   fontSize={{ sm: "sm", md: "md" }}
                   color={emailColor}
                   fontWeight="semibold"
                 >
-                  auskinimmanuel.24cs@licet.ac.in
+                  Limsajoshi@licet.ac.in
                 </Text>
               </Flex>
             </Flex>

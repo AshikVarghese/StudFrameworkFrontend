@@ -228,13 +228,6 @@ function Profile() {
               w={{ sm: "100%" }}
               textAlign={{ sm: "center", md: "start" }}
             >
-              <Avatar
-                me={{ md: "22px" }}
-                src={avatar8}
-                w="80px"
-                h="80px"
-                borderRadius="15px"
-              />
               <Flex direction="column" maxWidth="100%" my={{ sm: "14px" }}>
                 <Text
                   fontSize={{ sm: "lg", lg: "xl" }}
@@ -242,14 +235,14 @@ function Profile() {
                   fontWeight="bold"
                   ms={{ sm: "8px", md: "0px" }}
                 >
-                  Auskin Immanuel J
+                  LICET : IQAC
                 </Text>
                 <Text
                   fontSize={{ sm: "sm", md: "md" }}
                   color={emailColor}
                   fontWeight="semibold"
                 >
-                  auskinimmanuel.24cs@licet.ac.in
+                  iqac@licet.ac.in
                 </Text>
               </Flex>
             </Flex>
