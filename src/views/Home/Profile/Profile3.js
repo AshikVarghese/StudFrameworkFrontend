@@ -159,24 +159,9 @@ function Profile() {
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
 
-  axios.post(server_URL + "GeneralStudent", params).then((items) => {
-    setData(items.data);
-  });
-  data.map((item) => {
-    var now = new Date();
-    var currentYear = parseInt(now.getFullYear());
-    let updated_year = currentYear - parseInt(item.batch.substr(0, 4));
-    updated_year = updated_year == 0 ? 1 : updated_year;
-    sname = item.sname;
-    licet_email = item.licet_email;
-    roll_no = item.roll_no;
-    dept = item.dept;
-    reg_no = item.reg_no;
-    batch = item.batch;
-    cell = item.contact_no;
-    year = updated_year > 4 ? "Passed Out" : updated_year;
-  });
-
+  var off_email = localStorage.getItem("offemail");
+  var off_arr_name = (localStorage.getItem("offemail")).split('@');
+  var  off_name = (off_arr_name[0]).toUpperCase();
   return (
     <Flex direction="column">
       <Box
@@ -235,14 +220,14 @@ function Profile() {
                   fontWeight="bold"
                   ms={{ sm: "8px", md: "0px" }}
                 >
-                  LICET : IQAC
+                  LICET : {off_name}
                 </Text>
                 <Text
                   fontSize={{ sm: "sm", md: "md" }}
                   color={emailColor}
                   fontWeight="semibold"
                 >
-                  iqac@licet.ac.in
+                  {off_email}
                 </Text>
               </Flex>
             </Flex>
