@@ -27,7 +27,7 @@ import TableRow6 from "components/Tables/TableRow/TableRow6";
 import TableRow7 from "components/Tables/TableRow/TableRow7";
 import { URL, server_URL } from "controller/urls_config";
 
-function ProfessionalDevelopmentData2() {
+function ProfessionalDevelopmentData3() {
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
@@ -61,23 +61,23 @@ function ProfessionalDevelopmentData2() {
   const Null_message = "NULL";
 
   let params = new URLSearchParams();
-  params.append("StudentDetails", localStorage.getItem("generalStudent"));
+  params.append("RollNumber", localStorage.getItem("generalStudent"));
   useState(async () => {
     axios
       .all([
-        axios.post(server_URL + "Industrialv_display", params),
-        axios.post(server_URL + "Inplant_display", params),
-        axios.post(server_URL + "guest_stud_display", params),
-        axios.post(server_URL + "Motivational_display", params),
-        axios.post(server_URL + "intern_stud_display", params),
-        axios.post(server_URL + "cour_Stud_display", params),
-        axios.post(server_URL + "workshop_studisplay", params),
-        axios.post(server_URL + "webinar_display", params),
-        axios.post(server_URL + "comp_stud_display", params),
-        axios.post(server_URL + "placement_display", params),
-        axios.post(server_URL + "Miniproj_display", params),
-        axios.post(server_URL + "finpro_Stud_display", params),
-        axios.post(server_URL + "publication_display", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
+        axios.post(server_URL + "Industrialv_cadisplay", params),
       ])
       .then(
         axios.spread(
@@ -201,6 +201,7 @@ function ProfessionalDevelopmentData2() {
                   {p1data.map((item1) => {
                     return (
                       <TableRow5
+                        id={item1.s_no || Null_message}
                         row1={item1.industry_name || Null_message}
                         row2={item1.date || Null_message}
                         row3={item1.outcome || Null_message}
@@ -777,4 +778,4 @@ function ProfessionalDevelopmentData2() {
   );
 }
 
-export default ProfessionalDevelopmentData2;
+export default ProfessionalDevelopmentData3;

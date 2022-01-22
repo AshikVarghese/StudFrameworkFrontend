@@ -26,7 +26,7 @@ import { server_URL } from "controller/urls_config";
 function ProfessionalDevelopmentTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { id, row1, row2, row3, row4, row5 } = props;
+  const { id, row1, row2, row3, row4, row5, row6 } = props;
   const textColor = useColorModeValue("gray.700", "white");
 
   function funedit() {
@@ -34,6 +34,7 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("topic", document.getElementById("TOPIC").value);
+    params.append("date", document.getElementById("date").value);
     params.append("resource_person", document.getElementById("RESPER").value);
     params.append("outcome", document.getElementById("OutcomeID3").value);
     params.append("credits", document.getElementById("CRED3").value);
@@ -86,6 +87,11 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row5}</Flex>
         </Flex>
       </Td>
+      <Td minWidth={{ sm: "5em" }}>
+        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
+          <Flex direction="column">{row6}</Flex>
+        </Flex>
+      </Td>
 
       <Td>
         <Button
@@ -129,7 +135,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row2}
-                    id="RESPER"
+                    id="date"
                   />
                 </Td>
               </Tr>
