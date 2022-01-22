@@ -1,7 +1,7 @@
 import axios from "axios";
 
-var server_URL = "http://192.168.1.145:8080/";
-
+// var server_URL = "http://192.168.1.145:8080/";
+import { server_URL } from "./urls_config";
 export default function change_pass() {
   document.getElementById("pass-fail").style.display = "none";
   document.getElementById("pass-mis").style.display = "none";
@@ -20,6 +20,7 @@ export default function change_pass() {
     params.append("oldpass", oldPass);
     params.append("email", localStorage.useremail);
     params.append("auth_token", localStorage.auth_token);
+    console.log(localStorage.useremail);
     axios.post(server_URL + "passchange", params).then((result) => {
       console.log(result.data);
       if (result.data == "pass-fail") {

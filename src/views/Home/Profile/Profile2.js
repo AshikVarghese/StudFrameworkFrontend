@@ -49,6 +49,7 @@ import { SettingsIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import { server_URL } from "controller/urls_config";
+import change_pass from "controller/changepassword";
 
 function Profile() {
   function validation() {
@@ -153,24 +154,9 @@ function Profile() {
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
 
-  axios.post(server_URL + "GeneralStudent", params).then((items) => {
-    setData(items.data);
-  });
-  data.map((item) => {
-    var now = new Date();
-    var currentYear = parseInt(now.getFullYear());
-    let updated_year = currentYear - parseInt(item.batch.substr(0, 4));
-    updated_year = updated_year == 0 ? 1 : updated_year;
-    sname = item.sname;
-    licet_email = item.licet_email;
-    roll_no = item.roll_no;
-    dept = item.dept;
-    reg_no = item.reg_no;
-    batch = item.batch;
-    cell = item.contact_no;
-    year = updated_year > 4 ? "Passed Out" : updated_year;
-  });
-
+  var hod_email = localStorage.getItem("hodemail");
+  var hod_dept = localStorage.getItem("dept");
+  hod_dept = hod_dept.toUpperCase();
   return (
     <Flex direction="column">
       <Box
@@ -229,14 +215,14 @@ function Profile() {
                   fontWeight="bold"
                   ms={{ sm: "8px", md: "0px" }}
                 >
-                  HoD : CSE
+                  HoD : {hod_dept}
                 </Text>
                 <Text
                   fontSize={{ sm: "sm", md: "md" }}
                   color={emailColor}
                   fontWeight="semibold"
                 >
-                  hodcse@licet.ac.in
+                  {hod_email}
                 </Text>
               </Flex>
             </Flex>

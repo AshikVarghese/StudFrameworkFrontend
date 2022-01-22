@@ -50,6 +50,7 @@ import axios from "axios";
 
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import { server_URL } from "controller/urls_config";
+import change_pass from "controller/changepassword";
 
 function Profile() {
   function validation() {
@@ -136,7 +137,6 @@ function Profile() {
       change_pass();
     }
   }
-  var sname, licet_email, roll_no, dept, reg_no, batch, cell, year;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const textColor = useColorModeValue("gray.700", "white");
@@ -150,27 +150,11 @@ function Profile() {
   );
   const emailColor = useColorModeValue("gray.400", "gray.300");
   const [data, setData] = useState([]);
-
+  var ca_email = localStorage.getItem("caemail");
+  var ca_dept = (localStorage.getItem("dept")).toUpperCase();
+  var ca_batch = (localStorage.getItem("batch")).toUpperCase();
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-
-  axios.post(server_URL + "GeneralStudent", params).then((items) => {
-    setData(items.data);
-  });
-  data.map((item) => {
-    var now = new Date();
-    var currentYear = parseInt(now.getFullYear());
-    let updated_year = currentYear - parseInt(item.batch.substr(0, 4));
-    updated_year = updated_year == 0 ? 1 : updated_year;
-    sname = item.sname;
-    licet_email = item.licet_email;
-    roll_no = item.roll_no;
-    dept = item.dept;
-    reg_no = item.reg_no;
-    batch = item.batch;
-    cell = item.contact_no;
-    year = updated_year > 4 ? "Passed Out" : updated_year;
-  });
 
   return (
     <Flex direction="column">
@@ -230,14 +214,14 @@ function Profile() {
                   fontWeight="bold"
                   ms={{ sm: "8px", md: "0px" }}
                 >
-                  Class Advisor : CSE 2020-2024
+                  Class Advisor : {ca_dept} {ca_batch}
                 </Text>
                 <Text
                   fontSize={{ sm: "sm", md: "md" }}
                   color={emailColor}
                   fontWeight="semibold"
                 >
-                  Limsajoshi@licet.ac.in
+                  {ca_email}
                 </Text>
               </Flex>
             </Flex>
