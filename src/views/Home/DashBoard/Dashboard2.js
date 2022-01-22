@@ -8,7 +8,9 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
-
+import BarChartInternship from "components/Charts/BarChart1";
+import BarChartPlacement from "components/Charts/BarChartPlacement";
+import BarChartAcademics from "components/Charts/BarChartAcademics";
 export default function Dashboard() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -55,7 +57,7 @@ export default function Dashboard() {
                 </StatLabel>
               </Stat>
               <Box w="100%" h={{ sm: "225px" }} ps="8px">
-                <LineChart />
+                <BarChartPlacement />
               </Box>
             </Flex>
           </CardBody>
@@ -104,7 +106,7 @@ export default function Dashboard() {
                   Internships
                 </StatLabel>
               </Stat>
-              <BarChart />
+              <BarChartInternship />
             </Flex>
           </CardBody>
         </Card>

@@ -1,4 +1,4 @@
-// Internship Charts
+// Placement Charts
 
 import React, { Component, useState } from "react";
 import Card from "components/Card/Card";
@@ -87,7 +87,7 @@ let chartOptions = {
   ],
 };
 
-function BarChartInternship() {
+function BarChartPlacement() {
   const [intern_lst, setintern] = useState([100]);
 
   var chartData = { name: "Internship", data: intern_lst };
@@ -125,4 +125,4 @@ function BarChartInternship() {
   );
 }
 
-export default BarChartInternship;
+export default BarChartPlacement;
