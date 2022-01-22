@@ -55,6 +55,7 @@ import CardHeader from "components/Card/CardHeader";
 import avatar8 from "assets/img/avatars/avatar8.jpg";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import { server_URL } from "controller/urls_config";
+import change_pass from "controller/changepassword";
 
 function Profile() {
   function validation() {
