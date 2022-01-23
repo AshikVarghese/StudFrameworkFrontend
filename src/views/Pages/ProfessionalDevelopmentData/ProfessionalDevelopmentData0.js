@@ -350,7 +350,7 @@ function ProfessionalDevelopmentData0() {
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
   useEffect(async () => {
-    axios
+    axios 
       .all([
         axios.post(server_URL + "Industrialv_display", params),
         axios.post(server_URL + "Inplant_display", params),
