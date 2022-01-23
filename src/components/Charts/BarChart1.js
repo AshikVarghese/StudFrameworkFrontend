@@ -7,7 +7,7 @@ import { barChartData, barChartOptions } from "variables/charts";
 
 import axios from "axios";
 
-var server_URL = "http://192.168.1.145:8080/";
+var server_URL = "localhost:3000/";
 
 let chartOptions = {
   chart: {
@@ -87,7 +87,7 @@ let chartOptions = {
   ],
 };
 
-function BarChartPlacement() {
+function BarChartInternship() {
   const [intern_lst, setintern] = useState([100]);
 
   var chartData = { name: "Internship", data: intern_lst };
@@ -125,4 +125,4 @@ function BarChartPlacement() {
   );
 }
 
-export default BarChartPlacement;
+export default BarChartInternship;

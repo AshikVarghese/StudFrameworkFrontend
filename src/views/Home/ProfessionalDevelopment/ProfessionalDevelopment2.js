@@ -42,12 +42,11 @@ function ProfessionalDevelopment() {
   const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
-  params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
 
   useEffect(async () => {
     axios
-      .post(server_URL + "ProfessionalDevelopmentCA", params)
+      .post(server_URL + "ProfessionalDevelopmentHOD", params)
       .then((items) => {
         setData(items.data);
         setLoading(true);
