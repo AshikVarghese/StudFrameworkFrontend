@@ -264,7 +264,7 @@ function ProfessionalDevelopmentData1() {
                   {p2data.map((item2) => {
                     return (
                       <ProfessionalDevelopmentTableRow2
-                        id = {item2.s_no}
+                        id={item2.s_no}
                         row1={item2.industry || Null_message}
                         row2={item2.date || Null_message}
                         row3={item2.outcome || Null_message}
@@ -309,11 +309,11 @@ function ProfessionalDevelopmentData1() {
                     <Th color="gray.400">Verify</Th>
                   </Tr>
                 </Thead>
-                <Tbody> 
+                <Tbody>
                   {p3data.map((item3) => {
                     return (
                       <ProfessionalDevelopmentTableRow3
-                        id = {item3.s_no} 
+                        id={item3.s_no}
                         row1={item3.topic || Null_message}
                         row2={item3.resource_person || Null_message}
                         row3={item3.outcome || Null_message}
@@ -363,7 +363,7 @@ function ProfessionalDevelopmentData1() {
                   {p4data.map((item4) => {
                     return (
                       <ProfessionalDevelopmentTableRow4
-                        id = {item4.s_no}
+                        id={item4.s_no}
                         row1={item4.topic || Null_message}
                         row2={item4.date || Null_message}
                         row3={item4.resource_person || Null_message}
@@ -414,7 +414,7 @@ function ProfessionalDevelopmentData1() {
                   {p5data.map((item5) => {
                     return (
                       <ProfessionalDevelopmentTableRow5
-                        id = {item5.s_no}
+                        id={item5.s_no}
                         row1={item5.company_name || Null_message}
                         row2={item5.date || Null_message}
                         row3={item5.duration || Null_message}
@@ -464,7 +464,7 @@ function ProfessionalDevelopmentData1() {
                   {p6data.map((item6) => {
                     return (
                       <ProfessionalDevelopmentTableRow6
-                        id = {item6.s_no}
+                        id={item6.s_no}
                         row1={item6.course_name || Null_message}
                         row2={item6.date || Null_message}
                         row3={item6.outcome || Null_message}
@@ -514,7 +514,7 @@ function ProfessionalDevelopmentData1() {
                   {p7data.map((item7) => {
                     return (
                       <ProfessionalDevelopmentTableRow7
-                        id = {item7.s_no}
+                        id={item7.s_no}
                         row1={item7.topic || Null_message}
                         row2={item7.date || Null_message}
                         row3={item7.resource_person || Null_message}
@@ -565,7 +565,7 @@ function ProfessionalDevelopmentData1() {
                   {p8data.map((item8) => {
                     return (
                       <ProfessionalDevelopmentTableRow8
-                        id = {item8.s_no}
+                        id={item8.s_no}
                         row1={item8.topic || Null_message}
                         row2={item8.date || Null_message}
                         row3={item8.resource_person || Null_message}
@@ -618,7 +618,7 @@ function ProfessionalDevelopmentData1() {
                   {p9data.map((item9) => {
                     return (
                       <ProfessionalDevelopmentTableRow9
-                        id = {item9.s_no}
+                        id={item9.s_no}
                         row1={item9.comp_name || Null_message}
                         row2={item9.comp_type || Null_message}
                         row3={item9.date || Null_message}
@@ -668,7 +668,7 @@ function ProfessionalDevelopmentData1() {
                   {p10data.map((item10) => {
                     return (
                       <ProfessionalDevelopmentTableRow10
-                        id = {item10.s_no}
+                        id={item10.s_no}
                         row1={item10.aptitude || Null_message}
                         row2={item10.soft_skills || Null_message}
                         row3={item10.reasoning || Null_message}
@@ -717,7 +717,7 @@ function ProfessionalDevelopmentData1() {
                   {p11data.map((item11) => {
                     return (
                       <ProfessionalDevelopmentTableRow11
-                        id = {item11.s_no}
+                        id={item11.s_no}
                         row1={item11.project_title || Null_message}
                         row2={item11.objective || Null_message}
                         row3={item11.outcome || Null_message}
@@ -766,7 +766,7 @@ function ProfessionalDevelopmentData1() {
                   {p12data.map((item12) => {
                     return (
                       <ProfessionalDevelopmentTableRow12
-                        id = {item12.s_no}
+                        id={item12.s_no}
                         row1={item12.title || Null_message}
                         row2={item12.objective || Null_message}
                         row3={item12.outcome || Null_message}
@@ -817,7 +817,7 @@ function ProfessionalDevelopmentData1() {
                   {p13data.map((item13) => {
                     return (
                       <ProfessionalDevelopmentTableRow13
-                        id = {item13.s_no}
+                        id={item13.s_no}
                         row1={item13.conf_or_journal || Null_message}
                         row2={item13.name || Null_message}
                         row3={item13.title || Null_message}

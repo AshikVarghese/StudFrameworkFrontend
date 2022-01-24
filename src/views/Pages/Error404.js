@@ -11,13 +11,14 @@ import {
   CardHeader,
   CardBody,
   useColorModeValue,
+  Container,
 } from "@chakra-ui/react";
 
 function Error404() {
   const textColor = useColorModeValue("gray.400", "white");
   return (
     <SimpleGrid>
-      <div>
+      <Container>
         <Text
           mt="7em"
           align="center"
@@ -27,8 +28,8 @@ function Error404() {
         >
           Error 404 !
         </Text>
-      </div>
-      <div>
+      </Container>
+      <Container>
         <Text
           m="2"
           align="center"
@@ -38,7 +39,7 @@ function Error404() {
         >
           The portal is under construction, try again later
         </Text>
-      </div>
+      </Container>
     </SimpleGrid>
   );
 }

@@ -8,6 +8,7 @@ import AdminLayout0 from "layouts/Admin0.js";
 import AdminLayout1 from "layouts/Admin1.js";
 import AdminLayout2 from "layouts/Admin2.js";
 import AdminLayout3 from "layouts/Admin3.js";
+import Error404 from "views/Pages/Error404";
 
 import "./components/Style/Style.scss";
 
@@ -19,7 +20,7 @@ ReactDOM.render(
       <Route path={`/admin1`} component={AdminLayout1} />
       <Route path={`/admin2`} component={AdminLayout2} />
       <Route path={`/admin3`} component={AdminLayout3} />
-
+      <Route component={Error404} />
       <Redirect from={`/`} to="/auth/SignIn" />
     </Switch>
   </HashRouter>,

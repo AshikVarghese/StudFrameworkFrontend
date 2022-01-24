@@ -1,4 +1,4 @@
-// Placement Charts
+// Academic summary Charts
 
 import React, { Component, useState } from "react";
 import Card from "components/Card/Card";
@@ -31,7 +31,7 @@ let chartOptions = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["2019-2023"],
+    categories: ["8.5","8.7","9.2","9.9"],
     show: true,
     labels: {
       show: true,
@@ -87,22 +87,22 @@ let chartOptions = {
   ],
 };
 
-function BarChartPlacement() {
-  const [placement_lst, setplace] = useState([100]);
+function BarChartAcademicSummary() {
+  const [student_lst, setstud] = useState([100]);
 
-  var chartData = { name: "Placement", data: placement_lst };
+  var chartData = { name: "AcademicSummary", data: student_lst };
 
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
 
   useState(async () => {
-    axios.post(server_URL + "PlacementGraphCA", params).then((items) => {
+    axios.post(server_URL + "AcademicSummaryGraphCA", params).then((items) => {
        console.log(items);
       // console.log(items.data.placement_lst);
       // console.log(...items.data.placement_lst);
-      setplace(items.data.placement_lst);
-      chartOptions.xaxis.categories = items.data.batches;
+      setstud(items.data.student_lst);
+      chartOptions.xaxis.categories = items.data.CGPA;
     });
   });
 
@@ -125,4 +125,4 @@ function BarChartPlacement() {
   );
 }
 
-export default BarChartPlacement;
+export default BarChartAcademicSummary;
