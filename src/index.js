@@ -20,7 +20,6 @@ ReactDOM.render(
       <Route path={`/admin1`} component={AdminLayout1} />
       <Route path={`/admin2`} component={AdminLayout2} />
       <Route path={`/admin3`} component={AdminLayout3} />
-      <Route component={Error404} />
       <Redirect from={`/`} to="/auth/SignIn" />
     </Switch>
   </HashRouter>,
