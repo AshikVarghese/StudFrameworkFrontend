@@ -38,7 +38,7 @@ function Extracurricular() {
   const [searchTerm1, setSearchTerm1] = useState("");
 
   let params = new URLSearchParams();
-  params.append("batch", localStorage.getItem("batch"));
+  params.append("batch", "None");
   params.append("dept", localStorage.getItem("dept"));
 
   useEffect(async () => {
