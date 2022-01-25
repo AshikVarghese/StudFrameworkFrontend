@@ -197,18 +197,16 @@ function GeneralInformation3() {
                 />
               </InputGroup> */}
 
-              <Select placeholder="Department" id="dept">
+              <Select
+                placeholder="Department"
+                id="dept"
+                onChange={(e) => setSearchTerm2(e.target.value)}
+              >
                 {data3.map((data) => {
-                  return (
-                    <option
-                      value={data.dept}
-                      onClick={() => setSearchTerm2(data.dept)}
-                    >
-                      {data.dept}
-                    </option>
-                  );
+                  return <option value={data.dept}>{data.dept}</option>;
                 })}
               </Select>
+
             </Box>
 
             <Box>
