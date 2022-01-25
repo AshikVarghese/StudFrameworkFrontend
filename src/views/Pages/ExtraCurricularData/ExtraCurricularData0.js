@@ -46,6 +46,7 @@ import { server_URL } from "controller/urls_config";
 var resul;
 
 function ExtraCurricularData() {
+  const Null_message = "NULL";
   function substudextraclub() {
     let params = new URLSearchParams();
     params.append("Clubname", document.getElementById("CLUBNID").value);
@@ -236,12 +237,12 @@ function ExtraCurricularData() {
                   {Cdata.map((item1) => {
                     return (
                       <TableRow6
-                        row1={item1.club_name}
-                        row2={item1.date}
-                        row3={item1.activity_name}
-                        row4={item1.outcome}
-                        row5={item1.credits}
-                        row6={item1.verified}
+                        row1={item1.club_name || Null_message}
+                        row2={item1.date || Null_message}
+                        row3={item1.activity_name || Null_message}
+                        row4={item1.outcome || Null_message}
+                        row5={item1.credits || Null_message}
+                        row6={item1.verified || Null_message}
                       />
                     );
                   })}
@@ -433,11 +434,11 @@ function ExtraCurricularData() {
                   {Odata.map((item) => {
                     return (
                       <TableRow5
-                        row1={item.outreach_activity_name}
-                        row2={item.outreach_date}
-                        row3={item.outreach_outcome}
-                        row4={item.outreach_credits}
-                        row5={item.outreach_verified}
+                        row1={item.outreach_activity_name || Null_message}
+                        row2={item.outreach_date || Null_message}
+                        row3={item.outreach_outcome || Null_message}
+                        row4={item.outreach_credits || Null_message}
+                        row5={item.outreach_verified || Null_message}
                       />
                     );
                   })}
@@ -607,12 +608,12 @@ function ExtraCurricularData() {
                   {Sdata.map((item) => {
                     return (
                       <TableRow6
-                        row1={item.sport_name}
-                        row2={item.date}
-                        row3={item.representation}
-                        row4={item.position_secures}
-                        row5={item.credits}
-                        row6={item.verified}
+                        row1={item.sport_name || Null_message}
+                        row2={item.date || Null_message}
+                        row3={item.representation || Null_message}
+                        row4={item.position_secures || Null_message}
+                        row5={item.credits || Null_message}
+                        row6={item.verified || Null_message}
                       />
                     );
                   })}
@@ -807,11 +808,11 @@ function ExtraCurricularData() {
                   {Fdata.map((row) => {
                     return (
                       <TableRow5
-                        row1={row.event_name}
-                        row2={row.date}
-                        row3={row.position_secures}
-                        row4={row.credits}
-                        row5={row.verified}
+                        row1={row.event_name || Null_message}
+                        row2={row.date || Null_message}
+                        row3={row.position_secures || Null_message}
+                        row4={row.credits || Null_message}
+                        row5={row.verified || Null_message}
                       />
                     );
                   })}

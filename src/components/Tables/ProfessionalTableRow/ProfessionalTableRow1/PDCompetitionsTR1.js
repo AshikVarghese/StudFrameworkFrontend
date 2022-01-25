@@ -16,6 +16,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useColorModeValue,
+  useToast,
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -24,6 +25,9 @@ import React from "react";
 import { server_URL } from "controller/urls_config";
 
 function ProfessionalDevelopmentTableRow(props) {
+  // Toast var
+  const toast = useToast();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { id, row1, row2, row3, row4, row5, row6 } = props;
@@ -31,6 +35,7 @@ function ProfessionalDevelopmentTableRow(props) {
 
   function funedit() {
     let cid = { id };
+
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("comp_name", document.getElementById("nameID").value);
@@ -193,6 +198,13 @@ function ProfessionalDevelopmentTableRow(props) {
                 colorScheme="blue"
                 mr={3}
                 onClick={() => {
+                  toast({
+                    title: "Edited Successfully",
+                    status: "success",
+                    duration: 9000,
+                    position: "top",
+                    isClosable: true,
+                  });
                   funedit();
                   onClose();
                 }}

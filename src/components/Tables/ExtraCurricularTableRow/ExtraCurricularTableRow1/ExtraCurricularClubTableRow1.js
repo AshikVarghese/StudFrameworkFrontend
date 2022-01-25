@@ -16,6 +16,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useColorModeValue,
+  useToast,
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -24,6 +25,8 @@ import React from "react";
 import { server_URL } from "controller/urls_config";
 
 function ExtraCurricularTableRow(props) {
+  // Toast var
+  const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { id, row1, row2, row3, row4, row5, row6 } = props;
@@ -38,12 +41,11 @@ function ExtraCurricularTableRow(props) {
     params.append("date", document.getElementById("EPID").value);
     params.append("outcome", document.getElementById("EOID").value);
     params.append("credits", document.getElementById("EPDID").value);
-    axios.post(server_URL + "ExtraClubEdit", params).then((results)=>{
-      if(!results){
+    axios.post(server_URL + "ExtraClubEdit", params).then((results) => {
+      if (!results) {
         console.log("error");
-      }
-      else{
-        localStorage.setItem("proceed","success");
+      } else {
+        localStorage.setItem("proceed", "success");
       }
     });
   }
@@ -197,6 +199,13 @@ function ExtraCurricularTableRow(props) {
                 colorScheme="blue"
                 mr={3}
                 onClick={() => {
+                  toast({
+                    title: "Edited Successfully",
+                    status: "success",
+                    duration: 9000,
+                    position: "top",
+                    isClosable: true,
+                  });
                   funedit();
                   onClose();
                 }}

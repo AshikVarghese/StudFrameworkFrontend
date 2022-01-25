@@ -35,6 +35,8 @@ function InternationalData() {
   });
   const textColor = useColorModeValue("gray.700", "white");
 
+  const Null_message = "NULL";
+
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
@@ -68,15 +70,15 @@ function InternationalData() {
                 {data.map((item) => {
                   return (
                     <InternationalTableRow
-                      id={item.s_no}
-                      row1={item.foreign_campus}
-                      row2={item.duration}
-                      row3={item.project}
-                      row4={item.outcome}
-                      row5={item.personal_development}
-                      row6={item.foreign_language_courses}
-                      row7={item.credits}
-                      row8={item.verify}
+                      id={item.s_no || Null_message}
+                      row1={item.foreign_campus || Null_message}
+                      row2={item.duration || Null_message}
+                      row3={item.project || Null_message}
+                      row4={item.outcome || Null_message}
+                      row5={item.personal_development || Null_message}
+                      row6={item.foreign_language_courses || Null_message}
+                      row7={item.credits || Null_message}
+                      row8={item.verify || Null_message}
                     />
                   );
                 })}
