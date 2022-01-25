@@ -37,6 +37,8 @@ function ExtraCurricularData() {
 
   const [data, setdata] = useState([[], [], [], []]);
 
+  const Null_message = "NULL";
+
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
@@ -117,13 +119,13 @@ function ExtraCurricularData() {
                     data[0].map((items) => {
                       return (
                         <ExtraCurricualarTableRow1
-                          id={items.s_no}
-                          row1={items.club_name}
-                          row2={items.activity_name}
-                          row3={items.date}
-                          row4={items.outcome}
-                          row5={items.credits}
-                          row6={items.verified}
+                          id={items.s_no || Null_message}
+                          row1={items.club_name || Null_message}
+                          row2={items.activity_name || Null_message}
+                          row3={items.date || Null_message}
+                          row4={items.outcome || Null_message}
+                          row5={items.credits || Null_message}
+                          row6={items.verified || Null_message}
                         />
                       );
                     })
@@ -171,12 +173,12 @@ function ExtraCurricularData() {
                     data[1].map((item) => {
                       return (
                         <ExtraCurricualarTableRow2
-                          id={item.s_no}
-                          row1={item.outreach_activity_name}
-                          row2={item.outreach_date}
-                          row3={item.outreach_outcome}
-                          row4={item.credits}
-                          row5={item.outreach_verified}
+                          id={item.s_no || Null_message}
+                          row1={item.outreach_activity_name || Null_message}
+                          row2={item.outreach_date || Null_message}
+                          row3={item.outreach_outcome || Null_message}
+                          row4={item.credits || Null_message}
+                          row5={item.outreach_verified || Null_message}
                         />
                       );
                     })
@@ -225,13 +227,13 @@ function ExtraCurricularData() {
                     data[2].map((row) => {
                       return (
                         <ExtraCurricualarTableRow3
-                          id={row.s_no}
-                          row1={row.sport_name}
-                          row2={row.representation}
-                          row3={row.position_secures}
-                          row4={row.date}
-                          row5={row.credits}
-                          row6={row.verified}
+                          id={row.s_no || Null_message}
+                          row1={row.sport_name || Null_message}
+                          row2={row.representation || Null_message}
+                          row3={row.position_secures || Null_message}
+                          row4={row.date || Null_message}
+                          row5={row.credits || Null_message}
+                          row6={row.verified || Null_message}
                         />
                       );
                     })
@@ -279,12 +281,12 @@ function ExtraCurricularData() {
                     data[3].map((row) => {
                       return (
                         <ExtraCurricualarTableRow4
-                          id={row.s_no}
-                          row1={row.event_name}
-                          row2={row.date}
-                          row3={row.position_secures}
-                          row4={row.credits}
-                          row5={row.verified}
+                          id={row.s_no || Null_message}
+                          row1={row.event_name || Null_message}
+                          row2={row.date || Null_message}
+                          row3={row.position_secures || Null_message}
+                          row4={row.credits || Null_message}
+                          row5={row.verified || Null_message}
                         />
                       );
                     })

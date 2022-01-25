@@ -19,6 +19,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  useToast,
   Box,
 } from "@chakra-ui/react";
 
@@ -37,6 +38,8 @@ import { CSVLink } from "react-csv";
 import { server_URL } from "controller/urls_config";
 
 function Extracurricular() {
+  // Toast var
+  const toast = useToast();
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
@@ -133,6 +136,15 @@ function Extracurricular() {
             <Button
               minWidth="fit-content"
               mt="1.5em"
+              onClick={() =>
+                toast({
+                  title: "Report Downloaded Successfully",
+                  status: "success",
+                  duration: 9000,
+                  position: "top",
+                  isClosable: true,
+                })
+              }
               colorScheme="orange"
               variant="solid"
             >

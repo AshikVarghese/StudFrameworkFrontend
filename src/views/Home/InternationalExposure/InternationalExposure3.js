@@ -1,3 +1,5 @@
+/** @format */
+
 //Official International Exposure
 
 import React, { useState, useEffect } from "react";
@@ -272,9 +274,7 @@ function InternationalExposure() {
               variant="solid"
               onClick={() =>
                 toast({
-                  title: "Report Downloaded",
-                  description:
-                    "International Exposure Report Downloaded Successfully",
+                  title: "Report Downloaded Successfully",
                   status: "success",
                   duration: 9000,
                   position: "top",

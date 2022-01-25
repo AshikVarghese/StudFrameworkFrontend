@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor International Exposure Table Row
 
 import {
@@ -14,6 +16,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  useToast,
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -22,6 +25,9 @@ import { server_URL } from "controller/urls_config";
 
 function InternationalTableRow(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Toast var
+  const toast = useToast();
 
   function funedit() {
     let cid = { id };
@@ -256,6 +262,14 @@ function InternationalTableRow(props) {
                 colorScheme="blue"
                 mr={3}
                 onClick={() => {
+                  toast({
+                    title: "Edited Successfully",
+                    status: "success",
+                    duration: 9000,
+                    position: "top",
+                    isClosable: true,
+                  });
+
                   funedit();
                   onClose();
                 }}

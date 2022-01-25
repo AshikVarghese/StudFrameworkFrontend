@@ -1,3 +1,5 @@
+/** @format */
+
 //HoD Extracurricular
 
 import React, { useState, useEffect } from "react";
@@ -18,6 +20,7 @@ import {
   InputGroup,
   InputLeftElement,
   SimpleGrid,
+  useToast,
   Box,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -34,6 +37,8 @@ var Loader = require("react-loader");
 import { CSVLink } from "react-csv";
 
 function Extracurricular() {
+  // Toast var
+  const toast = useToast();
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
@@ -193,7 +198,15 @@ function Extracurricular() {
             <Button
               minWidth="fit-content"
               mt="1em"
-              onClick="m"
+              onClick={() =>
+                toast({
+                  title: "Report Downloaded Successfully",
+                  status: "success",
+                  duration: 9000,
+                  position: "top",
+                  isClosable: true,
+                })
+              }
               colorScheme="orange"
               variant="solid"
             >

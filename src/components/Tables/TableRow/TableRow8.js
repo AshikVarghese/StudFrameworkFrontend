@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-function TableRow7(props) {
-  const { row1, row2, row3, row4, row5, row6, row7 } = props;
+function TableRow8(props) {
+  const { row1, row2, row3, row4, row5, row6, row7, row8 } = props;
   const textColor = useColorModeValue("gray.700", "white");
 
   return (
@@ -58,17 +58,24 @@ function TableRow7(props) {
           </FormControl>
         </Flex>
       </Td>
-      <Td minWidth="5em">
+      <Td minWidth="15em">
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <FormControl>
             <Flex direction="column">{row6}</Flex>
           </FormControl>
         </Flex>
       </Td>
-      <Td minWidth="9em">
+      <Td minWidth="5em">
         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
           <FormControl>
             <Flex direction="column">{row7}</Flex>
+          </FormControl>
+        </Flex>
+      </Td>
+      <Td minWidth="5em">
+        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
+          <FormControl>
+            <Flex direction="column">{row8}</Flex>
           </FormControl>
         </Flex>
       </Td>
@@ -76,4 +83,4 @@ function TableRow7(props) {
   );
 }
 
-export default TableRow7;
+export default TableRow8;

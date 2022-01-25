@@ -320,9 +320,7 @@ function GeneralInformation3() {
                 variant="solid"
                 onClick={() =>
                   toast({
-                    title: "Report Downloaded",
-                    description:
-                      "General Information Report Downloaded Successfully",
+                    title: "Report Downloaded Successfully",
                     status: "success",
                     duration: 9000,
                     position: "top",
