@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { URL, server_URL } from "./urls_config";
 
@@ -66,6 +68,7 @@ export default function handleLogin() {
       } else if (check.user_type == 1) {
         localStorage.setItem("batch", check.batch);
         localStorage.setItem("dept", check.dept);
+        localStorage.setItem("caemail", check.email);
         window.location.href = URL + "Class-Advisor#/admin1/GeneralInformation";
       } else if (check.user_type == 3) {
         localStorage.setItem("offemail", check.email);
