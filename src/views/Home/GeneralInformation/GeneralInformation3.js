@@ -1,3 +1,5 @@
+/** @format */
+
 //Official Dashboard/General
 
 import React, { useState, useEffect } from "react";
@@ -64,7 +66,7 @@ function GeneralInformation3() {
   //     setData(items.data);
   //     setLoading(true);
   //   });
-    
+
   // });
 
   // useEffect(async () => {
@@ -80,15 +82,11 @@ function GeneralInformation3() {
         axios.post(server_URL + "GeneralOfficialDepartment", params),
       ])
       .then(
-        axios.spread(
-          (
-            data,
-            data3,
-          ) => {
-            setData(data.data);
-            setData3(data3.data); 
-            setLoading(true);         }
-        )
+        axios.spread((data, data3) => {
+          setData(data.data);
+          setData3(data3.data);
+          setLoading(true);
+        })
       );
   }, []);
 
@@ -199,11 +197,16 @@ function GeneralInformation3() {
                 />
               </InputGroup> */}
 
-            <Select placeholder='Department' id='dept'>
+              <Select
+                placeholder="Department"
+                id="dept"
+                onChange={(e) => setSearchTerm2(e.target.value)}
+              >
                 {data3.map((data) => {
-                  return <option value={data.dept} onClick={()=>setSearchTerm2(data.dept)}>{data.dept}</option>;
+                  return <option value={data.dept}>{data.dept}</option>;
                 })}
               </Select>
+
             </Box>
 
             <Box>

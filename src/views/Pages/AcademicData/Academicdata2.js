@@ -59,7 +59,6 @@ function Academicdata() {
               header.COLUMN_NAME != "id" && header.COLUMN_NAME != "roll_no"
           );
           console.log(data2);
-          filtered_data.reverse();
 
           let student_data = [];
           for (var i = 0; i < data2.data.length; i++) {
