@@ -97,8 +97,8 @@ function BarChartPlacement() {
   params.append("dept", localStorage.getItem("dept"));
 
   useState(async () => {
-    axios.post(server_URL + "PlacementGraphCA", params).then((items) => {
-       console.log(items);
+    axios.post(server_URL + "PlacementGraphHOD", params).then((items) => {
+      console.log(items);
       // console.log(items.data.placement_lst);
       // console.log(...items.data.placement_lst);
       setplace(items.data.placement_lst);

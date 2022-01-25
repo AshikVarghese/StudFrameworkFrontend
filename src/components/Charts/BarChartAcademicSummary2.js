@@ -31,7 +31,7 @@ let chartOptions = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["8.5","8.7","9.2","9.9"],
+    categories: ["8.5", "8.7", "9.2", "9.9"],
     show: true,
     labels: {
       show: true,
@@ -97,8 +97,8 @@ function BarChartAcademicSummary() {
   params.append("dept", localStorage.getItem("dept"));
 
   useState(async () => {
-    axios.post(server_URL + "AcademicSummaryGraphCA", params).then((items) => {
-       console.log(items);
+    axios.post(server_URL + "AcademicSummaryGraphHOD", params).then((items) => {
+      console.log(items);
       // console.log(items.data.placement_lst);
       // console.log(...items.data.placement_lst);
       setstud(items.data.student_lst);

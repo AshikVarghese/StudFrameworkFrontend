@@ -6,17 +6,14 @@ import { Box, Flex, SimpleGrid, Stat, StatLabel } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import BarChart from "components/Charts/BarChart";
-import LineChart from "components/Charts/LineChart";
-import BarChartInternship from "components/Charts/BarChart1";
-import BarChartPlacement from "components/Charts/BarChartPlacement";
-import BarChartAcademicSummary from "components/Charts/BarChartAcademicSummary";
-import LineChartAcademics from "components/Charts/LineChartAcademics";
+import BarChartInternship from "components/Charts/BarChartInternship2";
+import BarChartPlacement from "components/Charts/BarChartPlacement2";
+import BarChartAcademicSummary from "components/Charts/BarChartAcademicSummary2";
+import LineChartAcademics from "components/Charts/LineChartAcademics2";
 export default function Dashboard() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 2, xl: 2 }} gap={5}>
-
         <Card minH="300px">
           <CardBody>
             <Flex
@@ -32,7 +29,7 @@ export default function Dashboard() {
                   fontWeight="bold"
                   pb=".1rem"
                 >
-                  Placement 
+                  Placement
                 </StatLabel>
               </Stat>
               <Box w="100%" h={{ sm: "225px" }} ps="8px">
@@ -105,7 +102,7 @@ export default function Dashboard() {
                   fontWeight="bold"
                   pb=".1rem"
                 >
-                  Academic CGPA 
+                  Academic CGPA
                 </StatLabel>
               </Stat>
               <Box w="100%" h={{ sm: "225px" }} ps="8px">
