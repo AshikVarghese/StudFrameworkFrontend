@@ -52,7 +52,7 @@ function Academicdata() {
             (header) =>
               header.COLUMN_NAME != "id" && header.COLUMN_NAME != "roll_no"
           );
-          filtered_data.reverse();
+
           console.log("JJ");
           console.log(filtered_data);
 

@@ -1,3 +1,5 @@
+/** @format */
+
 //Official Dashboard/General
 
 import React, { useState, useEffect } from "react";
@@ -5,6 +7,8 @@ import axios from "axios";
 import { CSVLink } from "react-csv";
 
 var data2 = [];
+var data3 = [];
+
 var Loader = require("react-loader");
 import SignIn from "../../Pages/SignIn";
 
@@ -26,6 +30,7 @@ import {
   SimpleGrid,
   Box,
   useToast,
+  Select,
 } from "@chakra-ui/react";
 
 import { SearchIcon } from "@chakra-ui/icons";
@@ -42,6 +47,7 @@ var is_loading = true;
 
 function GeneralInformation3() {
   const [data, setData] = useState([]);
+  const [data3, setData3] = useState([]);
   const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
@@ -55,12 +61,34 @@ function GeneralInformation3() {
   params.append("department", localStorage.getItem("dept"));
   let auth_token = localStorage.getItem("auth_token");
 
-  useEffect(async () => {
-    axios.post(server_URL + "GeneralOfficial", params).then((items) => {
-      setData(items.data);
-      setLoading(true);
-    });
-  });
+  // useEffect(async () => {
+  //   axios.post(server_URL + "GeneralOfficial", params).then((items) => {
+  //     setData(items.data);
+  //     setLoading(true);
+  //   });
+
+  // });
+
+  // useEffect(async () => {
+  // axios.post(server_URL + "GeneralOfficialDepartment",params).then((items) => {
+  //   setData3(items.data3);
+  //   });
+  // });
+
+  useState(async () => {
+    axios
+      .all([
+        axios.post(server_URL + "GeneralOfficial", params),
+        axios.post(server_URL + "GeneralOfficialDepartment", params),
+      ])
+      .then(
+        axios.spread((data, data3) => {
+          setData(data.data);
+          setData3(data3.data);
+          setLoading(true);
+        })
+      );
+  }, []);
 
   data2 = data.filter((item) => {
     if (searchTerm2 == "" && searchTerm == "" && searchTerm1 == "") {
@@ -126,7 +154,7 @@ function GeneralInformation3() {
                 </Text>
               </CardHeader>
 
-              <InputGroup
+              {/* <InputGroup
                 bg={inputBg}
                 mt="1rem"
                 borderRadius="15px"
@@ -167,7 +195,17 @@ function GeneralInformation3() {
                   borderRadius="inherit"
                   value={searchTerm2}
                 />
-              </InputGroup>
+              </InputGroup> */}
+
+              <Select
+                placeholder="Department"
+                id="dept"
+                onChange={(e) => setSearchTerm2(e.target.value)}
+              >
+                {data3.map((data) => {
+                  return <option value={data.dept}>{data.dept}</option>;
+                })}
+              </Select>
             </Box>
 
             <Box>
