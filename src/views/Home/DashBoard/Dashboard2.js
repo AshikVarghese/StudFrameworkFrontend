@@ -85,34 +85,6 @@ export default function Dashboard() {
             </Flex>
           </CardBody>
         </Card>
-<<<<<<< HEAD
-
-        <Card minH="300px">
-          <CardBody>
-            <Flex
-              flexDirection="column"
-              align="center"
-              justify="center"
-              w="100%"
-            >
-              <Stat mr="auto">
-                <StatLabel
-                  fontSize="sm"
-                  color="gray.400"
-                  fontWeight="bold"
-                  pb=".1rem"
-                >
-                  Academic CGPA
-                </StatLabel>
-              </Stat>
-              <Box w="100%" h={{ sm: "225px" }} ps="8px">
-                <BarChartAcademicSummary />
-              </Box>
-            </Flex>
-          </CardBody>
-        </Card>
-=======
->>>>>>> 03e8fd890bbbb3bafe96fb1ebb5c7bc5e371d4ae
       </SimpleGrid>
     </Flex>
   );
