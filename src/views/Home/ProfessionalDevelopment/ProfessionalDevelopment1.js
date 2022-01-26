@@ -1,3 +1,5 @@
+/** @format */
+
 //Class Advisor Professional Development
 
 import React, { useState, useEffect } from "react";
@@ -19,6 +21,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  useToast,
   Box,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -33,6 +36,8 @@ import { server_URL } from "controller/urls_config";
 var Loader = require("react-loader");
 
 function ProfessionalDevelopment() {
+  // Toast var
+  const toast = useToast();
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
@@ -129,7 +134,15 @@ function ProfessionalDevelopment() {
             <Button
               minWidth="fit-content"
               mt="1em"
-              onClick="m"
+              onClick={() =>
+                toast({
+                  title: "Report Downloaded Successfully",
+                  status: "success",
+                  duration: 9000,
+                  position: "top",
+                  isClosable: true,
+                })
+              }
               colorScheme="orange"
               alignSelf="flex-end"
               variant="solid"

@@ -8,7 +8,6 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import BarChartInternship from "components/Charts/BarChartInternship2";
 import BarChartPlacement from "components/Charts/BarChartPlacement2";
-import BarChartAcademicSummary from "components/Charts/BarChartAcademicSummary2";
 import LineChartAcademics from "components/Charts/LineChartAcademics2";
 export default function Dashboard() {
   return (
@@ -86,6 +85,7 @@ export default function Dashboard() {
             </Flex>
           </CardBody>
         </Card>
+<<<<<<< HEAD
 
         <Card minH="300px">
           <CardBody>
@@ -111,6 +111,8 @@ export default function Dashboard() {
             </Flex>
           </CardBody>
         </Card>
+=======
+>>>>>>> 03e8fd890bbbb3bafe96fb1ebb5c7bc5e371d4ae
       </SimpleGrid>
     </Flex>
   );

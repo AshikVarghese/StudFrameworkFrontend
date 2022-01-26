@@ -176,9 +176,7 @@ function Academic() {
                 variant="solid"
                 onClick={() =>
                   toast({
-                    title: "Report Downloaded",
-                    description:
-                      "General Information Report Downloaded Successfully",
+                    title: "Report Downloaded Successfully",
                     status: "success",
                     duration: 9000,
                     position: "top",
@@ -198,6 +196,13 @@ function Academic() {
           <Button
             onClick={() => {
               onToggle();
+              toast({
+                title: "Uploaded Successfully",
+                status: "success",
+                duration: 9000,
+                position: "top",
+                isClosable: true,
+              });
             }}
             ms="4"
             marginTop="2"

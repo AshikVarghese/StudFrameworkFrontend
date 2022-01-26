@@ -37,7 +37,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-import TableRow7 from "components/Tables/TableRow/TableRow7";
+import TableRow8 from "components/Tables/TableRow/TableRow8";
 import { server_URL } from "controller/urls_config";
 
 var resul;
@@ -67,6 +67,8 @@ function InternationalData() {
   const textColor = useColorModeValue("gray.700", "white");
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const Null_message = "NULL";
 
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
@@ -110,16 +112,16 @@ function InternationalData() {
               <Tbody>
                 {data.map((item) => {
                   return (
-                    <TableRow7
-                      id={item.s_no}
-                      row1={item.foreign_campus}
-                      row2={item.duration}
-                      row3={item.project}
-                      row4={item.outcome}
-                      row5={item.personal_development}
-                      row6={item.foreign_language_courses}
-                      row7={item.credits}
-                      row8={item.verify}
+                    <TableRow8
+                      id={item.s_no || Null_message}
+                      row1={item.foreign_campus || Null_message}
+                      row2={item.duration || Null_message}
+                      row3={item.project || Null_message}
+                      row4={item.outcome || Null_message}
+                      row5={item.personal_development || Null_message}
+                      row6={item.foreign_language_courses || Null_message}
+                      row7={item.credits || Null_message}
+                      row8={item.verify || Null_message}
                     />
                   );
                 })}
