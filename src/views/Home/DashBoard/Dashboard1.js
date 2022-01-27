@@ -8,37 +8,15 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import BarChartInternship from "components/Charts/BarChartInternship2";
 import BarChartPlacement from "components/Charts/BarChartPlacement2";
-import LineChart from "components/Charts/LineChartAcademics2";
+import LineChart from "components/Charts/LineChartAcademics1";
+import BarChartAcademicSummary from "components/Charts/BarChartAcademicSummary1";
 
 export default function Dashboard() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 2, xl: 2 }} gap={5}>
-        <Card minH="300px">
-          <CardBody>
-            <Flex
-              flexDirection="column"
-              align="center"
-              justify="center"
-              w="100%"
-            >
-              <Stat mr="auto">
-                <StatLabel
-                  fontSize="sm"
-                  color="gray.400"
-                  fontWeight="bold"
-                  pb="1.5rem"
-                >
-                  Academic Results
-                </StatLabel>
-              </Stat>
-              <Box w="100%" h={{ sm: "225px" }} ps="8px">
-                <LineChart />
-              </Box>
-            </Flex>
-          </CardBody>
-        </Card>
-
+        <BarChartAcademicSummary />
+        <LineChart />
         <Card minH="300px">
           <CardBody>
             <Flex
@@ -57,7 +35,7 @@ export default function Dashboard() {
                   Placement Statistics
                 </StatLabel>
               </Stat>
-              <Box w="100%" h={{ sm: "225px" }} ps="8px">
+              <Box w="100%" h={{ sm: "225px" }} ps="8px" pt={"20px"}>
                 <BarChartPlacement />
               </Box>
             </Flex>

@@ -11,7 +11,6 @@ import { server_URL } from "controller/urls_config";
 
 function LineChart() {
   const [batches, setbatches] = useState(["2019-2023"]);
-
   const [batched_result, set_batched_result] = useState({
     "2020-2024": [
       {
@@ -72,17 +71,17 @@ function LineChart() {
   });
 
   let params = new URLSearchParams();
-  params.append("batch", "None");
+  params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
 
   useState(async () => {
-    axios.post(server_URL + "AcademicsGraphHOD", params).then((items) => {
-      set_batched_result(items.data.results.batched_result);
-      setbatches(Object.keys(items.data.results.batched_result));
+    axios.post(server_URL + "AcademicsGraphCA", params).then((items) => {
+      set_batched_result(items.data.batched_result);
+      setbatches(Object.keys(items.data.batched_result));
       set_linechartOptions({
         ...lineChartOptions,
         xaxis: {
-          categories: items.data.results.exams,
+          categories: items.data.exams,
           labels: {
             style: {
               colors: "#c8cfca",

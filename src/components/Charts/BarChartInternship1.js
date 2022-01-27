@@ -97,9 +97,6 @@ function BarChartInternship() {
 
   useState(async () => {
     axios.post(server_URL + "InternshipGraphCA", params).then((items) => {
-      // console.log(items);
-      // console.log(items.data.placement_lst);
-      // console.log(...items.data.placement_lst);
       setChartData({
         ...chartData,
         data: items.data.intern_lst,
