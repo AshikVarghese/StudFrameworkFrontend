@@ -8,7 +8,6 @@ import { barChartData, barChartOptions } from "variables/charts";
 import axios from "axios";
 
 import { URL, server_URL } from "controller/urls_config";
-<<<<<<< HEAD
 
 let chartOptions = {
   chart: {
@@ -98,91 +97,78 @@ function BarChartPlacement() {
       toolbar: {
         show: false,
       },
-=======
-
-let chartOptions = {
-  chart: {
-    toolbar: {
-      show: false,
->>>>>>> 6e82dcc1ad0cf247525cd313a9ecfd96dfa9bbf0
     },
-  },
-  tooltip: {
-    style: {
-      backgroundColor: "red",
-      fontSize: "12px",
-      fontFamily: undefined,
-    },
-    onDatasetHover: {
+    tooltip: {
       style: {
         backgroundColor: "red",
         fontSize: "12px",
         fontFamily: undefined,
       },
+      onDatasetHover: {
+        style: {
+          backgroundColor: "red",
+          fontSize: "12px",
+          fontFamily: undefined,
+        },
+      },
+      theme: "dark",
     },
-    theme: "dark",
-  },
-  xaxis: {
-    categories: ["2019-2023"],
-    show: true,
-    labels: {
+    xaxis: {
+      categories: ["2019-2023"],
       show: true,
-      style: {
-        colors: "#fff",
-        fontSize: "12px",
+      labels: {
+        show: true,
+        style: {
+          colors: "#fff",
+          fontSize: "12px",
+        },
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
       },
     },
-    axisBorder: {
-      show: false,
-    },
-    axisTicks: {
-      show: false,
-    },
-  },
-  yaxis: {
-    show: true,
-    color: "#fff",
-    labels: {
+    yaxis: {
       show: true,
-      style: {
-        colors: "#fff",
-        fontSize: "14px",
-      },
-    },
-  },
-  grid: {
-    show: false,
-  },
-  fill: {
-    colors: "#fff",
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  plotOptions: {
-    bar: {
-      borderRadius: 8,
-      columnWidth: "12px",
-    },
-  },
-  responsive: [
-    {
-      breakpoint: 768,
-      options: {
-        plotOptions: {
-          bar: {
-            borderRadius: 0,
-          },
+      color: "#fff",
+      labels: {
+        show: true,
+        style: {
+          colors: "#fff",
+          fontSize: "14px",
         },
       },
     },
-  ],
-};
-
-function BarChartPlacement() {
-  const [placement_lst, setplace] = useState([100]);
-
-  var chartData = { name: "Placement", data: placement_lst };
+    grid: {
+      show: false,
+    },
+    fill: {
+      colors: "#fff",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 8,
+        columnWidth: "12px",
+      },
+    },
+    responsive: [
+      {
+        breakpoint: 768,
+        options: {
+          plotOptions: {
+            bar: {
+              borderRadius: 0,
+            },
+          },
+        },
+      },
+    ],
+  });
 
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
@@ -190,7 +176,6 @@ function BarChartPlacement() {
 
   useState(async () => {
     axios.post(server_URL + "PlacementGraphHOD", params).then((items) => {
-<<<<<<< HEAD
       setChartData({ ...chartData, data: items.data.placement_lst });
       setchartOptions({
         ...chartOptions,
@@ -212,13 +197,6 @@ function BarChartPlacement() {
           },
         },
       });
-=======
-      console.log(items);
-      // console.log(items.data.placement_lst);
-      // console.log(...items.data.placement_lst);
-      setplace(items.data.placement_lst);
-      chartOptions.xaxis.categories = items.data.batches;
->>>>>>> 6e82dcc1ad0cf247525cd313a9ecfd96dfa9bbf0
     });
   });
 
