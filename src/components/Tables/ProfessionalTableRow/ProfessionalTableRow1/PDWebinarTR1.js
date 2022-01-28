@@ -41,14 +41,22 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("date", document.getElementById("dateID").value);
     params.append("outcome", document.getElementById("outID").value);
     params.append("credits", document.getElementById("creditsID").value);
-    axios.post(server_URL + "webinar_edit", params);
+    axios.post(server_URL + "webinar_edit", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "webinar_delete", params);
+    axios.post(server_URL + "webinar_delete", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   function funverify() {
@@ -56,7 +64,11 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "webinar_verify", params);
+    axios.post(server_URL + "webinar_verify", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   return (
@@ -230,7 +242,7 @@ function ProfessionalDevelopmentTableRow(props) {
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
-          disabled={{ row6 }.row6 == "Verified" ? true : false}
+          disabled={{ row6 }.row6 == "Verified" ? true : false} 
         >
           Verify
         </Button>

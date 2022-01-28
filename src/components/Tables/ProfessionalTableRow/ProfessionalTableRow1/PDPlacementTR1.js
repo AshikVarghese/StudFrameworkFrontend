@@ -41,14 +41,22 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("reasoning", document.getElementById("REASON").value);
     params.append("technical_training", document.getElementById("TECHT").value);
     params.append("credits", document.getElementById("CRED4").value);
-    axios.post(server_URL + "placement_edit", params);
+    axios.post(server_URL + "placement_edit", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "placement_delete", params);
+    axios.post(server_URL + "placement_delete", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   function funverify() {
@@ -56,7 +64,11 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "placement_verify", params);
+    axios.post(server_URL + "placement_verify", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   return (
@@ -214,7 +226,7 @@ function ProfessionalDevelopmentTableRow(props) {
           width="fit-content"
         >
           Delete
-        </Button>
+        </Button> 
       </Td>
     </Tr>
   );
