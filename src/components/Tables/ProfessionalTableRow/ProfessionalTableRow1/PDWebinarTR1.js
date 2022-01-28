@@ -230,7 +230,7 @@ function ProfessionalDevelopmentTableRow(props) {
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
-          disabled={{ row5 }.row5 == "Verified" ? true : false}
+          disabled={{ row6 }.row6 == "Verified" ? true : false}
         >
           Verify
         </Button>

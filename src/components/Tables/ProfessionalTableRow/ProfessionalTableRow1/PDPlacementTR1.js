@@ -216,17 +216,6 @@ function ProfessionalDevelopmentTableRow(props) {
           Delete
         </Button>
       </Td>
-      <Td>
-        <Button
-          onClick={funverify}
-          bg="orange.300"
-          alignSelf="flex-end"
-          width="fit-content"
-          disabled={{ row5 }.row5 == "Verified" ? true : false}
-        >
-          Verify
-        </Button>
-      </Td>
     </Tr>
   );
 }

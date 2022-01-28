@@ -34,7 +34,7 @@ function ProfessionalDevelopmentTableRow(props) {
 
   function funedit() {
     let cid = { id };
-    let params = new URLSearchParams();
+    let params = new URLSearchParams(); 
     params.append("columnid", cid.id);
     params.append("topic", document.getElementById("TopicID").value);
     params.append("resource_person", document.getElementById("RsprID").value);
