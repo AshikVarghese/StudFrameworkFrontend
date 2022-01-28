@@ -49,6 +49,8 @@ function ProfessionalDevelopmentData0() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const Null_message = "NULL";
+
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
@@ -143,7 +145,7 @@ function ProfessionalDevelopmentData0() {
     let params = new URLSearchParams();
     params.append("StudentDetails", localStorage.getItem("StudentRoll"));
     params.append("Topic", document.getElementById("Topic").value);
-    params.append("DateYear", document.getElementById("DY3").value);
+
     params.append("Resource", document.getElementById("Resource").value);
     params.append("Outcome", document.getElementById("O3").value);
     params.append("status", "Pending");
@@ -348,7 +350,7 @@ function ProfessionalDevelopmentData0() {
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
   useEffect(async () => {
-    axios
+    axios 
       .all([
         axios.post(server_URL + "Industrialv_display", params),
         axios.post(server_URL + "Inplant_display", params),
@@ -402,44 +404,60 @@ function ProfessionalDevelopmentData0() {
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
-        <Button
-          ms="auto"
-          me="1em"
-          bg="orange.400"
-          width="fit-content"
-          height="2em"
-          onClick={() => {
-            setDrop1(!drop1),
-              setDrop2(!drop2),
-              setDrop3(!drop3),
-              setDrop4(!drop4),
-              setDrop5(!drop5),
-              setDrop6(!drop6),
-              setDrop7(!drop7),
-              setDrop8(!drop8),
-              setDrop9(!drop9),
-              setDrop10(!drop10),
-              setDrop11(!drop11),
-              setDrop12(!drop12),
-              setDrop13(!drop13);
-          }}
-        >
-          {drop1 ||
-          drop2 ||
-          drop3 ||
-          drop4 ||
-          drop5 ||
-          drop6 ||
-          drop7 ||
-          drop8 ||
-          drop9 ||
-          drop10 ||
-          drop11 ||
-          drop12 ||
-          drop13
-            ? "Hide All"
-            : "Show All"}
-        </Button>
+        <Flex direction="column" align="flex-end">
+          <box>
+            <Button
+              ms="auto"
+              me="1em"
+              bg="orange.400"
+              width="6em"
+              height="2em"
+              onClick={() => {
+                setDrop1(true),
+                  setDrop2(true),
+                  setDrop3(true),
+                  setDrop4(true),
+                  setDrop5(true),
+                  setDrop6(true),
+                  setDrop7(true),
+                  setDrop8(true),
+                  setDrop9(true),
+                  setDrop10(true),
+                  setDrop11(true),
+                  setDrop12(true),
+                  setDrop13(true);
+              }}
+            >
+              Show All
+            </Button>
+
+            <Button
+              ms="auto"
+              me="1em"
+              bg="orange.400"
+              width="6em"
+              height="2em"
+              onClick={() => {
+                setDrop1(false),
+                  setDrop2(false),
+                  setDrop3(false),
+                  setDrop4(false),
+                  setDrop5(false),
+                  setDrop6(false),
+                  setDrop7(false),
+                  setDrop8(false),
+                  setDrop9(false),
+                  setDrop10(false),
+                  setDrop11(false),
+                  setDrop12(false),
+                  setDrop13(false);
+              }}
+            >
+              Hide All
+            </Button>
+          </box>
+        </Flex>
+
         <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
@@ -472,11 +490,11 @@ function ProfessionalDevelopmentData0() {
                   {p1data.map((item1) => {
                     return (
                       <TableRow5
-                        row1={item1.industry_name}
-                        row2={item1.date}
-                        row3={item1.outcome}
-                        row4={item1.credits}
-                        row5={item1.verified}
+                        row1={item1.industry_name || Null_message}
+                        row2={item1.date || Null_message}
+                        row3={item1.outcome || Null_message}
+                        row4={item1.credits || Null_message}
+                        row5={item1.verified || Null_message}
                       />
                     );
                   })}
@@ -653,11 +671,11 @@ function ProfessionalDevelopmentData0() {
                   {p2data.map((item2) => {
                     return (
                       <TableRow5
-                        row1={item2.industry}
-                        row2={item2.date}
-                        row3={item2.outcome}
-                        row4={item2.credits}
-                        row5={item2.verified}
+                        row1={item2.industry || Null_message}
+                        row2={item2.date || Null_message}
+                        row3={item2.outcome || Null_message}
+                        row4={item2.credits || Null_message}
+                        row5={item2.verified || Null_message}
                       />
                     );
                   })}
@@ -829,11 +847,11 @@ function ProfessionalDevelopmentData0() {
                   {p3data.map((item3) => {
                     return (
                       <TableRow5
-                        row1={item3.topic}
-                        row2={item3.resorce_person}
-                        row3={item3.outcome}
-                        row4={item3.credits}
-                        row5={item3.verified}
+                        row1={item3.topic || Null_message}
+                        row2={item3.resource_person || Null_message}
+                        row3={item3.outcome || Null_message}
+                        row4={item3.credits || Null_message}
+                        row5={item3.verified || Null_message}
                       />
                     );
                   })}
@@ -850,7 +868,7 @@ function ProfessionalDevelopmentData0() {
                 <Thead>
                   <Tr>
                     <Th color="gray.400">Topic</Th>
-                    <Th color="gray.400">Date and Year</Th>
+
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                   </Tr>
@@ -873,22 +891,7 @@ function ProfessionalDevelopmentData0() {
                         />
                       </Flex>
                     </Td>
-                    <Td minWidth={{ sm: "14em" }}>
-                      <Flex
-                        align="center"
-                        py=".8rem"
-                        minWidth="100%"
-                        flexWrap="nowrap"
-                      >
-                        <Input
-                          borderRadius="5px"
-                          fontSize="sm"
-                          type="date"
-                          placeholder="Enter Date and Year"
-                          id="DY3"
-                        />
-                      </Flex>
-                    </Td>
+
                     <Td minWidth={{ sm: "14em" }}>
                       <Flex
                         align="center"
@@ -1019,12 +1022,12 @@ function ProfessionalDevelopmentData0() {
                   {p4data.map((item4) => {
                     return (
                       <TableRow6
-                        row1={item4.topic}
-                        row2={item4.date}
-                        row3={item4.resorce_person}
-                        row4={item4.outcome}
-                        row5={item4.credits}
-                        row6={item4.verified}
+                        row1={item4.topic || Null_message}
+                        row2={item4.date || Null_message}
+                        row3={item4.resource_person || Null_message}
+                        row4={item4.outcome || Null_message}
+                        row5={item4.credits || Null_message}
+                        row6={item4.verified || Null_message}
                       />
                     );
                   })}
@@ -1211,12 +1214,12 @@ function ProfessionalDevelopmentData0() {
                   {p5data.map((item5) => {
                     return (
                       <TableRow6
-                        row1={item5.company_name}
-                        row2={item5.date}
-                        row3={item5.duration}
-                        row4={item5.reference}
-                        row5={item5.credits}
-                        row6={item5.verified}
+                        row1={item5.company_name || Null_message}
+                        row2={item5.date || Null_message}
+                        row3={item5.duration || Null_message}
+                        row4={item5.reference || Null_message}
+                        row5={item5.credits || Null_message}
+                        row6={item5.verified || Null_message}
                       />
                     );
                   })}
@@ -1402,11 +1405,11 @@ function ProfessionalDevelopmentData0() {
                   {p6data.map((item6) => {
                     return (
                       <TableRow5
-                        row1={item6.course_name}
-                        row2={item6.date}
-                        row3={item6.outcome}
-                        row4={item6.credits}
-                        row5={item6.verified}
+                        row1={item6.course_name || Null_message}
+                        row2={item6.date || Null_message}
+                        row3={item6.outcome || Null_message}
+                        row4={item6.credits || Null_message}
+                        row5={item6.verified || Null_message}
                       />
                     );
                   })}
@@ -1577,12 +1580,12 @@ function ProfessionalDevelopmentData0() {
                   {p7data.map((item7) => {
                     return (
                       <TableRow6
-                        row1={item7.topic}
-                        row2={item7.date}
-                        row3={item7.resorce_person}
-                        row4={item7.outcome}
-                        row5={item7.credits}
-                        row6={item7.verified}
+                        row1={item7.topic || Null_message}
+                        row2={item7.date || Null_message}
+                        row3={item7.Resource || Null_message}
+                        row4={item7.outcome || Null_message}
+                        row5={item7.credits || Null_message}
+                        row6={item7.verified || Null_message}
                       />
                     );
                   })}
@@ -1769,12 +1772,12 @@ function ProfessionalDevelopmentData0() {
                   {p8data.map((item8) => {
                     return (
                       <TableRow6
-                        row1={item8.topic}
-                        row2={item8.date}
-                        row3={item8.resorce_person}
-                        row4={item8.outcome}
-                        row5={item8.credits}
-                        row6={item8.verified}
+                        row1={item8.topic || Null_message}
+                        row2={item8.date || Null_message}
+                        row3={item8.resorce_person || Null_message}
+                        row4={item8.outcome || Null_message}
+                        row5={item8.credits || Null_message}
+                        row6={item8.verified || Null_message}
                       />
                     );
                   })}
@@ -1962,12 +1965,12 @@ function ProfessionalDevelopmentData0() {
                   {p9data.map((item9) => {
                     return (
                       <TableRow6
-                        row1={item9.comp_name}
-                        row2={item9.comp_type}
-                        row3={item9.date}
-                        row4={item9.position_secured}
-                        row5={item9.credits}
-                        row6={item9.verified}
+                        row1={item9.comp_name || Null_message}
+                        row2={item9.comp_type || Null_message}
+                        row3={item9.date || Null_message}
+                        row4={item9.position_secured || Null_message}
+                        row5={item9.credits || Null_message}
+                        row6={item9.verified || Null_message}
                       />
                     );
                   })}
@@ -2156,12 +2159,12 @@ function ProfessionalDevelopmentData0() {
                   {p10data.map((item10) => {
                     return (
                       <TableRow6
-                        row1={item10.aptitude}
-                        row2={item10.soft_skills}
-                        row3={item10.reasoning}
-                        row4={item10.technical_training}
-                        row5={item10.credits}
-                        row6={item10.verified}
+                        row1={item10.aptitude || Null_message}
+                        row2={item10.soft_skills || Null_message}
+                        row3={item10.reasoning || Null_message}
+                        row4={item10.technical_training || Null_message}
+                        row5={item10.credits || Null_message}
+                        row6={item10.verified || Null_message}
                       />
                     );
                   })}
@@ -2347,11 +2350,11 @@ function ProfessionalDevelopmentData0() {
                   {p11data.map((item11) => {
                     return (
                       <TableRow5
-                        row1={item11.project_title}
-                        row2={item11.objective}
-                        row3={item11.outcome}
-                        row4={item11.credits}
-                        row5={item11.verified}
+                        row1={item11.project_title || Null_message}
+                        row2={item11.objective || Null_message}
+                        row3={item11.outcome || Null_message}
+                        row4={item11.credits || Null_message}
+                        row5={item11.verified || Null_message}
                       />
                     );
                   })}
@@ -2520,11 +2523,11 @@ function ProfessionalDevelopmentData0() {
                   {p12data.map((item12) => {
                     return (
                       <TableRow5
-                        row1={item12.title}
-                        row2={item12.objective}
-                        row3={item12.outcome}
-                        row4={item12.credits}
-                        row5={item12.verified}
+                        row1={item12.title || Null_message}
+                        row2={item12.objective || Null_message}
+                        row3={item12.outcome || Null_message}
+                        row4={item12.credits || Null_message}
+                        row5={item12.verified || Null_message}
                       />
                     );
                   })}
@@ -2695,13 +2698,13 @@ function ProfessionalDevelopmentData0() {
                   {p13data.map((item13) => {
                     return (
                       <TableRow7
-                        row1={item13.conf_or_journal}
-                        row2={item13.name}
-                        row3={item13.title}
-                        row4={item13.impact_factor}
-                        row5={item13.indexed_in}
-                        row6={item13.credits}
-                        row7={item13.verified}
+                        row1={item13.conf_or_journal || Null_message}
+                        row2={item13.name || Null_message}
+                        row3={item13.title || Null_message}
+                        row4={item13.impact_factor || Null_message}
+                        row5={item13.indexed_in || Null_message}
+                        row6={item13.credits || Null_message}
+                        row7={item13.verified || Null_message}
                       />
                     );
                   })}
