@@ -88,9 +88,87 @@ let chartOptions = {
 };
 
 function BarChartPlacement() {
-  const [placement_lst, setplace] = useState([100]);
-
-  var chartData = { name: "Placement", data: placement_lst };
+  const [chartData, setChartData] = useState({
+    name: "Internship",
+    data: [],
+  });
+  const [chartOptions, setchartOptions] = useState({
+    chart: {
+      toolbar: {
+        show: false,
+      },
+    },
+    tooltip: {
+      style: {
+        backgroundColor: "red",
+        fontSize: "12px",
+        fontFamily: undefined,
+      },
+      onDatasetHover: {
+        style: {
+          backgroundColor: "red",
+          fontSize: "12px",
+          fontFamily: undefined,
+        },
+      },
+      theme: "dark",
+    },
+    xaxis: {
+      categories: ["2019-2023"],
+      show: true,
+      labels: {
+        show: true,
+        style: {
+          colors: "#fff",
+          fontSize: "12px",
+        },
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: true,
+      color: "#fff",
+      labels: {
+        show: true,
+        style: {
+          colors: "#fff",
+          fontSize: "14px",
+        },
+      },
+    },
+    grid: {
+      show: false,
+    },
+    fill: {
+      colors: "#fff",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 8,
+        columnWidth: "12px",
+      },
+    },
+    responsive: [
+      {
+        breakpoint: 768,
+        options: {
+          plotOptions: {
+            bar: {
+              borderRadius: 0,
+            },
+          },
+        },
+      },
+    ],
+  });
 
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
@@ -98,11 +176,27 @@ function BarChartPlacement() {
 
   useState(async () => {
     axios.post(server_URL + "PlacementGraphHOD", params).then((items) => {
-      console.log(items);
-      // console.log(items.data.placement_lst);
-      // console.log(...items.data.placement_lst);
-      setplace(items.data.placement_lst);
-      chartOptions.xaxis.categories = items.data.batches;
+      setChartData({ ...chartData, data: items.data.placement_lst });
+      setchartOptions({
+        ...chartOptions,
+        xaxis: {
+          categories: items.data.batches,
+          show: true,
+          labels: {
+            show: true,
+            style: {
+              colors: "#fff",
+              fontSize: "12px",
+            },
+          },
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+        },
+      });
     });
   });
 

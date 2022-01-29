@@ -91,15 +91,8 @@ function BarChartInternship() {
     ],
   });
 
-  let params = new URLSearchParams();
-  params.append("batch", localStorage.getItem("batch"));
-  params.append("dept", localStorage.getItem("dept"));
-
   useState(async () => {
-    axios.post(server_URL + "InternshipGraphHOD", params).then((items) => {
-      // console.log(items);
-      // console.log(items.data.placement_lst);
-      // console.log(...items.data.placement_lst);
+    axios.post(server_URL + "InternshipGraphOfficial").then((items) => {
       setChartData({
         ...chartData,
         data: items.data.intern_lst,

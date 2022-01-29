@@ -40,14 +40,22 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("date", document.getElementById("DateID").value);
     params.append("outcome", document.getElementById("OutcomeID").value);
     params.append("credits", document.getElementById("CreditsID").value);
-    axios.post(server_URL + "cour_edit", params);
+    axios.post(server_URL + "cour_edit", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });;
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "cour_delete", params);
+    axios.post(server_URL + "cour_delete", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });;
   }
 
   function funverify() {
@@ -55,7 +63,11 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "cour_verify", params);
+    axios.post(server_URL + "cour_verify", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });;
   }
 
   return (

@@ -661,7 +661,6 @@ function ProfessionalDevelopmentData1() {
                     <Th color="gray.400">Credits</Th>
                     <Th color="gray.400">Edit</Th>
                     <Th color="gray.400">Delete</Th>
-                    <Th color="gray.400">Verify</Th>
                   </Tr>
                 </Thead>
                 <Tbody>

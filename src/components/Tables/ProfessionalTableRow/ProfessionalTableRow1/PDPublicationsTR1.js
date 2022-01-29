@@ -42,14 +42,22 @@ function ProfessionalDevelopmentTableRow(props) {
     params.append("impact_factor", document.getElementById("IMPFACT").value);
     params.append("indexed_in", document.getElementById("INDIN").value);
     params.append("credits", document.getElementById("CRED5").value);
-    axios.post(server_URL + "publication_edit", params);
+    axios.post(server_URL + "publication_edit", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "publication_delete", params);
+    axios.post(server_URL + "publication_delete", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   function funverify() {
@@ -57,7 +65,11 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "publication_verify", params);
+    axios.post(server_URL + "publication_verify", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   return (
@@ -249,7 +261,7 @@ function ProfessionalDevelopmentTableRow(props) {
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
-          disabled={{ row5 }.row5 == "Verified" ? true : false}
+          disabled={{ row7 }.row7 == "Verified" ? true : false} 
         >
           Verify
         </Button>

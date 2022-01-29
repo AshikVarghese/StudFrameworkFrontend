@@ -42,6 +42,7 @@ import { CSVLink } from "react-csv";
 
 function Academic() {
   const [data, setData] = useState([]);
+  const [file, setfile] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
 
@@ -60,12 +61,11 @@ function Academic() {
   });
 
   let onFileChange = (event) => {
-    console.log(event.target.files);
-    onFileUpload(event.target.files[0]);
+    setfile(event.target.files[0]);
   };
 
   // On file upload (click the upload button)
-  let onFileUpload = (file) => {
+  function onFileUpload() {
     const formData = new FormData();
     formData.append("excel", file);
     const config = {
@@ -74,8 +74,8 @@ function Academic() {
       },
     };
     axios.post(server_URL + "bulkupload", formData, config);
-  };
-
+  }
+  
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
   const mainorange = useColorModeValue("orange.300", "orange.300");
@@ -195,6 +195,7 @@ function Academic() {
           <Input width="50%" type="file" onChange={onFileChange} />
           <Button
             onClick={() => {
+              onFileUpload();
               onToggle();
               toast({
                 title: "Uploaded Successfully",

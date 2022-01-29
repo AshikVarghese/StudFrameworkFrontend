@@ -34,20 +34,28 @@ function ProfessionalDevelopmentTableRow(props) {
 
   function funedit() {
     let cid = { id };
-    let params = new URLSearchParams();
+    let params = new URLSearchParams(); 
     params.append("columnid", cid.id);
     params.append("topic", document.getElementById("TopicID").value);
     params.append("resource_person", document.getElementById("RsprID").value);
     params.append("outcome", document.getElementById("OutcomeID").value);
     params.append("credits", document.getElementById("CreditsID").value);
-    axios.post(server_URL + "guest_edit", params);
+    axios.post(server_URL + "guest_edit", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });;
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "guest_delete", params);
+    axios.post(server_URL + "guest_delete", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });;
   }
 
   function funverify() {
@@ -55,7 +63,11 @@ function ProfessionalDevelopmentTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "guest_verify", params);
+    axios.post(server_URL + "guest_verify", params).then((results)=>{
+      if(results){
+        window.location.reload(false);
+      }
+    });
   }
 
   return (
