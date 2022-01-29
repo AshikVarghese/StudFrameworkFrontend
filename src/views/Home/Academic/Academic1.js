@@ -4,7 +4,6 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MyPDF from "../../../components/Template/academic_details.xlsx";
 
 // Chakra imports
 import {
@@ -34,9 +33,9 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListAcademic from "components/Tables/StudentList/StudentListAcademic1";
 import { server_URL } from "controller/urls_config";
+import { saveAs } from "file-saver";
 
 var data2 = [];
-var Loader = require("react-loader");
 
 import { CSVLink } from "react-csv";
 
@@ -75,7 +74,7 @@ function Academic() {
     };
     axios.post(server_URL + "bulkupload", formData, config);
   }
-  
+
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
   const mainorange = useColorModeValue("orange.300", "orange.300");
@@ -193,25 +192,39 @@ function Academic() {
       <Collapse in={isOpen} animateOpacity>
         <Card color="white" mb="4" bg="orange.300" rounded="md" shadow="md">
           <Input width="50%" type="file" onChange={onFileChange} />
-          <Button
-            onClick={() => {
-              onFileUpload();
-              onToggle();
-              toast({
-                title: "Uploaded Successfully",
-                status: "success",
-                duration: 9000,
-                position: "top",
-                isClosable: true,
-              });
-            }}
-            ms="4"
-            marginTop="2"
-            bg="gray.700"
-            width="fit-content"
-          >
-            Confirm
-          </Button>
+          <Flex>
+            {" "}
+            <Button
+              onClick={() => {
+                onFileUpload();
+                onToggle();
+                toast({
+                  title: "Uploaded Successfully",
+                  status: "success",
+                  duration: 9000,
+                  position: "top",
+                  isClosable: true,
+                });
+              }}
+              ms="4"
+              marginTop="2"
+              bg="gray.700"
+              width="fit-content"
+            >
+              Confirm
+            </Button>
+            <Button
+              onClick={() => {
+                saveAs(server_URL + "download_template", "template.xlsx");
+              }}
+              ms="4"
+              marginTop="2"
+              bg="gray.700"
+              width="fit-content"
+            >
+              Download Template
+            </Button>
+          </Flex>
         </Card>
       </Collapse>
       <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
@@ -270,7 +283,6 @@ function Academic() {
         </CardBody>
       </Card>
     </Flex>
-    //test
   );
 }
 
