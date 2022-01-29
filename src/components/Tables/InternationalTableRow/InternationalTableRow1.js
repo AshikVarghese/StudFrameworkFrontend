@@ -18,6 +18,12 @@ import {
   ModalCloseButton,
   useToast,
   useDisclosure,
+  Popover,
+  PopoverBody,
+  PopoverArrow,
+  PopoverContent,
+  Portal,
+  PopoverTrigger,
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -281,25 +287,77 @@ function InternationalTableRow(props) {
         </Modal>
       </Td>
       <Td>
-        <Button
-          onClick={fundelete}
-          bg="orange.300"
-          alignSelf="flex-end"
-          width="fit-content"
-        >
-          Delete
-        </Button>
+        <Popover>
+          <PopoverTrigger>
+            <Button bg="orange.300" alignSelf="flex-end" width="fit-content">
+              Delete
+            </Button>
+          </PopoverTrigger>
+          <Portal>
+            <PopoverContent w="100%">
+              <PopoverArrow />
+              <PopoverBody>
+                Are you sure ?
+                <Button
+                  ms={{ sm: "3em" }}
+                  colorScheme="red"
+                  onClick={() => {
+                    toast({
+                      title: "Deleted Successfully",
+                      status: "success",
+                      duration: 9000,
+                      position: "top",
+                      isClosable: true,
+                    });
+                    fundelete();
+                    onClose();
+                  }}
+                >
+                  Delete
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Portal>
+        </Popover>
       </Td>
       <Td>
-        <Button
-          onClick={funverify}
-          bg="orange.300"
-          alignSelf="flex-end"
-          width="fit-content"
-          disabled={{ row8 }.row8 == "Verified" ? true : false}
-        >
-          Verify
-        </Button>
+        <Popover>
+          <PopoverTrigger>
+            <Button
+              bg="orange.300"
+              alignSelf="flex-end"
+              width="fit-content"
+              disabled={{ row8 }.row8 == "Verified" ? true : false}
+            >
+              Verify
+            </Button>
+          </PopoverTrigger>
+          <Portal>
+            <PopoverContent w="100%">
+              <PopoverArrow />
+              <PopoverBody>
+                Are you sure ?
+                <Button
+                  ms={{ sm: "3em" }}
+                  colorScheme="green"
+                  onClick={() => {
+                    toast({
+                      title: "Verified Successfully",
+                      status: "success",
+                      duration: 9000,
+                      position: "top",
+                      isClosable: true,
+                    });
+                    onClose();
+                    funverify();
+                  }}
+                >
+                  Verify
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Portal>
+        </Popover>
       </Td>
     </Tr>
   );
