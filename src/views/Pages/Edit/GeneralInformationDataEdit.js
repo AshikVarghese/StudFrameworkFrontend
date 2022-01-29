@@ -21,6 +21,7 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
+  useToast,
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -33,6 +34,9 @@ import { server_URL, URL } from "controller/urls_config";
 
 function GeneralInformationDataEdit(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Toast var
+  const toast = useToast();
 
   var roll_no,
     reg_no,
@@ -4499,6 +4503,13 @@ function GeneralInformationDataEdit(props) {
                     onClick={() => {
                       funedit();
                       onClose();
+                      toast({
+                        title: "Student Information Edited Successfully",
+                        status: "success",
+                        duration: 9000,
+                        position: "top",
+                        isClosable: true,
+                      });
                     }}
                   >
                     Submit

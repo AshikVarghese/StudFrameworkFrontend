@@ -20,6 +20,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   SimpleGrid,
+  useToast,
   Button,
 } from "@chakra-ui/react";
 // Custom components
@@ -50,6 +51,10 @@ function GeneralInformationdata({ location }) {
   });
 
   const textColor = useColorModeValue("gray.700", "white");
+
+  // Toast var
+  const toast = useToast();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   var GData = TableRow2;
   return (
@@ -978,6 +983,13 @@ function GeneralInformationdata({ location }) {
                     onClick={() => {
                       onClose();
                       fundelete();
+                      toast({
+                        title: "Student Record Deleted Successfully",
+                        status: "success",
+                        duration: 9000,
+                        position: "top",
+                        isClosable: true,
+                      });
                     }}
                   >
                     Confirm
