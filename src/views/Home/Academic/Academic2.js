@@ -31,7 +31,6 @@ import StudentListAcademic from "components/Tables/StudentList/StudentListAcadem
 import { server_URL } from "controller/urls_config";
 
 var data2 = [];
-var Loader = require("react-loader");
 import { CSVLink } from "react-csv";
 
 function Academic() {

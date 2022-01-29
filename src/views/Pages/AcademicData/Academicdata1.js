@@ -23,10 +23,6 @@ import {
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import BarChart from "components/Charts/BarChart";
-
-import Academictablerow from "components/Tables/AcademicTableRow/Academictablerow1";
-import Academicsummarytablerow from "components/Tables/AcademicTableRow/AcademicSummaryTableRow/Academicsummarytablerow1";
 
 import axios from "axios";
 import { server_URL } from "controller/urls_config";
@@ -103,54 +99,6 @@ function Academicdata() {
             </Table>
           </CardBody>
         </Card>
-        <SimpleGrid columns={{ sm: 1, md: 2, xl: 2 }} gap={5}>
-          <Card minH="300px">
-            <CardBody>
-              <Flex
-                flexDirection="column"
-                align="center"
-                justify="center"
-                w="100%"
-              >
-                <Stat mr="auto">
-                  <StatLabel
-                    fontSize="sm"
-                    color="gray.400"
-                    fontWeight="bold"
-                    pb="1.5rem"
-                  >
-                    Academic Results
-                  </StatLabel>
-                </Stat>
-                <BarChart />
-              </Flex>
-            </CardBody>
-          </Card>
-
-          <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
-            <CardHeader p="6px 0px 22px 0px">
-              <Text fontSize="xl" color={textColor} fontWeight="bold">
-                Academic Summary
-              </Text>
-            </CardHeader>
-            <CardBody>
-              <Table variant="simple" color={textColor}>
-                <Tbody>
-                  {Sdata.map((row) => {
-                    return (
-                      <Academicsummarytablerow
-                        row1={row.attendance_percentage}
-                        row2={row.CGPA}
-                        row3={row.total_credits}
-                        row4={row.placement_eligiblity}
-                      />
-                    );
-                  })}
-                </Tbody>
-              </Table>
-            </CardBody>
-          </Card>
-        </SimpleGrid>
       </SimpleGrid>
     </Flex>
   );

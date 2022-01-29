@@ -13,15 +13,6 @@ import {
   Thead,
   Tr,
   useColorModeValue,
-  Stat,
-  StatLabel,
-  Box,
-  Button,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Select,
   SimpleGrid,
   Td,
 } from "@chakra-ui/react";
@@ -29,14 +20,6 @@ import {
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import BarChart from "components/Charts/BarChart";
-import LineChart from "components/Charts/LineChart";
-
-import Academictablerow from "components/Tables/AcademicTableRow/Academictablerow2";
-import Academicsummarytablerow from "components/Tables/AcademicTableRow/AcademicSummaryTableRow/Academicsummarytablerow2";
-
-import { AcademicSummary } from "variables/general";
-import { Academicinfo } from "variables/general";
 import axios from "axios";
 import { server_URL } from "controller/urls_config";
 
