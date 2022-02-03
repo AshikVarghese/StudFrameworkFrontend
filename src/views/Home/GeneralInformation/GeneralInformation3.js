@@ -8,7 +8,6 @@ import { CSVLink } from "react-csv";
 
 var data2 = [];
 
-
 var Loader = require("react-loader");
 import SignIn from "../../Pages/SignIn";
 
@@ -84,7 +83,7 @@ function GeneralInformation3() {
         axios.post(server_URL + "GeneralOfficialBatch", params),
       ])
       .then(
-        axios.spread((data, data3,data4) => {
+        axios.spread((data, data3, data4) => {
           setData(data.data);
           setData3(data3.data);
           setData4(data4.data);
@@ -201,6 +200,8 @@ function GeneralInformation3() {
               </InputGroup> */}
 
               <Select
+                mt="1em"
+                bg={inputBg}
                 placeholder="Department"
                 id="dept"
                 onChange={(e) => setSearchTerm2(e.target.value)}
@@ -214,7 +215,7 @@ function GeneralInformation3() {
             <Box>
               <CardHeader mt="1em">
                 <Text fontSize="lg" color={textColor} fontWeight="semi">
-                  Search Batch
+                  Select Batch
                 </Text>
               </CardHeader>
 
@@ -261,6 +262,8 @@ function GeneralInformation3() {
                 />
               </InputGroup> */}
               <Select
+                mt="1em"
+                bg={inputBg}
                 placeholder="Batch"
                 id="batch"
                 onChange={(e) => setSearchTerm1(e.target.value)}
