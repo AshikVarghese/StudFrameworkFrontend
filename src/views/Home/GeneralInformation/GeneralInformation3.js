@@ -7,7 +7,7 @@ import axios from "axios";
 import { CSVLink } from "react-csv";
 
 var data2 = [];
-var data3 = [];
+
 
 var Loader = require("react-loader");
 import SignIn from "../../Pages/SignIn";
@@ -48,6 +48,7 @@ var is_loading = true;
 function GeneralInformation3() {
   const [data, setData] = useState([]);
   const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
   const [Loaded, setLoading] = useState(false);
 
   let params = new URLSearchParams();
@@ -80,11 +81,13 @@ function GeneralInformation3() {
       .all([
         axios.post(server_URL + "GeneralOfficial", params),
         axios.post(server_URL + "GeneralOfficialDepartment", params),
+        axios.post(server_URL + "GeneralOfficialBatch", params),
       ])
       .then(
-        axios.spread((data, data3) => {
+        axios.spread((data, data3,data4) => {
           setData(data.data);
           setData3(data3.data);
+          setData4(data4.data);
           setLoading(true);
         })
       );
@@ -150,7 +153,7 @@ function GeneralInformation3() {
             <Box>
               <CardHeader mt="1em">
                 <Text fontSize="lg" color={textColor} fontWeight="semi">
-                  Search Department
+                  Select Department
                 </Text>
               </CardHeader>
 
@@ -215,7 +218,7 @@ function GeneralInformation3() {
                 </Text>
               </CardHeader>
 
-              <InputGroup
+              {/* <InputGroup
                 bg={inputBg}
                 mt="1rem"
                 borderRadius="15px"
@@ -256,7 +259,16 @@ function GeneralInformation3() {
                   borderRadius="inherit"
                   value={searchTerm1}
                 />
-              </InputGroup>
+              </InputGroup> */}
+              <Select
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => setSearchTerm1(e.target.value)}
+              >
+                {data4.map((data) => {
+                  return <option value={data.batch}>{data.batch}</option>;
+                })}
+              </Select>
             </Box>
 
             <Box>
