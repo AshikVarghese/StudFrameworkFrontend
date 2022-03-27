@@ -28,7 +28,7 @@ export default function Dashboard(props) {
   let auth_token = localStorage.getItem("auth_token");
   let user_type = localStorage.getItem("user_type");
   const getRoute = () => {
-    return window.location.pathname !== "/admin3/full-screen-maps";
+    return window.location.pathname !== "/admin4/full-screen-maps";
   };
   const getActiveRoute = (routes) => {
     let activeRoute = "Default Brand Text";
@@ -131,7 +131,7 @@ export default function Dashboard(props) {
       if (prop.category === "account") {
         return getRoutes(prop.views);
       }
-      if (prop.layout === "/admin3") {
+      if (prop.layout === "/admin4") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -170,12 +170,12 @@ export default function Dashboard(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // Chakra Color Mode
 
-  if (auth_token != -1 && user_type == "Admin") {
+  if (auth_token != -1 && user_type == "admin") {
     return (
       <ChakraProvider theme={theme} resetCss={false}>
         <Sidebar
           routes={routes}
-          logoText={"LICET Portal"}
+          logoText={"LICET Admin Portal"}
           display="none"
           sidebarVariant={sidebarVariant}
           {...rest}
@@ -204,7 +204,7 @@ export default function Dashboard(props) {
                 <Switch>
                   {getRoutes(routes)}
                   {getRoutes1(routes1)}
-                  <Redirect from="/LICET" to="/LICET/dashboard" />
+                  <Redirect from="/Admin" to="/Admin/dashboard" />
                 </Switch>
               </PanelContainer>
             </PanelContent>

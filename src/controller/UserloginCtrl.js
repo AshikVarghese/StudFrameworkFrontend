@@ -76,6 +76,10 @@ export default function handleLogin() {
         localStorage.setItem("user_type", "official");
         localStorage.setItem("offemail", check.email);
         window.location.href = URL + "LICET#/admin3/dashboard";
+      } else if (check.user_type == 4) {
+        localStorage.setItem("user_type", "admin");
+        localStorage.setItem("hodemail", check.email);
+        window.location.href = URL + "Admin#/admin4/dashboard";
       } else if (check.user_type == 0) {
         if (check.roll_no == null) {
           console.log(check.roll_no);
@@ -85,10 +89,6 @@ export default function handleLogin() {
           localStorage.setItem("StudentRoll", check.roll_no);
           window.location.href = URL + "Student#/admin0/GeneralInformation";
         }
-      } else if (check.user_type == 4) {
-        localStorage.setItem("user_type", "admin");
-        localStorage.setItem("hodemail", check.email);
-        window.location.href = URL + "Admin#/admin4/dashboard";
       }
       localStorage.setItem("useremail", result.data[0].email);
       localStorage.setItem("auth_token", result.data[0].auth_token);
