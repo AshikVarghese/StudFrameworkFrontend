@@ -1,9 +1,12 @@
 /** @format */
 
-//HoD Professional Development
+//Official International Exposure
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CSVLink } from "react-csv";
+
+var data2 = [];
 
 // Chakra imports
 import {
@@ -18,51 +21,56 @@ import {
   IconButton,
   Button,
   Input,
+  Select,
   InputGroup,
   InputLeftElement,
   SimpleGrid,
   useToast,
   Box,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+
 // Custom components
+import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment3";
+import StudentListInternational from "components/Tables/StudentList/StudentListInternational4";
 
 import { server_URL } from "controller/urls_config";
 
-var data2 = [];
 var Loader = require("react-loader");
 
-import { CSVLink } from "react-csv";
-
-function ProfessionalDevelopment() {
-  // Toast var
-  const toast = useToast();
+function InternationalExposure() {
   const [data, setData] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
   const [Loaded, setLoading] = useState(false);
 
+  // Toast var
+  const toast = useToast();
+
   let params = new URLSearchParams();
-  params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
 
   useEffect(async () => {
     axios
-      .post(server_URL + "ProfessionalDevelopmentCA", params)
-      .then((items) => {
-        setData(items.data);
-        setLoading(true);
-      });
+      .all([
+        axios.post(server_URL + "GeneralOfficial", params),
+        axios.post(server_URL + "GeneralOfficialDepartment", params),
+        axios.post(server_URL + "GeneralOfficialBatch", params),
+      ])
+      .then(
+        axios.spread((data, data3, data4) => {
+          setData(data.data);
+          setData3(data3.data);
+          setData4(data4.data);
+          setLoading(true);
+        })
+      );
   }, []);
-  const textColor = useColorModeValue("gray.700", "white");
-  const inputBg = useColorModeValue("white", "gray.800");
-  const mainorange = useColorModeValue("orange.300", "orange.300");
-  const searchIconColor = useColorModeValue("gray.700", "gray.200");
 
   data2 = data.filter((item) => {
     if (searchTerm2 == "" && searchTerm == "" && searchTerm1 == "") {
@@ -98,14 +106,19 @@ function ProfessionalDevelopment() {
     }
   });
 
+  const textColor = useColorModeValue("gray.700", "white");
+  const inputBg = useColorModeValue("white", "gray.800");
+  const mainorange = useColorModeValue("orange.300", "orange.300");
+  const searchIconColor = useColorModeValue("gray.700", "gray.200");
+
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
       <Card mb="1rem">
-        <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">
             <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
-              Professional Development
+              International Exposure
             </Text>
           </Flex>
         </CardBody>
@@ -113,110 +126,134 @@ function ProfessionalDevelopment() {
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Department
+                Select Department
               </Text>
             </CardHeader>
 
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
-            >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
+            {/* <InputGroup
+                bg={inputBg}
+                mt="1rem"
+                borderRadius="15px"
+                w="cover"
+                _focus={{
+                  borderColor: { mainorange },
+                }}
+                _active={{
+                  borderColor: { mainorange },
+                }}
+              >
+                <InputLeftElement
+                  children={
+                    <IconButton
+                      bg="inherit"
+                      borderRadius="inherit"
+                      _hover="none"
+                      _active={{
+                        bg: "inherit",
+                        transform: "none",
+                        borderColor: "transparent",
+                      }}
+                      _focus={{
+                        boxShadow: "none",
+                      }}
+                      icon={
+                        <SearchIcon color={searchIconColor} w="15px" h="15px" />
+                      }
+                    ></IconButton>
+                  }
+                />
 
-              <Input
-                onChange={(event) => setSearchTerm2(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type department"
-                borderRadius="inherit"
-                value={searchTerm2}
-              />
-            </InputGroup>
+                <Input
+                  onChange={(event) => setSearchTerm2(event.target.value)}
+                  fontSize="xs"
+                  py="11px"
+                  placeholder="Type department"
+                  borderRadius="inherit"
+                  value={searchTerm2}
+                />
+              </InputGroup> */}
+
+            <Select
+              mt="1em"
+              bg={inputBg}
+              placeholder="Department"
+              id="dept"
+              onChange={(e) => setSearchTerm2(e.target.value)}
+            >
+              {data3.map((data) => {
+                return <option value={data.dept}>{data.dept}</option>;
+              })}
+            </Select>
           </Box>
+
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Batch
+                Select Batch
               </Text>
             </CardHeader>
 
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
-            >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
+            {/* <InputGroup
+                bg={inputBg}
+                mt="1rem"
+                borderRadius="15px"
+                w="cover"
+                _focus={{
+                  borderColor: { mainorange },
+                }}
+                _active={{
+                  borderColor: { mainorange },
+                }}
+              >
+                <InputLeftElement
+                  children={
+                    <IconButton
+                      bg="inherit"
+                      borderRadius="inherit"
+                      _hover="none"
+                      _active={{
+                        bg: "inherit",
+                        transform: "none",
+                        borderColor: "transparent",
+                      }}
+                      _focus={{
+                        boxShadow: "none",
+                      }}
+                      icon={
+                        <SearchIcon color={searchIconColor} w="15px" h="15px" />
+                      }
+                    ></IconButton>
+                  }
+                />
 
-              <Input
-                onChange={(event) => setSearchTerm1(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type batch"
-                borderRadius="inherit"
-                value={searchTerm1}
-              />
-            </InputGroup>
+                <Input
+                  onChange={(event) => setSearchTerm1(event.target.value)}
+                  fontSize="xs"
+                  py="11px"
+                  placeholder="Type batch"
+                  borderRadius="inherit"
+                  value={searchTerm1}
+                />
+              </InputGroup> */}
+            <Select
+              mt="1em"
+              bg={inputBg}
+              placeholder="Batch"
+              id="batch"
+              onChange={(e) => setSearchTerm1(e.target.value)}
+            >
+              {data4.map((data) => {
+                return <option value={data.batch}>{data.batch}</option>;
+              })}
+            </Select>
           </Box>
+
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
                 Search Student
               </Text>
             </CardHeader>
-
             <InputGroup
               bg={inputBg}
               mt="1rem"
@@ -261,12 +298,15 @@ function ProfessionalDevelopment() {
             </InputGroup>
           </Box>
         </SimpleGrid>
-
         <Box alignSelf="flex-end">
           <CSVLink data={data2}>
             <Button
               minWidth="fit-content"
               mt="1em"
+              onClick="m"
+              colorScheme="orange"
+              alignSelf="flex-end"
+              variant="solid"
               onClick={() =>
                 toast({
                   title: "Report Downloaded Successfully",
@@ -276,21 +316,19 @@ function ProfessionalDevelopment() {
                   isClosable: true,
                 })
               }
-              colorScheme="orange"
-              variant="solid"
             >
               Download Report
             </Button>
           </CSVLink>
         </Box>
       </Card>
-      <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
+      <Card>
         <CardHeader p="6px 0px 22px 0px">
           <Text fontSize="xl" color={textColor} fontWeight="bold">
             Students List
           </Text>
         </CardHeader>
-        <CardBody>
+        <CardBody overflowX={{ sm: "scroll" }}>
           <Table variant="simple" color={textColor}>
             <Thead>
               <Tr my=".8rem" pl="0px" color="gray.400">
@@ -377,13 +415,13 @@ function ProfessionalDevelopment() {
                 })
                 .map((item) => {
                   return (
-                    <StudentListProfessionalDevelopment
+                    <StudentListInternational
                       roll={item.roll_no}
                       name={item.sname}
                       reg={item.reg_no}
-                      dept={item.dept}
                       batch={item.batch}
                       email={item.licet_email}
+                      dept={item.dept}
                     />
                   );
                 })}
@@ -395,4 +433,4 @@ function ProfessionalDevelopment() {
   );
 }
 
-export default ProfessionalDevelopment;
+export default InternationalExposure;

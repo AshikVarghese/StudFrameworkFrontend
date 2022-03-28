@@ -1,10 +1,9 @@
 /** @format */
 
-//HoD Professional Development
+//Official Extracurricular
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 // Chakra imports
 import {
   Flex,
@@ -29,16 +28,13 @@ import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment3";
+import StudentListExtraCurricular from "components/Tables/StudentList/StudentListExtraCurricular4";
 
 import { server_URL } from "controller/urls_config";
-
-var data2 = [];
 var Loader = require("react-loader");
+var is_loading = true;
 
-import { CSVLink } from "react-csv";
-
-function ProfessionalDevelopment() {
+function Extracurricular() {
   // Toast var
   const toast = useToast();
   const [data, setData] = useState([]);
@@ -52,60 +48,24 @@ function ProfessionalDevelopment() {
   params.append("dept", localStorage.getItem("dept"));
 
   useEffect(async () => {
-    axios
-      .post(server_URL + "ProfessionalDevelopmentCA", params)
-      .then((items) => {
-        setData(items.data);
-        setLoading(true);
-      });
+    axios.post(server_URL + "ExtracurricularCA", params).then((items) => {
+      setData(items.data);
+      is_loading = false;
+    });
   }, []);
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
   const mainorange = useColorModeValue("orange.300", "orange.300");
   const searchIconColor = useColorModeValue("gray.700", "gray.200");
 
-  data2 = data.filter((item) => {
-    if (searchTerm2 == "" && searchTerm == "" && searchTerm1 == "") {
-      return item;
-    } else if (searchTerm2 !== "" && searchTerm1 == "" && searchTerm == "") {
-      if (item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase())) {
-        return item;
-      }
-    } else if (searchTerm2 == "" && searchTerm1 !== "" && searchTerm == "") {
-      if (item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())) {
-        return item;
-      }
-    } else if (searchTerm2 !== "" && searchTerm1 !== "" && searchTerm == "") {
-      if (
-        item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase()) &&
-        item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())
-      ) {
-        return item;
-      }
-    } else {
-      if (
-        item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase()) &&
-        item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())
-      ) {
-        if (
-          item.sname.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-          item.roll_no.toLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-          item.reg_no.toLowerCase().includes(searchTerm.toLocaleLowerCase())
-        ) {
-          return item;
-        }
-      }
-    }
-  });
-
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
       <Card mb="1rem">
-        <Loader color="#FBD38D" height={10} width={10} loaded={Loaded} />
         <CardBody>
           <Flex flexDirection="column" align="center" justify="center" w="100%">
             <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
-              Professional Development
+              Extracurricular
             </Text>
           </Flex>
         </CardBody>
@@ -160,6 +120,7 @@ function ProfessionalDevelopment() {
               />
             </InputGroup>
           </Box>
+
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
@@ -210,13 +171,13 @@ function ProfessionalDevelopment() {
               />
             </InputGroup>
           </Box>
+
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
                 Search Student
               </Text>
             </CardHeader>
-
             <InputGroup
               bg={inputBg}
               mt="1rem"
@@ -262,27 +223,24 @@ function ProfessionalDevelopment() {
           </Box>
         </SimpleGrid>
 
-        <Box alignSelf="flex-end">
-          <CSVLink data={data2}>
-            <Button
-              minWidth="fit-content"
-              mt="1em"
-              onClick={() =>
-                toast({
-                  title: "Report Downloaded Successfully",
-                  status: "success",
-                  duration: 9000,
-                  position: "top",
-                  isClosable: true,
-                })
-              }
-              colorScheme="orange"
-              variant="solid"
-            >
-              Download Report
-            </Button>
-          </CSVLink>
-        </Box>
+        <Button
+          minWidth="fit-content"
+          mt="1em"
+          onClick={() =>
+            toast({
+              title: "Report Downloaded Successfully",
+              status: "success",
+              duration: 9000,
+              position: "top",
+              isClosable: true,
+            })
+          }
+          colorScheme="orange"
+          alignSelf="flex-end"
+          variant="solid"
+        >
+          Download Report
+        </Button>
       </Card>
       <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
         <CardHeader p="6px 0px 22px 0px">
@@ -377,13 +335,13 @@ function ProfessionalDevelopment() {
                 })
                 .map((item) => {
                   return (
-                    <StudentListProfessionalDevelopment
+                    <StudentListExtraCurricular
                       roll={item.roll_no}
                       name={item.sname}
                       reg={item.reg_no}
-                      dept={item.dept}
                       batch={item.batch}
                       email={item.licet_email}
+                      dept={item.dept}
                     />
                   );
                 })}
@@ -395,4 +353,4 @@ function ProfessionalDevelopment() {
   );
 }
 
-export default ProfessionalDevelopment;
+export default Extracurricular;

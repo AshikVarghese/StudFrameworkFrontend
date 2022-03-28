@@ -25,7 +25,7 @@ function StudentListProfessionalDevelopment(props) {
         let params = new URLSearchParams();
         params.append("RollNumber", localStorage.getItem("generalStudent"));
         window.location.href =
-          URL + "LICET#/admin3/ProfessionalDevelopmentData";
+          URL + "Admin#/admin4/ProfessionalDevelopmentData";
       }}
       id={roll}
       _hover={{
