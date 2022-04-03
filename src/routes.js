@@ -37,6 +37,15 @@ import AdminControlEdit from "views/Home/Admin Controls/AdminControlEdit";
 import Error404 from "views/Pages/Error404.js";
 import ServerError from "views/Pages/ServerError";
 
+import {
+  HomeIcon,
+  StatsIcon,
+  CreditIcon,
+  PersonIcon,
+  DocumentIcon,
+  RocketIcon,
+} from "components/Icons/Icons";
+
 var dashRoutes = [
   {
     path: "/GeneralInformationdata",
