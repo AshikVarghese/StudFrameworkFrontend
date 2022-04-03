@@ -27,14 +27,14 @@ import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import StudentListAcademic from "components/Tables/StudentList/StudentListAcademic4";
+import CredentialList from "components/Tables/CredentialList";
 import { server_URL, URL } from "controller/urls_config";
 
 var Loader = require("react-loader");
 
-function Academic() {
+function AdminControl() {
   function newCredential() {
-    window.location.href = URL + "Admin#/admin4/AdminControlEdit";
+    window.location.href = URL + "Admin#/admin4/AdminControlCreate";
   }
 
   const [data, setData] = useState([]);
@@ -192,13 +192,11 @@ function Academic() {
           <Table variant="simple" color={textColor} id="dataTable">
             <Thead>
               <Tr my=".8rem" pl="0px" color="gray.400">
+                <Th color="gray.400">Email</Th>
                 <Th color="gray.400">Roll No.</Th>
-                <Th color="gray.400">Name</Th>
-                <Th color="gray.400">Register No.</Th>
                 <Th color="gray.400">Department</Th>
                 <Th color="gray.400">batch</Th>
-                <Th color="gray.400">Email</Th>
-                <Th></Th>
+                <Th color="gray.400">User Type</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -227,13 +225,12 @@ function Academic() {
                 })
                 .map((item) => {
                   return (
-                    <StudentListAcademic
-                      roll={item.roll_no}
-                      name={item.sname}
-                      reg={item.reg_no}
-                      batch={item.batch}
+                    <CredentialList
                       email={item.licet_email}
+                      roll={item.roll}
                       dept={item.dept}
+                      batch={item.batch}
+                      user_type={item.user_tyoe}
                     />
                   );
                 })}
@@ -245,4 +242,4 @@ function Academic() {
   );
 }
 
-export default Academic;
+export default AdminControl;

@@ -30,7 +30,7 @@ import { Tooltip } from "@chakra-ui/react";
 
 import { server_URL, URL } from "controller/urls_config";
 
-function AdminControlEdit() {
+function AdminControlCreate() {
   function logout() {
     window.location.href = URL + "Student#/auth/SignIn";
   }
@@ -349,4 +349,4 @@ function AdminControlEdit() {
   );
 }
 
-export default AdminControlEdit;
+export default AdminControlCreate;

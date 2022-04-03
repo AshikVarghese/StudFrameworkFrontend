@@ -31,6 +31,7 @@ import GeneralInformationDataEdit from "views/Pages/Edit/GeneralInformationDataE
 import GeneralInformationDataEdit4 from "views/Pages/Edit/GeneralInformationDataEdit4";
 import GeneralInformationdata from "views/Pages/Edit/GeneralInformationdata";
 
+import AdminControlCreate from "views/Home/Admin Controls/AdminControlCreate";
 import AdminControlEdit from "views/Home/Admin Controls/AdminControlEdit";
 
 import Error404 from "views/Pages/Error404.js";
@@ -154,7 +155,16 @@ var dashRoutes = [
 
   {
     path: "/AdminControlEdit",
+    name: "Admin Controls",
+    icon: <DocumentIcon color="inherit" />,
     component: AdminControlEdit,
+    layout: "/admin4",
+  },
+  {
+    path: "/AdminControlCreate",
+    name: "Admin Controls",
+    icon: <DocumentIcon color="inherit" />,
+    component: AdminControlCreate,
     layout: "/admin4",
   },
 
