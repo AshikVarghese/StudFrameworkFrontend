@@ -192,6 +192,52 @@ function AdminControlCreate() {
                             fontWeight="bold"
                             minWidth="100%"
                           >
+                            Password
+                          </FormLabel>
+                        </FormControl>
+                      </Flex>
+                    </Flex>
+                  </Td>
+                  <Td minWidth={{ sm: "17rem" }}>
+                    <Flex
+                      align="center"
+                      py=".8rem"
+                      minWidth="100%"
+                      flexWrap="nowrap"
+                    >
+                      <Flex direction="column">
+                        <FormControl>
+                          <Tooltip label="Default: Licet@123" placement="right">
+                            <Input
+                              minWidth="30em"
+                              id="NID"
+                              borderRadius="5px"
+                              fontSize="sm"
+                              type="text"
+                              placeholder="password"
+                            />
+                          </Tooltip>
+                        </FormControl>
+                      </Flex>
+                    </Flex>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td minWidth={{ sm: "17rem" }}>
+                    <Flex
+                      align="center"
+                      py=".8rem"
+                      minWidth="100%"
+                      flexWrap="nowrap"
+                    >
+                      <Flex direction="column">
+                        <FormControl isRequired>
+                          <FormLabel
+                            fontSize="md"
+                            color={textColor}
+                            fontWeight="bold"
+                            minWidth="100%"
+                          >
                             Roll Number
                           </FormLabel>
                         </FormControl>
