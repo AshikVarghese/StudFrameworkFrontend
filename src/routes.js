@@ -31,6 +31,8 @@ import GeneralInformationDataEdit from "views/Pages/Edit/GeneralInformationDataE
 import GeneralInformationDataEdit4 from "views/Pages/Edit/GeneralInformationDataEdit4";
 import GeneralInformationdata from "views/Pages/Edit/GeneralInformationdata";
 
+import AdminControlEdit from "views/Home/Admin Controls/AdminControlEdit";
+
 import Error404 from "views/Pages/Error404.js";
 import ServerError from "views/Pages/ServerError";
 
@@ -147,6 +149,12 @@ var dashRoutes = [
   {
     path: "/ProfessionalDevelopmentData",
     component: ProfessionalDevelopmentData4,
+    layout: "/admin4",
+  },
+
+  {
+    path: "/AdminControlEdit",
+    component: AdminControlEdit,
     layout: "/admin4",
   },
 

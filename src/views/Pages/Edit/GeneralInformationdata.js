@@ -1,3 +1,5 @@
+/** @format */
+
 //Student create page
 
 import React from "react";

@@ -28,15 +28,17 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListAcademic from "components/Tables/StudentList/StudentListAcademic4";
-import { server_URL } from "controller/urls_config";
+import { server_URL, URL } from "controller/urls_config";
 
 var Loader = require("react-loader");
 
 function Academic() {
+  function newCredential() {
+    window.location.href = URL + "Admin#/admin4/AdminControlEdit";
+  }
+
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchTerm1, setSearchTerm1] = useState("");
-  const [searchTerm2, setSearchTerm2] = useState("");
   const [Loaded, setLoading] = useState(false);
   let params = new URLSearchParams();
 
@@ -54,182 +56,136 @@ function Academic() {
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
-      <Card mb="1rem">
-        <CardBody>
-          <Flex flexDirection="column" align="center" justify="center" w="100%">
-            <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
-              Academic Results
-            </Text>
-          </Flex>
-        </CardBody>
-
-        <SimpleGrid columns={{ sm: 1, md: 3, xl: 3 }} gap={5}>
-          <Box>
-            <CardHeader mt="1em">
-              <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Department
-              </Text>
-            </CardHeader>
-
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
+      <SimpleGrid columns={{ sm: 1, md: 3, xl: 3 }} gap={5}>
+        <Card mb="1rem">
+          <CardBody>
+            <Flex
+              flexDirection="column"
+              align="center"
+              justify="center"
+              w="100%"
             >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
-
-              <Input
-                onChange={(event) => setSearchTerm2(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type department"
-                borderRadius="inherit"
-                value={searchTerm2}
-              />
-            </InputGroup>
-          </Box>
-          <Box>
-            <CardHeader mt="1em">
-              <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Batch
+              <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
+                Admin controls | Edit credential
               </Text>
-            </CardHeader>
+            </Flex>
+          </CardBody>
 
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
+          <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={5}>
+            <Box>
+              <CardHeader mt="1em">
+                <Text fontSize="lg" color={textColor} fontWeight="semi">
+                  Search Email
+                </Text>
+              </CardHeader>
+
+              <InputGroup
+                bg={inputBg}
+                mt="1rem"
+                borderRadius="15px"
+                w="cover"
+                _focus={{
+                  borderColor: { mainorange },
+                }}
+                _active={{
+                  borderColor: { mainorange },
+                }}
+              >
+                <InputLeftElement
+                  children={
+                    <IconButton
+                      bg="inherit"
+                      borderRadius="inherit"
+                      _hover="none"
+                      _active={{
+                        bg: "inherit",
+                        transform: "none",
+                        borderColor: "transparent",
+                      }}
+                      _focus={{
+                        boxShadow: "none",
+                      }}
+                      icon={
+                        <SearchIcon color={searchIconColor} w="15px" h="15px" />
+                      }
+                    ></IconButton>
+                  }
+                />
+
+                <Input
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  fontSize="xs"
+                  py="11px"
+                  placeholder="Type Email id"
+                  borderRadius="inherit"
+                  value={searchTerm}
+                />
+              </InputGroup>
+            </Box>
+          </SimpleGrid>
+        </Card>
+
+        <Card mb="1rem">
+          <CardBody>
+            <Flex
+              flexDirection="column"
+              align="center"
+              justify="center"
+              w="100%"
             >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
-
-              <Input
-                onChange={(event) => setSearchTerm1(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type batch"
-                borderRadius="inherit"
-                value={searchTerm1}
-              />
-            </InputGroup>
-          </Box>
-
-          <Box>
-            <CardHeader mt="1em">
-              <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Student
+              <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
+                Admin controls | Create new credential
               </Text>
-            </CardHeader>
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
+            </Flex>
+          </CardBody>
+          <SimpleGrid columns={{ sm: 1, md: 3, xl: 3 }} gap={5}>
+            <Box>
+              <Button
+                mt="1em"
+                minWidth="fit-content"
+                onClick={newCredential}
+                colorScheme="orange"
+                alignSelf="flex-end"
+                variant="solid"
+              >
+                Create new login
+              </Button>
+            </Box>
+          </SimpleGrid>
+        </Card>
+        <Card mb="1rem">
+          <CardBody>
+            <Flex
+              flexDirection="column"
+              align="center"
+              justify="center"
+              w="100%"
             >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
-
-              <Input
-                onChange={(event) => setSearchTerm(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type here..."
-                borderRadius="inherit"
-                value={searchTerm}
-              />
-            </InputGroup>
-          </Box>
-        </SimpleGrid>
-        <Button
-          mt="1em"
-          minWidth="fit-content"
-          onClick="m"
-          colorScheme="orange"
-          alignSelf="flex-end"
-          variant="solid"
-        >
-          Download Report
-        </Button>
-      </Card>
+              <Text fontSize="xl" color={textColor} fontWeight="bold" mr="auto">
+                Admin controls | Upload new credential
+              </Text>
+            </Flex>
+          </CardBody>
+          <SimpleGrid columns={{ sm: 1, md: 3, xl: 3 }} gap={5}>
+            <Box>
+              <Button
+                mt="1em"
+                minWidth="fit-content"
+                onClick="m"
+                colorScheme="orange"
+                alignSelf="flex-end"
+                variant="solid"
+              >
+                Bulk upload
+              </Button>
+            </Box>
+          </SimpleGrid>
+        </Card>
+      </SimpleGrid>
       <Card>
         <CardHeader p="6px 0px 22px 0px">
           <Text fontSize="xl" color={textColor} fontWeight="bold">
-            Students List
+            Credentials List
           </Text>
         </CardHeader>
         <CardBody overflowX={{ sm: "scroll" }}>
@@ -248,74 +204,25 @@ function Academic() {
             <Tbody>
               {data
                 .filter((item) => {
-                  if (
-                    searchTerm2 == "" &&
-                    searchTerm == "" &&
-                    searchTerm1 == ""
-                  ) {
+                  if (searchTerm == "") {
+                    //data2.push(item);
                     return item;
                   } else if (
-                    searchTerm2 !== "" &&
-                    searchTerm1 == "" &&
-                    searchTerm == ""
+                    item.sname
+                      .toLowerCase()
+                      .includes(searchTerm.toLocaleLowerCase()) ||
+                    item.roll_no
+                      .toLowerCase()
+                      .includes(searchTerm.toLocaleLowerCase()) ||
+                    item.batch
+                      .toLowerCase()
+                      .includes(searchTerm.toLocaleLowerCase()) ||
+                    item.reg_no
+                      .toLowerCase()
+                      .includes(searchTerm.toLocaleLowerCase())
                   ) {
-                    if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase())
-                    ) {
-                      return item;
-                    }
-                  } else if (
-                    searchTerm2 == "" &&
-                    searchTerm1 !== "" &&
-                    searchTerm == ""
-                  ) {
-                    if (
-                      item.batch
-                        .toLowerCase()
-                        .includes(searchTerm1.toLocaleLowerCase())
-                    ) {
-                      return item;
-                    }
-                  } else if (
-                    searchTerm2 !== "" &&
-                    searchTerm1 !== "" &&
-                    searchTerm == ""
-                  ) {
-                    if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase()) &&
-                      item.batch
-                        .toLowerCase()
-                        .includes(searchTerm1.toLocaleLowerCase())
-                    ) {
-                      return item;
-                    }
-                  } else {
-                    if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase()) &&
-                      item.batch
-                        .toLowerCase()
-                        .includes(searchTerm1.toLocaleLowerCase())
-                    ) {
-                      if (
-                        item.sname
-                          .toLowerCase()
-                          .includes(searchTerm.toLocaleLowerCase()) ||
-                        item.roll_no
-                          .toLowerCase()
-                          .includes(searchTerm.toLocaleLowerCase()) ||
-                        item.reg_no
-                          .toLowerCase()
-                          .includes(searchTerm.toLocaleLowerCase())
-                      ) {
-                        return item;
-                      }
-                    }
+                    //data2.push(item);
+                    return item;
                   }
                 })
                 .map((item) => {
