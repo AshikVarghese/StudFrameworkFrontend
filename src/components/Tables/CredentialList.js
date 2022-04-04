@@ -1,16 +1,28 @@
 /** @format */
 
-//HoD Professional Developement - Student List
+//Class Advisor Academic - StudentList
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Flex, Td, Text, Tr, useColorModeValue } from "@chakra-ui/react";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Flex,
+  Td,
+  Text,
+  Tr,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import axios from "axios";
 
 import { URL } from "controller/urls_config";
 
-function StudentListProfessionalDevelopment(props) {
-  const { name, email, reg, dept, roll, batch } = props;
+function CredentialList(props) {
+  const { email, roll, batch, dept, user_type } = props;
   const textColor = useColorModeValue("gray.700", "white");
+  const bgStatus = useColorModeValue("gray.400", "#1a202c");
+  const colorStatus = useColorModeValue("white", "gray.400");
 
   return (
     <Tr
@@ -24,10 +36,9 @@ function StudentListProfessionalDevelopment(props) {
         localStorage.setItem("generalStudent", roll);
         let params = new URLSearchParams();
         params.append("RollNumber", localStorage.getItem("generalStudent"));
-        window.location.href =
-          URL + "LICET#/admin3/ProfessionalDevelopmentData";
+        window.location.href = URL + "Admin#/admin4/AdminCredentialEdit";
       }}
-      id={roll}
+      id={email}
       _hover={{
         Radius: "20px",
         background: "#bbbbbb",
@@ -37,21 +48,16 @@ function StudentListProfessionalDevelopment(props) {
       <Td>
         <Flex direction="column">
           <Text fontSize="md" color={textColor} fontWeight="bold">
-            {roll}
+            {email}
           </Text>
         </Flex>
       </Td>
       <Td>
         <Flex direction="column">
           <Text fontSize="md" color={textColor} fontWeight="bold">
-            {name}
+            {roll}
           </Text>
         </Flex>
-      </Td>
-      <Td>
-        <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
-          {reg}
-        </Text>
       </Td>
       <Td>
         <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
@@ -65,11 +71,11 @@ function StudentListProfessionalDevelopment(props) {
       </Td>
       <Td>
         <Text fontSize="md" color={textColor} fontWeight="bold" pb=".5rem">
-          {email}
+          {user_type}
         </Text>
       </Td>
     </Tr>
   );
 }
 
-export default StudentListProfessionalDevelopment;
+export default CredentialList;

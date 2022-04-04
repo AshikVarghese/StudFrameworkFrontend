@@ -1,16 +1,28 @@
 /** @format */
 
-//HoD Professional Developement - Student List
+//Official Academic - StudentList
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Flex, Td, Text, Tr, useColorModeValue } from "@chakra-ui/react";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Flex,
+  Td,
+  Text,
+  Tr,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import axios from "axios";
 
 import { URL } from "controller/urls_config";
 
-function StudentListProfessionalDevelopment(props) {
-  const { name, email, reg, dept, roll, batch } = props;
+function StudentListAcademic(props) {
+  const { name, email, reg, roll, dept, batch } = props;
   const textColor = useColorModeValue("gray.700", "white");
+  const bgStatus = useColorModeValue("gray.400", "#1a202c");
+  const colorStatus = useColorModeValue("white", "gray.400");
 
   return (
     <Tr
@@ -24,8 +36,7 @@ function StudentListProfessionalDevelopment(props) {
         localStorage.setItem("generalStudent", roll);
         let params = new URLSearchParams();
         params.append("RollNumber", localStorage.getItem("generalStudent"));
-        window.location.href =
-          URL + "LICET#/admin3/ProfessionalDevelopmentData";
+        window.location.href = URL + "Admin#/admin4/Academicdata";
       }}
       id={roll}
       _hover={{
@@ -72,4 +83,4 @@ function StudentListProfessionalDevelopment(props) {
   );
 }
 
-export default StudentListProfessionalDevelopment;
+export default StudentListAcademic;

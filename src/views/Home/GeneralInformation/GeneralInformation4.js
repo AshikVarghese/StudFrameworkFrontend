@@ -37,7 +37,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import GeneralParticularstablerow from "components/Tables/StudentList/StudentListGI3";
+import GeneralParticularstablerow from "components/Tables/StudentList/StudentListGI4";
 
 import { server_URL } from "controller/urls_config";
 
