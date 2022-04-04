@@ -348,8 +348,8 @@ function AdminControlCreate() {
         >
           Cancel
         </Button>
-        <p id="success" style={{display:"none"}}>Inserted successfully</p>
-        <p id="failure" style={{display:"none"}}>Inserted failed</p>
+        <p id="success" style={{display:"none",color:"green"}}>Inserted successfully</p>
+        <p id="failure" style={{display:"none",color:"red"}}>Inserted failed</p>
       </Box>
     </Flex>
   );

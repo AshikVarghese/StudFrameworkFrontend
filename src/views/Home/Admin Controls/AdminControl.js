@@ -27,12 +27,12 @@ import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import CredentialList from "components/Tables/CredentialList";
+import CredentialList from "components/Tables/CredentialList"; 
 import { server_URL, URL } from "controller/urls_config";
 
 var Loader = require("react-loader");
 
-function AdminControl() {
+function AdminControl() { 
   function newCredential() {
     window.location.href = URL + "Admin#/admin4/AdminControlCreate";
   }
@@ -40,14 +40,34 @@ function AdminControl() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
-  let params = new URLSearchParams();
 
   useEffect(async () => {
-    axios.post(server_URL + "AcademicsDataofficial").then((items) => {
-      setData(items.data);
+    axios.post(server_URL + "admin_get_creds").then((items) => {
+      var temp = items.data;
+      for (let i = 0; i < temp.length; i++) {
+        if(temp[i].user_type == 0){
+          console.log("HELLO");
+          temp[i].user_type = "Student"
+        }
+        else if(temp[i].user_type == 1){
+          temp[i].user_type = "Class Advisor"
+        }
+        else if(temp[i].user_type == 2){
+          temp[i].user_type = "Hod"
+        }
+        else if(temp[i].user_type == 3){
+          temp[i].user_type = "Official"
+        }
+        else if(temp[i].user_type == 4){
+          temp[i].user_type = "Admin"
+        }
+        if(i == temp.length-1){
+          setData(temp);
+        }
+      }
       setLoading(true);
     });
-  });
+  },[]);
 
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
@@ -197,6 +217,8 @@ function AdminControl() {
                 <Th color="gray.400">Department</Th>
                 <Th color="gray.400">batch</Th>
                 <Th color="gray.400">User Type</Th>
+                <Th color="gray.400">Edit</Th>
+                <Th color="gray.400">Delete</Th> 
               </Tr>
             </Thead>
             <Tbody>
@@ -206,16 +228,7 @@ function AdminControl() {
                     //data2.push(item);
                     return item;
                   } else if (
-                    item.sname
-                      .toLowerCase()
-                      .includes(searchTerm.toLocaleLowerCase()) ||
-                    item.roll_no
-                      .toLowerCase()
-                      .includes(searchTerm.toLocaleLowerCase()) ||
-                    item.batch
-                      .toLowerCase()
-                      .includes(searchTerm.toLocaleLowerCase()) ||
-                    item.reg_no
+                    item.email
                       .toLowerCase()
                       .includes(searchTerm.toLocaleLowerCase())
                   ) {
@@ -226,11 +239,12 @@ function AdminControl() {
                 .map((item) => {
                   return (
                     <CredentialList
-                      email={item.licet_email}
-                      roll={item.roll}
+                      password = {item.password}
+                      email={item.email}
+                      roll={item.roll_no}
                       dept={item.dept}
                       batch={item.batch}
-                      user_type={item.user_tyoe}
+                      user_type={item.user_type}
                     />
                   );
                 })}
