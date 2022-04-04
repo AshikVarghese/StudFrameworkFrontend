@@ -17,6 +17,8 @@ import {
   Button,
   FormControl,
   Box,
+  useToast,
+  
   FormLabel,
   Select,
   SimpleGrid,
@@ -38,26 +40,27 @@ function AdminControlCreate() {
   function Cancel() {
     window.location.href = URL + "Admin#/admin4/AdminControl";
   }
-
+  
   function funinsert() {
     let params = new URLSearchParams();
     params.append("rollno", document.getElementById("RID").value);
-    params.append("registerno", document.getElementById("REID").value);
-    params.append("name", document.getElementById("NID").value);
-    params.append("aadhar", document.getElementById("AADHARID").value);
-    params.append("peremail", document.getElementById("PEREMID").value);
-    params.append("offemail", document.getElementById("OFFEMID").value);
-    params.append("batch", document.getElementById("BATCH").value);
-    params.append("department", document.getElementById("DEPT").value);
-    params.append("quo", document.getElementById("QUO").value);
-    params.append("sex", document.getElementById("SID").value);
-    params.append("dateofbirth", document.getElementById("DOBID").value);
-    params.append("nationality", document.getElementById("NATIONID").value);
-    params.append("contact", document.getElementById("CONTACTID").value);
-
-    axios.post(server_URL + "logininsert", params);
-    axios.post(server_URL + "studentinsert", params);
-    window.location.href = URL + "Student#/auth/signin";
+    params.append("email", document.getElementById("NID").value);
+    params.append("dept", document.getElementById("DID").value);
+    params.append("batch", document.getElementById("BID").value);
+    params.append("user_type", document.getElementById("SID").value);
+    // axios.post(server_URL + "logininsert", params);
+    // axios.post(server_URL + "studentinsert", params);
+    axios.post(server_URL + "admin_create_creds", params).then((results)=>{
+      if(results.data=="inserted")
+      {
+        document.getElementById("failure").style.display = "none";
+        document.getElementById("success").style.display = "block";
+      }
+      else{
+        document.getElementById("success").style.display = "none";
+        document.getElementById("failure").style.display = "block";
+      }
+    });
   }
   const textColor = useColorModeValue("gray.700", "white");
 
@@ -169,59 +172,14 @@ function AdminControlCreate() {
                             borderRadius="5px"
                             fontSize="sm"
                             type="text"
-                            placeholder="name"
+                            placeholder="email"
                           />
                         </FormControl>
                       </Flex>
                     </Flex>
                   </Td>
                 </Tr>
-                <Tr>
-                  <Td minWidth={{ sm: "17rem" }}>
-                    <Flex
-                      align="center"
-                      py=".8rem"
-                      minWidth="100%"
-                      flexWrap="nowrap"
-                    >
-                      <Flex direction="column">
-                        <FormControl isRequired>
-                          <FormLabel
-                            fontSize="md"
-                            color={textColor}
-                            fontWeight="bold"
-                            minWidth="100%"
-                          >
-                            Password
-                          </FormLabel>
-                        </FormControl>
-                      </Flex>
-                    </Flex>
-                  </Td>
-                  <Td minWidth={{ sm: "17rem" }}>
-                    <Flex
-                      align="center"
-                      py=".8rem"
-                      minWidth="100%"
-                      flexWrap="nowrap"
-                    >
-                      <Flex direction="column">
-                        <FormControl>
-                          <Tooltip label="Default: Licet@123" placement="right">
-                            <Input
-                              minWidth="30em"
-                              id="NID"
-                              borderRadius="5px"
-                              fontSize="sm"
-                              type="text"
-                              placeholder="password"
-                            />
-                          </Tooltip>
-                        </FormControl>
-                      </Flex>
-                    </Flex>
-                  </Td>
-                </Tr>
+               
                 <Tr>
                   <Td minWidth={{ sm: "17rem" }}>
                     <Flex
@@ -302,7 +260,7 @@ function AdminControlCreate() {
                           <Tooltip label="Ex: CSE" placement="right">
                             <Input
                               minWidth="30em"
-                              id="DEPT"
+                              id="DID"
                               borderRadius="5px"
                               fontSize="sm"
                               type="text"
@@ -348,7 +306,7 @@ function AdminControlCreate() {
                           <Tooltip label="Ex: 2019-2023" placement="right">
                             <Input
                               minWidth="30em"
-                              id="BATCH"
+                              id="BID"
                               borderRadius="5px"
                               fontSize="sm"
                               type="text"
@@ -390,6 +348,8 @@ function AdminControlCreate() {
         >
           Cancel
         </Button>
+        <p id="success" style={{display:"none"}}>Inserted successfully</p>
+        <p id="failure" style={{display:"none"}}>Inserted failed</p>
       </Box>
     </Flex>
   );
