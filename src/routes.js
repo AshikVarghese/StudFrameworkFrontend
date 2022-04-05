@@ -182,11 +182,11 @@ var dashRoutes = [
     component: GeneralInformationdata,
     layout: "/auth",
   },
-  {
-    path: "/Error404",
-    component: Error404,
-    layout: "/auth",
-  },
+  // {
+  //   path: "/Error404",
+  //   component: Error404,
+  //   layout: "/auth",
+  // },
   {
     path: "/ServerError",
     component: ServerError,
