@@ -31,6 +31,7 @@ import { server_URL } from "controller/urls_config";
 
 function CredentialList(props) {
   const toast = useToast()
+  const [result,setresult] = useState(null);
 
   const { email, roll, batch, dept, user_type,password } = props;
   const textColor = useColorModeValue("gray.700", "white");
@@ -42,10 +43,11 @@ function CredentialList(props) {
     params.append("email",email);
       axios.post(server_URL + "admin_delete_creds", params).then((results)=>{
         if(results.data == "removed"){
-          localStorage.setItem("result","Deleted Successfully");
+          localStorage.setItem("res","Deleted Successfully");
+          setresult("Deleted Successfully");
         }
         else{
-          localStorage.setItem("result","Unable to delete credential");
+          localStorage.setItem("res","Unable to delete credential");
         }
       })
     }
@@ -102,16 +104,16 @@ function CredentialList(props) {
     <Tr
       cursor=""
       variant="ghost"
-      fontSize="md"
+      fontSize="md" 
       color={textColor}
       fontWeight="bold"
       minWidth="100%"
       id={email}
-      _hover={{ 
-        Radius: "20px",
-        background: "#bbbbbb",
-        color: "white",
-      }}
+      // _hover={{ 
+      //   Radius: "20px",
+      //   background: "#bbbbbb",
+      //   color: "white",
+      // }}
     >
       <Td>
         <Flex direction="column">
@@ -276,7 +278,7 @@ function CredentialList(props) {
         <Button
           onClick={()=>{cred_delete(); 
             toast({
-            title: `${localStorage.getItem('result')}`,
+            title: `${localStorage.getItem("res")}`,
             status: "success",
             duration: 1000,
             position: "top",
