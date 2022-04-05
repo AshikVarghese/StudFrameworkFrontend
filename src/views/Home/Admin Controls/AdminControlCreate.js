@@ -189,7 +189,7 @@ function AdminControlCreate() {
                       flexWrap="nowrap"
                     >
                       <Flex direction="column">
-                        <FormControl isRequired>
+                        <FormControl>
                           <FormLabel
                             fontSize="md"
                             color={textColor}
@@ -235,7 +235,7 @@ function AdminControlCreate() {
                       flexWrap="nowrap"
                     >
                       <Flex direction="column">
-                        <FormControl isRequired>
+                        <FormControl>
                           <FormLabel
                             fontSize="md"
                             color={textColor}
@@ -281,7 +281,7 @@ function AdminControlCreate() {
                       flexWrap="nowrap"
                     >
                       <Flex direction="column">
-                        <FormControl isRequired>
+                        <FormControl>
                           <FormLabel
                             fontSize="md"
                             color={textColor}
@@ -343,7 +343,7 @@ function AdminControlCreate() {
           marginTop="1rem"
           marginRight="1rem"
           width="30%"
-          colorScheme="orange"
+          colorScheme="red"
           variant="solid"
         >
           Cancel
