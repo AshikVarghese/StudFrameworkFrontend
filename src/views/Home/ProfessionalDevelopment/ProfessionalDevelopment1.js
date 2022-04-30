@@ -48,10 +48,13 @@ function ProfessionalDevelopment() {
 
   function submit() { 
       formData.append("value","glecture");
-      axios.post(server_URL + "bulkforpd", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+      axios({
+        method: "post",
+        url: server_URL + "bulkforpd",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      }).then((results)=>{
+        console.log(results.data);
       })  
   }
 
