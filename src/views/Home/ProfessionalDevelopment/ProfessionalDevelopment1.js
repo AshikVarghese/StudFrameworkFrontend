@@ -23,6 +23,15 @@ import {
   InputLeftElement,
   useToast,
   Box,
+  Select,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -36,12 +45,24 @@ import { server_URL } from "controller/urls_config";
 var Loader = require("react-loader");
 
 function ProfessionalDevelopment() {
+
+  function submit() { 
+      formData.append("value","glecture");
+      axios.post(server_URL + "bulkforpd", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })  
+  }
+
   // Toast var
   const toast = useToast();
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const formData = new FormData();  
+  
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -129,7 +150,45 @@ function ProfessionalDevelopment() {
             value={searchTerm}
           />
         </InputGroup>
-        <Box alignSelf="flex-end">
+        <Box alignSelf={"flex-end"}>  
+          <Button minWidth="fit-content" 
+                  mt="1em" 
+                  colorScheme={"orange"}
+                  onClick={onOpen} 
+                  style={{marginRight:"1em"}}> 
+              Bulk Upload
+          </Button>
+          <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Bulk Upload</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          <Select placeholder='Select option' id='sel' onChange={()=>{
+            document.getElementById('file').style.display = "block";
+            document.getElementById('sub').style.display = "none";
+            document.getElementById('file').value = "";
+          }}>
+              <option value='glecture'>Guest Lecture</option>
+              <option value='sskills'>Soft Skills</option>
+              <option value='atraining'>Aptitude Training </option>
+            </Select><br/>
+            <Input type="file" id="file" style={{display:"none"}} onChange={(e)=>{
+              console.log(e.target.files[0]);
+              formData.append("file",e.target.files[0]);
+              document.getElementById('sub').style.display = "block";
+            }}/>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button colorScheme='blue' mr={3} onClick={submit} id="sub" style={{display:"none"}}>
+              Submit
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
           <CSVLink data={data2}>
             <Button
               minWidth="fit-content"
