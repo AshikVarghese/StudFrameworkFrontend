@@ -337,7 +337,7 @@ function GeneralInformationdata() {
                           <Select
                             minWidth="26em"
                             id="SID"
-                            placeholder="Select Option"
+                            placeholder="Select Gender"
                             isRequired
                           >
                             <option value="Male">Male</option>
