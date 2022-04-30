@@ -60,8 +60,8 @@ export default function Dashboard() {
             </Flex>
           </CardBody>
         </Card>
-        <BarChartAcademicSummary />
-        <LineChartAcademics />
+        {/* <BarChartAcademicSummary /> */}
+        {/* <LineChartAcademics /> */}
       </SimpleGrid>
     </Flex>
   );
