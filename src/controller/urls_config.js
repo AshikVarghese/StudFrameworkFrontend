@@ -2,7 +2,7 @@
 
 // Deployment URLS
 export let URL = "http://192.168.1.145:80/",
-  server_URL = "http://192.168.1.145:8080/";
+  server_URL = "http://192.168.1.146:5000/";
 
 // Dev URLS
 // export let URL = "http://localhost:3000/",
