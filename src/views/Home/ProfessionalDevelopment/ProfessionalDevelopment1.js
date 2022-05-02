@@ -172,20 +172,19 @@ function ProfessionalDevelopment() {
                     style={{marginRight:"1em"}}
                     >Templates</Button>
                 </PopoverTrigger>
-              <PopoverContent>
+              <PopoverContent color='white' bg='blue.800' borderColor='blue.800'>
             <PopoverArrow />
           <PopoverCloseButton />
           <PopoverHeader>Templates For Bulk Upload</PopoverHeader>
             <PopoverBody>
               <Select
-                color='white'
                 placeholder='Select template' id="tempsel" onChange={()=>{
                   document.getElementById('tempsel').value != '' ? 
                     document.getElementById("down").style.display="block"
                    : document.getElementById("down").style.display="none";
                 }}>
-                <option value='glecture.xlsx'>Guest Lecture</option>
-                <option value='sskills.xlsx'>Soft Skills</option>
+                <option value='glecture.xlsx' style={{color:"gray"}}>Guest Lecture</option>
+                <option value='sskills.xlsx' style={{color:"gray"}}>Soft Skills</option>
               </Select>
               <Button minWidth="fit-content" 
                   mt="1em" 
@@ -201,6 +200,9 @@ function ProfessionalDevelopment() {
             </PopoverBody>
           </PopoverContent> 
           </Popover>
+
+          <Popover>
+          <PopoverTrigger>
           <Button minWidth="fit-content" 
                   mt="1em" 
                   colorScheme={"orange"}
@@ -208,34 +210,30 @@ function ProfessionalDevelopment() {
                   style={{marginRight:"1em"}}> 
               Bulk Upload
           </Button>
-          <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Bulk Upload</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-          <Select placeholder='Select option' id='sel' onChange={()=>{
+                </PopoverTrigger>
+              <PopoverContent color='white' bg='blue.800' borderColor='blue.800'>
+            <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Bulk Upload</PopoverHeader>
+            <PopoverBody>
+            <Select placeholder='Select option' id='sel' onChange={()=>{
             document.getElementById('file').style.display = "block";
           }}>
-              <option value='pd_guest_lecture'>Guest Lecture</option>
-              <option value='sskills'>Soft Skills</option>
-              <option value='atraining'>Aptitude Training </option>
+              <option value='pd_guest_lecture' style={{color:"gray"}}>Guest Lecture</option>
+              <option value='sskills' style={{color:"gray"}}>Soft Skills</option>
+              <option value='atraining' style={{color:"gray"}}>Aptitude Training </option>
             </Select><br/>
             <Input type="file" id="file" style={{display:"none"}} onChange={(e)=>{
               formData.append("file",e.target.files[0]);
               document.getElementById('sub').style.display = "block";
-            }}/>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button colorScheme='blue' mr={3} onClick={()=>{submit();onClose();}} id="sub" style={{display:"none"}}>
+            }}/><br/>
+              <Button colorScheme='orange' mr={3} onClick={()=>{submit();onClose();}} id="sub" style={{display:"none"}}>
               Submit
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            </PopoverBody>
+          </PopoverContent> 
+          </Popover>
+
           <CSVLink data={data2}>
             <Button
               minWidth="fit-content"
