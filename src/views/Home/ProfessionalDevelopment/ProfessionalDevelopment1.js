@@ -55,8 +55,9 @@ var Loader = require("react-loader");
 
 function ProfessionalDevelopment() {
 
-  function submit() { 
-      formData.append("value","glecture");
+  function submit() {
+      formData.delete("value"); 
+      formData.append("value",document.getElementById('sel').value);
       axios({
         method: "post",
         url: server_URL + "bulkforpd",
@@ -215,15 +216,12 @@ function ProfessionalDevelopment() {
           <ModalBody>
           <Select placeholder='Select option' id='sel' onChange={()=>{
             document.getElementById('file').style.display = "block";
-            document.getElementById('sub').style.display = "none";
-            document.getElementById('file').value = "";
           }}>
-              <option value='glecture'>Guest Lecture</option>
+              <option value='pd_guest_lecture'>Guest Lecture</option>
               <option value='sskills'>Soft Skills</option>
               <option value='atraining'>Aptitude Training </option>
             </Select><br/>
             <Input type="file" id="file" style={{display:"none"}} onChange={(e)=>{
-              console.log(e.target.files[0]);
               formData.append("file",e.target.files[0]);
               document.getElementById('sub').style.display = "block";
             }}/>
@@ -232,7 +230,7 @@ function ProfessionalDevelopment() {
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button colorScheme='blue' mr={3} onClick={submit} id="sub" style={{display:"none"}}>
+            <Button colorScheme='blue' mr={3} onClick={()=>{submit();onClose();}} id="sub" style={{display:"none"}}>
               Submit
             </Button>
           </ModalFooter>
