@@ -185,6 +185,7 @@ function ProfessionalDevelopment() {
                 }}>
                 <option value='glecture.xlsx' style={{color:"gray"}}>Guest Lecture</option>
                 <option value='sskills.xlsx' style={{color:"gray"}}>Soft Skills</option>
+                <option value='sdiscovery.xlsx' style={{color:"gray"}}>System Discovery</option>
               </Select>
               <Button minWidth="fit-content" 
                   mt="1em" 
@@ -221,7 +222,8 @@ function ProfessionalDevelopment() {
           }}>
               <option value='pd_guest_lecture' style={{color:"gray"}}>Guest Lecture</option>
               <option value='sskills' style={{color:"gray"}}>Soft Skills</option>
-              <option value='atraining' style={{color:"gray"}}>Aptitude Training </option>
+              <option value='atraining' style={{color:"gray"}}>Aptitude Training</option>
+              <option value='pd_system_discovery' style={{color:"gray"}}>System Discovery</option>
             </Select><br/>
             <Input type="file" id="file" style={{display:"none"}} onChange={(e)=>{
               formData.append("file",e.target.files[0]);
