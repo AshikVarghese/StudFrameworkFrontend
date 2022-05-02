@@ -95,6 +95,7 @@ function ProfessionalDevelopmentData1() {
         axios.post(server_URL + "Miniproj_cadisplay", params),
         axios.post(server_URL + "finpro_CA_display", params),
         axios.post(server_URL + "publication_cadisplay", params),
+        axios.post(server_URL + "aptitude_cadisplay", params),
       ])
       .then(
         axios.spread(
@@ -111,7 +112,8 @@ function ProfessionalDevelopmentData1() {
             data10,
             data11,
             data12,
-            data13
+            data13,
+            data14
           ) => {
             setp1data(data1.data);
             setp2data(data2.data);
@@ -126,6 +128,7 @@ function ProfessionalDevelopmentData1() {
             setp11data(data11.data);
             setp12data(data12.data);
             setp13data(data13.data);
+            setp14data(data14.data);
           }
         )
       );
@@ -892,7 +895,7 @@ function ProfessionalDevelopmentData1() {
         <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
-              SkillRack
+              Aptitude
             </Text>
             <Button
               ms="auto"
@@ -909,27 +912,24 @@ function ProfessionalDevelopmentData1() {
               <Table variant="simple" color={textColor}>
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
-                    <Th color="gray.400">Module</Th>
-                    <Th color="gray.400">Trainer</Th>
-                    <Th color="gray.400">Semester</Th>
+                    <Th color="gray.400">Assessment</Th>
+                    <Th color="gray.400">Date</Th>
+                    <Th color="gray.400">Remarks</Th>
 
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                     <Th color="gray.400">Edit</Th>
                     <Th color="gray.400">Delete</Th>
-                    <Th color="gray.400">Verify</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p8data.map((item15) => {
+                  {p14data.map((item15) => {
                     return (
                       <ProfessionalDevelopmentTableRow15
                         id={item15.s_no}
-                        row1={item15.topic || Null_message}
+                        row1={item15.assessment || Null_message}
                         row2={item15.date || Null_message}
-                        row3={item15.resource_person || Null_message}
-                        row5={item15.credits || Null_message}
-                        row6={item15.verified || Null_message}
+                        row3={item15.remarks || Null_message}
+                        row4={item15.credits || Null_message}
                       />
                     );
                   })}
