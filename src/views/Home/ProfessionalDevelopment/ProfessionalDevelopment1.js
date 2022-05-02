@@ -32,6 +32,15 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -39,7 +48,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment1";
-
+import { saveAs } from 'file-saver';
 import { server_URL } from "controller/urls_config";
 
 var Loader = require("react-loader");
@@ -54,7 +63,7 @@ function ProfessionalDevelopment() {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       }).then((results)=>{
-        console.log(results.data);
+        alert(results.data);
       })  
   }
 
@@ -154,6 +163,43 @@ function ProfessionalDevelopment() {
           />
         </InputGroup>
         <Box alignSelf={"flex-end"}> 
+        <Popover>
+          <PopoverTrigger>
+            <Button minWidth="fit-content" 
+                    mt="1em" 
+                    colorScheme={"orange"}
+                    style={{marginRight:"1em"}}
+                    >Templates</Button>
+                </PopoverTrigger>
+              <PopoverContent>
+            <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverHeader>Templates For Bulk Upload</PopoverHeader>
+            <PopoverBody>
+              <Select
+                color='white'
+                placeholder='Select template' id="tempsel" onChange={()=>{
+                  document.getElementById('tempsel').value != '' ? 
+                    document.getElementById("down").style.display="block"
+                   : document.getElementById("down").style.display="none";
+                }}>
+                <option value='glecture.xlsx'>Guest Lecture</option>
+                <option value='sskills.xlsx'>Soft Skills</option>
+              </Select>
+              <Button minWidth="fit-content" 
+                  mt="1em" 
+                  colorScheme={"orange"}
+                  id="down"
+                  onClick={()=>{
+                    var file = document.getElementById("tempsel").value;
+                    saveAs(server_URL + "download_all/"+file,file);
+                  }}
+                  style={{marginRight:"1em",display:'none'}}> 
+              Download
+            </Button>
+            </PopoverBody>
+          </PopoverContent> 
+          </Popover>
           <Button minWidth="fit-content" 
                   mt="1em" 
                   colorScheme={"orange"}
