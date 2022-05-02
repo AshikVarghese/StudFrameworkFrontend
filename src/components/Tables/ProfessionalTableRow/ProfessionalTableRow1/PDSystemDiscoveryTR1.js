@@ -29,19 +29,19 @@ function ProfessionalDevelopmentTableRow(props) {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { id, row1, row2, row3, row4, row5, row6 } = props;
+  const { id, row1, row2, row3, row4} = props;
   const textColor = useColorModeValue("gray.700", "white");
 
   function funedit() {
     let cid = { id };
     let params = new URLSearchParams();
+    params.append("edit", "yes");
     params.append("columnid", cid.id);
-    params.append("topic", document.getElementById("TopicID").value);
-    params.append("resource_person", document.getElementById("RsprID").value);
-    params.append("date", document.getElementById("dateID").value);
-    params.append("outcome", document.getElementById("outID").value);
+    params.append("components", document.getElementById("compID").value);
+    params.append("date", document.getElementById("DateID").value);
+    params.append("remarks", document.getElementById("ReID").value);
     params.append("credits", document.getElementById("creditsID").value);
-    axios.post(server_URL + "workshop_edit", params).then((results) => {
+    axios.post(server_URL + "sdiscovery_edit_delete", params).then((results) => {
       if (results) {
         window.location.reload(false);
       }
@@ -51,25 +51,15 @@ function ProfessionalDevelopmentTableRow(props) {
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
+    params.append("edit", "no");
     params.append("columnid", cid.id);
-    axios.post(server_URL + "workshop_delete", params).then((results) => {
+    axios.post(server_URL + "sdiscovery_edit_delete", params).then((results) => {
       if (results) {
         window.location.reload(false);
       }
     });
   }
 
-  function funverify() {
-    let cid = { id };
-    let params = new URLSearchParams();
-    params.append("columnid", cid.id);
-    params.append("verify", "Verified");
-    axios.post(server_URL + "workshop_verify", params).then((results) => {
-      if (results) {
-        window.location.reload(false);
-      }
-    });
-  }
 
   return (
     <Tr>
@@ -98,12 +88,6 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row4}</Flex>
         </Flex>
       </Td>
-      <Td minWidth={{ sm: "5em" }}>
-        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-          <Flex direction="column">{row5}</Flex>
-        </Flex>
-      </Td>
-
       <Td>
         <Button
           onClick={onOpen}
@@ -131,13 +115,13 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row1}
-                    id="dateID"
+                    id="compID"
                   />
                 </Td>
               </Tr>
               <Tr>
                 <Td>
-                  <Text m="1em">Semester</Text>
+                  <Text m="1em">Date</Text>
                 </Td>
                 <Td>
                   <Input
@@ -146,7 +130,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row2}
-                    id="RsprID"
+                    id="DateID"
                   />
                 </Td>
               </Tr>
@@ -162,7 +146,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row3}
-                    id="outID"
+                    id="ReID"
                   />
                 </Td>
               </Tr>
@@ -213,17 +197,6 @@ function ProfessionalDevelopmentTableRow(props) {
           width="fit-content"
         >
           Delete
-        </Button>
-      </Td>
-      <Td>
-        <Button
-          onClick={funverify}
-          bg="orange.300"
-          alignSelf="flex-end"
-          width="fit-content"
-          disabled={{ row6 }.row6 == "Verified" ? true : false}
-        >
-          Verify
         </Button>
       </Td>
     </Tr>
