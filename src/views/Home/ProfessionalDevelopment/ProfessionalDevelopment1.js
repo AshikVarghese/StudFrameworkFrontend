@@ -65,7 +65,7 @@ function ProfessionalDevelopment() {
   const [Loaded, setLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const formData = new FormData();  
-  
+
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -153,7 +153,7 @@ function ProfessionalDevelopment() {
             value={searchTerm}
           />
         </InputGroup>
-        <Box alignSelf={"flex-end"}>  
+        <Box alignSelf={"flex-end"}> 
           <Button minWidth="fit-content" 
                   mt="1em" 
                   colorScheme={"orange"}
