@@ -190,7 +190,14 @@ function ProfessionalDevelopmentTableRow(props) {
       </Td>
       <Td>
         <Button
-          onClick={fundelete}
+          onClick={()=>{toast({
+            title: "Deleted Successfully",
+            status: "success",
+            duration: 9000,
+            position: "top",
+            isClosable: true,
+          }); 
+          fundelete();}}
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
