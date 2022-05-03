@@ -21,7 +21,6 @@ import {
   IconButton,
   Button,
   Input,
-  Select,
   InputGroup,
   InputLeftElement,
   SimpleGrid,
@@ -34,7 +33,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-import StudentListInternational from "components/Tables/StudentList/StudentListInternational4";
+import StudentListInternational from "components/Tables/StudentList/StudentListInternational3";
 
 import { server_URL } from "controller/urls_config";
 
@@ -42,8 +41,6 @@ var Loader = require("react-loader");
 
 function InternationalExposure() {
   const [data, setData] = useState([]);
-  const [data3, setData3] = useState([]);
-  const [data4, setData4] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
@@ -57,19 +54,11 @@ function InternationalExposure() {
 
   useEffect(async () => {
     axios
-      .all([
-        axios.post(server_URL + "GeneralOfficial", params),
-        axios.post(server_URL + "GeneralOfficialDepartment", params),
-        axios.post(server_URL + "GeneralOfficialBatch", params),
-      ])
-      .then(
-        axios.spread((data, data3, data4) => {
-          setData(data.data);
-          setData3(data3.data);
-          setData4(data4.data);
-          setLoading(true);
-        })
-      );
+      .post(server_URL + "InternationalExpoofficial", params)
+      .then((items) => {
+        setData(items.data);
+        setLoading(true);
+      });
   }, []);
 
   data2 = data.filter((item) => {
@@ -126,126 +115,102 @@ function InternationalExposure() {
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Select Department
+                Search Department
               </Text>
             </CardHeader>
 
-            {/* <InputGroup
-                bg={inputBg}
-                mt="1rem"
-                borderRadius="15px"
-                w="cover"
-                _focus={{
-                  borderColor: { mainorange },
-                }}
-                _active={{
-                  borderColor: { mainorange },
-                }}
-              >
-                <InputLeftElement
-                  children={
-                    <IconButton
-                      bg="inherit"
-                      borderRadius="inherit"
-                      _hover="none"
-                      _active={{
-                        bg: "inherit",
-                        transform: "none",
-                        borderColor: "transparent",
-                      }}
-                      _focus={{
-                        boxShadow: "none",
-                      }}
-                      icon={
-                        <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                      }
-                    ></IconButton>
-                  }
-                />
-
-                <Input
-                  onChange={(event) => setSearchTerm2(event.target.value)}
-                  fontSize="xs"
-                  py="11px"
-                  placeholder="Type department"
-                  borderRadius="inherit"
-                  value={searchTerm2}
-                />
-              </InputGroup> */}
-
-            <Select
-              mt="1em"
+            <InputGroup
               bg={inputBg}
-              placeholder="Department"
-              id="dept"
-              onChange={(e) => setSearchTerm2(e.target.value)}
+              mt="1rem"
+              borderRadius="15px"
+              w="cover"
+              _focus={{
+                borderColor: { mainorange },
+              }}
+              _active={{
+                borderColor: { mainorange },
+              }}
             >
-              {data3.map((data) => {
-                return <option value={data.dept}>{data.dept}</option>;
-              })}
-            </Select>
-          </Box>
+              <InputLeftElement
+                children={
+                  <IconButton
+                    bg="inherit"
+                    borderRadius="inherit"
+                    _hover="none"
+                    _active={{
+                      bg: "inherit",
+                      transform: "none",
+                      borderColor: "transparent",
+                    }}
+                    _focus={{
+                      boxShadow: "none",
+                    }}
+                    icon={
+                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
+                    }
+                  ></IconButton>
+                }
+              />
 
+              <Input
+                onChange={(event) => setSearchTerm2(event.target.value)}
+                fontSize="xs"
+                py="11px"
+                placeholder="Type department"
+                borderRadius="inherit"
+                value={searchTerm2}
+              />
+            </InputGroup>
+          </Box>
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Select Batch
+                Search Batch
               </Text>
             </CardHeader>
 
-            {/* <InputGroup
-                bg={inputBg}
-                mt="1rem"
-                borderRadius="15px"
-                w="cover"
-                _focus={{
-                  borderColor: { mainorange },
-                }}
-                _active={{
-                  borderColor: { mainorange },
-                }}
-              >
-                <InputLeftElement
-                  children={
-                    <IconButton
-                      bg="inherit"
-                      borderRadius="inherit"
-                      _hover="none"
-                      _active={{
-                        bg: "inherit",
-                        transform: "none",
-                        borderColor: "transparent",
-                      }}
-                      _focus={{
-                        boxShadow: "none",
-                      }}
-                      icon={
-                        <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                      }
-                    ></IconButton>
-                  }
-                />
-
-                <Input
-                  onChange={(event) => setSearchTerm1(event.target.value)}
-                  fontSize="xs"
-                  py="11px"
-                  placeholder="Type batch"
-                  borderRadius="inherit"
-                  value={searchTerm1}
-                />
-              </InputGroup> */}
-            <Select
-              mt="1em"
+            <InputGroup
               bg={inputBg}
-              placeholder="Batch"
-              id="batch"
-              onChange={(e) => setSearchTerm1(e.target.value)}
+              mt="1rem"
+              borderRadius="15px"
+              w="cover"
+              _focus={{
+                borderColor: { mainorange },
+              }}
+              _active={{
+                borderColor: { mainorange },
+              }}
             >
-              {data4.map((data) => {
-                return <option value={data.batch}>{data.batch}</option>;
-              })}
-            </Select>
+              <InputLeftElement
+                children={
+                  <IconButton
+                    bg="inherit"
+                    borderRadius="inherit"
+                    _hover="none"
+                    _active={{
+                      bg: "inherit",
+                      transform: "none",
+                      borderColor: "transparent",
+                    }}
+                    _focus={{
+                      boxShadow: "none",
+                    }}
+                    icon={
+                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
+                    }
+                  ></IconButton>
+                }
+              />
+
+              <Input
+                onChange={(event) => setSearchTerm1(event.target.value)}
+                fontSize="xs"
+                py="11px"
+                placeholder="Type batch"
+                borderRadius="inherit"
+                value={searchTerm1}
+              />
+            </InputGroup>
           </Box>
 
           <Box>
@@ -303,7 +268,6 @@ function InternationalExposure() {
             <Button
               minWidth="fit-content"
               mt="1em"
-              onClick="m"
               colorScheme="orange"
               alignSelf="flex-end"
               variant="solid"
