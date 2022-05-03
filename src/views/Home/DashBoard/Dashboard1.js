@@ -1,7 +1,14 @@
 /** @format */
 
 // Chakra imports
-import { Box, Flex, SimpleGrid, Stat, StatLabel } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  SimpleGrid,
+  Stat,
+  StatLabel,
+  Heading,
+} from "@chakra-ui/react";
 
 // Custom components
 import Card from "components/Card/Card.js";
@@ -10,6 +17,7 @@ import BarChartInternship from "components/Charts/BarChartInternship2";
 import BarChartPlacement from "components/Charts/BarChartPlacement2";
 import LineChart from "components/Charts/LineChartAcademics1";
 import BarChartAcademicSummary from "components/Charts/BarChartAcademicSummary1";
+import CreditsTable from "components/Tables/CreditsTable/creditstable1";
 
 export default function Dashboard() {
   return (
@@ -67,6 +75,13 @@ export default function Dashboard() {
           </CardBody>
         </Card>
       </SimpleGrid>
+      <br />
+      <Card minH="300px">
+        <Heading mb={4} color="gray.400">
+          Credits Summary
+        </Heading>
+        <CreditsTable />
+      </Card>
     </Flex>
   );
 }
