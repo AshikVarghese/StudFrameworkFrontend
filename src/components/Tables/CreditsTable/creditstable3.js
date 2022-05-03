@@ -1,17 +1,14 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
-  Button,
 } from "@chakra-ui/react";
 import { server_URL } from "controller/urls_config";
 export default function CreditsTable3() {
