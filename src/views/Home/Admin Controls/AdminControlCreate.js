@@ -17,8 +17,14 @@ import {
   Button,
   FormControl,
   Box,
-  useToast,
-  
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
   FormLabel,
   Select,
   SimpleGrid,
@@ -33,6 +39,9 @@ import { Tooltip } from "@chakra-ui/react";
 import { server_URL, URL } from "controller/urls_config";
 
 function AdminControlCreate() {
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   function logout() {
     window.location.href = URL + "Student#/auth/SignIn";
   }
@@ -51,22 +60,15 @@ function AdminControlCreate() {
     // axios.post(server_URL + "logininsert", params);
     // axios.post(server_URL + "studentinsert", params);
     axios.post(server_URL + "admin_create_creds", params).then((results)=>{
-      if(results.data=="inserted")
-      {
-        document.getElementById("failure").style.display = "none";
-        document.getElementById("success").style.display = "block";
-      }
-      else{
-        document.getElementById("success").style.display = "none";
-        document.getElementById("failure").style.display = "block";
-      }
+      localStorage.setItem("displaymsg",results.data);
+      onOpen()
     });
   }
   const textColor = useColorModeValue("gray.700", "white");
 
   return (
     <Flex direction="column" p="0rem 2rem 0rem 2rem">
-      <Button
+      {/* <Button
         onClick={logout}
         marginBottom="1rem"
         marginTop="1rem"
@@ -76,7 +78,7 @@ function AdminControlCreate() {
         alignSelf="flex-end"
       >
         log out
-      </Button>
+      </Button> */}
       <SimpleGrid columns={{ sm: 1, md: 1, xl: 1 }} gap={4}>
         <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
           <CardHeader p="6px 0px 22px 0px">
@@ -348,8 +350,21 @@ function AdminControlCreate() {
         >
           Cancel
         </Button>
-        <p id="success" style={{display:"none",color:"green"}}>Inserted successfully</p>
-        <p id="failure" style={{display:"none",color:"red"}}>Inserted failed</p>
+        <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Create New User</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {localStorage.getItem("displaymsg")}
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       </Box>
     </Flex>
   );

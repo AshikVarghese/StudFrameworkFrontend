@@ -28,7 +28,7 @@ function Academicdata() {
   let params = new URLSearchParams();
   const [data, setdata] = useState([]);
   const [Adata, setAdata] = useState([]);
-  params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+  params.append("StudentDetails", localStorage.getItem("generalStudent"));
   useState(async () => {
     axios
       .all([
@@ -49,6 +49,7 @@ function Academicdata() {
             student.splice(0, 2);
             student_data.push(student);
           }
+          // console.log(student_data);
           setdata(filtered_data);
           setAdata(student_data);
         })

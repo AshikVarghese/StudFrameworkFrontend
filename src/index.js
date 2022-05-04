@@ -11,7 +11,6 @@ import AdminLayout1 from "layouts/Admin1.js";
 import AdminLayout2 from "layouts/Admin2.js";
 import AdminLayout3 from "layouts/Admin3.js";
 import AdminLayout4 from "layouts/Admin4.js";
-import Error404 from "views/Pages/Error404";
 
 import "./components/Style/Style.scss";
 

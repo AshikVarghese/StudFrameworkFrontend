@@ -138,7 +138,6 @@ function InternationalExposure() {
             <Button
               minWidth="fit-content"
               mt="1.5em"
-              onClick="m"
               colorScheme="orange"
               variant="solid"
               onClick={() =>

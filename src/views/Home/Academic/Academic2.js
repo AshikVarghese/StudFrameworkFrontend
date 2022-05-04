@@ -42,6 +42,7 @@ function Academic() {
 
   let params = new URLSearchParams();
   params.append("department", localStorage.getItem("dept"));
+  params.append("StudentDetails", localStorage.getItem("StudentDetails"));
 
   useEffect(async () => {
     axios.post(server_URL + "AcademicsDataHOD", params).then((items) => {

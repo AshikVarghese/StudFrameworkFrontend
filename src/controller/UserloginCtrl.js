@@ -60,7 +60,7 @@ export default function handleLogin() {
     }
     // Logged In
     else {
-      console.log("Logged In");
+      // console.log("Logged In");
       var check = result.data[0];
       console.log(check);
 
