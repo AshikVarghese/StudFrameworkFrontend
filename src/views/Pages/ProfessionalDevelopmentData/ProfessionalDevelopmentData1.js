@@ -132,9 +132,9 @@ function ProfessionalDevelopmentData1() {
             setp11data(data11.data);
             setp12data(data12.data);
             setp13data(data13.data);
-            setp14data(data14.data);
-            setp15data(data15.data);
-            setp16data(data16.data);
+            // setp14data(data14.data);
+            // setp15data(data15.data);
+            // setp16data(data16.data);
           }
         )
       );
