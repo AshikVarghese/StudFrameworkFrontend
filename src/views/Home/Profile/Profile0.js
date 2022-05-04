@@ -6,16 +6,10 @@ import React, { useState, useEffect } from "react";
 import change_pass from "../../../controller/changepassword";
 // Chakra imports
 import {
-  Avatar,
-  AvatarGroup,
   Box,
   Button,
   Flex,
   SimpleGrid,
-  Icon,
-  Image,
-  Link,
-  Switch,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -24,12 +18,6 @@ import {
   PopoverCloseButton,
   PopoverBody,
   Portal,
-  PopoverFooter,
-  ButtonGroup,
-  Table,
-  Tbody,
-  Th,
-  Thead,
   Tr,
   Td,
   Input,
@@ -40,10 +28,8 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Collapse,
 } from "@chakra-ui/react";
 import { SettingsIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
 
@@ -156,12 +142,17 @@ function Profile() {
   );
   const emailColor = useColorModeValue("gray.400", "gray.300");
   const [data, setData] = useState([]);
+  const [credits, setcredits] = useState(0);
 
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
 
   axios.post(server_URL + "GeneralStudent", params).then((items) => {
     setData(items.data);
+  });
+  axios.post(server_URL + "get_credits_student", params).then((items) => {
+    // console.log(items);
+    setcredits(items.data[0].total);
   });
   data.map((item) => {
     var now = new Date();
@@ -448,6 +439,12 @@ function Profile() {
           </Flex>
         </Box>
       </Box>
+      <Card>
+        <b>
+          <Text fontSize="lg">LICET CREDITS : {credits}</Text>
+        </b>
+      </Card>
+      <br />
       <SimpleGrid columns={{ sm: 1, md: 2, xl: 3 }} gap={5}>
         <Card p="16px" my={{ sm: "24px", xl: "0px" }}>
           <CardHeader p="12px 5px" mb="12px">
@@ -540,6 +537,7 @@ function Profile() {
           </CardBody>
         </Card>
       </SimpleGrid>
+      <br />
     </Flex>
   );
 }

@@ -50,7 +50,7 @@ function Extracurricular() {
   useEffect(async () => {
     axios.post(server_URL + "ExtracurricularCA", params).then((items) => {
       setData(items.data);
-      is_loading = false;
+      setLoading(true);
     });
   }, []);
   const textColor = useColorModeValue("gray.700", "white");

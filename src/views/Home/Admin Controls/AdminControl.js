@@ -21,6 +21,14 @@ import {
   InputLeftElement,
   SimpleGrid,
   Box,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -28,13 +36,29 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CredentialList from "components/Tables/CredentialList"; 
+import { saveAs } from 'file-saver';
 import { server_URL, URL } from "controller/urls_config";
 
 var Loader = require("react-loader");
 
 function AdminControl() { 
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  let formdata = new FormData;
+
   function newCredential() {
     window.location.href = URL + "Admin#/admin4/AdminControlCreate";
+  }
+
+  function submit() {
+    axios({
+      method: "post",
+      url: server_URL + "file_upload_admin",
+      data: formdata,
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((results)=>{
+      alert(results.data);
+      window.location.reload(false);
+    })
   }
 
   const [data, setData] = useState([]);
@@ -144,7 +168,34 @@ function AdminControl() {
             </Box>
           </SimpleGrid>
         </Card>
+        <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Creating Credentials</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+              <label>Bulk Upload Template <br/><br/><Button onClick={()=>{
+                saveAs(server_URL + "download_all/login.xlsx","login.xlsx");
+              }}>Template</Button></label>
+              
+              <br/><br/>
 
+              <label>File Upload<br/><br/><Button type="file" onClick={()=>{
+                document.getElementById("hidden").style.display="block";
+              }}>upload Here...</Button></label><br/><br/>
+              <input type="file" id="hidden" style={{display:"none"}} onChange={(e)=>{
+                document.getElementById("hidden1").style.display="block";
+                formdata.append("file",e.target.files[0]);
+              }}></input>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button colorScheme='orange' id="hidden1" style={{display:"none"}} onClick={submit}>Submit</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
         <Card mb="1rem">
           <CardBody>
             <Flex
@@ -191,7 +242,7 @@ function AdminControl() {
               <Button
                 mt="1em"
                 minWidth="fit-content"
-                onClick="m"
+                onClick={onOpen}
                 colorScheme="orange"
                 alignSelf="flex-end"
                 variant="solid"
