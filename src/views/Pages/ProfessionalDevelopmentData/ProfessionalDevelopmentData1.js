@@ -172,6 +172,10 @@ function ProfessionalDevelopmentData1() {
                   setDrop11(true),
                   setDrop12(true),
                   setDrop13(true);
+                  setDrop14(true);
+                  setDrop15(true);
+                  setDrop16(true);
+                  setDrop17(true);
               }}
             >
               Show All
@@ -197,6 +201,10 @@ function ProfessionalDevelopmentData1() {
                   setDrop11(false),
                   setDrop12(false),
                   setDrop13(false);
+                  setDrop14(false);
+                  setDrop15(false);
+                  setDrop16(false);
+                  setDrop17(false);
               }}
             >
               Hide All
