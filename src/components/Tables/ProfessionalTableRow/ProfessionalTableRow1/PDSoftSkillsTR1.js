@@ -121,7 +121,7 @@ function ProfessionalDevelopmentTableRow(props) {
             <ModalBody>
               <Tr>
                 <Td>
-                  <Text m="1em">Module</Text>
+                  <Text m="1em">Skill</Text>
                 </Td>
                 <Td>
                   <Input

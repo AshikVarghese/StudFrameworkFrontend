@@ -98,11 +98,6 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row4}</Flex>
         </Flex>
       </Td>
-      <Td minWidth={{ sm: "5em" }}>
-        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-          <Flex direction="column">{row5}</Flex>
-        </Flex>
-      </Td>
 
       <Td>
         <Button
@@ -121,22 +116,7 @@ function ProfessionalDevelopmentTableRow(props) {
             <ModalBody>
               <Tr>
                 <Td>
-                  <Text m="1em">Module</Text>
-                </Td>
-                <Td>
-                  <Input
-                    minWidth="20em"
-                    borderRadius="5px"
-                    fontSize="sm"
-                    type="text"
-                    defaultValue={row1}
-                    id="TopicID"
-                  />
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>
-                  <Text m="1em">Trainer</Text>
+                  <Text m="1em">Components</Text>
                 </Td>
 
                 <Td>
@@ -145,14 +125,30 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row2}
-                    id="dateID"
+                    defaultValue={row1}
+                    id="compID"
                   />
                 </Td>
               </Tr>
               <Tr>
                 <Td>
-                  <Text m="1em">Semester</Text>
+                  <Text m="1em">Date</Text>
+                </Td>
+                <Td>
+                  <Input
+                    minWidth="20em"
+                    borderRadius="5px"
+                    fontSize="sm"
+                    type="text"
+                    defaultValue={row2}
+                    id="DateID"
+                  />
+                </Td>
+              </Tr>
+
+              <Tr>
+                <Td>
+                  <Text m="1em">Remarks</Text>
                 </Td>
                 <Td>
                   <Input
@@ -161,11 +157,10 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row3}
-                    id="RsprID"
+                    id="ReID"
                   />
                 </Td>
               </Tr>
-
               <Tr>
                 <Td>
                   <Text m="1em">Credits</Text>
