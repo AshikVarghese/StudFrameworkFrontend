@@ -39,6 +39,7 @@ import ProfessionalDevelopmentTableRow13 from "components/Tables/ProfessionalTab
 import ProfessionalDevelopmentTableRow14 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDSystemDiscoveryTR1";
 import ProfessionalDevelopmentTableRow15 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDSkillRackTR1";
 import ProfessionalDevelopmentTableRow16 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDSoftSkillsTR1";
+import ProfessionalDevelopmentTableRow17 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDEmployabilityTR1";
 
 import { URL, server_URL } from "controller/urls_config";
 
@@ -175,7 +176,8 @@ function ProfessionalDevelopmentData1() {
                   setDrop13(true),
                   setDrop14(true),
                   setDrop15(true),
-                  setDrop16(true);
+                  setDrop16(true),
+                  setDrop17(true);
               }}
             >
               Show All
@@ -203,7 +205,8 @@ function ProfessionalDevelopmentData1() {
                   setDrop13(false),
                   setDrop14(false),
                   setDrop15(false),
-                  setDrop16(false);
+                  setDrop16(false),
+                  setDrop17(false);
               }}
             >
               Hide All
@@ -986,7 +989,7 @@ function ProfessionalDevelopmentData1() {
                 <Tbody>
                   {p16data.map((item16) => {
                     return (
-                      <ProfessionalDevelopmentTableRow15
+                      <ProfessionalDevelopmentTableRow16
                         id={item16.s_no}
                         row1={item16.skill || Null_message}
                         row2={item16.trainer || Null_message}
@@ -1034,63 +1037,13 @@ function ProfessionalDevelopmentData1() {
                 <Tbody>
                   {p17data.map((item17) => {
                     return (
-                      <ProfessionalDevelopmentTableRow15
+                      <ProfessionalDevelopmentTableRow17
                         id={item17.s_no}
                         row1={item17.tech_skill || Null_message}
                         row2={item17.trainer || Null_message}
                         row3={item17.date || Null_message}
                         row4={item17.remarks || Null_message}
                         row5={item17.credits || Null_message}
-                      />
-                    );
-                  })}
-                </Tbody>
-              </Table>
-            </CardBody>
-          </Collapse>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <Text fontSize="xl" color={textColor} fontWeight="bold">
-              Soft Skills
-            </Text>
-            <Button
-              ms="auto"
-              bg="orange.400"
-              width="fit-content"
-              height="2em"
-              onClick={() => setDrop16(!drop16)}
-            >
-              {drop16 ? "Hide" : "Show"}
-            </Button>
-          </CardHeader>
-          <Collapse in={drop16}>
-            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
-              <Table variant="simple" color={textColor}>
-                <Thead>
-                  <Tr my=".8rem" pl="0px" color="gray.400">
-                    <Th color="gray.400">Module</Th>
-                    <Th color="gray.400">Trainer</Th>
-                    <Th color="gray.400">Semester</Th>
-
-                    <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
-                    <Th color="gray.400">Edit</Th>
-                    <Th color="gray.400">Delete</Th>
-                    <Th color="gray.400">Verify</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  {p8data.map((item16) => {
-                    return (
-                      <ProfessionalDevelopmentTableRow16
-                        id={item16.s_no}
-                        row1={item16.topic || Null_message}
-                        row2={item16.date || Null_message}
-                        row3={item16.resource_person || Null_message}
-                        row5={item16.credits || Null_message}
-                        row6={item16.verified || Null_message}
                       />
                     );
                   })}
