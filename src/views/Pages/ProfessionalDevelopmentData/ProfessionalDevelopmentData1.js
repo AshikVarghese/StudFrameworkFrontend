@@ -38,6 +38,7 @@ import ProfessionalDevelopmentTableRow12 from "components/Tables/ProfessionalTab
 import ProfessionalDevelopmentTableRow13 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDPublicationsTR1";
 import ProfessionalDevelopmentTableRow14 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDSystemDiscoveryTR1";
 import ProfessionalDevelopmentTableRow15 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDSkillRackTR1";
+import ProfessionalDevelopmentTableRow16 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDSoftSkillsTR1";
 
 import { URL, server_URL } from "controller/urls_config";
 
@@ -57,6 +58,7 @@ function ProfessionalDevelopmentData1() {
   const [drop13, setDrop13] = useState(false);
   const [drop14, setDrop14] = useState(false);
   const [drop15, setDrop15] = useState(false);
+  const [drop16, setDrop16] = useState(false);
 
   const [p1data, setp1data] = useState([]);
   const [p2data, setp2data] = useState([]);
@@ -73,6 +75,7 @@ function ProfessionalDevelopmentData1() {
   const [p13data, setp13data] = useState([]);
   const [p14data, setp14data] = useState([]);
   const [p15data, setp15data] = useState([]);
+  const [p16data, setp16data] = useState([]);
 
   const textColor = useColorModeValue("gray.700", "white");
   const Null_message = "NULL";
@@ -111,7 +114,10 @@ function ProfessionalDevelopmentData1() {
             data10,
             data11,
             data12,
-            data13
+            data13,
+            data14,
+            data15,
+            data16
           ) => {
             setp1data(data1.data);
             setp2data(data2.data);
@@ -126,6 +132,9 @@ function ProfessionalDevelopmentData1() {
             setp11data(data11.data);
             setp12data(data12.data);
             setp13data(data13.data);
+            setp14data(data14.data);
+            setp15data(data15.data);
+            setp16data(data16.data);
           }
         )
       );
@@ -155,7 +164,10 @@ function ProfessionalDevelopmentData1() {
                   setDrop10(true),
                   setDrop11(true),
                   setDrop12(true),
-                  setDrop13(true);
+                  setDrop13(true),
+                  setDrop14(true),
+                  setDrop15(true),
+                  setDrop16(true);
               }}
             >
               Show All
@@ -180,7 +192,10 @@ function ProfessionalDevelopmentData1() {
                   setDrop10(false),
                   setDrop11(false),
                   setDrop12(false),
-                  setDrop13(false);
+                  setDrop13(false),
+                  setDrop14(false),
+                  setDrop15(false),
+                  setDrop16(false);
               }}
             >
               Hide All
@@ -930,6 +945,56 @@ function ProfessionalDevelopmentData1() {
                         row3={item15.resource_person || Null_message}
                         row5={item15.credits || Null_message}
                         row6={item15.verified || Null_message}
+                      />
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </CardBody>
+          </Collapse>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <Text fontSize="xl" color={textColor} fontWeight="bold">
+              Soft Skills
+            </Text>
+            <Button
+              ms="auto"
+              bg="orange.400"
+              width="fit-content"
+              height="2em"
+              onClick={() => setDrop16(!drop16)}
+            >
+              {drop16 ? "Hide" : "Show"}
+            </Button>
+          </CardHeader>
+          <Collapse in={drop16}>
+            <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
+              <Table variant="simple" color={textColor}>
+                <Thead>
+                  <Tr my=".8rem" pl="0px" color="gray.400">
+                    <Th color="gray.400">Module</Th>
+                    <Th color="gray.400">Trainer</Th>
+                    <Th color="gray.400">Semester</Th>
+
+                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Edit</Th>
+                    <Th color="gray.400">Delete</Th>
+                    <Th color="gray.400">Verify</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {p8data.map((item16) => {
+                    return (
+                      <ProfessionalDevelopmentTableRow16
+                        id={item16.s_no}
+                        row1={item16.topic || Null_message}
+                        row2={item16.date || Null_message}
+                        row3={item16.resource_person || Null_message}
+                        row5={item16.credits || Null_message}
+                        row6={item16.verified || Null_message}
                       />
                     );
                   })}

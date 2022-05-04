@@ -36,6 +36,10 @@ function GeneralInformationdata() {
 
   function funinsert() {
     let params = new URLSearchParams();
+    if (document.getElementById("RID") == 0) {
+      alert("ERROR");
+    } else {
+    }
     params.append("rollno", document.getElementById("RID").value);
     params.append("registerno", document.getElementById("REID").value);
     params.append("name", document.getElementById("NID").value);
