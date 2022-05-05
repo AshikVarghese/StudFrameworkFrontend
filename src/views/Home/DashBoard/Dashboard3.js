@@ -14,7 +14,7 @@ import {
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import BarChartInternship from "components/Charts/BarChartInternship3";
-import BarChartCredits3 from "components/Charts/BarChartInternship3"
+import BarChartCredits3 from "components/Charts/BarChartInternship3";
 import BarChartPlacement from "components/Charts/BarChartCredits3";
 import CreditsTable3 from "components/Tables/CreditsTable/creditstable3";
 
@@ -96,6 +96,7 @@ export default function Dashboard() {
           </CardBody>
         </Card>
       </SimpleGrid>
+      <br />
       <Card minH="300px">
         <Heading mb={4} color="gray.400">
           Credits Summary
