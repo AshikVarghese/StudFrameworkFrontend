@@ -215,7 +215,6 @@ function GeneralInformationHOD() {
               <Button
                 minWidth="fit-content"
                 mt="1em"
-                onClick="m"
                 colorScheme="orange"
                 alignSelf="flex-end"
                 variant="solid"
