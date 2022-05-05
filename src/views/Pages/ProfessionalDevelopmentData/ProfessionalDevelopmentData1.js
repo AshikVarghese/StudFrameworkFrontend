@@ -911,7 +911,7 @@ function ProfessionalDevelopmentData1() {
           </Collapse>
         </Card>
 
-        <Card>
+        {/* <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
               Soft Skills
@@ -1049,7 +1049,7 @@ function ProfessionalDevelopmentData1() {
               </Table>
             </CardBody>
           </Collapse>
-        </Card>
+        </Card> */}
       </SimpleGrid>
     </Flex>
   );
