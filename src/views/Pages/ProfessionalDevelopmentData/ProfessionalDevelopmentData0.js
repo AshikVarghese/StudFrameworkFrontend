@@ -375,7 +375,7 @@ function ProfessionalDevelopmentData0() {
         axios.post(server_URL + "publication_display", params),
         axios.post(server_URL + "sdiscovery_cadisplay", params),
         axios.post(server_URL + "aptitude_cadisplay", params),
-        axios.post(server_URL + "sskils_stud_display", params),
+        axios.post(server_URL + "sskills_cadisplay", params),
         axios.post(server_URL + "empskills_cadisplay", params),
       ])
       .then(
