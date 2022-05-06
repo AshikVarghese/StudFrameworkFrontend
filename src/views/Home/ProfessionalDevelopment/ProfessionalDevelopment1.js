@@ -190,9 +190,17 @@ function ProfessionalDevelopment() {
                           "none");
                   }}
                 >
-                  <option value="glecture.xlsx">Guest Lecture</option>
-                  <option value="sskills.xlsx">Soft Skills</option>
-                  <option value="sdiscovery.xlsx">System Discovery</option>
+                  <option value="guest_lecture.xlsx">Guest Lecture</option>
+                  <option value="soft_skill.xlsx">Soft Skill</option>
+                  <option value="system_discovery.xlsx">System Discovery</option>
+                  <option value="webinar.xlsx">Webinar</option>
+                  <option value="workshop.xlsx">Workshop</option>
+                  <option value="skillrack.xlsx">SkillRack</option>
+                  <option value="placement.xlsx">Placement</option>
+                  <option value="industrial_visit.xlsx">Industrial Visit</option>
+                  <option value="motivational_talk.xlsx">Motivational Talk</option>
+                  <option value="employability_skill.xlsx">Employability Skill</option>
+                  <option value="aptitude.xlsx">Aptitude</option>
                 </Select>
                 <Button
                   minWidth="fit-content"
@@ -237,8 +245,16 @@ function ProfessionalDevelopment() {
                 >
                   <option value="pd_guest_lecture">Guest Lecture</option>
                   <option value="sskills">Soft Skills</option>
-                  <option value="atraining">Aptitude Training</option>
                   <option value="pd_system_discovery">System Discovery</option>
+                  <option value="pd_webinar">Webinar</option>
+                  <option value="pd_workshops">Workshop</option>
+                  <option value="pd_skillrack">SkillRack</option>
+                  <option value="pd_placement">Placement</option>
+                  <option value="pd_industrial_visit">Industrial Visit</option>
+                  <option value="pd_motivational_talk">Motivational Talk</option>
+                  <option value="pd_employability_skill">Employability Skill</option>
+                  <option value="pd_aptitude">Aptitude</option>
+
                 </Select>
                 <br />
                 <Input
