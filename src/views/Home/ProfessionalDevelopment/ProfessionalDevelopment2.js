@@ -141,7 +141,7 @@ function ProfessionalDevelopment() {
                 py="11px"
                 placeholder="Type batch"
                 borderRadius="inherit"
-                value={searchTerm1}
+                value={searchTerm1} 
               />
             </InputGroup>
           </Box>

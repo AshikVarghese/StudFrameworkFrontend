@@ -876,8 +876,8 @@ function ProfessionalDevelopmentData0() {
                         row2={item3.resource_person || Null_message}
                         row3={item3.outcome || Null_message}
                         row4={item3.credits || Null_message}
-                      />
-                    );
+                      /> 
+                    ); 
                   })}
                 </Tbody>
               </Table>
