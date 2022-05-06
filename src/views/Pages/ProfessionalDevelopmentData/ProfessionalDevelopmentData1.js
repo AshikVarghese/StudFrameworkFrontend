@@ -950,7 +950,7 @@ function ProfessionalDevelopmentData1() {
           </Collapse>
         </Card>
 
-        {/* <Card>
+         <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
               System Discovery
@@ -1016,7 +1016,8 @@ function ProfessionalDevelopmentData1() {
               <Table variant="simple" color={textColor}>
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
-                    <Th color="gray.400">Components</Th>
+                    <Th color="gray.400">Tech Skill</Th>
+                    <Th color="gray.400">Trainer</Th>
                     <Th color="gray.400">Date</Th>
                     <Th color="gray.400">Remarks</Th>
                     <Th color="gray.400">Credits</Th>
@@ -1029,10 +1030,11 @@ function ProfessionalDevelopmentData1() {
                     return (
                       <ProfessionalDevelopmentTableRow17
                         id={item17.s_no}
-                        row1={item17.assessment || Null_message}
-                        row2={item17.date || Null_message}
-                        row3={item17.title || Null_message}
-                        row4={item17.credits || Null_message}
+                        row1={item17.tech_skill || Null_message}
+                        row2={item17.trainer || Null_message}
+                        row3={item17.date || Null_message}
+                        row4={item17.remarks || Null_message}
+                        row5={item17.credits || Null_message}
                       />
                     );
                   })}
@@ -1040,7 +1042,7 @@ function ProfessionalDevelopmentData1() {
               </Table>
             </CardBody>
           </Collapse>
-        </Card> */} 
+        </Card> 
       </SimpleGrid>
     </Flex>
   );

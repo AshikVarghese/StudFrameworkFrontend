@@ -35,13 +35,14 @@ function ProfessionalDevelopmentTableRow(props) {
   function funedit() {
     let cid = { id };
     let params = new URLSearchParams();
+    params.append("edit","yes");
     params.append("columnid", cid.id);
-    params.append("topic", document.getElementById("TopicID").value);
-    params.append("resource_person", document.getElementById("RsprID").value);
-    params.append("date", document.getElementById("dateID").value);
-    params.append("outcome", document.getElementById("outID").value);
-    params.append("credits", document.getElementById("creditsID").value);
-    axios.post(server_URL + "workshop_edit", params).then((results) => {
+    params.append("techskill", document.getElementById("CID").value);
+    params.append("trainer", document.getElementById("TID").value);
+    params.append("date", document.getElementById("DID").value);
+    params.append("remarks", document.getElementById("RID").value);
+    params.append("credits", document.getElementById("CID").value);
+    axios.post(server_URL + "eskills_edit_delete", params).then((results) => {
       if (results) {
         window.location.reload(false);
       }
@@ -51,8 +52,9 @@ function ProfessionalDevelopmentTableRow(props) {
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
+    params.append("edit","no");
     params.append("columnid", cid.id);
-    axios.post(server_URL + "workshop_delete", params).then((results) => {
+    axios.post(server_URL + "eskills_edit_delete", params).then((results) => {
       if (results) {
         window.location.reload(false);
       }
@@ -98,6 +100,11 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row4}</Flex>
         </Flex>
       </Td>
+      <Td minWidth={{ sm: "10em" }}>
+        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
+          <Flex direction="column">{row5}</Flex>
+        </Flex>
+      </Td>
 
       <Td>
         <Button
@@ -116,7 +123,7 @@ function ProfessionalDevelopmentTableRow(props) {
             <ModalBody>
               <Tr>
                 <Td>
-                  <Text m="1em">Components</Text>
+                  <Text m="1em">Tech SKill</Text>
                 </Td>
 
                 <Td>
@@ -126,10 +133,26 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row1}
-                    id="compID"
+                    id="CID"
                   />
                 </Td>
               </Tr>
+              <Tr>
+                <Td>
+                  <Text m="1em">Trainer</Text>
+                </Td>
+                <Td>
+                  <Input
+                    minWidth="20em"
+                    borderRadius="5px"
+                    fontSize="sm"
+                    type="text"
+                    defaultValue={row2}
+                    id="TID"
+                  />
+                </Td>
+              </Tr>
+
               <Tr>
                 <Td>
                   <Text m="1em">Date</Text>
@@ -140,12 +163,11 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row2}
-                    id="DateID"
+                    defaultValue={row3}
+                    id="DID"
                   />
                 </Td>
               </Tr>
-
               <Tr>
                 <Td>
                   <Text m="1em">Remarks</Text>
@@ -156,8 +178,8 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row3}
-                    id="ReID"
+                    defaultValue={row4}
+                    id="RID"
                   />
                 </Td>
               </Tr>
@@ -171,8 +193,8 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row4}
-                    id="creditsID"
+                    defaultValue={row5}
+                    id="CID"
                   />
                 </Td>
               </Tr>
