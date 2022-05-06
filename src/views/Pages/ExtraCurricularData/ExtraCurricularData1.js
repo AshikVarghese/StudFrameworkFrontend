@@ -36,17 +36,36 @@ function ExtraCurricularData() {
   var [drop4, setDrop4] = useState(false);
 
   const [data, setdata] = useState([[], [], [], []]);
+  const [Cdata, setCdata] = useState([]);
+  const [Odata, setOdata] = useState([]);
+  const [Sdata, setSdata] = useState([]);
+  const [Fdata, setFdata] = useState([]);
 
   const Null_message = "NULL";
 
   const textColor = useColorModeValue("gray.700", "white");
   let params = new URLSearchParams();
   params.append("RollNumber", localStorage.getItem("generalStudent"));
+  params.append("StudentDetails", localStorage.getItem("generalStudent"));
   localStorage.setItem("firsttime", "yes");
 
-  axios.post(server_URL + "temp", params).then((items) => {
-    setdata(items.data);
-  });
+  useEffect(async () => {
+    axios
+      .all([
+        axios.post(server_URL + "ExtraClubStudentDisplay", params),
+        axios.post(server_URL + "ExtraOutreachStudentDisplay", params),
+        axios.post(server_URL + "ExtraSportsStudentDisplay", params),
+        axios.post(server_URL + "ExtraCulturalStudentDisplay", params),
+      ])
+      .then(
+        axios.spread((data1, data2, data3, data4) => {
+          setCdata(data1.data);
+          setOdata(data2.data);
+          setSdata(data3.data);
+          setFdata(data4.data);
+        })
+      );
+  }, []);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -115,8 +134,8 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[0] != undefined ? (
-                    data[0].map((items) => {
+                  {
+                    Cdata.map((items) => {
                       return (
                         <ExtraCurricualarTableRow1
                           id={items.s_no || Null_message}
@@ -129,9 +148,7 @@ function ExtraCurricularData() {
                         />
                       );
                     })
-                  ) : (
-                    <ExtraCurricualarTableRow3 />
-                  )}
+                   }
                 </Tbody>
               </Table>
             </CardBody>
@@ -169,8 +186,8 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[1] != undefined ? (
-                    data[1].map((item) => {
+                  {
+                    Odata.map((item) => {
                       return (
                         <ExtraCurricualarTableRow2
                           id={item.s_no || Null_message}
@@ -182,9 +199,7 @@ function ExtraCurricularData() {
                         />
                       );
                     })
-                  ) : (
-                    <ExtraCurricualarTableRow3 />
-                  )}
+                 }
                 </Tbody>
               </Table>
             </CardBody>
@@ -223,8 +238,8 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[2] != undefined ? (
-                    data[2].map((row) => {
+                  {
+                    Sdata.map((row) => {
                       return (
                         <ExtraCurricualarTableRow3
                           id={row.s_no || Null_message}
@@ -237,9 +252,7 @@ function ExtraCurricularData() {
                         />
                       );
                     })
-                  ) : (
-                    <ExtraCurricualarTableRow3 />
-                  )}
+                 }
                 </Tbody>
               </Table>
             </CardBody>
@@ -277,8 +290,8 @@ function ExtraCurricularData() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data[3] != undefined ? (
-                    data[3].map((row) => {
+                  {
+                    Fdata.map((row) => {
                       return (
                         <ExtraCurricualarTableRow4
                           id={row.s_no || Null_message}
@@ -290,9 +303,7 @@ function ExtraCurricularData() {
                         />
                       );
                     })
-                  ) : (
-                    <ExtraCurricualarTableRow4 />
-                  )}
+                 }
                 </Tbody>
               </Table>
             </CardBody>
