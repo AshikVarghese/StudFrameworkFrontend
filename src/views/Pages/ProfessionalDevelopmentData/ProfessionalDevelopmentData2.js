@@ -224,18 +224,16 @@ function ProfessionalDevelopmentData2() {
                     <Th color="gray.400">Date and Year</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {p1data.map((item1) => {
                     return (
-                      <TableRow5
+                      <TableRow4
                         row1={item1.industry_name || Null_message}
                         row2={item1.date || Null_message}
                         row3={item1.outcome || Null_message}
                         row4={item1.credits || Null_message}
-                        row5={item1.verified || Null_message}
                       />
                     );
                   })}
@@ -314,18 +312,16 @@ function ProfessionalDevelopmentData2() {
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {p3data.map((item3) => {
                     return (
-                      <TableRow5
+                      <TableRow4
                         row1={item3.topic || Null_message}
                         row2={item3.resource_person || Null_message}
                         row3={item3.outcome || Null_message}
                         row4={item3.credits || Null_message}
-                        row5={item3.verified || Null_message}
                       />
                     );
                   })}
@@ -360,19 +356,17 @@ function ProfessionalDevelopmentData2() {
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {p4data.map((item4) => {
                     return (
-                      <TableRow6
+                      <TableRow5
                         row1={item4.topic || Null_message}
                         row2={item4.date || Null_message}
                         row3={item4.resource_person || Null_message}
                         row4={item4.outcome || Null_message}
                         row5={item4.credits || Null_message}
-                        row6={item4.verified || Null_message}
                       />
                     );
                   })}
@@ -508,7 +502,7 @@ function ProfessionalDevelopmentData2() {
                       <TableRow6
                         row1={item7.topic || Null_message}
                         row2={item7.date || Null_message}
-                        row3={item7.Resource || Null_message}
+                        row3={item7.resource_person || Null_message}
                         row4={item7.outcome || Null_message}
                         row5={item7.credits || Null_message}
                         row6={item7.verified || Null_message}
@@ -555,7 +549,7 @@ function ProfessionalDevelopmentData2() {
                       <TableRow6
                         row1={item8.topic || Null_message}
                         row2={item8.date || Null_message}
-                        row3={item8.resorce_person || Null_message}
+                        row3={item8.resource_person || Null_message}
                         row4={item8.outcome || Null_message}
                         row5={item8.credits || Null_message}
                         row6={item8.verified || Null_message}
@@ -693,7 +687,7 @@ function ProfessionalDevelopmentData2() {
                   {p12data.map((item12) => {
                     return (
                       <TableRow5
-                        row1={item12.title || Null_message}
+                        row1={item12.project_title || Null_message}
                         row2={item12.objective || Null_message}
                         row3={item12.outcome || Null_message}
                         row4={item12.credits || Null_message}
@@ -775,25 +769,23 @@ function ProfessionalDevelopmentData2() {
             <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
               <Table variant="simple" color={textColor}>
                 <Thead>
-                  <Tr my=".8rem" pl="0px" color="gray.400">
+                <Tr my=".8rem" pl="0px" color="gray.400">
                     <Th color="gray.400">Aptitude</Th>
+                    <Th color="gray.400">SkillRack</Th>
                     <Th color="gray.400">Soft Skill</Th>
-                    <Th color="gray.400">Reasoning</Th>
-                    <Th color="gray.400">Technical Skill</Th>
-                    <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
+                    <Th color="gray.400">Employability Skill</Th>
+                    <Th color="gray.400">Eligibility</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p10data.map((item10) => {
+                {p10data.map((item10) => {
                     return (
-                      <TableRow6
+                      <TableRow5
                         row1={item10.aptitude || Null_message}
-                        row2={item10.soft_skills || Null_message}
-                        row3={item10.reasoning || Null_message}
-                        row4={item10.technical_training || Null_message}
-                        row5={item10.credits || Null_message}
-                        row6={item10.verified || Null_message}
+                        row2={item10.skillrack || Null_message}
+                        row3={item10.soft_skills || Null_message}
+                        row4={item10.employability_skills || Null_message}
+                        row5={item10.eligibility || Null_message}
                       />
                     );
                   })}
@@ -830,12 +822,12 @@ function ProfessionalDevelopmentData2() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p14data.map((item14) => {
+                  {p15data.map((item14) => {
                     return (
                       <TableRow4
                         row1={item14.assessment || Null_message}
                         row2={item14.date || Null_message}
-                        row3={item14.title || Null_message}
+                        row3={item14.remarks || Null_message}
                         row4={item14.credits || Null_message}
                       />
                     );
@@ -863,7 +855,7 @@ function ProfessionalDevelopmentData2() {
           </CardHeader>
           <Collapse in={drop15}>
             <CardBody mt="1em" overflowX={{ sm: "scroll" }}>
-              <Table variant="simple" color={textColor}>
+            <Table variant="simple" color={textColor}>
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
                     <Th color="gray.400">Skill</Th>
@@ -874,11 +866,11 @@ function ProfessionalDevelopmentData2() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p15data.map((item15) => {
+                  {p16data.map((item15) => {
                     return (
                       <TableRow5
-                        row1={item15.trainer || Null_message}
-                        row2={item15.name || Null_message}
+                        row1={item15.skill || Null_message}
+                        row2={item15.trainer || Null_message}
                         row3={item15.date || Null_message}
                         row4={item15.remarks || Null_message}
                         row5={item15.credits || Null_message}
@@ -918,7 +910,7 @@ function ProfessionalDevelopmentData2() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p16data.map((item16) => {
+                  {p14data.map((item16) => {
                     return (
                       <TableRow4
                         row1={item16.components || Null_message}
@@ -964,9 +956,9 @@ function ProfessionalDevelopmentData2() {
                   {p17data.map((item17) => {
                     return (
                       <TableRow4
-                        row1={item17.assessment || Null_message}
+                        row1={item17.tech_skill || Null_message}
                         row2={item17.date || Null_message}
-                        row3={item17.title || Null_message}
+                        row3={item17.remarks || Null_message}
                         row4={item17.credits || Null_message}
                       />
                     );

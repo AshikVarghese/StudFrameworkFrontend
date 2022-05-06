@@ -417,7 +417,7 @@ function ProfessionalDevelopmentData0() {
             setp16data(data16.data);
             setp17data(data17.data);
           }
-        )
+        ) 
       );
   }, []);
 
@@ -2778,7 +2778,7 @@ function ProfessionalDevelopmentData0() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p15data.map((item14) => {
+                  {p15data.map((item14) => { 
                     return (
                       <TableRow4
                         row1={item14.assessment || Null_message}
