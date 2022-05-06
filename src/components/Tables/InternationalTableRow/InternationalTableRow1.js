@@ -321,43 +321,15 @@ function InternationalTableRow(props) {
         </Popover>
       </Td>
       <Td>
-        <Popover>
-          <PopoverTrigger>
-            <Button
+      <Button
               bg="orange.300"
               alignSelf="flex-end"
               width="fit-content"
               disabled={{ row8 }.row8 == "Verified" ? true : false}
+              onClick={funverify}
             >
               Verify
             </Button>
-          </PopoverTrigger>
-          <Portal>
-            <PopoverContent w="100%">
-              <PopoverArrow />
-              <PopoverBody>
-                Are you sure ?
-                <Button
-                  ms={{ sm: "3em" }}
-                  colorScheme="green"
-                  onClick={() => {
-                    toast({
-                      title: "Verified Successfully",
-                      status: "success",
-                      duration: 9000,
-                      position: "top",
-                      isClosable: true,
-                    });
-                    onClose();
-                    funverify();
-                  }}
-                >
-                  Verify
-                </Button>
-              </PopoverBody>
-            </PopoverContent>
-          </Portal>
-        </Popover>
       </Td>
     </Tr>
   );
