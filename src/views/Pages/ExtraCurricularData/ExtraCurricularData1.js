@@ -35,9 +35,8 @@ function ExtraCurricularData() {
   var [drop3, setDrop3] = useState(false);
   var [drop4, setDrop4] = useState(false);
 
-  const [data, setdata] = useState([[], [], [], []]);
   const [Cdata, setCdata] = useState([]);
-  const [Odata, setOdata] = useState([]);
+  const [Odata, setOdata] = useState([]); 
   const [Sdata, setSdata] = useState([]);
   const [Fdata, setFdata] = useState([]);
 

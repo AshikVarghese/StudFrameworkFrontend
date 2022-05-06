@@ -26,6 +26,10 @@ import React from "react";
 import { server_URL } from "controller/urls_config";
 
 function ExtraCurricularTableRow(props) {
+
+  const { isOpen: isEditOpen , onOpen: onEditOpen, onClose: onEditClose } = useDisclosure()
+  const { isOpen: isResultOpen , onOpen: onResultOpen, onClose: onResultClose } = useDisclosure()
+
   // Toast var
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -40,14 +44,20 @@ function ExtraCurricularTableRow(props) {
     params.append("date", document.getElementById("CDID").value);
     params.append("position", document.getElementById("CPID").value);
     params.append("credits", document.getElementById("CCID").value);
-    axios.post(server_URL + "CulturalEdit", params);
+    axios.post(server_URL + "CulturalEdit", params).then((results) => {
+      localStorage.setItem("ec_club", results.data);
+      onResultOpen();
+    });
   }
 
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
-    axios.post(server_URL + "CulturalDelete", params);
+    axios.post(server_URL + "CulturalDelete", params).then((results) => {
+      localStorage.setItem("ec_club", results.data);
+      onResultOpen();
+    });
   }
 
   function funverify() {
@@ -55,7 +65,14 @@ function ExtraCurricularTableRow(props) {
     let params = new URLSearchParams();
     params.append("columnid", cid.id);
     params.append("verify", "Verified");
-    axios.post(server_URL + "CulturalVerify", params);
+    axios.post(server_URL + "CulturalVerify", params).then((results) => {
+      localStorage.setItem("ec_club", results.data);
+      onResultOpen();
+    });
+  }
+
+  function reload() {
+    window.location.reload(false);
   }
 
   return (
@@ -91,14 +108,32 @@ function ExtraCurricularTableRow(props) {
       </Td>
       <Td>
         <Button
-          onClick={onOpen}
+          onClick={onEditOpen}
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
         >
           Edit
         </Button>
-        <Modal size="xl" isOpen={isOpen} onClose={onClose}>
+        
+        {/* Modal for result display*/}
+        <Modal isOpen={isResultOpen} onClose={()=>{onResultClose();reload();}}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Result</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>{localStorage.getItem("ec_club")}
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={()=>{onResultClose();reload();}}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+        {/* Modal for edit*/}
+        <Modal size="xl" isOpen={isEditOpen} onClose={onEditClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Edit Details</ModalHeader>
@@ -128,7 +163,7 @@ function ExtraCurricularTableRow(props) {
                     minWidth="20em"
                     borderRadius="5px"
                     fontSize="sm"
-                    type="text"
+                    type="date"
                     defaultValue={row2}
                     id="CDID"
                   />
@@ -171,15 +206,8 @@ function ExtraCurricularTableRow(props) {
                 colorScheme="blue"
                 mr={3}
                 onClick={() => {
-                  toast({
-                    title: "Edited Successfully",
-                    status: "success",
-                    duration: 9000,
-                    position: "top",
-                    isClosable: true,
-                  });
                   funedit();
-                  onClose();
+                  onEditClose();
                 }}
               >
                 Submit
@@ -190,7 +218,10 @@ function ExtraCurricularTableRow(props) {
       </Td>
       <Td>
         <Button
-          onClick={fundelete}
+          onClick={()=>{
+            fundelete();
+            onEditClose();
+          }}
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
@@ -200,7 +231,10 @@ function ExtraCurricularTableRow(props) {
       </Td>
       <Td>
         <Button
-          onClick={funverify}
+          onClick={()=>{
+            funverify();
+            onEditClose();
+          }}
           bg="orange.300"
           alignSelf="flex-end"
           width="fit-content"
