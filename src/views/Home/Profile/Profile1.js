@@ -44,7 +44,7 @@ import {
   ModalCloseButton,
   Collapse,
 } from "@chakra-ui/react";
-import { SettingsIcon, EditIcon, WarningIcon } from "@chakra-ui/icons";
+import { SettingsIcon, EditIcon, WarningIcon, RepeatIcon } from "@chakra-ui/icons";
 
 import axios from "axios";
 
@@ -137,7 +137,8 @@ function Profile() {
       change_pass();
     }
   }
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { isOpen: isCpassOpen , onOpen: onCpassOpen, onClose: onCpassClose } = useDisclosure()
 
   const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
@@ -149,7 +150,6 @@ function Profile() {
     "rgba(255, 255, 255, 0.31)"
   );
   const emailColor = useColorModeValue("gray.400", "gray.300");
-  const [data, setData] = useState([]);
   var ca_email = localStorage.getItem("caemail");
   var ca_dept = (localStorage.getItem("dept")).toUpperCase();
   var ca_batch = (localStorage.getItem("batch")).toUpperCase();
@@ -241,14 +241,16 @@ function Profile() {
                   <PopoverCloseButton />
                   <PopoverHeader>Available Settings</PopoverHeader>
                   <PopoverBody>
-                    <Button onClick={onOpen} leftIcon={<EditIcon />}>
+                    <Button onClick={onCpassOpen} leftIcon={<EditIcon />}>
                       Change Password
-                    </Button>
+                    </Button><br/><br/>
                   </PopoverBody>
                 </PopoverContent>
               </Portal>
             </Popover>
-            <Modal size="xl" isOpen={isOpen} onClose={onClose}>
+
+            {/* Modal for change password */}
+            <Modal size="xl" isOpen={isCpassOpen} onClose={onCpassClose}>
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader>Change Password</ModalHeader>
