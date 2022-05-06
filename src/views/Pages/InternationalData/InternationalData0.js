@@ -37,7 +37,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-import TableRow8 from "components/Tables/TableRow/TableRow8";
+import TableRow9 from "components/Tables/TableRow/TableRow9";
 import { server_URL } from "controller/urls_config";
 
 var resul;
@@ -47,6 +47,7 @@ function InternationalData() {
     let params = new URLSearchParams();
     params.append("Campus", document.getElementById("CampusID").value);
     params.append("DateYear", document.getElementById("DYID").value);
+    params.append("Duration", document.getElementById("DUID").value);
     params.append("Project", document.getElementById("ProjectID").value);
     params.append("Outcome", document.getElementById("OutcomeID").value);
     params.append("PersD", document.getElementById("PDID").value);
@@ -98,6 +99,7 @@ function InternationalData() {
                 <Tr my=".8rem" pl="0px" color="gray.400">
                   <Th color="gray.400">Campus</Th>
                   <Th color="gray.400">Date and Year</Th>
+                  <Th color="gray.400">Duration</Th>
                   <Th color="gray.400">Project</Th>
                   <Th color="gray.400">Outcome</Th>
                   <Th color="gray.400">Personal Development</Th>
@@ -112,16 +114,17 @@ function InternationalData() {
               <Tbody>
                 {data.map((item) => {
                   return (
-                    <TableRow8
+                    <TableRow9
                       id={item.s_no || Null_message}
                       row1={item.foreign_campus || Null_message}
-                      row2={item.duration || Null_message}
-                      row3={item.project || Null_message}
-                      row4={item.outcome || Null_message}
-                      row5={item.personal_development || Null_message}
-                      row6={item.foreign_language_courses || Null_message}
-                      row7={item.credits || Null_message}
-                      row8={item.verify || Null_message}
+                      row2={item.date || Null_message}
+                      row3={item.duration || Null_message}
+                      row4={item.project || Null_message}
+                      row5={item.outcome || Null_message}
+                      row6={item.personal_development || Null_message}
+                      row7={item.foreign_language_courses || Null_message}
+                      row8={item.credits || Null_message}
+                      row9={item.verified || Null_message}
                     />
                   );
                 })}
@@ -137,6 +140,7 @@ function InternationalData() {
                   <Tr my=".8rem" pl="0px" color="gray.400">
                     <Th color="gray.400">Campus</Th>
                     <Th color="gray.400">Date and Year</Th>
+                    <Th color="gray.400">Duration</Th>
                     <Th color="gray.400">Project</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Personal Development</Th>
@@ -175,6 +179,22 @@ function InternationalData() {
                           fontSize="sm"
                           type="date"
                           id="DYID"
+                        />
+                      </Flex>
+                    </Td>
+                    <Td minWidth="16em">
+                      <Flex
+                        align="center"
+                        py=".8rem"
+                        minWidth="100%"
+                        flexWrap="nowrap"
+                      >
+                        <Input
+                          borderRadius="5px"
+                          fontSize="sm"
+                          type="text"
+                          placeholder="Enter Duration"
+                          id="DUID"
                         />
                       </Flex>
                     </Td>
