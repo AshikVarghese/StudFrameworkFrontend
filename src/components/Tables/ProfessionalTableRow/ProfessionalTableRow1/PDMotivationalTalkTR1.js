@@ -102,11 +102,6 @@ function ProfessionalDevelopmentTableRow(props) {
           <Flex direction="column">{row5}</Flex>
         </Flex>
       </Td>
-      <Td minWidth={{ sm: "5em" }}>
-        <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-          <Flex direction="column">{row6}</Flex>
-        </Flex>
-      </Td>
 
       <Td>
         <Button
@@ -232,17 +227,6 @@ function ProfessionalDevelopmentTableRow(props) {
           width="fit-content"
         >
           Delete
-        </Button>
-      </Td>
-      <Td>
-        <Button
-          onClick={funverify}
-          bg="orange.300"
-          alignSelf="flex-end"
-          width="fit-content"
-          disabled={{ row6 }.row6 == "Verified" ? true : false} 
-        >
-          Verify
         </Button>
       </Td>
     </Tr>

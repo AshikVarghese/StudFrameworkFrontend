@@ -35,13 +35,14 @@ function ProfessionalDevelopmentTableRow(props) {
   function funedit() {
     let cid = { id };
     let params = new URLSearchParams();
+    params.append("edit","yes");
     params.append("columnid", cid.id);
-    params.append("topic", document.getElementById("TopicID").value);
-    params.append("resource_person", document.getElementById("RsprID").value);
-    params.append("date", document.getElementById("dateID").value);
-    params.append("outcome", document.getElementById("outID").value);
+    params.append("skill", document.getElementById("skillID").value);
+    params.append("trainer", document.getElementById("trainerID").value);
+    params.append("date", document.getElementById("DID").value);
+    params.append("remarks", document.getElementById("RID").value);
     params.append("credits", document.getElementById("creditsID").value);
-    axios.post(server_URL + "workshop_edit", params).then((results) => {
+    axios.post(server_URL + "skills_edit_delete", params).then((results) => {
       if (results) {
         window.location.reload(false);
       }
@@ -51,20 +52,9 @@ function ProfessionalDevelopmentTableRow(props) {
   function fundelete() {
     let cid = { id };
     let params = new URLSearchParams();
+    params.append("edit","no");
     params.append("columnid", cid.id);
-    axios.post(server_URL + "workshop_delete", params).then((results) => {
-      if (results) {
-        window.location.reload(false);
-      }
-    });
-  }
-
-  function funverify() {
-    let cid = { id };
-    let params = new URLSearchParams();
-    params.append("columnid", cid.id);
-    params.append("verify", "Verified");
-    axios.post(server_URL + "workshop_verify", params).then((results) => {
+    axios.post(server_URL + "skills_edit_delete", params).then((results) => {
       if (results) {
         window.location.reload(false);
       }
@@ -130,7 +120,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row1}
-                    id="TopicID"
+                    id="skillID"
                   />
                 </Td>
               </Tr>
@@ -146,13 +136,13 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row2}
-                    id="dateID"
+                    id="trainerID"
                   />
                 </Td>
               </Tr>
               <Tr>
                 <Td>
-                  <Text m="1em">Semester</Text>
+                  <Text m="1em">Date</Text>
                 </Td>
                 <Td>
                   <Input
@@ -161,11 +151,25 @@ function ProfessionalDevelopmentTableRow(props) {
                     fontSize="sm"
                     type="text"
                     defaultValue={row3}
-                    id="RsprID"
+                    id="DID"
                   />
                 </Td>
               </Tr>
-
+              <Tr>
+                <Td>
+                  <Text m="1em">Remarks</Text>
+                </Td>
+                <Td>
+                  <Input
+                    minWidth="20em"
+                    borderRadius="5px"
+                    fontSize="sm"
+                    type="text"
+                    defaultValue={row4}
+                    id="RID"
+                  />
+                </Td>
+              </Tr>
               <Tr>
                 <Td>
                   <Text m="1em">Credits</Text>
@@ -176,7 +180,7 @@ function ProfessionalDevelopmentTableRow(props) {
                     borderRadius="5px"
                     fontSize="sm"
                     type="text"
-                    defaultValue={row4}
+                    defaultValue={row5}
                     id="creditsID"
                   />
                 </Td>

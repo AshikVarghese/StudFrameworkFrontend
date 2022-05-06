@@ -237,10 +237,8 @@ function ProfessionalDevelopmentData1() {
                     <Th color="gray.400">Date and Year</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                     <Th color="gray.400">Edit</Th>
                     <Th color="gray.400">Delete</Th>
-                    <Th color="gray.400">Verify</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -252,7 +250,6 @@ function ProfessionalDevelopmentData1() {
                         row2={item1.date || Null_message}
                         row3={item1.outcome || Null_message}
                         row4={item1.credits || Null_message}
-                        row5={item1.verified || Null_message}
                       />
                     );
                   })}
@@ -335,10 +332,8 @@ function ProfessionalDevelopmentData1() {
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                     <Th color="gray.400">Edit</Th>
                     <Th color="gray.400">Delete</Th>
-                    <Th color="gray.400">Verify</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -350,7 +345,6 @@ function ProfessionalDevelopmentData1() {
                         row2={item3.resource_person || Null_message}
                         row3={item3.outcome || Null_message}
                         row4={item3.credits || Null_message}
-                        row5={item3.verified || Null_message}
                       />
                     );
                   })}
@@ -385,10 +379,8 @@ function ProfessionalDevelopmentData1() {
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                     <Th color="gray.400">Edit</Th>
                     <Th color="gray.400">Delete</Th>
-                    <Th color="gray.400">Verify</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -401,7 +393,6 @@ function ProfessionalDevelopmentData1() {
                         row3={item4.resource_person || Null_message}
                         row4={item4.outcome || Null_message}
                         row5={item4.credits || Null_message}
-                        row6={item4.verified || Null_message}
                       />
                     );
                   })}
@@ -837,25 +828,25 @@ function ProfessionalDevelopmentData1() {
               <Table variant="simple" color={textColor}>
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
-                    <Th color="gray.400">Aptitude</Th>
+                  <Th color="gray.400">Aptitude</Th>
+                    <Th color="gray.400">SkillRack</Th>
                     <Th color="gray.400">Soft Skill</Th>
-                    <Th color="gray.400">Reasoning</Th>
-                    <Th color="gray.400">Technical Skill</Th>
-                    <Th color="gray.400">Credits</Th>
+                    <Th color="gray.400">Employability Skill</Th>
+                    <Th color="gray.400">Eligibility</Th>
                     <Th color="gray.400">Edit</Th>
                     <Th color="gray.400">Delete</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {p10data.map((item10) => {
-                    return (
+                    return ( 
                       <ProfessionalDevelopmentTableRow10
                         id={item10.s_no}
                         row1={item10.aptitude || Null_message}
-                        row2={item10.soft_skills || Null_message}
-                        row3={item10.reasoning || Null_message}
-                        row4={item10.technical_training || Null_message}
-                        row5={item10.credits || Null_message}
+                        row2={item10.skillrack || Null_message}
+                        row3={item10.soft_skills || Null_message}
+                        row4={item10.employability_skills || Null_message}
+                        row5={item10.eligibility || Null_message}
                       />
                     );
                   })}
@@ -911,7 +902,7 @@ function ProfessionalDevelopmentData1() {
           </Collapse>
         </Card>
 
-        {/* <Card>
+        <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
               Soft Skills
@@ -959,7 +950,7 @@ function ProfessionalDevelopmentData1() {
           </Collapse>
         </Card>
 
-        <Card>
+        {/* <Card>
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
               System Discovery
@@ -1049,7 +1040,7 @@ function ProfessionalDevelopmentData1() {
               </Table>
             </CardBody>
           </Collapse>
-        </Card> */}
+        </Card> */} 
       </SimpleGrid>
     </Flex>
   );
