@@ -954,7 +954,7 @@ function ProfessionalDevelopmentData1() {
           <CardHeader>
             <Text fontSize="xl" color={textColor} fontWeight="bold">
               System Discovery
-            </Text>
+            </Text> 
             <Button
               ms="auto"
               bg="orange.400"
