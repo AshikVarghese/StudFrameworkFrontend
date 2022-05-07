@@ -21,6 +21,7 @@ import {
   InputLeftElement,
   SimpleGrid,
   Box,
+  Select
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -103,7 +104,7 @@ function Academic() {
               </Text>
             </CardHeader>
 
-            <InputGroup
+            {/* <InputGroup
               bg={inputBg}
               mt="1rem"
               borderRadius="15px"
@@ -144,9 +145,29 @@ function Academic() {
                 borderRadius="inherit"
                 value={searchTerm1}
               />
-            </InputGroup>
-          </Box>
+            </InputGroup> */}
 
+              <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => {
+                  setSearchTerm1(e.target.value)}}
+              >
+                {data
+                .filter((obj, pos, arr) => {
+                  return arr
+                    .map(clone => clone.batch)
+                    .indexOf(obj.batch) == pos;
+                })
+                .map((itemsb) => {
+                  return <option value={itemsb.batch}>{itemsb.batch}</option>;
+                })}
+              </Select>
+              
+          </Box>
+ 
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
