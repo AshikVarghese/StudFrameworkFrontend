@@ -59,24 +59,18 @@ function Academic() {
   data2 = data.filter((item) => {
     if (searchTerm2 == "" && searchTerm == "" && searchTerm1 == "") {
       return item;
-    } else if (searchTerm2 !== "" && searchTerm1 == "" && searchTerm == "") {
-      if (item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase())) {
-        return item;
-      }
-    } else if (searchTerm2 == "" && searchTerm1 !== "" && searchTerm == "") {
+    }  else if (searchTerm2 == "" && searchTerm1 !== "" && searchTerm == "") {
       if (item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())) {
         return item;
       }
     } else if (searchTerm2 !== "" && searchTerm1 !== "" && searchTerm == "") {
       if (
-        item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase()) &&
         item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())
       ) {
         return item;
       }
     } else {
       if (
-        item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase()) &&
         item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())
       ) {
         if (
@@ -274,9 +268,6 @@ function Academic() {
                     searchTerm == ""
                   ) {
                     if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase()) &&
                       item.batch
                         .toLowerCase()
                         .includes(searchTerm1.toLocaleLowerCase())
@@ -285,9 +276,6 @@ function Academic() {
                     }
                   } else {
                     if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase()) &&
                       item.batch
                         .toLowerCase()
                         .includes(searchTerm1.toLocaleLowerCase())
