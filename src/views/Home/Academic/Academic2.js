@@ -21,6 +21,7 @@ import {
   InputLeftElement,
   SimpleGrid,
   Box,
+  Select
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -42,6 +43,7 @@ function Academic() {
 
   let params = new URLSearchParams();
   params.append("department", localStorage.getItem("dept"));
+  params.append("StudentDetails", localStorage.getItem("StudentDetails"));
 
   useEffect(async () => {
     axios.post(server_URL + "AcademicsDataHOD", params).then((items) => {
@@ -58,24 +60,18 @@ function Academic() {
   data2 = data.filter((item) => {
     if (searchTerm2 == "" && searchTerm == "" && searchTerm1 == "") {
       return item;
-    } else if (searchTerm2 !== "" && searchTerm1 == "" && searchTerm == "") {
-      if (item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase())) {
-        return item;
-      }
-    } else if (searchTerm2 == "" && searchTerm1 !== "" && searchTerm == "") {
+    }  else if (searchTerm2 == "" && searchTerm1 !== "" && searchTerm == "") {
       if (item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())) {
         return item;
       }
     } else if (searchTerm2 !== "" && searchTerm1 !== "" && searchTerm == "") {
       if (
-        item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase()) &&
         item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())
       ) {
         return item;
       }
     } else {
       if (
-        item.dept.toLowerCase().includes(searchTerm2.toLocaleLowerCase()) &&
         item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())
       ) {
         if (
@@ -108,7 +104,7 @@ function Academic() {
               </Text>
             </CardHeader>
 
-            <InputGroup
+            {/* <InputGroup
               bg={inputBg}
               mt="1rem"
               borderRadius="15px"
@@ -149,9 +145,29 @@ function Academic() {
                 borderRadius="inherit"
                 value={searchTerm1}
               />
-            </InputGroup>
-          </Box>
+            </InputGroup> */}
 
+              <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => {
+                  setSearchTerm1(e.target.value)}}
+              >
+                {data
+                .filter((obj, pos, arr) => {
+                  return arr
+                    .map(clone => clone.batch)
+                    .indexOf(obj.batch) == pos;
+                })
+                .map((itemsb) => {
+                  return <option value={itemsb.batch}>{itemsb.batch}</option>;
+                })}
+              </Select>
+              
+          </Box>
+ 
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
@@ -273,9 +289,6 @@ function Academic() {
                     searchTerm == ""
                   ) {
                     if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase()) &&
                       item.batch
                         .toLowerCase()
                         .includes(searchTerm1.toLocaleLowerCase())
@@ -284,9 +297,6 @@ function Academic() {
                     }
                   } else {
                     if (
-                      item.dept
-                        .toLowerCase()
-                        .includes(searchTerm2.toLocaleLowerCase()) &&
                       item.batch
                         .toLowerCase()
                         .includes(searchTerm1.toLocaleLowerCase())

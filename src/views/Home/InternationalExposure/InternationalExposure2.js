@@ -24,6 +24,7 @@ import {
   SimpleGrid,
   useToast,
   Box,
+  Select
 } from "@chakra-ui/react";
 
 // Custom components
@@ -100,7 +101,7 @@ function InternationalExposure() {
               </Text>
             </CardHeader>
 
-            <InputGroup
+            {/* <InputGroup
               bg={inputBg}
               mt="1rem"
               borderRadius="15px"
@@ -141,7 +142,26 @@ function InternationalExposure() {
                 borderRadius="inherit"
                 value={searchTerm1}
               />
-            </InputGroup>
+            </InputGroup> */}
+
+              <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => {
+                  setSearchTerm1(e.target.value)}}
+              >
+                {data
+                .filter((obj, pos, arr) => {
+                  return arr
+                    .map(clone => clone.batch)
+                    .indexOf(obj.batch) == pos;
+                })
+                .map((itemsb) => {
+                  return <option value={itemsb.batch}>{itemsb.batch}</option>;
+                })}
+              </Select>
           </Box>
 
           <Box>
@@ -199,7 +219,6 @@ function InternationalExposure() {
             <Button
               minWidth="fit-content"
               mt="1em"
-              onClick="m"
               colorScheme="orange"
               alignSelf="flex-end"
               variant="solid"

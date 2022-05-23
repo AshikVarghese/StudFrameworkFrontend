@@ -31,6 +31,7 @@ import {
   SimpleGrid,
   Box,
   useToast,
+  Select
 } from "@chakra-ui/react";
 
 import { SearchIcon } from "@chakra-ui/icons";
@@ -44,11 +45,11 @@ import GeneralParticularstablerow from "components/Tables/StudentList/StudentLis
 import { server_URL } from "controller/urls_config";
 
 function GeneralInformationHOD() {
-  const [Loaded, setLoading] = useState(false),
-    [data, setData] = useState([]),
-    [searchTerm, setSearchTerm] = useState(""),
-    [searchTerm1, setSearchTerm1] = useState("");
-
+  const [Loaded, setLoading] = useState(false)
+    const[data, setData] = useState([])
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm1, setSearchTerm1] = useState("");
+  
   // Toast var
   const toast = useToast();
 
@@ -62,13 +63,13 @@ function GeneralInformationHOD() {
       setData(items.data);
       setLoading(true);
     });
-  });
+  },[]);
 
-  // Filter Download Updates
+  // Filter Download Updates 
   data2 = data.filter((item) => {
     if (searchTerm == "" && searchTerm1 == "") {
       return item;
-    } else if (searchTerm1 !== "" && searchTerm == "") {
+    } else if (searchTerm1 != "" && searchTerm == "") {
       if (item.batch.toLowerCase().includes(searchTerm1.toLocaleLowerCase())) {
         return item;
       }
@@ -84,6 +85,7 @@ function GeneralInformationHOD() {
       }
     }
   });
+
 
   // Styles
   const textColor = useColorModeValue("gray.700", "white");
@@ -116,7 +118,7 @@ function GeneralInformationHOD() {
                 </Text>
               </CardHeader>
 
-              <InputGroup
+              {/* <InputGroup
                 bg={inputBg}
                 mt="1rem"
                 borderRadius="15px"
@@ -149,15 +151,36 @@ function GeneralInformationHOD() {
                   }
                 />
 
-                <Input
-                  onChange={(event) => setSearchTerm1(event.target.value)}
-                  fontSize="xs"
-                  py="11px"
-                  placeholder="Type batch"
-                  borderRadius="inherit"
-                  value={searchTerm1}
-                />
-              </InputGroup>
+              <Input
+                onChange={(event) => 
+                  setSearchTerm1(event.target.value)
+                  }
+                fontSize="xs"
+                py="11px"
+                placeholder="Type batch"
+                borderRadius="inherit"
+                value={searchTerm1}
+              />
+              </InputGroup> */}
+
+              <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => {
+                  setSearchTerm1(e.target.value)}}
+              >
+                {data
+                .filter((obj, pos, arr) => {
+                  return arr
+                    .map(clone => clone.batch)
+                    .indexOf(obj.batch) == pos;
+                })
+                .map((itemsb) => {
+                  return <option value={itemsb.batch}>{itemsb.batch}</option>;
+                })}
+              </Select>
             </Box>
 
             <Box>
@@ -199,14 +222,14 @@ function GeneralInformationHOD() {
                   }
                 />
 
-                <Input
-                  onChange={(event) => setSearchTerm(event.target.value)}
-                  fontSize="xs"
-                  py="11px"
-                  placeholder="Type here..."
-                  borderRadius="inherit"
-                  value={searchTerm}
-                />
+              <Input
+                onChange={(event) => setSearchTerm(event.target.value)}
+                fontSize="xs"
+                py="11px"
+                placeholder="Type here..."
+                borderRadius="inherit"
+                value={searchTerm}
+              />
               </InputGroup>
             </Box>
           </SimpleGrid>
@@ -215,7 +238,6 @@ function GeneralInformationHOD() {
               <Button
                 minWidth="fit-content"
                 mt="1em"
-                onClick="m"
                 colorScheme="orange"
                 alignSelf="flex-end"
                 variant="solid"
@@ -252,40 +274,40 @@ function GeneralInformationHOD() {
                 </Tr>
               </Thead>
               <Tbody>
-                {data
-                  .filter((item) => {
-                    if (searchTerm == "" && searchTerm1 == "") {
+              {data
+                .filter((item) => {
+                  if (searchTerm == "" && searchTerm1 == "") {
+                    return item;
+                  } else if (searchTerm1 != "" && searchTerm == "") {
+                    if (
+                      item.batch
+                        .toLowerCase()
+                        .includes(searchTerm1.toLocaleLowerCase())
+                    ) {
                       return item;
-                    } else if (searchTerm1 != "" && searchTerm == "") {
+                    }
+                  } else {
+                    if (
+                      item.batch
+                        .toLowerCase()
+                        .includes(searchTerm1.toLocaleLowerCase())
+                    ) {
                       if (
-                        item.batch
+                        item.sname
                           .toLowerCase()
-                          .includes(searchTerm1.toLocaleLowerCase())
+                          .includes(searchTerm.toLocaleLowerCase()) ||
+                        item.roll_no
+                          .toLowerCase()
+                          .includes(searchTerm.toLocaleLowerCase()) ||
+                        item.reg_no
+                          .toLowerCase()
+                          .includes(searchTerm.toLocaleLowerCase())
                       ) {
                         return item;
                       }
-                    } else {
-                      if (
-                        item.batch
-                          .toLowerCase()
-                          .includes(searchTerm1.toLocaleLowerCase())
-                      ) {
-                        if (
-                          item.sname
-                            .toLowerCase()
-                            .includes(searchTerm.toLocaleLowerCase()) ||
-                          item.roll_no
-                            .toLowerCase()
-                            .includes(searchTerm.toLocaleLowerCase()) ||
-                          item.reg_no
-                            .toLowerCase()
-                            .includes(searchTerm.toLocaleLowerCase())
-                        ) {
-                          return item;
-                        }
-                      }
                     }
-                  })
+                  }
+                })
                   .map((item) => {
                     return (
                       <GeneralParticularstablerow

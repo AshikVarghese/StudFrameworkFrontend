@@ -23,6 +23,7 @@ import {
   SimpleGrid,
   useToast,
   Box,
+  Select
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -102,7 +103,7 @@ function ProfessionalDevelopment() {
               </Text>
             </CardHeader>
 
-            <InputGroup
+            {/* <InputGroup
               bg={inputBg}
               mt="1rem"
               borderRadius="15px"
@@ -141,9 +142,29 @@ function ProfessionalDevelopment() {
                 py="11px"
                 placeholder="Type batch"
                 borderRadius="inherit"
-                value={searchTerm1}
+                value={searchTerm1} 
               />
-            </InputGroup>
+            </InputGroup> */}
+
+            <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => {
+                  setSearchTerm1(e.target.value)}}
+              >
+                {data
+                .filter((obj, pos, arr) => {
+                  return arr
+                    .map(clone => clone.batch)
+                    .indexOf(obj.batch) == pos;
+                })
+                .map((itemsb) => {
+                  return <option value={itemsb.batch}>{itemsb.batch}</option>;
+                })}
+              </Select>
+
           </Box>
           <Box>
             <CardHeader mt="1em">

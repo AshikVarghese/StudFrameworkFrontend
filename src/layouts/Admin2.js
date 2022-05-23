@@ -29,8 +29,8 @@ export default function Dashboard(props) {
     return window.location.pathname !== "/admin2/full-screen-maps";
   };
   const getActiveRoute = (routes) => {
-    let activeRoute = "Default Brand Text";
-    for (let i = 0; i < routes.length; i++) {
+    let activeRoute = "Academic Data";
+    for (let i = 0; i < routes.length; i++) { 
       if (routes[i].collapse) {
         let collapseActiveRoute = getActiveRoute(routes[i].views);
         if (collapseActiveRoute !== activeRoute) {

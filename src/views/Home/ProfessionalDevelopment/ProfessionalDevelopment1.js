@@ -32,6 +32,18 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+<<<<<<< HEAD
+=======
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+>>>>>>> 150297dffbb56e4a85fa703a52e7e64de9cfc82b
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -39,19 +51,37 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import StudentListProfessionalDevelopment from "components/Tables/StudentList/StudentListProfessionalDevelopment1";
-
+import { saveAs } from "file-saver";
 import { server_URL } from "controller/urls_config";
 
 var Loader = require("react-loader");
 
 function ProfessionalDevelopment() {
+  function submit() {
+    formData.delete("value");
+    formData.append("value", document.getElementById("sel").value);
+    axios({
+      method: "post",
+      url: server_URL + "bulkforpd",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((results) => {
+      alert(results.data);
+    });
+  }
+
   // Toast var
   const toast = useToast();
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
+<<<<<<< HEAD
    
+=======
+  const formData = new FormData();
+
+>>>>>>> 150297dffbb56e4a85fa703a52e7e64de9cfc82b
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -139,6 +169,7 @@ function ProfessionalDevelopment() {
             value={searchTerm}
           />
         </InputGroup>
+<<<<<<< HEAD
         <Box alignSelf={"flex-end"}>  
           <Button minWidth="fit-content" 
                   mt="1em" 
@@ -166,6 +197,129 @@ function ProfessionalDevelopment() {
           </ModalFooter>
         </ModalContent>
       </Modal>
+=======
+        <Box alignSelf={"flex-end"}>
+          <Popover>
+            <PopoverTrigger>
+              <Button
+                minWidth="fit-content"
+                mt="1em"
+                colorScheme={"orange"}
+                style={{ marginRight: "1em" }}
+              >
+                Templates
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader>Templates For Bulk Upload</PopoverHeader>
+              <PopoverBody>
+                <Select
+                  placeholder="Select template"
+                  id="tempsel"
+                  onChange={() => {
+                    document.getElementById("tempsel").value != ""
+                      ? (document.getElementById("down").style.display =
+                          "block")
+                      : (document.getElementById("down").style.display =
+                          "none");
+                  }}
+                >
+                  <option value="guest_lecture.xlsx">Guest Lecture</option>
+                  <option value="soft_skill.xlsx">Soft Skill</option>
+                  <option value="system_discovery.xlsx">System Discovery</option>
+                  <option value="webinar.xlsx">Webinar</option>
+                  <option value="workshop.xlsx">Workshop</option>
+                  <option value="skillrack.xlsx">SkillRack</option>
+                  <option value="placement.xlsx">Placement</option>
+                  <option value="industrial_visit.xlsx">Industrial Visit</option>
+                  <option value="motivational_talk.xlsx">Motivational Talk</option>
+                  <option value="employability_skill.xlsx">Employability Skill</option>
+                  <option value="aptitude.xlsx">Aptitude</option>
+                </Select>
+                <Button
+                  minWidth="fit-content"
+                  mt="1em"
+                  colorScheme={"orange"}
+                  id="down"
+                  onClick={() => {
+                    var file = document.getElementById("tempsel").value;
+                    saveAs(server_URL + "download_all/" + file, file);
+                  }}
+                  style={{ marginRight: "1em", display: "none" }}
+                >
+                  Download
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+
+          <Popover>
+            <PopoverTrigger>
+              <Button
+                minWidth="fit-content"
+                mt="1em"
+                colorScheme={"orange"}
+                onClick={onOpen}
+                style={{ marginRight: "1em" }}
+              >
+                Bulk Upload
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader>Bulk Upload</PopoverHeader>
+              <PopoverBody>
+                <Select
+                  placeholder="Select option"
+                  id="sel"
+                  onChange={() => {
+                    document.getElementById("file").style.display = "block";
+                  }}
+                >
+                  <option value="pd_guest_lecture">Guest Lecture</option>
+                  <option value="sskills">Soft Skills</option>
+                  <option value="pd_system_discovery">System Discovery</option>
+                  <option value="pd_webinar">Webinar</option>
+                  <option value="pd_workshops">Workshop</option>
+                  <option value="pd_skillrack">SkillRack</option>
+                  <option value="pd_placement">Placement</option>
+                  <option value="pd_industrial_visit">Industrial Visit</option>
+                  <option value="pd_motivational_talk">Motivational Talk</option>
+                  <option value="pd_employability_skill">Employability Skill</option>
+                  <option value="pd_aptitude">Aptitude</option>
+
+                </Select>
+                <br />
+                <Input
+                  type="file"
+                  id="file"
+                  style={{ display: "none" }}
+                  onChange={(e) => {
+                    formData.append("file", e.target.files[0]);
+                    document.getElementById("sub").style.display = "block";
+                  }}
+                />
+                <br />
+                <Button
+                  colorScheme="orange"
+                  mr={3}
+                  onClick={() => {
+                    submit();
+                    onClose();
+                  }}
+                  id="sub"
+                  style={{ display: "none" }}
+                >
+                  Submit
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+
+>>>>>>> 150297dffbb56e4a85fa703a52e7e64de9cfc82b
           <CSVLink data={data2}>
             <Button
               minWidth="fit-content"

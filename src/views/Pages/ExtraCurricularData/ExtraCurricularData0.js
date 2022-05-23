@@ -434,11 +434,11 @@ function ExtraCurricularData() {
                   {Odata.map((item) => {
                     return (
                       <TableRow5
-                        row1={item.outreach_activity_name || Null_message}
-                        row2={item.outreach_date || Null_message}
-                        row3={item.outreach_outcome || Null_message}
-                        row4={item.outreach_credits || Null_message}
-                        row5={item.outreach_verified || Null_message}
+                        row1={item.activity_name || Null_message}
+                        row2={item.date || Null_message}
+                        row3={item.outcome || Null_message}
+                        row4={item.credits || Null_message}
+                        row5={item.verified || Null_message}
                       />
                     );
                   })}

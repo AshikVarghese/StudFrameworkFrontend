@@ -78,7 +78,7 @@ function InternationalData() {
                       row5={item.personal_development || Null_message}
                       row6={item.foreign_language_courses || Null_message}
                       row7={item.credits || Null_message}
-                      row8={item.verify || Null_message}
+                      row8={item.verified || Null_message}
                     />
                   );
                 })}
