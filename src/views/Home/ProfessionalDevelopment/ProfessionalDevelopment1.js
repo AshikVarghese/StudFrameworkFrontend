@@ -23,6 +23,15 @@ import {
   InputLeftElement,
   useToast,
   Box,
+  Select,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 // Custom components
@@ -41,7 +50,8 @@ function ProfessionalDevelopment() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Loaded, setLoading] = useState(false);
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
+   
   let params = new URLSearchParams();
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
@@ -129,7 +139,33 @@ function ProfessionalDevelopment() {
             value={searchTerm}
           />
         </InputGroup>
-        <Box alignSelf="flex-end">
+        <Box alignSelf={"flex-end"}>  
+          <Button minWidth="fit-content" 
+                  mt="1em" 
+                  colorScheme={"orange"}
+                  onClick={onOpen} 
+                  style={{marginRight:"1em"}}> 
+              Bulk Upload
+          </Button>
+          <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Bulk Upload</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          <Select placeholder='Select option'>
+              <option value='option1'>Guest Lecture</option>
+              <option value='option2'>Soft Skills</option>
+              <option value='option3'>Aptitude Training </option>
+            </Select>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
           <CSVLink data={data2}>
             <Button
               minWidth="fit-content"
