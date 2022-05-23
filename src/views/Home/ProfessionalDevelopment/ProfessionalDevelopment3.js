@@ -19,6 +19,7 @@ import {
   Button,
   Input,
   InputGroup,
+  Select,
   InputLeftElement,
   SimpleGrid,
   useToast,
@@ -42,6 +43,8 @@ function ProfessionalDevelopment() {
   // Toast var
   const toast = useToast();
   const [data, setData] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTerm1, setSearchTerm1] = useState("");
   const [searchTerm2, setSearchTerm2] = useState("");
@@ -51,14 +54,32 @@ function ProfessionalDevelopment() {
   params.append("batch", localStorage.getItem("batch"));
   params.append("dept", localStorage.getItem("dept"));
 
-  useEffect(async () => {
+  // useEffect(async () => {
+  //   axios
+  //     .post(server_URL + "ProfessionalDevelopmentCA", params)
+  //     .then((items) => {
+  //       setData(items.data);
+  //       setLoading(true);
+  //     });
+  // }, []);
+
+  useState(async () => {
     axios
-      .post(server_URL + "ProfessionalDevelopmentCA", params)
-      .then((items) => {
-        setData(items.data);
-        setLoading(true);
-      });
+      .all([
+        axios.post(server_URL + "ProfessionalDevelopmentCA", params),
+        axios.post(server_URL + "GeneralOfficialDepartment", params),
+        axios.post(server_URL + "GeneralOfficialBatch", params),
+      ])
+      .then(
+        axios.spread((data, data3, data4) => {
+          setData(data.data);
+          setData3(data3.data);
+          setData4(data4.data);
+          setLoading(true);
+        })
+      );
   }, []);
+
   const textColor = useColorModeValue("gray.700", "white");
   const inputBg = useColorModeValue("white", "gray.800");
   const mainorange = useColorModeValue("orange.300", "orange.300");
@@ -110,106 +131,45 @@ function ProfessionalDevelopment() {
           </Flex>
         </CardBody>
         <SimpleGrid columns={{ sm: 1, md: 3, xl: 3 }} gap={5}>
-          <Box>
-            <CardHeader mt="1em">
-              <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Department
-              </Text>
-            </CardHeader>
+        <Box>
+              <CardHeader mt="1em">
+                <Text fontSize="lg" color={textColor} fontWeight="semi">
+                  Select Department
+                </Text>
+              </CardHeader>
 
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
-            >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
+              <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Department"
+                id="dept"
+                onChange={(e) => setSearchTerm2(e.target.value)}
+              >
+                {data3.map((data) => {
+                  return <option value={data.dept}>{data.dept}</option>;
+                })}
+              </Select>
+            </Box>
 
-              <Input
-                onChange={(event) => setSearchTerm2(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type department"
-                borderRadius="inherit"
-                value={searchTerm2}
-              />
-            </InputGroup>
-          </Box>
-          <Box>
-            <CardHeader mt="1em">
-              <Text fontSize="lg" color={textColor} fontWeight="semi">
-                Search Batch
-              </Text>
-            </CardHeader>
+            <Box>
+              <CardHeader mt="1em">
+                <Text fontSize="lg" color={textColor} fontWeight="semi">
+                  Select Batch
+                </Text>
+              </CardHeader>
 
-            <InputGroup
-              bg={inputBg}
-              mt="1rem"
-              borderRadius="15px"
-              w="cover"
-              _focus={{
-                borderColor: { mainorange },
-              }}
-              _active={{
-                borderColor: { mainorange },
-              }}
-            >
-              <InputLeftElement
-                children={
-                  <IconButton
-                    bg="inherit"
-                    borderRadius="inherit"
-                    _hover="none"
-                    _active={{
-                      bg: "inherit",
-                      transform: "none",
-                      borderColor: "transparent",
-                    }}
-                    _focus={{
-                      boxShadow: "none",
-                    }}
-                    icon={
-                      <SearchIcon color={searchIconColor} w="15px" h="15px" />
-                    }
-                  ></IconButton>
-                }
-              />
-
-              <Input
-                onChange={(event) => setSearchTerm1(event.target.value)}
-                fontSize="xs"
-                py="11px"
-                placeholder="Type batch"
-                borderRadius="inherit"
-                value={searchTerm1}
-              />
-            </InputGroup>
-          </Box>
+              <Select
+                mt="1em"
+                bg={inputBg}
+                placeholder="Batch"
+                id="batch"
+                onChange={(e) => setSearchTerm1(e.target.value)}
+              >
+                {data4.map((data) => {
+                  return <option value={data.batch}>{data.batch}</option>;
+                })}
+              </Select>
+            </Box>
           <Box>
             <CardHeader mt="1em">
               <Text fontSize="lg" color={textColor} fontWeight="semi">
