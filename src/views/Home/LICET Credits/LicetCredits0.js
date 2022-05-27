@@ -220,6 +220,15 @@ function LicetCredits() {
                     </Tr>
                   </Tbody>
                 </Table>
+                <Table>
+                  <Tr>
+                    <Td minWidth={"46em"}>
+                      TOTAL MARKS - Mandatory Components (I Year)
+                    </Td>
+
+                    <Td>Total</Td>
+                  </Tr>
+                </Table>
               </TableContainer>
             </CardBody>
           </Collapse>
@@ -368,6 +377,15 @@ function LicetCredits() {
                     </Tr>
                   </Tbody>
                 </Table>
+                <Table>
+                  <Tr>
+                    <Td minWidth={"46em"}>
+                      TOTAL MARKS - Mandatory Components (II Year)
+                    </Td>
+
+                    <Td>Total</Td>
+                  </Tr>
+                </Table>
               </TableContainer>
             </CardBody>
           </Collapse>
@@ -513,6 +531,15 @@ function LicetCredits() {
                     </Tr>
                   </Tbody>
                 </Table>
+                <Table>
+                  <Tr>
+                    <Td minWidth={"46em"}>
+                      TOTAL MARKS - Mandatory Components (III Year)
+                    </Td>
+
+                    <Td>Total</Td>
+                  </Tr>
+                </Table>
               </TableContainer>
             </CardBody>
           </Collapse>
@@ -587,9 +614,37 @@ function LicetCredits() {
                     </Tr>
                   </Tbody>
                 </Table>
+                <Table>
+                  <Tr>
+                    <Td minWidth={"46em"}>
+                      TOTAL MARKS - Mandatory Components (IV Year)
+                    </Td>
+
+                    <Td>Total</Td>
+                  </Tr>
+                </Table>
               </TableContainer>
             </CardBody>
           </Collapse>
+        </Card>
+        <Card>
+          <CardHeader>
+            <Table>
+              <Tr>
+                <Td
+                  minWidth={"46em"}
+                  fontSize="l"
+                  color={textColor}
+                  fontWeight="bold"
+                >
+                  TOTAL MARKS - MANDATORY COMPONENTS
+                </Td>
+                <Td fontSize="l" color={textColor} fontWeight="bold">
+                  Total
+                </Td>
+              </Tr>
+            </Table>
+          </CardHeader>
         </Card>
       </SimpleGrid>
     </Flex>
