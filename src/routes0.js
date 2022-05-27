@@ -8,6 +8,7 @@ import InternationalData from "views/Pages/InternationalData/InternationalData0"
 import ExtraCurricularData from "views/Pages/ExtraCurricularData/ExtraCurricularData0";
 import Academicsdata from "views/Pages/AcademicData/Academicdata0";
 import ProfessionalDevelopmentData0 from "views/Pages/ProfessionalDevelopmentData/ProfessionalDevelopmentData0";
+import LicetCredits from "views/Home/LICET Credits/LicetCredits0";
 
 import Profile from "views/Home/Profile/Profile0.js";
 import SignIn from "views/Pages/SignIn.js";
@@ -84,6 +85,13 @@ var dashRoutes = [
     name: "Academics",
     icon: <StatsIcon color="inherit" />,
     component: Academicsdata,
+    layout: "/admin0",
+  },
+  {
+    path: "/Licetcredits",
+    name: "LICET Credits",
+    icon: <StatsIcon color="inherit" />,
+    component: LicetCredits,
     layout: "/admin0",
   },
 
