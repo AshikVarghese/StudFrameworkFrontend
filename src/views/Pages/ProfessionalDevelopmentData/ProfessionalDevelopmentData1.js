@@ -25,7 +25,7 @@ import CardBody from "components/Card/CardBody.js";
 
 import ProfessionalDevelopmentTableRow1 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDIndustrialVisitTR1";
 import ProfessionalDevelopmentTableRow2 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDInplantTrainingTR1";
-import ProfessionalDevelopmentTableRow3 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDGuestlectureTR1";
+import ProfessionalDevelopmentTableRow3 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDGuestlectureTR";
 import ProfessionalDevelopmentTableRow4 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDMotivationalTalkTR1";
 import ProfessionalDevelopmentTableRow5 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDInternshipTR1";
 import ProfessionalDevelopmentTableRow6 from "components/Tables/ProfessionalTableRow/ProfessionalTableRow1/PDCoursesTR1";
