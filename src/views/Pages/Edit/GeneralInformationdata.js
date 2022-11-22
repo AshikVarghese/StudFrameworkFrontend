@@ -142,9 +142,74 @@ function GeneralInformationdata() {
     params.append("promemno", document.getElementById("PMNA").value);
     params.append("promemdur", document.getElementById("DUR").value);
 
-    axios.post(server_URL + "logininsert", params);
-    axios.post(server_URL + "studentinsert", params);
-    window.location.href = URL + "Student#/auth/signin";
+    let columns_to_be_filled = [
+      "RID",
+      "NID",
+      "REID",
+      "SID",
+      "DEPT",
+      "BATCH",
+      "NATIONID",
+      "RELIGIONID",
+      "DALITID",
+      "COMMUNITYID",
+      "BLOODID",
+      "MOTHERID",
+      "CONTACTID",
+      "AADHARID",
+      "PEREMID",
+      "OFFEMID",
+      "PEREMID",
+      "PREADDRID",
+      "PREADDRID",
+      "LANKNO",
+      "PAN",
+      "NOS1",
+      "BOARD1",
+      "MOI1",
+      "SL1",
+      "GROUP1",
+      "TM1",
+      "OP1",
+      "COM1",
+      "NOA1",
+      "NOS2",
+      "BOARD2",
+      "MOI2",
+      "SL2",
+      "TM2",
+      "OP2",
+      "NOA2",
+      "FN",
+      "FMN",
+      "MN",
+      "MMN",
+      "NOS",
+      "DOA",
+      "RL",
+      "DH",
+    ];
+    let not_filled_msg = "Kindly fill in these details \n";
+    let inx = 0;
+
+    for (var inx1 = 0; inx1 < columns_to_be_filled.length; inx1++) {
+      try {
+        if (document.getElementById(columns_to_be_filled[inx1]).value == "") {
+          inx += 1;
+          not_filled_msg += inx + ". " + columns_to_be_filled[inx1] + "\n";
+        }
+      } catch {
+        alert(columns_to_be_filled[inx1]);
+      }
+    }
+
+    if (inx == 0) {
+      axios.post(server_URL + "logininsert", params);
+      axios.post(server_URL + "studentinsert", params);
+      window.location.href = URL + "Student#/auth/signin";
+    } else {
+      alert(not_filled_msg);
+    }
   }
   const textColor = useColorModeValue("gray.700", "white");
 

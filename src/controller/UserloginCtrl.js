@@ -5,9 +5,9 @@ import { URL, server_URL } from "./urls_config";
 
 function other_users_check(email_id) {
   // Add official keywords
-  let keywords = ["hod", "advisor", "iqac", "dean", "principal","admin"];
+  let keywords = ["hod", "advisor", "iqac", "dean", "principal", "admin"];
   const result = keywords.filter((word) => email_id.includes(word));
-  console.log(result)
+  console.log(result);
   return result.length != 0 ? true : false;
 }
 
@@ -27,17 +27,17 @@ export default function handleLogin() {
 
   axios.post(server_URL + "userlogin", params).then((result) => {
     // Check 1: email belongs to licet domain and user not present
-    console.log(result.data)
-    if (
-      result.data == "user-fail" &&
-      email.includes("@licet.ac.in") &&
-      !other_users_check(email)
-    ) {
-      window.location.href = URL + "Student#/auth/GeneralInformationdata";
-    }
+    // console.log(result.data);
+    // if (
+    //   result.data == "user-fail" &&
+    //   email.includes("@licet.ac.in") &&
+    //   !other_users_check(email)
+    // ) {
+    //   window.location.href = URL + "Student#/auth/GeneralInformationdata";
+    // }
 
     // Check 2: invalid user
-    else if (result.data === "user-fail") {
+    if (result.data === "user-fail") {
       document.getElementById("email-fail").style.display = "block";
       localStorage.setItem("auth_token", -1);
       loginButton.disabled = false;
@@ -80,7 +80,6 @@ export default function handleLogin() {
         localStorage.setItem("offemail", check.email);
         window.location.href = URL + "LICET#/admin3/dashboard";
       } else if (check.user_type == 4) {
-        console.log("KK")
         localStorage.setItem("user_type", "admin");
         localStorage.setItem("hodemail", check.email);
         window.location.href = URL + "Admin#/admin4/dashboard";
