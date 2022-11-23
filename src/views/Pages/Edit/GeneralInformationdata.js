@@ -161,7 +161,6 @@ function GeneralInformationdata() {
       "OFFEMID",
       "PEREMID",
       "PREADDRID",
-      "PREADDRID",
       "LANKNO",
       "PAN",
       "NOS1",
@@ -189,6 +188,53 @@ function GeneralInformationdata() {
       "RL",
       "DH",
     ];
+
+    let mapping_columns = {
+      RID: "roll number",
+      NID: "name",
+      REID: "register number",
+      SID: "sex",
+      DEPT: "department",
+      BATCH: "batch",
+      NATIONID: "nationality",
+      RELIGIONID: "religion",
+      DALITID: "IS DALIT",
+      COMMUNITYID: "community",
+      BLOODID: "blood group",
+      MOTHERID: "mother name",
+      CONTACTID: "contact no",
+      AADHARID: "aadhar id",
+      PEREMID: "personal email id",
+      OFFEMAID: "official email id",
+      PREADDRID: "address",
+      LANKNO: "Languages Known",
+      PAN: "PAN card no",
+      FN: "Father's Name",
+      FMN: "Father's Mobile No",
+      MN: "Mother's Name",
+      MMN: "Mother's Mobile No",
+      DOA: "Date of Application",
+      RL: "Regular/Lateral Entry",
+      DH: "Day Scholar/Hosteler",
+      NOS1: "HS School Name",
+      NOS2: "10th School Name",
+      BOARD1: "Board HS",
+      BOARD2: "10th HS",
+      MOI1: "HS Medium of Instruction",
+      MOI2: "10th Medium of Instruction",
+      SL1: "Second Language in HS",
+      SL2: "Second Language in 10th",
+      GROUP1: "Group in HS",
+      GROUP2: "Group in 10th",
+      TM1: "Total Marks in HS",
+      TM2: "Total Marks in 10th",
+      OP1: "Overall Percentage in HS",
+      OP2: "Overall Percentage in 10th",
+      COM1: "Cut off Marks in HS",
+      NOA1: "No of Attempts in HS",
+      NOA2: "No of Attempts in 10th",
+    };
+
     let not_filled_msg = "Kindly fill in these details \n";
     let inx = 0;
 
@@ -196,7 +242,8 @@ function GeneralInformationdata() {
       try {
         if (document.getElementById(columns_to_be_filled[inx1]).value == "") {
           inx += 1;
-          not_filled_msg += inx + ". " + columns_to_be_filled[inx1] + "\n";
+          not_filled_msg +=
+            inx + ". " + mapping_columns[columns_to_be_filled[inx1]] + "\n";
         }
       } catch {
         alert(columns_to_be_filled[inx1]);
