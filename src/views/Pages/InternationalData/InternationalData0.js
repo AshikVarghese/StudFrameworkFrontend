@@ -16,13 +16,6 @@ import {
   Td,
   Input,
   useColorModeValue,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   useDisclosure,
   Button,
   SimpleGrid,
@@ -36,39 +29,19 @@ import { AddIcon } from "@chakra-ui/icons";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
-
 import TableRow8 from "components/Tables/TableRow/TableRow8";
 import { server_URL } from "controller/urls_config";
-
-var resul;
+import { useToast } from '@chakra-ui/react'
 
 function InternationalData() {
-  function substudinter() {
-    let params = new URLSearchParams();
-    params.append("Campus", document.getElementById("CampusID").value);
-    params.append("DateYear", document.getElementById("DYID").value);
-    params.append("Project", document.getElementById("ProjectID").value);
-    params.append("Outcome", document.getElementById("OutcomeID").value);
-    params.append("PersD", document.getElementById("PDID").value);
-    params.append("ForLCC", document.getElementById("FLCCID").value);
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("status", "Pending");
-    axios.post(server_URL + "insertstudinter", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
-  }
 
+  const toast = useToast()
+  const toastIdRef = React.useRef()
+  const [show, setShow] = useState(false);
+  const handleToggle = () => setShow(!show);
   const textColor = useColorModeValue("gray.700", "white");
   const [data, setData] = useState([]);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const Null_message = "NULL";
+  const Null_message = "";
 
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
@@ -78,9 +51,41 @@ function InternationalData() {
       .then((items) => {
         setData(items.data);
       });
-  });
-  const [show, setShow] = useState(false);
-  const handleToggle = () => setShow(!show);
+  },[]);
+
+  function substudinter() {
+    if (document.getElementById("CampusID").value == '' || document.getElementById("DYID").value == '' || 
+    document.getElementById("ProjectID").value == '' || document.getElementById("OutcomeID").value == '' ||
+    document.getElementById("PDID").value == '' || document.getElementById("FLCCID").value == ''
+    ) {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+    params.append("Campus", document.getElementById("CampusID").value);
+    params.append("DateYear", document.getElementById("DYID").value);
+    params.append("Project", document.getElementById("ProjectID").value);
+    params.append("Outcome", document.getElementById("OutcomeID").value);
+    params.append("PersD", document.getElementById("PDID").value);
+    params.append("ForLCC", document.getElementById("FLCCID").value);
+    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+    params.append("status", "Pending");
+    axios.post(server_URL + "insertstudinter", params).then((items) => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        data.push({ 
+          'foreign_campus' : document.getElementById("CampusID").value,
+          'date' : document.getElementById("DYID").value,
+          'project' : document.getElementById("ProjectID").value, 
+          'outcome' : document.getElementById("OutcomeID").value,
+          'personal_development' : document.getElementById("PDID").value,   
+          'foreign_language_courses' : document.getElementById("FLCCID").value,
+          'verified' : "Pending"   
+        })
+        setShow(false)
+    }).catch(()=>{
+      toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+    });
+    }
+  }
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
@@ -115,13 +120,13 @@ function InternationalData() {
                     <TableRow8
                       id={item.s_no || Null_message}
                       row1={item.foreign_campus || Null_message}
-                      row2={item.duration || Null_message}
+                      row2={item.date || Null_message}
                       row3={item.project || Null_message}
                       row4={item.outcome || Null_message}
                       row5={item.personal_development || Null_message}
                       row6={item.foreign_language_courses || Null_message}
-                      row7={item.credits || Null_message}
-                      row8={item.verify || Null_message}
+                      row7={item.credits==null ? "Pending" : item.credits}
+                      row8={item.verified || Null_message}
                     />
                   );
                 })}
@@ -254,33 +259,6 @@ function InternationalData() {
                       </SlideFade>
                     </Td>
                   </Tr>
-                  <Modal
-                    isOpen={isOpen}
-                    onClose={() => {
-                      onClose();
-                      window.location.reload(false);
-                    }}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Result</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>{resul}</ModalBody>
-
-                      <ModalFooter>
-                        <Button
-                          colorScheme="blue"
-                          mr={3}
-                          onClick={() => {
-                            onClose();
-                            window.location.reload(false);
-                          }}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
                 </Tbody>
               </Table>
             </CardBody>
