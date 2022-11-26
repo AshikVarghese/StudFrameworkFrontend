@@ -85,7 +85,7 @@ export default function handleLogin() {
         window.location.href = URL + "Admin#/admin4/dashboard";
       } else if (check.user_type == 0) {
         if (check.roll_no == null) {
-          console.log(check.roll_no);
+          localStorage.setItem("useremail", check.email);
           window.location.href = URL + "Student#/auth/GeneralInformationdata";
         } else {
           localStorage.setItem("user_type", "student");
