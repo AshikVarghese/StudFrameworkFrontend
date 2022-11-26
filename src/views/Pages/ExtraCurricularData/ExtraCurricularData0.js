@@ -55,6 +55,43 @@ function ExtraCurricularData() {
   const [Sdata, setSdata] = useState([]);
   const [Fdata, setFdata] = useState([]);
 
+  var [drop1, setDrop1] = useState(false);
+  var [drop2, setDrop2] = useState(false);
+  var [drop3, setDrop3] = useState(false);
+  var [drop4, setDrop4] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
+  const [show4, setShow4] = useState(false);
+
+  const handleToggle1 = () => setShow(!show);
+  const handleToggle2 = () => setShow2(!show2);
+  const handleToggle3 = () => setShow3(!show3);
+  const handleToggle4 = () => setShow4(!show4);
+
+  const textColor = useColorModeValue("gray.700", "white");
+
+  let params = new URLSearchParams();
+  params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+  useEffect(async () => {
+    axios
+      .all([
+        axios.post(server_URL + "ExtraClubStudentDisplay", params),
+        axios.post(server_URL + "ExtraOutreachStudentDisplay", params),
+        axios.post(server_URL + "ExtraSportsStudentDisplay", params),
+        axios.post(server_URL + "ExtraCulturalStudentDisplay", params),
+      ])
+      .then(
+        axios.spread((data1, data2, data3, data4) => {
+          setCdata(data1.data);
+          setOdata(data2.data);
+          setSdata(data3.data);
+          setFdata(data4.data);
+        })
+      );
+  }, []);
+
   function substudextraclub() {
     if (document.getElementById("CLUBNID").value == '' || document.getElementById("CLUBAID").value == '' || 
     document.getElementById("EDYEARID").value == '' || document.getElementById("OUTCOMID").value == ''
@@ -109,6 +146,7 @@ function ExtraCurricularData() {
       });
     }
   }
+  
   function substudextrasport() {
     if (document.getElementById("SSID").value == '' || document.getElementById("SRID").value == '' || 
     document.getElementById("SDID").value == '' || document.getElementById("SPID").value == '' ) {
@@ -162,45 +200,6 @@ function ExtraCurricularData() {
       });
     }
   }
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  var [drop1, setDrop1] = useState(false);
-  var [drop2, setDrop2] = useState(false);
-  var [drop3, setDrop3] = useState(false);
-  var [drop4, setDrop4] = useState(false);
-
-  const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
-  const [show4, setShow4] = useState(false);
-
-  const handleToggle1 = () => setShow(!show);
-  const handleToggle2 = () => setShow2(!show2);
-  const handleToggle3 = () => setShow3(!show3);
-  const handleToggle4 = () => setShow4(!show4);
-
-  const textColor = useColorModeValue("gray.700", "white");
-
-  let params = new URLSearchParams();
-  params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-  useEffect(async () => {
-    axios
-      .all([
-        axios.post(server_URL + "ExtraClubStudentDisplay", params),
-        axios.post(server_URL + "ExtraOutreachStudentDisplay", params),
-        axios.post(server_URL + "ExtraSportsStudentDisplay", params),
-        axios.post(server_URL + "ExtraCulturalStudentDisplay", params),
-      ])
-      .then(
-        axios.spread((data1, data2, data3, data4) => {
-          setCdata(data1.data);
-          setOdata(data2.data);
-          setSdata(data3.data);
-          setFdata(data4.data);
-        })
-      );
-  }, []);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>
