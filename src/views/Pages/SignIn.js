@@ -24,7 +24,6 @@ import signInImage from "assets/img/signInImage.png";
 
 function login(e) {
   e.preventDefault();
-  console.log(document.getElementById("emailId").value);
 }
 
 function SignIn() {

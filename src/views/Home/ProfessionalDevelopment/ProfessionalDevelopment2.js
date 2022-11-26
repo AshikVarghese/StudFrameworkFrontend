@@ -53,7 +53,6 @@ function ProfessionalDevelopment() {
     axios
       .post(server_URL + "ProfessionalDevelopmentHOD", params)
       .then((items) => {
-        console.log(items);
         setData(items.data);
         setLoading(true);
       });

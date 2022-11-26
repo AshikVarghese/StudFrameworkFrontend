@@ -66,7 +66,6 @@ function ExtraCurricularData() {
         })
       );
   }, []);
-  console.log(Cdata);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "65px" }}>

@@ -151,7 +151,6 @@ function Profile() {
     setData(items.data);
   });
   axios.post(server_URL + "get_credits_student", params).then((items) => {
-    // console.log(items);
     setcredits(items.data[0].total);
   });
   data.map((item) => {

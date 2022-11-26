@@ -7,7 +7,6 @@ function other_users_check(email_id) {
   // Add official keywords
   let keywords = ["hod", "advisor", "iqac", "dean", "principal", "admin"];
   const result = keywords.filter((word) => email_id.includes(word));
-  console.log(result);
   return result.length != 0 ? true : false;
 }
 
@@ -62,7 +61,6 @@ export default function handleLogin() {
     else {
       // console.log("Logged In");
       var check = result.data[0];
-      console.log(check);
 
       if (check.user_type == 2) {
         localStorage.setItem("user_type", "hod");

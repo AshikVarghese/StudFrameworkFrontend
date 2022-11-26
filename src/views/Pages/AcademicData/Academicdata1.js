@@ -48,11 +48,6 @@ function Academicdata() {
             (header) =>
               header.COLUMN_NAME != "id" && header.COLUMN_NAME != "roll_no"
           );
-
-          console.log("JJ");
-          console.log(filtered_data);
-
-          console.log(data2);
           let student_data = [];
           for (var i = 0; i < data2.data.length; i++) {
             let student = Object.values(data2.data[i]);

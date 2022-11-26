@@ -70,7 +70,6 @@ function AdminControl() {
       var temp = items.data;
       for (let i = 0; i < temp.length; i++) {
         if(temp[i].user_type == 0){
-          console.log("HELLO");
           temp[i].user_type = "Student"
         }
         else if(temp[i].user_type == 1){

@@ -273,6 +273,7 @@ function GeneralInformationdata() {
       } else if(document.getElementById("GMN").value.length!=12){
         toastIdRef.current = toast({ description: "Invalid Gaurdian's Number! ( Format : 919876543210 )", status: 'warning',isClosable: true, position:"top" })
       } else{
+        document.getElementById("last").disabled = true;
         axios.post(server_URL + "studentinsert", params).then((results)=>{
           toastIdRef.current = toast({ description: results.data+" Redirecting...", status: 'success',isClosable: true, position:"top" })
           setTimeout(() => {
@@ -4264,6 +4265,7 @@ function GeneralInformationdata() {
         width="30%"
         colorScheme="orange"
         variant="solid"
+        id="last"
       >
         Submit
       </Button>
