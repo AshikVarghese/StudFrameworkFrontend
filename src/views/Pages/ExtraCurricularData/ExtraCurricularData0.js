@@ -42,87 +42,125 @@ import CardBody from "components/Card/CardBody.js";
 import TableRow6 from "components/Tables/TableRow/TableRow6";
 import TableRow5 from "components/Tables/TableRow/TableRow5";
 import { server_URL } from "controller/urls_config";
-
-var resul;
+import { useToast } from '@chakra-ui/react'
 
 function ExtraCurricularData() {
+
+  const toast = useToast()
+  const toastIdRef = React.useRef()
   const Null_message = "";
+
+  const [Cdata, setCdata] = useState([]);
+  const [Odata, setOdata] = useState([]);
+  const [Sdata, setSdata] = useState([]);
+  const [Fdata, setFdata] = useState([]);
+
   function substudextraclub() {
-    let params = new URLSearchParams();
-    params.append("Clubname", document.getElementById("CLUBNID").value);
-    params.append("ClubactivityID", document.getElementById("CLUBAID").value);
-    params.append("Clubdateyear", document.getElementById("EDYEARID").value);
-    params.append("Clubnoutcome", document.getElementById("OUTCOMID").value);
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("status", "Pending");
-    axios.post(server_URL + "insertstudextraclub", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("CLUBNID").value == '' || document.getElementById("CLUBAID").value == '' || 
+    document.getElementById("EDYEARID").value == '' || document.getElementById("OUTCOMID").value == ''
+    ) {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("Clubname", document.getElementById("CLUBNID").value);
+      params.append("ClubactivityID", document.getElementById("CLUBAID").value);
+      params.append("Clubdateyear", document.getElementById("EDYEARID").value);
+      params.append("Clubnoutcome", document.getElementById("OUTCOMID").value);
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("status", "Pending");
+      axios.post(server_URL + "insertstudextraclub", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        Cdata.push({ 
+          'club_name' : document.getElementById("CLUBNID").value,
+          'date' : document.getElementById("EDYEARID").value,
+          'activity_name' : document.getElementById("CLUBAID").value, 
+          'outcome' : document.getElementById("OUTCOMID").value,
+          'verified' : "Pending"   
+        })
+        setShow(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
+
   function substudextraoutreach() {
-    let params = new URLSearchParams();
-    params.append("outreachname", document.getElementById("OUTREACTID").value);
-    params.append(
-      "outreachdateyear",
-      document.getElementById("OUTREADAYID").value
-    );
-    params.append(
-      "outreachoutcome",
-      document.getElementById("OUTREAOUTCOMID").value
-    );
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("status", "Pending");
-    axios.post(server_URL + "insertstudextraoutreach", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("OUTREACTID").value == '' || document.getElementById("OUTREADAYID").value == '' || 
+    document.getElementById("OUTREAOUTCOMID").value == '' ) {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("outreachname", document.getElementById("OUTREACTID").value);
+      params.append("outreachdateyear", document.getElementById("OUTREADAYID").value);
+      params.append("outreachoutcome", document.getElementById("OUTREAOUTCOMID").value);
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("status", "Pending");
+      axios.post(server_URL + "insertstudextraoutreach", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        Odata.push({ 
+          'activity_name' : document.getElementById("OUTREACTID").value,
+          'date' : document.getElementById("OUTREADAYID").value,
+          'outcome' : document.getElementById("OUTREAOUTCOMID").value, 
+          'verified' : "Pending"   
+        })
+        setShow2(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
   function substudextrasport() {
-    let params = new URLSearchParams();
-    params.append("sportname", document.getElementById("SSID").value);
-    params.append("representation", document.getElementById("SRID").value);
-    params.append("dateyear", document.getElementById("SDID").value);
-    params.append("position", document.getElementById("SPID").value);
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("status", "Pending");
-    axios.post(server_URL + "insertstudextrasports", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("SSID").value == '' || document.getElementById("SRID").value == '' || 
+    document.getElementById("SDID").value == '' || document.getElementById("SPID").value == '' ) {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("sportname", document.getElementById("SSID").value);
+      params.append("representation", document.getElementById("SRID").value);
+      params.append("dateyear", document.getElementById("SDID").value);
+      params.append("position", document.getElementById("SPID").value);
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("status", "Pending");
+      axios.post(server_URL + "insertstudextrasports", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        Sdata.push({ 
+          'sport_name' : document.getElementById("SSID").value,
+          'representation' : document.getElementById("SRID").value,
+          'date' : document.getElementById("SDID").value,
+          'position_secures' : document.getElementById("SPID").value,  
+          'verified' : "Pending"   
+        })
+        setShow3(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function substudextracultural() {
-    let params = new URLSearchParams();
-    params.append("eventname", document.getElementById("ENID").value);
-    params.append("eventdate", document.getElementById("EDAYID").value);
-    params.append("eventposition", document.getElementById("EPSID").value);
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("status", "Pending");
-    axios.post(server_URL + "insertstudextracultural", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("ENID").value == '' || document.getElementById("EDAYID").value == '' || 
+    document.getElementById("EPSID").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("eventname", document.getElementById("ENID").value);
+      params.append("eventdate", document.getElementById("EDAYID").value);
+      params.append("eventposition", document.getElementById("EPSID").value);
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("status", "Pending");
+      axios.post(server_URL + "insertstudextracultural", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        Fdata.push({ 
+          'event_name' : document.getElementById("ENID").value,
+          'date' : document.getElementById("EPSID").value,
+          'position_secures' : document.getElementById("EPSID").value,  
+          'verified' : "Pending"   
+        })
+        setShow4(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -143,11 +181,6 @@ function ExtraCurricularData() {
   const handleToggle4 = () => setShow4(!show4);
 
   const textColor = useColorModeValue("gray.700", "white");
-
-  const [Cdata, setCdata] = useState([]);
-  const [Odata, setOdata] = useState([]);
-  const [Sdata, setSdata] = useState([]);
-  const [Fdata, setFdata] = useState([]);
 
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
@@ -241,7 +274,7 @@ function ExtraCurricularData() {
                         row2={item1.date || Null_message}
                         row3={item1.activity_name || Null_message}
                         row4={item1.outcome || Null_message}
-                        row5={item1.credits || Null_message}
+                        row5={item1.credits==null ? "Pending" : item1.credits}
                         row6={item1.verified || Null_message}
                       />
                     );
@@ -349,33 +382,6 @@ function ExtraCurricularData() {
                       </Flex>
                     </Td>
                   </Tr>
-                  <Modal
-                    isOpen={isOpen}
-                    onClose={() => {
-                      onClose();
-                      window.location.reload(false);
-                    }}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Result</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>{resul}</ModalBody>
-
-                      <ModalFooter>
-                        <Button
-                          colorScheme="blue"
-                          mr={3}
-                          onClick={() => {
-                            onClose();
-                            window.location.reload(false);
-                          }}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
                 </Tbody>
               </Table>
             </CardBody>
@@ -437,7 +443,7 @@ function ExtraCurricularData() {
                         row1={item.activity_name || Null_message}
                         row2={item.date || Null_message}
                         row3={item.outcome || Null_message}
-                        row4={item.credits || Null_message}
+                        row4={item.credits==null ? "Pending" : item.credits}
                         row5={item.verified || Null_message}
                       />
                     );
@@ -519,33 +525,6 @@ function ExtraCurricularData() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -612,7 +591,7 @@ function ExtraCurricularData() {
                         row2={item.date || Null_message}
                         row3={item.representation || Null_message}
                         row4={item.position_secures || Null_message}
-                        row5={item.credits || Null_message}
+                        row5={item.credits==null ? "Pending" : item.credits}
                         row6={item.verified || Null_message}
                       />
                     );
@@ -720,34 +699,6 @@ function ExtraCurricularData() {
                         </Button>
                       </SlideFade>
                     </Td>
-
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -811,7 +762,7 @@ function ExtraCurricularData() {
                         row1={row.event_name || Null_message}
                         row2={row.date || Null_message}
                         row3={row.position_secures || Null_message}
-                        row4={row.credits || Null_message}
+                        row4={row.credits==null ? "Pending" : row.credits}
                         row5={row.verified || Null_message}
                       />
                     );
@@ -894,34 +845,6 @@ function ExtraCurricularData() {
                         </Button>
                       </SlideFade>
                     </Td>
-
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>

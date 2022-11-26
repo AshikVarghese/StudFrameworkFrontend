@@ -69,7 +69,7 @@ function InternationalData() {
     params.append("ForLCC", document.getElementById("FLCCID").value);
     params.append("StudentDetails", localStorage.getItem("StudentRoll"));
     params.append("status", "Pending");
-    axios.post(server_URL + "insertstudinter", params).then((items) => {
+    axios.post(server_URL + "insertstudinter", params).then(() => {
         toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
         data.push({ 
           'foreign_campus' : document.getElementById("CampusID").value,
