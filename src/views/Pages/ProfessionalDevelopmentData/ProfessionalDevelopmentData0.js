@@ -142,21 +142,28 @@ function ProfessionalDevelopmentData0() {
   }
 
   function insertinplant() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Industry", document.getElementById("Industry2").value);
-    params.append("DateYear", document.getElementById("DY2").value);
-    params.append("Outcome", document.getElementById("O2").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "Inplant_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Industry2").value == '' || document.getElementById("DY2").value == '' || 
+    document.getElementById("O2").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Industry", document.getElementById("Industry2").value);
+      params.append("DateYear", document.getElementById("DY2").value);
+      params.append("Outcome", document.getElementById("O2").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "Inplant_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p2data.push({ 
+          'industry' : document.getElementById("Industry2").value,
+          'date' : document.getElementById("DY2").value,
+          'outcome' : document.getElementById("O2").value, 
+        })
+        setShow2(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
   function insertlecture() {
     let params = new URLSearchParams();
@@ -710,7 +717,7 @@ function ProfessionalDevelopmentData0() {
                         row1={item2.industry || Null_message}
                         row2={item2.date || Null_message}
                         row3={item2.outcome || Null_message}
-                        row4={item2.credits || Null_message}
+                        row4={item2.credits==null ? "Pending" : item2.credits}
                         row5={item2.verified || Null_message}
                       />
                     );
