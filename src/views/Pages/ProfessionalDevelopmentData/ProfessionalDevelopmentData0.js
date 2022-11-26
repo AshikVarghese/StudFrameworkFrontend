@@ -42,6 +42,7 @@ import TableRow5 from "components/Tables/TableRow/TableRow5";
 import TableRow6 from "components/Tables/TableRow/TableRow6";
 import TableRow7 from "components/Tables/TableRow/TableRow7";
 import { URL, server_URL } from "controller/urls_config";
+import { useToast } from '@chakra-ui/react'
 
 var resul;
 
@@ -50,7 +51,9 @@ function ProfessionalDevelopmentData0() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const Null_message = "NULL";
+  const toast = useToast()
+  const toastIdRef = React.useRef()
+  const Null_message = "";
 
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
@@ -115,22 +118,29 @@ function ProfessionalDevelopmentData0() {
   const [p17data, setp17data] = useState([]);
 
   function insertindustry() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Industry", document.getElementById("Industry1").value);
-    params.append("DateYear", document.getElementById("DY1").value);
-    params.append("Outcome", document.getElementById("O1").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "Industrialv_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Industry1").value == '' || document.getElementById("DY1").value == '' || 
+    document.getElementById("O1").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Industry", document.getElementById("Industry1").value);
+      params.append("DateYear", document.getElementById("DY1").value);
+      params.append("Outcome", document.getElementById("O1").value);
+      axios.post(server_URL + "Industrialv_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p1data.push({ 
+          'industry_name' : document.getElementById("Industry1").value,
+          'date' : document.getElementById("DY1").value,
+          'outcome' : document.getElementById("O1").value, 
+        })
+        setShow(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
+
   function insertinplant() {
     let params = new URLSearchParams();
     params.append("StudentDetails", localStorage.getItem("StudentRoll"));
@@ -511,7 +521,6 @@ function ProfessionalDevelopmentData0() {
                     <Th color="gray.400">Date and Year</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -521,8 +530,7 @@ function ProfessionalDevelopmentData0() {
                         row1={item1.industry_name || Null_message}
                         row2={item1.date || Null_message}
                         row3={item1.outcome || Null_message}
-                        row4={item1.credits || Null_message}
-                        row5={item1.verified || Null_message}
+                        row4={item1.credits==null ? "Pending" : item1.credits}
                       />
                     );
                   })}
