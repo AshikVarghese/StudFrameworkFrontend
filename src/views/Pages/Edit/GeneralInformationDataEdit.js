@@ -571,26 +571,26 @@ function GeneralInformationDataEdit(props) {
     } else {
       params.append("nsib", no_of_siblings);
     }
-    if (document.getElementById("NASIB").value.length !== 0) {
-      params.append("nmsib", document.getElementById("NASIB").value);
-    } else {
-      params.append("nmsib", name_siblings);
-    }
-    if (document.getElementById("QUASIB").value.length !== 0) {
-      params.append("qsib", document.getElementById("QUASIB").value);
-    } else {
-      params.append("qsib", qualification_siblings);
-    }
-    if (document.getElementById("OCCSIB").value.length !== 0) {
-      params.append("siboc", document.getElementById("OCCSIB").value);
-    } else {
-      params.append("siboc", occupation_siblings);
-    }
-    if (document.getElementById("ALUMNILL").value.length !== 0) {
-      params.append("llalumni", document.getElementById("ALUMNILL").value);
-    } else {
-      params.append("llalumni", alumni_licet_loyola_yn);
-    }
+    // if (document.getElementById("NASIB").value.length !== 0) {
+    //   params.append("nmsib", document.getElementById("NASIB").value);
+    // } else {
+    //   params.append("nmsib", name_siblings);
+    // }
+    // if (document.getElementById("QUASIB").value.length !== 0) {
+    //   params.append("qsib", document.getElementById("QUASIB").value);
+    // } else {
+    //   params.append("qsib", qualification_siblings);
+    // }
+    // if (document.getElementById("OCCSIB").value.length !== 0) {
+    //   params.append("siboc", document.getElementById("OCCSIB").value);
+    // } else {
+    //   params.append("siboc", occupation_siblings);
+    // }
+    // if (document.getElementById("ALUMNILL").value.length !== 0) {
+    //   params.append("llalumni", document.getElementById("ALUMNILL").value);
+    // } else {
+    //   params.append("llalumni", alumni_licet_loyola_yn);
+    // }
     if (document.getElementById("APPNO").value.length !== 0) {
       params.append("apno", document.getElementById("APPNO").value);
     } else {
@@ -3269,7 +3269,7 @@ function GeneralInformationDataEdit(props) {
                       </Flex>
                     </Td>
                   </Tr>
-                  <Tr>
+                  {/* <Tr>
                     <Td minWidth={{ sm: "17rem" }}>
                       <Flex
                         align="center"
@@ -3432,7 +3432,7 @@ function GeneralInformationDataEdit(props) {
                         </Flex>
                       </Flex>
                     </Td>
-                  </Tr>
+                  </Tr> */}
                 </Tbody>
               </Table>
             </CardBody>

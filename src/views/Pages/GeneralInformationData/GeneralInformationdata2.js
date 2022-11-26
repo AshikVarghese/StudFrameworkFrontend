@@ -592,7 +592,7 @@ function GeneralInformationdata({ location }) {
                       );
                     })}
                   </Tr>
-                  <Tr>
+                  {/* <Tr>
                     {data.map((item) => {
                       return (
                         <GData
@@ -621,7 +621,7 @@ function GeneralInformationdata({ location }) {
                         />
                       );
                     })}
-                  </Tr>
+                  </Tr> */}
                 </Tbody>
               </Table>
             </CardBody>
