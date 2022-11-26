@@ -2,7 +2,7 @@
 
 //Class Advisor GeneralInformationData
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 // Chakra imports
 import {
@@ -43,12 +43,13 @@ function GeneralInformationdata({ location }) {
   }
   const [data, setData] = useState([]);
 
-  let params = new URLSearchParams();
-  params.append("RollNumber", localStorage.getItem("generalStudent"));
-
-  axios.post(server_URL + "GeneralData", params).then((items) => {
-    setData(items.data);
-  });
+  useEffect(async () => {
+    let params = new URLSearchParams();
+    params.append("RollNumber", localStorage.getItem("generalStudent"));
+    axios.post(server_URL + "GeneralData", params).then((items) => {
+      setData(items.data);
+    });  
+  },[])
 
   const textColor = useColorModeValue("gray.700", "white");
 

@@ -2,7 +2,7 @@
 
 // Student Dashboard/General
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 // Chakra imports
 import {
@@ -34,14 +34,17 @@ function GeneralInformationdata({ location }) {
   // Toast var
   const toast = useToast();
 
-  let params = new URLSearchParams();
-  params.append("RollNumber", localStorage.getItem("StudentRoll"));
   let auth_token = localStorage.getItem("auth_token");
+  
+  useEffect(async () => {
+    let params = new URLSearchParams();
+    params.append("RollNumber", localStorage.getItem("StudentRoll"));  
+    axios.post(server_URL + "GeneralData", params).then((items) => {
+      setData(items.data);
+      setLoading(true);
+    });
+  },[])
 
-  axios.post(server_URL + "GeneralData", params).then((items) => {
-    setData(items.data);
-    setLoading(true);
-  });
 
   const textColor = useColorModeValue("gray.700", "white");
   if (auth_token != -1) {
@@ -599,7 +602,7 @@ function GeneralInformationdata({ location }) {
                         );
                       })}
                     </Tr>
-                    <Tr>
+                    {/* <Tr>
                       {data.map((item) => {
                         return (
                           <GData
@@ -638,7 +641,7 @@ function GeneralInformationdata({ location }) {
                           />
                         );
                       })}
-                    </Tr>
+                    </Tr> */}
                   </Tbody>
                 </Table>
               </CardBody>
