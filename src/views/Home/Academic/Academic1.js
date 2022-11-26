@@ -63,7 +63,6 @@ function Academic() {
     setfile(event.target.files[0]);
   };
 
-  // On file upload (click the upload button)
   function onFileUpload() {
     const formData = new FormData();
     formData.append("excel", file);
