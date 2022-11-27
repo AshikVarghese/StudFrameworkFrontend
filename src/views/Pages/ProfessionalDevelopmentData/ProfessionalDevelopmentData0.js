@@ -16,14 +16,6 @@ import {
   Td,
   Input,
   useColorModeValue,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
   Button,
   SimpleGrid,
   Collapse,
@@ -44,13 +36,9 @@ import TableRow7 from "components/Tables/TableRow/TableRow7";
 import { URL, server_URL } from "controller/urls_config";
 import { useToast } from '@chakra-ui/react'
 
-var resul;
-
 function ProfessionalDevelopmentData0() {
+
   const textColor = useColorModeValue("gray.700", "white");
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   const toast = useToast()
   const toastIdRef = React.useRef()
   const Null_message = "";
@@ -165,136 +153,195 @@ function ProfessionalDevelopmentData0() {
       });
     }
   }
-  function insertlecture() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Topic", document.getElementById("Topic").value);
 
-    params.append("Resource", document.getElementById("Resource").value);
-    params.append("Outcome", document.getElementById("O3").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "guest_stud_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+  function insertlecture() {
+    if (document.getElementById("Topic").value == '' || document.getElementById("Resource").value == '' || 
+    document.getElementById("O3").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Topic", document.getElementById("Topic").value);
+      params.append("Resource", document.getElementById("Resource").value);
+      params.append("Outcome", document.getElementById("O3").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "guest_stud_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p3data.push({ 
+          'topic' : document.getElementById("Topic").value,
+          'resource_person' : document.getElementById("Resource").value,
+          'outcome' : document.getElementById("O3").value, 
+        })
+        setShow3(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function insertmotivation() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Topic", document.getElementById("Topic4").value);
-    params.append("DateYear", document.getElementById("DY4").value);
-    params.append("Resource", document.getElementById("Resource4").value);
-    params.append("Outcome", document.getElementById("O4").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "Motivational_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Topic4").value == '' || document.getElementById("DY4").value == '' || 
+    document.getElementById("Resource4").value == '' || document.getElementById("O4").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Topic", document.getElementById("Topic4").value);
+      params.append("DateYear", document.getElementById("DY4").value);
+      params.append("Resource", document.getElementById("Resource4").value);
+      params.append("Outcome", document.getElementById("O4").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "Motivational_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p4data.push({ 
+          'topic' : document.getElementById("Topic4").value,
+          'date' : document.getElementById("DY4").value,
+          'resource_person' : document.getElementById("Resource4").value,
+          'outcome' : document.getElementById("O4").value, 
+        })
+        setShow4(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function insertintern() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Company", document.getElementById("Company5").value);
-    params.append("DateYear", document.getElementById("DY5").value);
-    params.append("Duration", document.getElementById("Duration5").value);
-    params.append("Reference", document.getElementById("Reference5").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "intern_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Company5").value == '' || document.getElementById("DY5").value == '' || 
+    document.getElementById("Duration5").value == '' || document.getElementById("Reference5").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Company", document.getElementById("Company5").value);
+      params.append("DateYear", document.getElementById("DY5").value);
+      params.append("Duration", document.getElementById("Duration5").value);
+      params.append("Reference", document.getElementById("Reference5").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "intern_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p5data.push({ 
+          'company_name' : document.getElementById("Company5").value,
+          'duration' : document.getElementById("Duration5").value,
+          'date' : document.getElementById("DY5").value,
+          'reference' : document.getElementById("Reference5").value, 
+          "verified" : "Pending"
+        })
+        setShow5(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function insertvalue() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Course", document.getElementById("Course6").value);
-    params.append("DateYear", document.getElementById("DY6").value);
-    params.append("Outcome", document.getElementById("O6").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "Cour_Stud_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Course6").value == '' || document.getElementById("DY6").value == '' || 
+    document.getElementById("O6").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Course", document.getElementById("Course6").value);
+      params.append("DateYear", document.getElementById("DY6").value);
+      params.append("Outcome", document.getElementById("O6").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "Cour_Stud_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p6data.push({ 
+          'course_name' : document.getElementById("Course6").value,
+          'date' : document.getElementById("DY6").value,
+          'outcome' : document.getElementById("O6").value,
+          "verified" : "Pending"
+        })
+        setShow6(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function insertworkshop() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Topic", document.getElementById("Topic7").value);
-    params.append("DateYear", document.getElementById("DY7").value);
-    params.append("Resource", document.getElementById("Resource7").value);
-    params.append("Outcome", document.getElementById("O7").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "workshop_stuinsert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Topic7").value == '' || document.getElementById("DY7").value == '' || 
+    document.getElementById("Resource7").value == '' || document.getElementById("O7").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Topic", document.getElementById("Topic7").value);
+      params.append("DateYear", document.getElementById("DY7").value);
+      params.append("Resource", document.getElementById("Resource7").value);
+      params.append("Outcome", document.getElementById("O7").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "workshop_stuinsert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p7data.push({ 
+          'topic' : document.getElementById("Topic7").value,
+          'date' : document.getElementById("DY7").value,
+          'resource_person' : document.getElementById("Resource7").value,
+          'outcome' : document.getElementById("O7").value,
+          "verified" : "Pending"
+        })
+        setShow7(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function insertwebinar() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Topic", document.getElementById("Topic8").value);
-    params.append("DateYear", document.getElementById("DY8").value);
-    params.append("Resource", document.getElementById("Resource8").value);
-    params.append("Outcome", document.getElementById("O8").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "webinar_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Topic8").value == '' || document.getElementById("DY8").value == '' || 
+    document.getElementById("Resource8").value == '' || document.getElementById("O8").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Topic", document.getElementById("Topic8").value);
+      params.append("DateYear", document.getElementById("DY8").value);
+      params.append("Resource", document.getElementById("Resource8").value);
+      params.append("Outcome", document.getElementById("O8").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "webinar_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p8data.push({ 
+          'topic' : document.getElementById("Topic8").value,
+          'date' : document.getElementById("DY8").value,
+          'resource_person' : document.getElementById("Resource8").value,
+          'outcome' : document.getElementById("O8").value,
+          "verified" : "Pending"
+        })
+        setShow8(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function insertcompetition() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Name", document.getElementById("Name9").value);
-    params.append("Competition", document.getElementById("Competition9").value);
-    params.append("DateYear", document.getElementById("DY9").value);
-    params.append("Position", document.getElementById("Position9").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "comp_Stud_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Name9").value == '' || document.getElementById("Competition9").value == '' || 
+    document.getElementById("DY9").value == '' || document.getElementById("Position9").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Name", document.getElementById("Name9").value);
+      params.append("Competition", document.getElementById("Competition9").value);
+      params.append("DateYear", document.getElementById("DY9").value);
+      params.append("Position", document.getElementById("Position9").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "comp_Stud_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p9data.push({ 
+          'comp_name' : document.getElementById("Name9").value,
+          'date' : document.getElementById("DY9").value,
+          'comp_type' : document.getElementById("Competition9").value,
+          'position_secured' : document.getElementById("Position9").value,
+          "verified" : "Pending"
+        })
+        setShow9(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   // function insertplacement() {
@@ -317,60 +364,88 @@ function ProfessionalDevelopmentData0() {
   // }
 
   function insertmini() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Title", document.getElementById("Title11").value);
-    params.append("Objective", document.getElementById("Objective11").value);
-    params.append("Outcome", document.getElementById("O11").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "PdMini_Stud_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("Title11").value == '' || document.getElementById("Objective11").value == '' || 
+    document.getElementById("O11").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Title", document.getElementById("Title11").value);
+      params.append("Objective", document.getElementById("Objective11").value);
+      params.append("Outcome", document.getElementById("O11").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "Miniproj_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p11data.push({ 
+          'project_title' : document.getElementById("Title11").value,
+          'objective' : document.getElementById("Objective11").value,
+          'outcome' : document.getElementById("O11").value,
+          "verified" : "Pending"
+        })
+        setShow11(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function finalproject() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Title", document.getElementById("TID12").value);
-    params.append("Objective", document.getElementById("OBID12").value);
-    params.append("Outcome", document.getElementById("OID12").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "final_stud_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("TID12").value == '' || document.getElementById("OBID12").value == '' || 
+    document.getElementById("OID12").value == '') {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Title", document.getElementById("TID12").value);
+      params.append("Objective", document.getElementById("OBID12").value);
+      params.append("Outcome", document.getElementById("OID12").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "final_stud_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p12data.push({ 
+          'project_title' : document.getElementById("TID12").value,
+          'objective' : document.getElementById("OBID12").value,
+          'outcome' : document.getElementById("OID12").value,
+          "verified" : "Pending"
+        })
+        setShow12(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
 
   function publications() {
-    let params = new URLSearchParams();
-    params.append("StudentDetails", localStorage.getItem("StudentRoll"));
-    params.append("Conference", document.getElementById("CONID13").value);
-    params.append("Name", document.getElementById("NAMEID13").value);
-    params.append("Title", document.getElementById("TID13").value);
-    params.append("Impact", document.getElementById("IMPID13").value);
-    params.append("Index", document.getElementById("INID13").value);
-    params.append("status", "Pending");
-    axios.post(server_URL + "publication_insert", params).then((items) => {
-      if (items.data == "Inserted") {
-        resul = "Sucessfully Added!!";
-        onOpen(resul);
-      } else if (items.data == "NotInserted") {
-        resul = "Error Occured!!";
-        onOpen(resul);
-      }
-    });
+    if (document.getElementById("CONID13").value == '' || document.getElementById("NAMEID13").value == '' || 
+    document.getElementById("TID13").value == '' || document.getElementById("IMPID13").value == ''
+    || document.getElementById("INID13").value == '' ) {
+      toastIdRef.current = toast({ description: "Enter all the fields!", status: 'warning',isClosable: true })
+    } else {
+      let params = new URLSearchParams();
+      params.append("StudentDetails", localStorage.getItem("StudentRoll"));
+      params.append("Conference", document.getElementById("CONID13").value);
+      params.append("Name", document.getElementById("NAMEID13").value);
+      params.append("Title", document.getElementById("TID13").value);
+      params.append("Impact", document.getElementById("IMPID13").value);
+      params.append("Index", document.getElementById("INID13").value);
+      params.append("status", "Pending");
+      axios.post(server_URL + "publication_insert", params).then(() => {
+        toastIdRef.current = toast({ description: "Sucessfully Added", status: 'success',isClosable: true })
+        p13data.push({ 
+          'conf_or_journal' : document.getElementById("CONID13").value,
+          'name' : document.getElementById("NAMEID13").value,
+          'title' : document.getElementById("TID13").value,
+          'impact_factor' : document.getElementById("IMPID13").value,
+          'indexed_in' : document.getElementById("INID13").value,
+          "verified" : "Pending"
+        })
+        setShow13(false)
+      }).catch(()=>{
+        toastIdRef.current = toast({ description: "Error Occurred! Verify entered details", status: 'error',isClosable: true })
+      });
+    }
   }
+
   let params = new URLSearchParams();
   params.append("StudentDetails", localStorage.getItem("StudentRoll"));
   params.append("RollNumber", localStorage.getItem("StudentRoll"));
@@ -628,40 +703,11 @@ function ProfessionalDevelopmentData0() {
                       </Flex>
                     </Td>
                   </Tr>
-
-                  <Modal
-                    isOpen={isOpen}
-                    onClose={() => {
-                      onClose();
-                      window.location.reload(false);
-                    }}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Result</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>{resul}</ModalBody>
-
-                      <ModalFooter>
-                        <Button
-                          colorScheme="blue"
-                          mr={3}
-                          onClick={() => {
-                            onClose();
-                            window.location.reload(false);
-                          }}
-                        >
-                          Close
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
                 </Tbody>
               </Table>
             </CardBody>
           </Card>
         </Collapse>
-
         <Collapse in={drop1}>
           <SimpleGrid
             marginLeft="auto"
@@ -803,34 +849,6 @@ function ProfessionalDevelopmentData0() {
                         </SlideFade>
                       </SlideFade>
                     </Td>
-
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -883,7 +901,6 @@ function ProfessionalDevelopmentData0() {
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -893,8 +910,7 @@ function ProfessionalDevelopmentData0() {
                         row1={item3.topic || Null_message}
                         row2={item3.resource_person || Null_message}
                         row3={item3.outcome || Null_message}
-                        row4={item3.credits || Null_message}
-                        row5={item3.verified || Null_message}
+                        row4={item3.credits==null ? "Pending" : item3.credits}
                       />
                     );
                   })}
@@ -978,33 +994,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -1058,7 +1047,6 @@ function ProfessionalDevelopmentData0() {
                     <Th color="gray.400">Resource Person</Th>
                     <Th color="gray.400">Outcome</Th>
                     <Th color="gray.400">Credits</Th>
-                    <Th color="gray.400">Verify Status</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -1069,8 +1057,7 @@ function ProfessionalDevelopmentData0() {
                         row2={item4.date || Null_message}
                         row3={item4.resource_person || Null_message}
                         row4={item4.outcome || Null_message}
-                        row5={item4.credits || Null_message}
-                        row6={item4.verified || Null_message}
+                        row5={item4.credits==null ? "Pending" : item4.credits}
                       />
                     );
                   })}
@@ -1170,33 +1157,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -1261,7 +1221,7 @@ function ProfessionalDevelopmentData0() {
                         row2={item5.date || Null_message}
                         row3={item5.duration || Null_message}
                         row4={item5.reference || Null_message}
-                        row5={item5.credits || Null_message}
+                        row5={item5.credits==null ? "Pending" : item5.credits}
                         row6={item5.verified || Null_message}
                       />
                     );
@@ -1363,33 +1323,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -1451,7 +1384,7 @@ function ProfessionalDevelopmentData0() {
                         row1={item6.course_name || Null_message}
                         row2={item6.date || Null_message}
                         row3={item6.outcome || Null_message}
-                        row4={item6.credits || Null_message}
+                        row4={item6.credits==null ? "Pending" : item6.credits}
                         row5={item6.verified || Null_message}
                       />
                     );
@@ -1536,33 +1469,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -1625,9 +1531,9 @@ function ProfessionalDevelopmentData0() {
                       <TableRow6
                         row1={item7.topic || Null_message}
                         row2={item7.date || Null_message}
-                        row3={item7.Resource || Null_message}
+                        row3={item7.resource_person || Null_message}
                         row4={item7.outcome || Null_message}
-                        row5={item7.credits || Null_message}
+                        row5={item7.credits==null ? "Pending" : item7.credits}
                         row6={item7.verified || Null_message}
                       />
                     );
@@ -1729,33 +1635,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -1817,9 +1696,9 @@ function ProfessionalDevelopmentData0() {
                       <TableRow6
                         row1={item8.topic || Null_message}
                         row2={item8.date || Null_message}
-                        row3={item8.resorce_person || Null_message}
+                        row3={item8.resource_person || Null_message}
                         row4={item8.outcome || Null_message}
-                        row5={item8.credits || Null_message}
+                        row5={item8.credits==null ? "Pending" : item8.credits}
                         row6={item8.verified || Null_message}
                       />
                     );
@@ -1920,33 +1799,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -2012,7 +1864,7 @@ function ProfessionalDevelopmentData0() {
                         row2={item9.comp_type || Null_message}
                         row3={item9.date || Null_message}
                         row4={item9.position_secured || Null_message}
-                        row5={item9.credits || Null_message}
+                        row5={item9.credits==null ? "Pending" : item9.credits}
                         row6={item9.verified || Null_message}
                       />
                     );
@@ -2116,33 +1968,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -2204,7 +2029,7 @@ function ProfessionalDevelopmentData0() {
                         row1={item11.project_title || Null_message}
                         row2={item11.objective || Null_message}
                         row3={item11.outcome || Null_message}
-                        row4={item11.credits || Null_message}
+                        row4={item11.credits==null ? "Pending" : item11.credits}
                         row5={item11.verified || Null_message}
                       />
                     );
@@ -2289,33 +2114,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -2374,10 +2172,10 @@ function ProfessionalDevelopmentData0() {
                   {p12data.map((item12) => {
                     return (
                       <TableRow5
-                        row1={item12.title || Null_message}
+                        row1={item12.project_title || Null_message}
                         row2={item12.objective || Null_message}
                         row3={item12.outcome || Null_message}
-                        row4={item12.credits || Null_message}
+                        row4={item12.credits==null ? "Pending" : item12.credits}
                         row5={item12.verified || Null_message}
                       />
                     );
@@ -2462,33 +2260,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -2554,7 +2325,7 @@ function ProfessionalDevelopmentData0() {
                         row3={item13.title || Null_message}
                         row4={item13.impact_factor || Null_message}
                         row5={item13.indexed_in || Null_message}
-                        row6={item13.credits || Null_message}
+                        row6={item13.credits==null ? "Pending" : item13.credits}
                         row7={item13.verified || Null_message}
                       />
                     );
@@ -2673,33 +2444,6 @@ function ProfessionalDevelopmentData0() {
                         </Button>
                       </SlideFade>
                     </Td>
-                    <Modal
-                      isOpen={isOpen}
-                      onClose={() => {
-                        onClose();
-                        window.location.reload(false);
-                      }}
-                    >
-                      <ModalOverlay />
-                      <ModalContent>
-                        <ModalHeader>Result</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>{resul}</ModalBody>
-
-                        <ModalFooter>
-                          <Button
-                            colorScheme="blue"
-                            mr={3}
-                            onClick={() => {
-                              onClose();
-                              window.location.reload(false);
-                            }}
-                          >
-                            Close
-                          </Button>
-                        </ModalFooter>
-                      </ModalContent>
-                    </Modal>
                   </Tr>
                 </Tbody>
               </Table>
@@ -2748,9 +2492,9 @@ function ProfessionalDevelopmentData0() {
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
                     <Th color="gray.400">Aptitude</Th>
-                    <Th color="gray.400">Soft Skill</Th>
-                    <Th color="gray.400">Reasoning</Th>
-                    <Th color="gray.400">Technical Skill</Th>
+                    <Th color="gray.400">Skill Rack</Th>
+                    <Th color="gray.400">Soft Skills</Th>
+                    <Th color="gray.400">Employability Skill</Th>
                     <Th color="gray.400">Credits</Th>
                   </Tr>
                 </Thead>
@@ -2759,10 +2503,10 @@ function ProfessionalDevelopmentData0() {
                     return (
                       <TableRow5
                         row1={item10.aptitude || Null_message}
-                        row2={item10.soft_skills || Null_message}
-                        row3={item10.reasoning || Null_message}
-                        row4={item10.technical_training || Null_message}
-                        row5={item10.credits || Null_message}
+                        row2={item10.skillrack || Null_message}
+                        row3={item10.soft_skills || Null_message}
+                        row4={item10.employability_skills || Null_message}
+                        row5={item10.credits==null ? "Pending" : item10.credits}
                       />
                     );
                   })}
@@ -2799,13 +2543,13 @@ function ProfessionalDevelopmentData0() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p14data.map((item14) => {
+                  {p15data.map((item15) => {
                     return (
                       <TableRow4
-                        row1={item14.assessment || Null_message}
-                        row2={item14.date || Null_message}
-                        row3={item14.title || Null_message}
-                        row4={item14.credits || Null_message}
+                        row1={item15.assessment || Null_message}
+                        row2={item15.date || Null_message}
+                        row3={item15.remarks || Null_message}
+                        row4={item15.credits==null ? "Pending" : item15.credits}
                       />
                     );
                   })}
@@ -2843,14 +2587,14 @@ function ProfessionalDevelopmentData0() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p15data.map((item15) => {
+                  {p16data.map((item16) => {
                     return (
                       <TableRow5
-                        row1={item15.assessment || Null_message}
-                        row2={item15.trainer || Null_message}
-                        row3={item15.date || Null_message}
-                        row4={item15.remarks || Null_message}
-                        row5={item15.credits || Null_message}
+                        row1={item16.skill || Null_message}
+                        row2={item16.trainer || Null_message}
+                        row3={item16.date || Null_message}
+                        row4={item16.remarks || Null_message}
+                        row5={item16.credits==null ? "Pending" : item16.credits}
                       />
                     );
                   })}
@@ -2887,13 +2631,13 @@ function ProfessionalDevelopmentData0() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {p16data.map((item16) => {
+                  {p14data.map((item14) => {
                     return (
                       <TableRow4
-                        row1={item16.components || Null_message}
-                        row2={item16.date || Null_message}
-                        row3={item16.remarks || Null_message}
-                        row4={item16.credits || Null_message}
+                        row1={item14.components || Null_message}
+                        row2={item14.date || Null_message}
+                        row3={item14.remarks || Null_message}
+                        row4={item14.credits==null ? "Pending" : item14.credits}
                       />
                     );
                   })}
@@ -2923,7 +2667,8 @@ function ProfessionalDevelopmentData0() {
               <Table variant="simple" color={textColor}>
                 <Thead>
                   <Tr my=".8rem" pl="0px" color="gray.400">
-                    <Th color="gray.400">Components</Th>
+                    <Th color="gray.400">Technical Skill</Th>
+                    <Th color="gray.400">Trainer</Th>
                     <Th color="gray.400">Date</Th>
                     <Th color="gray.400">Remarks</Th>
                     <Th color="gray.400">Credits</Th>
@@ -2932,11 +2677,12 @@ function ProfessionalDevelopmentData0() {
                 <Tbody>
                   {p17data.map((item17) => {
                     return (
-                      <TableRow4
-                        row1={item17.assessment || Null_message}
-                        row2={item17.date || Null_message}
-                        row3={item17.title || Null_message}
-                        row4={item17.credits || Null_message}
+                      <TableRow5
+                        row1={item17.tech_skill || Null_message}
+                        row2={item17.trainer || Null_message}
+                        row3={item17.date || Null_message}
+                        row4={item17.remarks || Null_message}
+                        row5={item17.credits==null ? "Pending" : item17.credits}
                       />
                     );
                   })}

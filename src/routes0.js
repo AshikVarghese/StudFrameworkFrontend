@@ -14,26 +14,21 @@ import Profile from "views/Home/Profile/Profile0.js";
 import SignIn from "views/Pages/SignIn.js";
 
 import {
-  HomeIcon,
+  ProfileIcon,
   StatsIcon,
-  CreditIcon,
-  PersonIcon,
+  CartIcon,
+  SupportIcon,
   DocumentIcon,
-  RocketIcon,
+  GlobeIcon,
+  ClockIcon,
+  RocketIcon
 } from "components/Icons/Icons";
 
 var dashRoutes = [
-  // {
-  //   path: "/dashboard",
-  //   name: "Dashboard",
-  //   icon: <HomeIcon color="inherit" />,
-  //   component: Dashboard,
-  //   layout: "/admin0",
-  // },
   {
     path: "/GeneralInformation",
     name: "General Information",
-    icon: <StatsIcon color="inherit" />,
+    icon: <DocumentIcon color="inherit" />,
     component: GeneralInformation,
     layout: "/admin0",
   },
@@ -51,14 +46,14 @@ var dashRoutes = [
         International Exposure
       </p>
     ),
-    icon: <StatsIcon color="inherit" />,
+    icon: <GlobeIcon color="inherit" />,
     component: InternationalData,
     layout: "/admin0",
   },
   {
     path: "/ExtracurricularData",
     name: "ExtraCurricular",
-    icon: <StatsIcon color="inherit" />,
+    icon: <ClockIcon color="inherit" />,
     component: ExtraCurricularData,
     layout: "/admin0",
   },
@@ -76,7 +71,7 @@ var dashRoutes = [
         Professional Development
       </p>
     ),
-    icon: <StatsIcon color="inherit" />,
+    icon: <RocketIcon color="inherit" />,
     component: ProfessionalDevelopmentData0,
     layout: "/admin0",
   },
@@ -90,7 +85,7 @@ var dashRoutes = [
   {
     path: "/Licetcredits",
     name: "LICET Credits",
-    icon: <StatsIcon color="inherit" />,
+    icon: <CartIcon color="inherit" />,
     component: LicetCredits,
     layout: "/admin0",
   },
@@ -98,7 +93,7 @@ var dashRoutes = [
   {
     path: "/profile",
     name: "Profile",
-    icon: <PersonIcon color="inherit" />,
+    icon: <ProfileIcon color="inherit" />,
     secondaryNavbar: true,
     component: Profile,
     layout: "/admin0",
@@ -106,7 +101,7 @@ var dashRoutes = [
   {
     path: "/signin",
     name: "Log Out",
-    icon: <DocumentIcon color="inherit" />,
+    icon: <SupportIcon color="inherit" />,
     component: SignIn,
     layout: "/auth",
   },
