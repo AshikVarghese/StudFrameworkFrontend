@@ -215,7 +215,7 @@ function GeneralInformationdata() {
       DALITID: "IS DALIT",
       COMMUNITYID: "community",
       BLOODID: "blood group",
-      MOTHERID: "mother name",
+      MOTHERID: "mother tongue",
       CONTACTID: "contact no",
       AADHARID: "aadhar id",
       PEREMID: "personal email id",
@@ -1279,7 +1279,7 @@ function GeneralInformationdata() {
                       flexWrap="nowrap"
                     >
                       <Flex direction="column">
-                        <FormControl isRequired>
+                        <FormControl>
                           <FormLabel
                             fontSize="md"
                             color={textColor}

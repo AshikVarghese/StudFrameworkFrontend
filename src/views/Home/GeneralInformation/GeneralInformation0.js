@@ -190,6 +190,16 @@ function GeneralInformationdata({ location }) {
                       );
                     })}
                   </Tr>
+                  <Tr>
+                    {data.map((item) => {
+                      return (
+                        <GData
+                          data={item.pan}
+                          field="PAN Number"
+                        />
+                      );
+                    })}
+                  </Tr>
                 </Tbody>
               </Table>
             </CardBody>
